@@ -49,12 +49,7 @@ PFA_ITYPE1:
 	.dw XT_DOLITERAL
 	.dw 8
 	.dw XT_RSHIFT
-	.dw XT_QDUP
-	.dw XT_DOCONDBRANCH
-	.dw PFA_ITYPE6
-	    .dw XT_EMIT
-PFA_ITYPE6:
-
+	.dw XT_EMIT
     .dw XT_DOLOOP
     .dw PFA_ITYPE1
 PFA_ITYPE5:
