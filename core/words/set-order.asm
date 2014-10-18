@@ -11,6 +11,6 @@ XT_SET_ORDER:
 PFA_SET_ORDER:
     .dw XT_DOLITERAL
     .dw EE_ORDERLISTLEN
-    .dw XT_N_STORE_E
+    .dw XT_SET_STACK
     .dw XT_EXIT
 

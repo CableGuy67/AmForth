@@ -1,14 +1,20 @@
-; ( ee-addr n -- itemn .. item0) 
+; ( e-addr -- itemn .. item0 n) 
 ; Tools
-; Get an array from EEPROM
-VE_N_FETCH_E:
-    .dw $ff03
-    .db "n@e",0
+; Get a stack from EEPROM
+VE_GET_STACK:
+    .dw $ff09
+    .db "get-stack",0
     .dw VE_HEAD
-    .set VE_HEAD = VE_N_FETCH_E
-XT_N_FETCH_E:
+    .set VE_HEAD = VE_GET_STACK
+XT_GET_STACK:
     .dw DO_COLON
 PFA_N_FETCH_E:
+    .dw XT_DUP
+    .dw XT_CELLPLUS
+    .dw XT_SWAP
+    .dw XT_FETCHE
+    .dw XT_DUP
+    .dw XT_TO_R
     .dw XT_ZERO
     .dw XT_SWAP    ; go from bigger to smaller addresses
     .dw XT_DOQDO
@@ -27,5 +33,6 @@ PFA_N_FETCH_E1:
     .dw PFA_N_FETCH_E1
 PFA_N_FETCH_E2:
     .dw XT_2DROP
+    .dw XT_R_FROM
     .dw XT_EXIT
 

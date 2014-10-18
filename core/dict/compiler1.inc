@@ -53,8 +53,8 @@
 .include "words/abortstring.asm"
 .include "words/abort.asm"
 
-.include "words/fetch-ee-array.asm"
-.include "words/store-ee-array.asm"
+.include "words/get-stack.asm"
+.include "words/set-stack.asm"
 .include "words/get-current.asm"
 .include "words/get-order.asm"
 
