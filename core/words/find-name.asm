@@ -10,35 +10,23 @@ XT_FINDNAME:
     .dw DO_COLON
 PFA_FINDNAME:
     .dw XT_DOLITERAL
-    .dw EE_ORDERLISTLEN
-    .dw XT_FETCHE
-    .dw XT_ZERO
-    .dw XT_DOQDO
-    .dw PFA_FINDNAME2
-PFA_FINDNAME1:
-    ; ( addr len --)
-    .dw XT_2DUP
+    .dw XT_FINDNAME2
     .dw XT_DOLITERAL
-    .dw EE_ORDERLIST
-    .dw XT_I
-    .dw XT_CELLS
-    .dw XT_PLUS  
-    .dw XT_FETCHE ; ( -- addr len addr len wid )
-PFA_FINDNAME3:
-    .dw XT_SEARCH_WORDLIST ; ( -- addr len [xt] flag
-    .dw XT_QDUP
-    .dw XT_DOCONDBRANCH
-    .dw PFA_FINDNAME4
-	.dw XT_ROT
-	.dw XT_DROP
-	.dw XT_ROT
-	.dw XT_DROP
-	.dw XT_UNLOOP
-	.dw XT_EXIT
-PFA_FINDNAME4:
-    .dw XT_DOLOOP
-    .dw PFA_FINDNAME1
-PFA_FINDNAME2:
-    .dw XT_2DROP
-    .dw XT_ZERO
+    .dw EE_ORDERLISTLEN
+    .dw XT_MAPSTACK
+    .dw XT_DROP
     .dw XT_EXIT
+
+XT_FINDNAME2:
+    .dw DO_COLON
+PFA_FINDNAME2:
+    .dw XT_SEARCH_WORDLIST
+    .dw XT_DUP
+    .dw XT_EQUALZERO
+    .dw XT_EQUALZERO
+    .dw XT_EXIT
+    
+; : map-find ( addr len -- xt +/-1 | 0 )
+;    [: ( -- addr len wid ) search-wordlist dup 0= 0= ;] 
+;    EE_ORDERLISTLEN  map-stack drop
+; ;

@@ -9,14 +9,16 @@ VE_REC_WORD:
 XT_REC_WORD:
     .dw DO_COLON
 PFA_REC_WORD:
-    .dw XT_FINDNAME
-    .dw XT_QDUP
+    .dw XT_FINDNAME ; -- xt +/-1 | 0
+    .dw XT_DUP
+    .dw XT_EQUALZERO
     .dw XT_DOCONDBRANCH
-    .dw PFA_REC_WORD_NOTFOUND
-	.dw XT_R_WORD
+    .dw PFA_REC_WORD_FOUND
+        .dw XT_DROP
+	.dw XT_R_FAIL
 	.dw XT_EXIT
-PFA_REC_WORD_NOTFOUND:
-    .dw XT_R_FAIL
+PFA_REC_WORD_FOUND:
+    .dw XT_R_WORD
     .dw XT_EXIT
 
 ; ( addr len -- f )
