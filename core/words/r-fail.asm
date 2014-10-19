@@ -9,22 +9,21 @@ VE_R_FAIL:
 XT_R_FAIL:
     .dw PFA_DOCONSTANT
 PFA_R_FAIL:
-    .dw XT_FAILS  ; interpret
-    .dw XT_FAILS  ; compile
-    .dw XT_FAILS  ; postpone
+    .dw XT_FAIL  ; interpret
+    .dw XT_FAIL  ; compile
+    .dw XT_FAIL  ; postpone
 
 ; ( addr len -- )
 ; Interpreter
-; default failure action for strings. Prints the string and throws exception -13.
-VE_FAILS:
-    .dw $ff06
-    .db "fail:s"
+; default failure action: throw exception -13.
+VE_FAIL:
+    .dw $ff04
+    .db "fail"
     .dw VE_HEAD
-    .set VE_HEAD = VE_FAILS
-XT_FAILS:
+    .set VE_HEAD = VE_FAIL
+XT_FAIL:
     .dw DO_COLON
-PFA_FAILS:
-    .dw XT_TYPE
+PFA_FAIL:
     .dw XT_DOLITERAL
     .dw -13
     .dw XT_THROW
