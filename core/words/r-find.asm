@@ -34,6 +34,14 @@ PFA_R_WORD:
     .dw XT_R_WORD_COMPILE
     .dw XT_R_WORD_POSTPONE
 
+; ( XT flags -- )
+; Interpreter
+; interpret method for find recognizer
+;VE_R_WORD_INTERPRET:
+;    .dw $ff06
+;    .db "r:word"
+;    .dw VE_HEAD
+;    .set VE_HEAD = VE_R_WORD_INTERPRET
 XT_R_WORD_INTERPRET:
     .dw DO_COLON
 PFA_R_WORD_INTERPRET:
@@ -41,6 +49,9 @@ PFA_R_WORD_INTERPRET:
     .dw XT_EXECUTE
     .dw XT_EXIT
 
+; ( XT flags -- )
+; Interpreter
+; Compile method for find recognizer
 XT_R_WORD_COMPILE:
     .dw DO_COLON
 PFA_R_WORD_COMPILE:
@@ -53,6 +64,9 @@ PFA_R_WORD_COMPILE1:
         .dw XT_EXECUTE
     .dw XT_EXIT
 
+; ( XT flags -- )
+; Interpreter
+; Postpone method for find recognizer
 XT_R_WORD_POSTPONE:
     .dw DO_COLON
 PFA_R_WORD_POSTPONE:
