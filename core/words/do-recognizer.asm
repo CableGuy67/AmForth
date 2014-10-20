@@ -14,16 +14,13 @@ PFA_DORECOGNIZER:
     .dw XT_DOLITERAL
     .dw EE_RECOGNIZERLISTLEN
     .dw XT_MAPSTACK
+    .dw XT_EQUALZERO
     .dw XT_DOCONDBRANCH
     .dw PFA_DORECOGNIZER1
-      .dw XT_TO_R
-      .dw XT_2DROP
-      .dw XT_R_FROM
-      .dw XT_EXIT
-PFA_DORECOGNIZER1:
       .dw XT_2DROP
       .dw XT_R_FAIL
-      .dw XT_EXIT
+PFA_DORECOGNIZER1:
+    .dw XT_EXIT
 
 ; ( addr len XT -- addr len [ r:table -1 | 0 ] )
 XT_DORECOGNIZER_A:
@@ -46,19 +43,19 @@ PFA_DORECOGNIZER_A:
      .dw XT_ZERO
      .dw XT_EXIT
 PFA_DORECOGNIZER_A1:
+   .dw XT_NIP 
+   .dw XT_NIP
    .dw XT_TRUE
    .dw XT_EXIT
 
 ; : do-recognizer ( addr len -- i*x r:table|r:fail )
-;    \ ( addr len -- addr len [ r:table -1 | 0 ] )
+;    \ ( addr len -- addr len 0 | i*x r:table -1 )
 ;    [: rot rot 2dup 2>r rot execute 2r> rot 
 ;          dup r:fail = ( -- addr len r:table f )
-;          if drop 0 else -1 then
+;          if drop 0 else nip nip -1 then
 ;    ;] 
 ;    EE_RECOGNIZERLISTLEN map-stack ( -- i*x addr len r:table f )
-;    if \ a recognizer did the job, remove addr/len
-;     >r 2drop r>
-;    else \ no recognizer did the job, remove addr/len
+;    0= if \ a recognizer did the job, remove addr/len
 ;     2drop r:fail 
 ;    then
 ;
