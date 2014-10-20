@@ -10,23 +10,44 @@ XT_FINDNAME:
     .dw DO_COLON
 PFA_FINDNAME:
     .dw XT_DOLITERAL
-    .dw XT_FINDNAME2
+    .dw XT_FINDNAMEA
     .dw XT_DOLITERAL
     .dw EE_ORDERLISTLEN
     .dw XT_MAPSTACK
-    .dw XT_DROP
+    .dw XT_EQUALZERO
+    .dw XT_DOCONDBRANCH
+    .dw PFA_FINDNAME1
+      .dw XT_2DROP
+      .dw XT_ZERO
+PFA_FINDNAME1:
     .dw XT_EXIT
 
-XT_FINDNAME2:
+XT_FINDNAMEA:
     .dw DO_COLON
-PFA_FINDNAME2:
+PFA_FINDNAMEA:
+    .dw XT_TO_R
+    .dw XT_2DUP
+    .dw XT_R_FROM
     .dw XT_SEARCH_WORDLIST
     .dw XT_DUP
     .dw XT_EQUALZERO
     .dw XT_EQUALZERO
+    .dw XT_DOCONDBRANCH
+    .dw PFA_FINDNAMEA1
+      .dw XT_TO_R
+      .dw XT_NIP
+      .dw XT_NIP
+      .dw XT_R_FROM
+      .dw XT_TRUE
+PFA_FINDNAMEA1:
     .dw XT_EXIT
     
-; : map-find ( addr len -- xt +/-1 | 0 )
-;    [: ( -- addr len wid ) search-wordlist dup 0= 0= ;] 
-;    EE_ORDERLISTLEN  map-stack drop
-; ;
+;   : find-name ( addr len -- xt +/-1 | 0)
+;      [: ( addr len wid -- xt +/-1 -1 | addr len 0 ) 
+;         >r 2dup r>
+;         search-wordlist
+;         dup 0<> if >r nip nip r> -1 then
+;      ;] 
+;      EE_ORDERLISTLEN  map-stack 
+;      0= if 2drop 0 then
+;   ;
