@@ -38,7 +38,7 @@
 .equ F_CPU = 8000000
 
 ; terminal settings
-; check http://amforth.sourceforge.net/recipes/usart-settings.html
+; check http://amforth.sourceforge.net/TG/recipes/Usart.html
 ; for further information
 
 ; serial line settings.
@@ -71,7 +71,7 @@
 
 
 ; default settings as specified in core/macros.asm. Uncomment and
-; change them if necessairy.
+; change them if necessary.
 
 ; Size of the Terminal Input Buffer. This is the command line buffer.
 ; .set TIBSIZE  = $64    ; bytes; ANS94 needs at least 80 characters per line
@@ -86,14 +86,14 @@
 ; change only if you know what to you do
 
 ; Total number of entries in the search order.
-; The standard requires 8 wordlists in the search oder, amforth occupies
-; already one for itself. So you'll have 7 slots for your own.
+; The standard requires 8 wordlists in the search oder, amforth uses
+; already one for itself. So you'll have 7 slots available.
 ;.set NUMWORDLISTS = 8
 
 ; Total number of recognizers.
-; There are 2 recognizers for the core system already in use. That makes
-; 2 for your application.
-;.set NUMRECOGNIZERS = 4 
+; There are 2 recognizers already in the core system. That makes
+; 2 for you.
+;.set NUMRECOGNIZERS = 4
 
 
 ; DRIVER SECTION
