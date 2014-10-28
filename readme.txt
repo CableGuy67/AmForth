@@ -11,7 +11,7 @@ Major Contributors:
     Karl Lund
     Enoch
 
-License: General Public License (GPL) Version 2 from 1991. See the
+License: General Public License (GPL) Version 3 from 2007. See the
 file LICENSE.txt or http://www.gnu.org/licenses/gpl.html
 
 AmForth is an interactive 16-bit Forth for Atmel ATmega microcontrollers.

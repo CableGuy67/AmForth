@@ -18,7 +18,7 @@ indirect threading 16bit Forth. There are some extensions from the
 The interpreter has a command prompt in a serial terminal. Other
 connections like TCP/IP telnet or radio links are possible.
 
-AmForth is published under the GNU Public License v2 (GPL).
+AmForth is published under the GNU Public License v3 (GPL).
 
 AmForth needs approx. 8KB Flash memory, 80 bytes EEPROM, and 200 bytes
 RAM for the core system.
