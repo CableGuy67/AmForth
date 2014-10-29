@@ -644,6 +644,11 @@ additional definitions (e.g. register names)
             help="Ignore errors during upload (not recommended)")
         parser.add_argument("--debug-serial", action="store_true",
             help="Output extra info about serial transfers in stderr")
+        parser.add_argument("--Include", "-I", action="append",
+            help="Add Include directory")
+        parser.add_argument("--uploaded-wl", "-U", action="store_true", default=False,
+            help="Keep the list of uploaded filenames in the dictionary.")
+
         parser.add_argument("files", nargs="*", help="may be found via the environment variable AMFORTH_LIB")
         arg = parser.parse_args()
         self.debug = arg.debug_serial
@@ -652,7 +657,10 @@ additional definitions (e.g. register names)
         self._serial_rtscts = arg.rtscts
         self._serial_speed = arg.speed
         self._log = arg.log
+        self._update_uploaded = arg.uploaded_wl
         self.editor = arg.editor
+        if arg.Include:
+            self._search_list.extend(arg.Include)
         behavior = self._config.current_behavior
         behavior.error_on_output = not arg.no_error_on_output
         behavior.directive_config = arg.directive
@@ -785,9 +793,6 @@ additional definitions (e.g. register names)
         # update the included-wl on the controller
         if self._update_uploaded:
            self.send_line("get-current uploaded-wl set-current create " + filename + " set-current")
-#        else:
-#           self.progress_callback("Information", None, 
-#              "Not updating files wordlist on controller, wordlist uploaded-wl missing.")
         return True
 
     def _send_file_contents(self, f):
