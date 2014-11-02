@@ -2,7 +2,7 @@
 
 MCU=atmega169
 
-AMFORTH=../../core
+AMFORTH=../../avr8
 
 # some programs
 AVRDUDE=avrdude

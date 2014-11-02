@@ -29,7 +29,7 @@ SHELL=/bin/bash
 ##############################
 
 # 1) MCU should be identical to the device
-#    Look at the /core/devices/ folder
+#    Look at the .../avr8/devices/ folder
 # 2) PART is the device model passed to avrdude.
 # 3) LFUSE, HFUSE, EFUSE are the device-specific fuses
 #    there is a useful fuse calc tool at:
@@ -106,7 +106,7 @@ diecimila.fuse:   EFUSE=0xF9
 # 'code' for trunk and x.y for the releases (i.e 5.0)
 #VERSION=5.0
 VERSION=code
-CORE=$(AMFORTH)/core
+CORE=$(AMFORTH)/avr8
 
 # directories
 ATMEL=$(AMFORTH)/Atmel

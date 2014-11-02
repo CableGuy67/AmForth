@@ -12,7 +12,7 @@ TARGET=template
 # _always_ use the trunk.
 
 #AMFORTH=../../releases/3.6
-AMFORTH=../../core
+AMFORTH=../../avr8
 
 # the MCU should be identical to the device
 MCU=atmega1284p

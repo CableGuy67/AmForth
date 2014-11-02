@@ -32,7 +32,7 @@
 	<attribute name="includes"     default="../../Atmel/Appnotes" />
 	<attribute name="projectname"  default="undefined"/>
 	<attribute name="mcu"          default="undefined"/>
-	<attribute name="amforth.core" default="../../core"/>
+	<attribute name="amforth.core" default="../../avr8"/>
 	<sequential>
 		<exec executable="@{binary}" spawn="false" failonerror="true">
 		    <arg line="-I @{includes}"/>
@@ -52,7 +52,7 @@
 	<attribute name="includes"     default="../../Atmel/Appnotes2" />
 	<attribute name="projectname"  default="undefined"/>
 	<attribute name="mcu"          default="undefined"/>
-	<attribute name="amforth.core" default="../../core"/>
+	<attribute name="amforth.core" default="../../avr8"/>
 	<sequential>
 		<echo>Producing Hexfiles for @{mcu}</echo>
 		<exec executable="@{binary}" spawn="false" failonerror="true">
