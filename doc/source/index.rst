@@ -18,7 +18,7 @@ indirect threading 16bit Forth. There are some extensions from the
 The interpreter has a command prompt in a serial terminal. Other
 connections like TCP/IP telnet or radio links are possible.
 
-AmForth is published under the GNU Public License v3 (GPL).
+AmForth is published under the GNU Public License v2 (GPL).
 
 AmForth needs approx. 8KB Flash memory, 80 bytes EEPROM, and 200 bytes
 RAM for the core system.
@@ -43,6 +43,14 @@ released but will be part of the next release.
 See the code section at Sourceforge to get the
 `most recent sources <http://sourceforge.net/p/amforth/code/HEAD/tree/trunk/>`__
 
+* core: change license to GPLv3.
+* core: generalized existing :ref:`Stacks` in EEPROM into :command:`map-stack`, 
+  :command:`get-stack` and :command:`set-stack`. Used for the search order
+  and the recognizer stacks.
+
+6.10.2014: release 5.5
+......................
+
 * core: Bugfix in :command:`warm` to initialize the interpreter for 
   :command:`turnkey`. Thanks to David.
 * core: bugfixes for handling some negative numbers in :command:`+loop` 
@@ -53,10 +61,11 @@ See the code section at Sourceforge to get the
 * core: rewrite of :command:`accept`. The user visible change is that the final CR/LF
   is no longer sent here. The forth text interpreter does it elsewhere thus
   the user interface is unchanged.
+* core: Fixed a regression introduced after 5.1: a<b is not always the same 
+  as a-b<0.
 
 16.8.2014: release 5.4
 ......................
-
 
 * lib: Almost complete :ref:`Blocks` wordset support. Only a few dark corners behave differently.
 * lib: renamed TWI to I2C, added many tools for it :ref:`I2C Values`, :ref:`I2C EEPROM Blocks` and 
@@ -68,27 +77,11 @@ See the code section at Sourceforge to get the
   :command:`2r>`) missed the internal swap's. Added new :command:`2r@`.
 * lib: Limited LOCALs
 
-7.5.2013: release 5.3
-......................
-
-* core: 2nd generation of :ref:`Recognizers` and their use for native 
-  :ref:`String literals <Recognizer>`.
-* core: renamed :command:`edp` to :command:`ehere`. :command:`here` 
-  points to data space, :command:`ehere`   points to eeprom data space.
-* core: merged code for defer's and value's. Speed improvements
-  for defer actions.
-* community: MMC/SD-Card from Lubos (So Sorry for beeing late) and 
-  TCP/IP (:ref:`Telnet`). Many Thanks to Jens. Speed optimized
-  words for SPI in amforth core.
-* doc: `Japanese Getting Started <http://amforth-installation-ja.readthedocs.org/ja/latest/index.html>`__
-* doc: new recipes: :ref:`Forward`, :ref:`Extended-VM`, :ref:`Quotations`, :ref:`Exceptions`,
-  :ref:`Coroutines`,  updated recipes: :ref:`SPI`, :ref:`Ardiuno Helloworld`
-
 More To Read
-----------------
+............
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    UG/amforth_user
    faq

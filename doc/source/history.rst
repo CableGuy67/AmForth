@@ -2,6 +2,22 @@
 History
 =======
 
+7.5.2013: release 5.3
+......................
+
+* core: 2nd generation of :ref:`Recognizers` and their use for native 
+  :ref:`String literals <Recognizer>`.
+* core: renamed :command:`edp` to :command:`ehere`. :command:`here` 
+  points to data space, :command:`ehere`   points to eeprom data space.
+* core: merged code for defer's and value's. Speed improvements
+  for defer actions.
+* community: MMC/SD-Card from Lubos (So Sorry for beeing late) and 
+  TCP/IP (:ref:`Telnet`). Many Thanks to Jens. Speed optimized
+  words for SPI in amforth core.
+* doc: `Japanese Getting Started <http://amforth-installation-ja.readthedocs.org/ja/latest/index.html>`__
+* doc: new recipes: :ref:`Forward`, :ref:`Extended-VM`, :ref:`Quotations`, :ref:`Exceptions`,
+  :ref:`Coroutines`,  updated recipes: :ref:`SPI`, :ref:`Ardiuno Helloworld`
+
 23.12.2013: release 5.2
 .......................
 
