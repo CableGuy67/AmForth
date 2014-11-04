@@ -119,6 +119,23 @@ Can I use code written in C (or any other language) with/in amforth?
 
 Short answer: no.
 
+What means GPL for my programs?
+-------------------------------
+
+Due to the nature of Forth systems, a "Forth Program" really does
+extent the Forth system. This is unlike a compiler (gcc or llvm)
+compiling a source file into machine readable format. Therefore
+Forth programs can (must?) be seen as a derived work of the Forth
+system.
+
+Users who wish to create a commercial product are strongly advised
+to either consider makeing the software available to the customer
+and end user (in order to fulfill the requirements of amForths GPL
+license), or alternately consider a Forth system which does
+allow commercial products without the obligation to make the software
+available in source code.
+
+
 How do I send forth code to the system?
 ---------------------------------------
 
