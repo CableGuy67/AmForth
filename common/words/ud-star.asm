@@ -1,0 +1,12 @@
+
+VE_UDSTAR:
+    .dw $ff03
+    .db "ud*"
+    .dw VE_HEAD
+    .set VE_HEAD = VE_UDSTAR
+XT_UDSTAR:
+    .dw DO_COLON
+PFA_UDSTAR:
+    .dw XT_DUP
+    .dw XT_TO_R,XT_UMSTAR,XT_DROP
+    .DW XT_SWAP,XT_R_FROM,XT_UMSTAR,XT_ROT,XT_PLUS,XT_EXIT

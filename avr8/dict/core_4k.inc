@@ -37,8 +37,8 @@
 .include "words/do-defer.asm"
 
 .include "words/d-equal.asm"
-.include "words/udot.asm"
-.include "words/udotr.asm"
+.include "words/u-dot.asm"
+.include "words/u-dot-r.asm"
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 .include "words/uslashmod.asm"
@@ -69,7 +69,7 @@
 .include "words/2drop.asm"
 .include "words/tuck.asm"
 
-.include "words/g_in.asm"
+.include "words/to-in.asm"
 .include "words/sharptib.asm"
 .include "words/pad.asm"
 .include "words/emit.asm"
@@ -96,4 +96,4 @@
 .include "words/cr.asm"
 .include "words/space.asm"
 .include "words/spaces.asm"
-.include "words/s_to_d.asm"
+.include "words/s-to-d.asm"

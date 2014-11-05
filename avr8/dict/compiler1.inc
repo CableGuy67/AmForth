@@ -1,7 +1,7 @@
 
 .include "words/docreate.asm"
 .include "words/backslash.asm"
-.include "words/lparenthesis.asm"
+.include "words/l-paren.asm"
 
 .include "words/compile.asm"
 .include "words/comma.asm"
@@ -10,8 +10,8 @@
 
 .include "words/literal.asm"
 .include "words/sliteral.asm"
-.include "words/g_mark.asm"
-.include "words/g_resolve.asm"
+.include "words/g-mark.asm"
+.include "words/g-resolve.asm"
 .include "words/l_mark.asm"
 .include "words/l_resolve.asm"
 
@@ -40,8 +40,8 @@
 .include "words/colon.asm"
 .include "words/colon-noname.asm"
 .include "words/semicolon.asm"
-.include "words/rightbracket.asm"
-.include "words/leftbracket.asm"
+.include "words/right-bracket.asm"
+.include "words/left-bracket.asm"
 .include "words/variable.asm"
 .include "words/constant.asm"
 .include "words/user.asm"

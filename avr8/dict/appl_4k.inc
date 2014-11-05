@@ -7,7 +7,6 @@
 .include "words/icompare.asm"
 .include "words/star.asm"
 .include "words/j.asm"
-.include "words/d_to_s.asm"
 .include "words/dabs.asm"
 .include "words/dnegate.asm"
 .include "words/cmove.asm"
@@ -29,19 +28,19 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 .include "words/hld.asm"
 .include "words/hold.asm"
-.include "words/l_sharp.asm" ; <#
+.include "words/less-sharp.asm" ; <#
 .include "words/sharp.asm"
-.include "words/sharp_s.asm"
-.include "words/sharp_g.asm" ; #>
+.include "words/sharp-s.asm"
+.include "words/sharp-greater.asm" ; #>
 .include "words/sign.asm"
-.include "words/ddotr.asm"
-.include "words/dotr.asm"
-.include "words/ddot.asm"
+.include "words/d-dot-r.asm"
+.include "words/dot-r.asm"
+.include "words/d-dot.asm"
 .include "words/dot.asm"
-.include "words/uddot.asm"
-.include "words/uddotr.asm"
+.include "words/ud-dot.asm"
+.include "words/ud-dot-r.asm"
 .include "words/udslashmod.asm"
-.include "words/digitq.asm"
+.include "words/digit-q.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 .include "words/do-sliteral.asm"
 .include "words/scomma.asm"
@@ -59,7 +58,7 @@
 .include "words/parse.asm"
 .include "words/char-scan.asm"
 .include "words/source.asm"
-.include "words/slashstring.asm"
+.include "words/slash-string.asm"
 .include "words/parse-name.asm"
 .include "words/sp0.asm"
 .include "words/rp0.asm"

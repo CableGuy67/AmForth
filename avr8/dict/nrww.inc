@@ -42,7 +42,7 @@
 .include "words/zero.asm"
 .include "words/true.asm"
 .include "words/uless.asm"
-.include "words/ugreater.asm"
+.include "words/u-greater.asm"
 .include "words/less.asm"
 .include "words/greater.asm"
 
@@ -109,7 +109,4 @@
 ; now colon words
 ;;;;;;;;;;;;;;;;;;;;;;;;
 .include "words/2literal.asm"
-
 .include "words/equal.asm"
-
-
