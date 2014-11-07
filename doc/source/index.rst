@@ -43,6 +43,7 @@ released but will be part of the next release.
 See the code section at Sourceforge to get the
 `most recent sources <http://sourceforge.net/p/amforth/code/HEAD/tree/trunk/>`__
 
+* core: re-arranged source files.
 * core: change license to GPLv3.
 * core: generalized existing :ref:`Stacks` in EEPROM into :command:`map-stack`, 
   :command:`get-stack` and :command:`set-stack`. Used for the search order
