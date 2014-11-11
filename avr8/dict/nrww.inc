@@ -33,7 +33,7 @@
 .include "words/r_fetch.asm"
 
 
-.include "words/notequal.asm"
+.include "words/not-equal.asm"
 .include "words/equalzero.asm"
 .include "words/lesszero.asm"
 .include "words/greaterzero.asm"
