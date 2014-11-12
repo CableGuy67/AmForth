@@ -39,7 +39,7 @@
 .include "words/dot.asm"
 .include "words/ud-dot.asm"
 .include "words/ud-dot-r.asm"
-.include "words/udslashmod.asm"
+.include "words/ud-slash-mod.asm"
 .include "words/digit-q.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 .include "words/do-sliteral.asm"

@@ -9,5 +9,5 @@ VE_NOT:
 XT_NOT:
     .dw DO_COLON
 PFA_NOT:
-    .dw XT_EQUALZERO
+    .dw XT_ZEROEQUAL
     .dw XT_EXIT

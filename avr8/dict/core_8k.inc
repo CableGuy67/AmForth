@@ -91,7 +91,7 @@
 .include "words/dot.asm"
 .include "words/ud-dot.asm"
 .include "words/ud-dot-r.asm"
-.include "words/udslashmod.asm"
+.include "words/ud-slash-mod.asm"
 .include "words/digit-q.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 .include "words/do-sliteral.asm"
@@ -121,8 +121,11 @@
 .include "words/parse-name.asm"
 .include "words/find-name.asm"
 
+.include "words/prompt-ok.asm"
+.include "words/prompt-ready.asm"
+.include "words/prompt-error.asm"
+
 .include "words/quit.asm"
-.include "words/prompts.asm"
 .include "words/pause.asm"
 .include "words/cold.asm"
 .include "words/warm.asm"

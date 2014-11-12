@@ -1,6 +1,12 @@
 ; ( n -- ) 
 ; Numeric IO
 ; place a - in HLD if n is negative
+
+.if cpu_msp430==1
+    HEADER(XT_SIGN,4,"sign",DOCOLON)
+.endif
+
+.if cpu_avr8==1
 VE_SIGN:
     .dw $ff04
     .db "sign"
@@ -9,11 +15,12 @@ VE_SIGN:
 XT_SIGN:
     .dw DO_COLON
 PFA_SIGN:
-    .dw XT_LESSZERO
+.endif
+    .dw XT_ZEROLESS
     .dw XT_DOCONDBRANCH
-    .dw PFA_SIGN1
+    DEST(PFA_SIGN1)
     .dw XT_DOLITERAL
-    .dw $2d
+    .dw 45 ; ascii -
     .dw XT_HOLD
 PFA_SIGN1:
     .dw XT_EXIT

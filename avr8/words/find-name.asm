@@ -14,7 +14,7 @@ PFA_FINDNAME:
     .dw XT_DOLITERAL
     .dw EE_ORDERLISTLEN
     .dw XT_MAPSTACK
-    .dw XT_EQUALZERO
+    .dw XT_ZEROEQUAL
     .dw XT_DOCONDBRANCH
     .dw PFA_FINDNAME1
       .dw XT_2DROP
@@ -30,8 +30,8 @@ PFA_FINDNAMEA:
     .dw XT_R_FROM
     .dw XT_SEARCH_WORDLIST
     .dw XT_DUP
-    .dw XT_EQUALZERO
-    .dw XT_EQUALZERO
+    .dw XT_ZEROEQUAL
+    .dw XT_ZEROEQUAL
     .dw XT_DOCONDBRANCH
     .dw PFA_FINDNAMEA1
       .dw XT_TO_R

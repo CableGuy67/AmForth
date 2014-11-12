@@ -11,7 +11,7 @@ XT_TICK:
 PFA_TICK:
     .dw XT_PARSENAME
     .dw XT_FINDNAME
-    .dw XT_EQUALZERO
+    .dw XT_ZEROEQUAL
     .dw XT_DOCONDBRANCH
     .dw PFA_TICK1
     .dw XT_DOLITERAL

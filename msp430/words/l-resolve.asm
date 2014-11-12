@@ -1,0 +1,2 @@
+    HEADER(XT_LRESOLVE,8,"<resolve",DOCOLON)
+        DW COMMADEST,XT_EXIT

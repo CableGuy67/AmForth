@@ -1,6 +1,6 @@
 ;;;; avr forth
 ;;;;
-;;;; GPL V3 
+;;;; GPL V2 (only)
 
 .set AMFORTH_NRWW_SIZE=(FLASHEND-AMFORTH_RO_SEG)*2
 

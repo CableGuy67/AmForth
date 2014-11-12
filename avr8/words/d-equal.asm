@@ -11,5 +11,5 @@ XT_DEQUAL:
 PFA_DEQUAL:
     .dw XT_DMINUS
     .dw XT_OR
-    .dw XT_EQUALZERO
+    .dw XT_ZEROEQUAL
     .dw XT_EXIT

@@ -10,7 +10,7 @@ XT_DABS:
     .dw DO_COLON
 PFA_DABS:
     .dw XT_DUP
-    .dw XT_LESSZERO
+    .dw XT_ZEROLESS
     .dw XT_DOCONDBRANCH
     .dw PFA_DABS1
     .dw XT_DNEGATE

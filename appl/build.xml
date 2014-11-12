@@ -10,6 +10,7 @@
   <ant antfile="build.xml" dir="template" target="clean" inheritAll="false"/>
   <ant antfile="build.xml" dir="eval-pollin" target="clean" inheritAll="false"/>
   <ant antfile="build.xml" dir="atmega2561" target="clean" inheritAll="false"/>
+  <ant antfile="build.xml" dir="stellaris" target="clean" inheritAll="false"/>
 </target>
 <target name="compile">
   <ant antfile="build.xml"  dir="arduino" target="compile" inheritAll="false"/>
@@ -17,5 +18,6 @@
   <ant antfile="build.xml" dir="template" target="compile" inheritAll="false"/>
   <ant antfile="build.xml" dir="eval-pollin" target="compile" inheritAll="false"/>
   <ant antfile="build.xml" dir="atmega2561" target="compile" inheritAll="false"/>
+  <ant antfile="build.xml" dir="stellaris" target="compile" inheritAll="false"/>
 </target>
 </project>

@@ -1,4 +1,9 @@
 
+.if cpu_msp430==1
+    HEADER(XT_UMIN,4,"umin",DOCOLON)
+.endif
+
+.if cpu_avr8==1
 VE_UMIN:
     .dw $ff04
     .db "umin"
@@ -7,7 +12,8 @@ VE_UMIN:
 XT_UMIN:
     .dw DO_COLON
 PFA_UMIN:
-        .DW XT_2DUP,XT_UGREATER,
+.endif
+        .DW XT_2DUP,XT_UGREATER
 	.dw XT_DOCONDBRANCH
 	DEST(UMIN1)
         .DW XT_SWAP

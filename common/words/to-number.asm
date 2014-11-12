@@ -1,6 +1,12 @@
 ; ( ud1 c-addr1 u1 -- ud2 c-addr2 u2 ) 
 ; Numeric IO
 ; convert a string to a number  c-addr2/u2 is the unconverted string
+
+.if cpu_msp430==1
+    HEADER(XT_TO_NUMBER,7,">number",DOCOLON)
+.endif
+
+.if cpu_avr8==1
 VE_TO_NUMBER:
     .dw $ff07
     .db ">number",0
@@ -8,48 +14,28 @@ VE_TO_NUMBER:
     .set VE_HEAD = VE_TO_NUMBER
 XT_TO_NUMBER:
     .dw DO_COLON
-PFA_TO_NUMBER:
-    .dw XT_DUP
-    .dw XT_DOCONDBRANCH
-    .dw PFA_TO_NUMBER1
-        .dw XT_OVER
-        .dw XT_CFETCH
-        .dw XT_DIGITQ
-        .dw XT_EQUALZERO
-        .dw XT_DOCONDBRANCH
-        .dw PFA_TO_NUMBER2
-            .dw XT_EXIT
-PFA_TO_NUMBER2:
-        .dw XT_TO_R
-        .dw XT_2SWAP
-        .dw XT_R_FROM
-        .dw XT_SWAP
-        .dw XT_BASE
-        .dw XT_FETCH
-        .dw XT_UMSTAR
-        .dw XT_DROP
-        .dw XT_ROT
-        .dw XT_BASE
-        .dw XT_FETCH
-        .dw XT_UMSTAR
-        .dw XT_DPLUS
-        .dw XT_2SWAP
-        .dw XT_DOLITERAL
-        .dw 1
-        .dw XT_SLASHSTRING
-    .dw XT_DOBRANCH
-    .dw PFA_TO_NUMBER
-PFA_TO_NUMBER1:
-    .dw XT_EXIT
 
-;: >number  ( ud1 c-addr1 u1 -- ud2 c-addr2 u2 )
-;  \ convert double number, leaving address of first unconverted byte
-;   begin  dup  while                  ( ud adr len )
-;      over c@  base @  digit          ( ud adr len  digit true  |  char false )
-;      0=  if  drop exit  then         ( ud adr len  digit )
-;      >r  2swap  r>                   ( adr len ud  digit )
-;      swap base @ um*  drop           ( adr len ud.low  digit ud.high' )
-;      rot base @ um*  d+              ( adr len  ud' )
-;      2swap  1 /string                ( ud' adr len )
-;   repeat                             ( ud' adr len )
-;;
+.endif
+
+TONUM1: .DW XT_DUP,XT_DOCONDBRANCH
+        DEST(TONUM3)
+        .DW XT_OVER,XT_CFETCH,XT_DIGITQ
+        .DW XT_ZEROEQUAL,XT_DOCONDBRANCH
+        DEST(TONUM2)
+        .DW XT_DROP,XT_EXIT
+TONUM2: .DW XT_TO_R,XT_2SWAP,XT_BASE,XT_FETCH,XT_UDSTAR
+        .DW XT_R_FROM,XT_MPLUS,XT_2SWAP
+        .DW XT_DOLITERAL,1,XT_SLASHSTRING,XT_DOBRANCH
+        DEST(TONUM1)
+TONUM3: .DW XT_EXIT
+
+;C >NUMBER  ud adr u -- ud' adr' u'
+;C                      convert string to number
+;   BEGIN
+;   DUP WHILE
+;       OVER C@ DIGIT?
+;       0= IF DROP EXIT THEN
+;       >R 2SWAP BASE @ UD*
+;       R> M+ 2SWAP
+;       1 /STRING
+;   REPEAT ;

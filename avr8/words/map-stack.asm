@@ -1,6 +1,12 @@
 ; ( i*x XT e-addr -- j*y true | i*x false ) 
 ; Tools
 ; Iterate over a stack
+
+.if cpu_msp430==1
+    HEADER(XT_MAPSTACK,9,"map-stack",DOCOLON)
+.endif
+
+.if cpu_avr8==1
 VE_MAPSTACK:
     .dw $ff09
     .db "map-stack",0
@@ -9,6 +15,7 @@ VE_MAPSTACK:
 XT_MAPSTACK:
     .dw DO_COLON
 PFA_MAPSTACK:
+.endif
     .dw XT_DUP
     .dw XT_CELLPLUS
     .dw XT_SWAP

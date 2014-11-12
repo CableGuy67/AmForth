@@ -1,5 +1,7 @@
 ; conditional assembly needs preparation
-.set DICT_COMPILER2 = 0 ; 
+.set DICT_COMPILER2 = 0 ;
+.set cpu_msp430 = 0
+.set cpu_avr8   = 1
 
 .include "user.inc"
 
@@ -149,3 +151,9 @@ delay_loop:
         .endif
       .endif
 .endmacro
+
+; portability macros, they come from the msp430 branches
+
+.macro DEST
+    .dw @0
+.endm

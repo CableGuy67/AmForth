@@ -1,6 +1,13 @@
 ; ( -- faddr len ) 
 ; Environment
 ; flash address of the amforth name string
+.if cpu_msp430==1
+    HEADER(XT_ENV_FORTHNAME,10,"forth-name",DOCOLON)
+    .dw XISQUOTE
+    .db 7
+.endif
+
+.if cpu_avr8==1
 VE_ENV_FORTHNAME:
     .dw $ff0a
     .db "forth-name"
@@ -11,5 +18,6 @@ XT_ENV_FORTHNAME:
 PFA_EN_FORTHNAME:
     .dw XT_DOSLITERAL
     .dw 7
-    .db "amforth",0
+.endif
+    .db "amforth"
     .dw XT_EXIT

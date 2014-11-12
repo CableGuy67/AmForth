@@ -1,6 +1,11 @@
 ; ( -- n )
 ; Environment
 ; version number of amforth
+.if cpu_msp430==1
+    HEADER(XT_ENV_FORTHVERSION,7,"version",DOCOLON)
+.endif
+
+.if cpu_avr8==1
 VE_ENV_FORTHVERSION:
     .dw $ff07
     .db "version",0
@@ -9,6 +14,7 @@ VE_ENV_FORTHVERSION:
 XT_ENV_FORTHVERSION:
     .dw DO_COLON
 PFA_EN_FORTHVERSION:
+.endif
     .dw XT_DOLITERAL
-    .dw 55
+    .dw 56
     .dw XT_EXIT

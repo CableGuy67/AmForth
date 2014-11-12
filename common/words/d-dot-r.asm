@@ -1,6 +1,12 @@
 ; ( d w -- ) 
 ; Numeric IO
 ; singed PNO with double cell numbers, right aligned in width w
+
+.if cpu_msp430==1
+    HEADER(XT_DDOTR,3,"d.r",DOCOLON)
+.endif
+
+.if cpu_avr8==1
 VE_DDOTR:
     .dw $ff03
     .db "d.r",0
@@ -9,6 +15,8 @@ VE_DDOTR:
 XT_DDOTR:
     .dw DO_COLON
 PFA_DDOTR:
+
+.endif
     .dw XT_TO_R
     .dw XT_TUCK
     .dw XT_DABS

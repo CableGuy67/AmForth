@@ -1,6 +1,6 @@
 ;;;; avr forth
 ;;;;
-;;;; GPL V3
+;;;; GPL V2 (only)
 
 .set pc_ = pc
 

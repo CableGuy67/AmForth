@@ -1,6 +1,12 @@
 ; ( f -- ) (C: -- orig )
 ; Compiler
 ; do a unconditional branch
+
+.if cpu_msp430==1
+    HEADER(XT_AHEAD,5,"ahead",DOCOLON)
+.endif
+
+.if cpu_avr8==1
 VE_AHEAD:
     .dw $0005
     .db "ahead",0
@@ -9,6 +15,7 @@ VE_AHEAD:
 XT_AHEAD:
     .dw DO_COLON
 PFA_AHEAD:
+.endif
     .dw XT_COMPILE
     .dw XT_DOBRANCH
     .dw XT_GMARK

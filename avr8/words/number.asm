@@ -21,7 +21,7 @@ PFA_NUMBER:
     .dw XT_TO_R
     ; check whether something is left
     .dw XT_DUP
-    .dw XT_EQUALZERO
+    .dw XT_ZEROEQUAL
     .dw XT_DOCONDBRANCH
     .dw PFA_NUMBER0
       ; nothing is left. It cannot be a number at all

@@ -23,7 +23,7 @@
 .set USER_KEYQ  = 20
 
 .set USER_SOURCE  = 22
-.set USER_G_IN    = 24
+.set USER_TO_IN   = 24
 .set USER_REFILL  = 26
 
 .set SYSUSERSIZE = 28

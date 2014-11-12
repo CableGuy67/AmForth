@@ -1,6 +1,12 @@
 ; ( i*x xt -- j*x 0 | i*x n )
 ; Exceptions
 ; execute XT and check for exceptions.
+
+.if cpu_msp430==1
+    HEADER(XT_CATCH,5,"catch",DOCOLON)
+.endif
+
+.if cpu_avr8==1
 VE_CATCH:
     .dw $ff05
     .db "catch",0
@@ -9,6 +15,8 @@ VE_CATCH:
 XT_CATCH:
     .dw DO_COLON
 PFA_CATCH:
+.endif
+
     ; sp@ >r
     .dw XT_SP_FETCH
     .dw XT_TO_R

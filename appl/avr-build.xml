@@ -1,5 +1,5 @@
 <!-- make multiple targets with antelope -->
-<project name="Amforth for AVR8" basedir="." default="Help">
+<project name="Amforth for AVR8 Tools" basedir="." default="Help">
     <import file="common-build.xml"/>
     <macrodef name="avra">
 	<attribute name="binary"       default="../../avr8/Atmel/avra" />

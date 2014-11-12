@@ -14,9 +14,11 @@
 .include "dict/interrupt.inc"
 
 ; now the relocatable colon words
+.include "words/prompt-ok.asm"
+.include "words/prompt-ready.asm"
+.include "words/prompt-error.asm"
 
 .include "words/quit.asm"
-.include "words/prompts.asm"
 .include "words/pause.asm"
 .include "words/cold.asm"
 .include "words/warm.asm"

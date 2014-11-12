@@ -1,6 +1,12 @@
 ; ( n -- ) 
 ; Exceptions
 ; throw an exception
+
+.if cpu_msp430==1
+    HEADER(XT_THROW,5,"throw",DOCOLON)
+.endif
+
+.if cpu_avr8==1
 VE_THROW:
     .dw $ff05
     .db "throw",0
@@ -9,10 +15,11 @@ VE_THROW:
 XT_THROW:
     .dw DO_COLON
 PFA_THROW:
+.endif
     .dw XT_DUP
-    .dw XT_EQUALZERO
+    .dw XT_ZEROEQUAL
     .dw XT_DOCONDBRANCH
-    .dw PFA_THROW1
+    DEST(PFA_THROW1)
 	.dw XT_DROP
 	.dw XT_EXIT
 PFA_THROW1:

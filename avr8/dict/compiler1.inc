@@ -50,8 +50,9 @@
 .include "words/immediate.asm"
 
 .include "words/bracketchar.asm"
-.include "words/abortstring.asm"
+.include "words/abort-string.asm"
 .include "words/abort.asm"
+.include "words/q-abort.asm"
 
 .include "words/get-stack.asm"
 .include "words/set-stack.asm"

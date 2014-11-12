@@ -1,6 +1,12 @@
 ; ( c -- ) 
 ; Numeric IO
 ; prepend character to pictured numeric output buffer
+
+.if cpu_msp430==1
+    HEADER(XT_HOLD,4,"hold",DOCOLON)
+.endif
+
+.if cpu_avr8==1
 VE_HOLD:
     .dw $ff04
     .db "hold"
@@ -9,6 +15,7 @@ VE_HOLD:
 XT_HOLD:
     .dw DO_COLON
 PFA_HOLD:
+.endif
     .dw XT_HLD
     .dw XT_DUP
     .dw XT_FETCH

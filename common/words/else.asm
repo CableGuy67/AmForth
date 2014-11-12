@@ -1,6 +1,15 @@
 ; (C: orig1 -- orig2 ) 
 ; Compiler
 ; resolve the forward reference and place a new unresolved forward reference
+
+.if cpu_msp430==1
+    IMMED(XT_ELSE,4,"else",DOCOLON)
+        DW lit,bran,COMMABRANCH
+        DW IHERE,COMMANONE          ; >MARK
+        DW XT_SWAP,XT_THEN,XT_EXIT           ; >RESOLVE
+.endif
+
+.if cpu_avr8==1
 VE_ELSE:
     .dw $0004
     .db "else"
@@ -15,3 +24,4 @@ PFA_ELSE:
     .dw XT_SWAP
     .dw XT_GRESOLVE
     .dw XT_EXIT
+.endif

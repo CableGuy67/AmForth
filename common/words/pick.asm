@@ -1,19 +1,21 @@
-; ( xu ... x1 x0 u -- xu ... x1 x0 xu ) 
-; Stack
-; access the stack as an array and fetch the u-th element as new TOS
+
+.if cpu_msp430==1
+    HEADER(XT_PICK,4,"pick",DOCOLON)
+.endif
+
+.if cpu_avr8==1
 VE_PICK:
     .dw $ff04
     .db "pick"
     .dw VE_HEAD
     .set VE_HEAD = VE_PICK
 XT_PICK:
-    .dw PFA_PICK
+    .dw DO_COLON
 PFA_PICK:
-    movw zl, yl
-    lsl tosl
-    rol tosh
-    add  zl,tosl
-    adc  zh,tosh
-    ld   tosl, Z
-    ldd  tosh, Z+1
-    jmp_ DO_NEXT
+.endif
+    .dw XT_1PLUS
+    .dw XT_CELLS
+    .dw XT_SP_FETCH
+    .dw XT_PLUS
+    .dw XT_FETCH
+    .dw XT_EXIT

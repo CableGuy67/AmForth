@@ -1,6 +1,6 @@
 ; ( xt1 -- xt2 ) 
-; Systemm
-; does the real defer@ for ram defers
+; System
+; The defer@ for ram defers
 VE_RDEFERFETCH:
     .dw $ff07
     .db "Rdefer@",0

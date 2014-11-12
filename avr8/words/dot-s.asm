@@ -10,6 +10,9 @@ XT_DOTS:
     .dw DO_COLON
 PFA_DOTS:
     .dw XT_DEPTH
+    .dw XT_UDOT
+    .dw XT_SPACE
+    .dw XT_DEPTH
     .dw XT_ZERO
     .dw XT_DOQDO
     .dw PFA_DOTS2

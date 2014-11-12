@@ -11,7 +11,7 @@ XT_APPLTURNKEY:
 PFA_APPLTURNKEY:
     .dw XT_USART
     .dw XT_INTON
-    .dw XT_VER
+    .dw XT_DOT_VER
     .dw XT_SPACE
     .dw XT_DOSLITERAL
     .dw 10

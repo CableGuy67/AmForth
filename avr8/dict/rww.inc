@@ -1,5 +1,7 @@
 .include "words/mplus.asm"
 .include "words/ud-star.asm"
+.include "words/umax.asm"
+.include "words/umin.asm"
 
 
 .if AMFORTH_NRWW_SIZE > 8000

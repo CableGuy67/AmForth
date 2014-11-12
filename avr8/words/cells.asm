@@ -7,13 +7,4 @@ VE_CELLS:
     .dw VE_HEAD
     .set VE_HEAD = VE_CELLS
 XT_CELLS:
-    .dw DO_COLON
-PFA_CELLS:
-.if CELLSIZE == 2 ;
-    .dw XT_2STAR
-.else
-    .dw XT_DOLITERAL
-    .dw CELLSIZE
-    .dw XT_STAR
-.endif
-    .dw XT_EXIT
+    .dw PFA_2STAR

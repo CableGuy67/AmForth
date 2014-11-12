@@ -13,7 +13,7 @@ PFA_QSTACK:
 ;    depth 0< if -&4 throw then
 ; ;
     .dw XT_DEPTH
-    .dw XT_LESSZERO
+    .dw XT_ZEROLESS
     .dw XT_DOCONDBRANCH
     .dw PFA_QSTACK1
       .dw XT_DOLITERAL

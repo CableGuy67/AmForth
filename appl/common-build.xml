@@ -27,6 +27,20 @@
         </copy>
 	
     </target>
+
+    <target name="build-info">
+        <tstamp>
+          <format property="touch.time" pattern="dd.MMM.yyyy HH:mm:ss"/>
+        </tstamp>
+	<length property="touch.length" string="${touch.time}"/>
+        <copy tofile="words/build-info.asm" file="words/build-info.tmpl" overwrite="true">
+          <filterset>
+            <filter token="TSTAMPLEN" value="${touch.length}"/>
+            <filter token="TSTAMP" value="${touch.time}"/>
+          </filterset>
+        </copy>
+	
+    </target>
 	
 
     <macrodef name="git-revision">

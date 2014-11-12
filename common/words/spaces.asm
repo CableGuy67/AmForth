@@ -1,6 +1,12 @@
 ; ( n -- ) 
 ; Character IO
 ; emits n space(s) (bl)
+
+.if cpu_msp430==1
+    HEADER(XT_SPACES,6,"spaces",DOCOLON)
+.endif
+
+.if cpu_avr8==1
 VE_SPACES:
     .dw $ff06
     .db "spaces"
@@ -9,15 +15,13 @@ VE_SPACES:
 XT_SPACES:
     .dw DO_COLON
 PFA_SPACES:
-    .dw XT_DUP
-    .dw XT_GREATERZERO
-    .dw XT_AND
-    .dw XT_ZERO
-    .dw XT_DOQDO
-    .dw PFA_SPACES2
-PFA_SPACES1:
-    .dw XT_SPACE
-    .dw XT_DOLOOP
-    .dw PFA_SPACES1
-PFA_SPACES2:
-    .dw XT_EXIT
+
+.endif
+;C SPACES   n --            output n spaces
+;   BEGIN DUP 0> WHILE SPACE 1- REPEAT DROP ;
+	.DW XT_ZERO, XT_MAX
+SPCS1:  .DW XT_DUP,XT_DOCONDBRANCH
+        DEST(SPCS2)
+        .DW XT_SPACE,XT_1MINUS,XT_DOBRANCH
+        DEST(SPCS1)
+SPCS2:  .DW XT_DROP,XT_EXIT

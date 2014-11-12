@@ -1,6 +1,12 @@
 ; (addr len -- i*x r:table | r:fail)
 ; System
 ; walk the recognizer stack
+
+.if cpu_msp430==1
+    HEADER(XT_DORECOGNIZER,13,"do-recognizer",DOCOLON)
+.endif
+
+.if cpu_avr8==1
 VE_DORECOGNIZER:
     .dw $ff0d
     .db "do-recognizer",0
@@ -9,12 +15,13 @@ VE_DORECOGNIZER:
 XT_DORECOGNIZER:
     .dw DO_COLON
 PFA_DORECOGNIZER:
+.endif
     .dw XT_DOLITERAL
     .dw XT_DORECOGNIZER_A
     .dw XT_DOLITERAL
     .dw EE_RECOGNIZERLISTLEN
     .dw XT_MAPSTACK
-    .dw XT_EQUALZERO
+    .dw XT_ZEROEQUAL
     .dw XT_DOCONDBRANCH
     .dw PFA_DORECOGNIZER1
       .dw XT_2DROP
@@ -22,10 +29,17 @@ PFA_DORECOGNIZER:
 PFA_DORECOGNIZER1:
     .dw XT_EXIT
 
+.if cpu_msp430==1
+    HEADLESS(XT_DORECOGNIZER_A,DOCOLON)
+.endif
+
+.if cpu_avr8==1
+
 ; ( addr len XT -- addr len [ r:table -1 | 0 ] )
 XT_DORECOGNIZER_A:
    .dw DO_COLON
 PFA_DORECOGNIZER_A:
+.endif
    .dw XT_ROT  ; -- len xt addr
    .dw XT_ROT  ; -- xt addr len
    .dw XT_2DUP 
