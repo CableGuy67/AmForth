@@ -1,4 +1,4 @@
-Some notes on the amforth on the TI Stellaris Launchpad 
+Some notes on the amforth on the TI Stellaris Launchpad 430
 
        - not very structured so far -
 
