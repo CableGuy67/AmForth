@@ -4,9 +4,6 @@
 
 .if cpu_msp430==1
     IMMED(XT_ELSE,4,"else",DOCOLON)
-        DW lit,bran,COMMABRANCH
-        DW IHERE,COMMANONE          ; >MARK
-        DW XT_SWAP,XT_THEN,XT_EXIT           ; >RESOLVE
 .endif
 
 .if cpu_avr8==1
@@ -18,10 +15,10 @@ VE_ELSE:
 XT_ELSE:
     .dw DO_COLON
 PFA_ELSE:
+.endif
     .dw XT_COMPILE
     .dw XT_DOBRANCH
     .dw XT_GMARK
     .dw XT_SWAP
     .dw XT_GRESOLVE
     .dw XT_EXIT
-.endif
