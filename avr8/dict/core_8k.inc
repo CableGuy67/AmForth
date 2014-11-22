@@ -139,7 +139,7 @@
 .include "words/r-find.asm"
 .include "words/r-fail.asm"
 
-.include "words/qstack.asm"
+.include "words/q-stack.asm"
 .include "words/ver.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 .include "words/noop.asm"

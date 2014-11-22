@@ -93,7 +93,7 @@
 .include "words/to-upper.asm"
 .include "words/to-lower.asm"
 
-.include "words/qstack.asm"
+.include "words/q-stack.asm"
 .include "words/bounds.asm"
 .include "words/cr.asm"
 .include "words/space.asm"
