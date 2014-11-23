@@ -23,5 +23,4 @@ PFA_APPLTURNKEY:
     .dw XT_TSTAMPINFO
     .dw XT_SPACE
     .dw XT_GITINFO
-    .dw XT_CR,XT_WORDS
     .dw XT_EXIT

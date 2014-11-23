@@ -81,8 +81,6 @@
 .include "words/slash-mod.asm"
 .include "words/slash.asm"
 .include "words/mod.asm"
-.include "words/star-slash-mod.asm"
-.include "words/star-slash.asm"
 .include "words/max.asm"
 .include "words/min.asm"
 
@@ -224,18 +222,6 @@
 .include "words/handler.asm"
 .include "words/throw.asm"
 
-
-;Z COMPILE   --   append inline execution token
-;   R> DUP CELL+ >R @ ,XT ;
-; The phrase ['] xxx ,XT appears so often that
-; this word was created to combine the actions
-; of LIT and ,XT.  It takes an inline literal
-; execution token and appends it to the dict.
-;    HEADER  COMPILE,7,'COMPILE',DOCOLON
-;        DW RFROM,DUP,CELLPLUS,TOR
-;        DW FETCH,COMMAXT,EXIT
-; N.B.: not used in the current implementation
-
 ; CONTROL STRUCTURES ============================
 .include "words/g-resolve.asm"
 .include "words/g-mark.asm"
@@ -262,7 +248,6 @@
 
 ; OTHER OPERATIONS ==============================
 .include "words/within.asm"
-.include "words/move.asm"
 .include "words/depth.asm"
 .include "words/environment-q.asm"
 
@@ -284,6 +269,7 @@
 .include "words/env-forthname.asm"
 .include "words/env-forthversion.asm"
 .include "words/ver.asm"
+.include "words/q-stack.asm"
 
 ; Note: the first character sent from the MSP430 seems to get
 ; scrambled.  I conjecture this is because the baud rate generator

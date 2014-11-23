@@ -143,15 +143,11 @@ USAVE:  DS16  UAREA_SIZE
 .include "words/backslash.asm"
 .include "words/parse-name.asm"
 .include "words/r-fail.asm"
-.include "words/r-find.asm"
-.include "words/r-number.asm"
 
 .include "words/applturnkey.asm"
 .include "words/pick.asm"
-
 INITIP   equ XT_COLD+2         ; default coldstart word (high-level)
 .include "430g2553init.asm"
-.include "info-map.inc"
 
 ; ----------------------------------------------------------------------
 ; END OF FORTH KERNEL
