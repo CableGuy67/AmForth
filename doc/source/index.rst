@@ -3,8 +3,8 @@ AmForth
 =======
 
 AmForth is an easily extendible command interpreter for the Atmel
-AVR8 Atmega micro controller family. It has a turnkey feature
-for embedded use too.
+AVR8 Atmega micro controller family and some variants of the
+TI MSP430. It has a turnkey feature for embedded use too.
 
 AmForth runs completely on the controller. It does not need additional
 hardware beyond a power supply. It makes no restrictions for hardware
@@ -18,9 +18,9 @@ indirect threading 16bit Forth. There are some extensions from the
 The interpreter has a command prompt in a serial terminal. Other
 connections like TCP/IP telnet or radio links are possible.
 
-AmForth is published under the GNU Public License v2 (GPL).
+AmForth is published under the GNU Public License v3 (GPL).
 
-AmForth needs approx. 8KB Flash memory, 80 bytes EEPROM, and 200 bytes
+AmForth needs 8 to 12 KB Flash memory, 80 bytes EEPROM, and 200 bytes
 RAM for the core system.
 
 Karl Lunt has written an excellent :ref:`User Guide`
@@ -43,8 +43,11 @@ released but will be part of the next release.
 See the code section at Sourceforge to get the
 `most recent sources <http://sourceforge.net/p/amforth/code/HEAD/tree/trunk/>`__
 
+* New architecture: MSP430 (G2553) with code from 
+  `Camelforth <http://www.camelforth.com>`__. Use 
+  it only if you're brave.
 * core: re-arranged source files.
-* core: change license to GPLv3.
+* core: changed license to GPLv3.
 * core: generalized existing :ref:`Stacks` in EEPROM into :command:`map-stack`, 
   :command:`get-stack` and :command:`set-stack`. Used for the search order
   and the recognizer stacks.

@@ -119,47 +119,33 @@ Can I use code written in C (or any other language) with/in amforth?
 
 Short answer: no.
 
-What means GPL for my programs?
--------------------------------
+What means the GPL for my programs?
+------------------------------------
 
-Due to the nature of Forth systems, a "Forth Program" really does
-extent the Forth system. This is unlike a compiler (gcc or llvm)
-compiling a source file into machine readable format. Therefore
-Forth programs can (must?) be seen as a derived work of the Forth
-system.
+As long as you don't use your (Forth) program with amforth: Nothing.
+It's your code and you decide everything.
 
-Users who wish to create a commercial product are strongly advised
-to either consider makeing the software available to the customer
-and end user (in order to fulfill the requirements of amForths GPL
-license), or alternately consider a Forth system which does
-allow commercial products without the obligation to make the software
-available in source code.
+If you combine your code with amforth, the result is GPL licensed,
+no matter what you think about it. That means your users (sometimes
+called customers or business partners) have access to your code 
+together with amforth under the GPL. It doesn't matter whether 
+you use the GPLv2 (older versions of amforth) or newer ones. I
+kindly ask these users to send me a copy.
 
+Why should I send you my code?
+------------------------------
 
-How do I send forth code to the system?
----------------------------------------
+Really simple: I want to improve amforth. The best way to do so
+is to study code using it. That includes ports of modules
+to other Forth's.
 
-Basically send them as ascii text via the terminal line. A command line like:
-
-.. code-block:: bash
-
-   > ascii-xfr -s -c 10 -l  100  devices/atmega32.frt > /dev/ttyS0
-
-can be used. amforth does not currently support any kind of flow control. Any transfer
-has to be slow enough to not overrun the buffers. A more sophisticated approach is
-described in :ref:`Upload`
-
-I found a bug
--------------
-
-Too bad. Please send all information to the `Mailling List <mailto:amforth-devel@lists.sourceforge.net>`_
 
 Does amforth run on hardware xy?
 --------------------------------
 
 amforth is targeted to Atmel AVR Atmega controllers. It does not and never will run on
 Attiny controllers or on completely different architectures like PIC or 8051 etc. Work is
-currently under way to fully support Atmels ATXMega's.
+currently under way to port to the Texas Instruments MSP430.
 
 What about the fuses?
 ---------------------
@@ -224,3 +210,21 @@ Releases are made when there are ready. Usually the list of changes is limited
 to only a few things. Every release is considered stable and ready for production
 use. The version number gets increased by 0.1 with every release. That means, 
 that a .0 release is nothing special.
+
+How do I send forth code to the system?
+---------------------------------------
+
+Basically send them as ascii text via the terminal line. A command line like:
+
+.. code-block:: bash
+
+   > ascii-xfr -s -c 10 -l  100  devices/atmega32.frt > /dev/ttyS0
+
+can be used. amforth does not currently support any kind of flow control. Any transfer
+has to be slow enough to not overrun the buffers. A more sophisticated approach is
+described in :ref:`Upload`
+
+I found a bug
+-------------
+
+Too bad. Please send all information to the `Mailling List <mailto:amforth-devel@lists.sourceforge.net>`_
