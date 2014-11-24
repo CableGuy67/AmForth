@@ -2,5 +2,5 @@
 : 2constant 
     create , ,
     does>
-    dup @i swap 1+ @i swap
+    dup 1+ @i swap @i
 ;
