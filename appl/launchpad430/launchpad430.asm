@@ -138,14 +138,8 @@ USAVE:  DS16  UAREA_SIZE
 .include "itc430irpts.asm"
 ; .include "430g2553install.asm"
 .include "430g2553save.asm"
-.include "words/git-info.asm"
 .include "words/build-info.asm"
-.include "words/backslash.asm"
-.include "words/parse-name.asm"
-.include "words/r-fail.asm"
-
-.include "words/applturnkey.asm"
-.include "words/pick.asm"
+.include "words/dump.asm"
 INITIP   equ XT_COLD+2         ; default coldstart word (high-level)
 .include "430g2553init.asm"
 

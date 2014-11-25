@@ -19,8 +19,24 @@ PFA_APPLTURNKEY:
     .dw XT_INTON
 .endif
     .dw XT_DOT_VER
+    .dw XT_SPACE
+    .dw XT_F_CPU
+    .dw XT_DOLITERAL
+    .dw 1000
+    .dw XT_UMSLASHMOD
+    .dw XT_SWAP
+    .dw XT_DROP
+    .dw XT_DECIMAL
+    .dw XT_DOT
+    .dw XISQUOTE
+    .db 4
+    .db "kHz "
+    .align 16
+    .dw XT_ITYPE
+
     .dw XT_CR
     .dw XT_TSTAMPINFO
     .dw XT_SPACE
     .dw XT_GITINFO
+;    .dw XT_CR,XT_WORDS
     .dw XT_EXIT

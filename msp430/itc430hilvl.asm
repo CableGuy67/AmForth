@@ -130,7 +130,7 @@
 .include "words/hex.asm"
 
 .include "words/bounds.asm"
-
+.include "words/pick.asm"
 ; DICTIONARY MANAGEMENT =========================
 .include "words/here.asm"
 .include "words/comma.asm"
@@ -265,13 +265,19 @@
 
 .include "words/dot-s.asm"
 .include "words/cold.asm"
+.include "words/applturnkey.asm"
 .include "words/env-cpu.asm"
 .include "words/env-forthname.asm"
 .include "words/env-forthversion.asm"
 .include "words/ver.asm"
+.include "words/f_cpu.asm"
 .include "words/q-stack.asm"
 
 ; Note: the first character sent from the MSP430 seems to get
 ; scrambled.  I conjecture this is because the baud rate generator
 ; has not reset to the new rate when we attempt to send a character.
 ; See init430f1611.s43 for delay after initialization.
+
+.include "words/backslash.asm"
+.include "words/parse-name.asm"
+

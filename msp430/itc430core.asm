@@ -119,22 +119,21 @@ dodoes: ; -- a-addr     ; 3 for MOV #DODOES,PC
 .include "words/qdup.asm"
 .include "words/drop.asm"
 .include "words/swap.asm"
-
 .include "words/over.asm"
 .include "words/rot.asm"
-
 .include "words/nip.asm"
-
+.include "words/tuck.asm"
 
 .include "words/to-r.asm"
 .include "words/r-from.asm"
 .include "words/r-fetch.asm"
+.include "words/2-to-r.asm"
+.include "words/2-r-from.asm"
+
 .include "words/sp-fetch.asm"
 .include "words/sp-store.asm"
 .include "words/rp-fetch.asm"
 .include "words/rp-store.asm"
-.include "words/tuck.asm"
-
 
 
 ; ----------------------------------------------------------------------
@@ -142,11 +141,8 @@ dodoes: ; -- a-addr     ; 3 for MOV #DODOES,PC
 
 .include "words/fetch.asm"
 .include "words/store.asm"
-
 .include "words/c-fetch.asm"
 .include "words/c-store.asm"
-
-.include "words/"
 
 ; FLASH MEMORY OPERATIONS
 ; Note that an I! or IC! to a RAM address >FLASHSTART will work -- it 
@@ -154,7 +150,6 @@ dodoes: ; -- a-addr     ; 3 for MOV #DODOES,PC
 ; An FLERASE to a RAM address will merely clear that one RAM cell.
 
 .include "words/flerase.asm"
-
 
 ; Program Space (Flash) operators 
 
@@ -185,8 +180,6 @@ dodoes: ; -- a-addr     ; 3 for MOV #DODOES,PC
 .include "words/lshift.asm"
 .include "words/rshift.asm"
 
-
-
 ; ----------------------------------------------------------------------
 ; COMPARISON OPERATIONS 
 
@@ -199,23 +192,18 @@ dodoes: ; -- a-addr     ; 3 for MOV #DODOES,PC
 .include "words/u-less.asm"
 .include "words/u-greater.asm"
 
-
-
 ; ----------------------------------------------------------------------
 ; LOOP AND BRANCH OPERATIONS 
 ; These use relative branch addresses: a branch is ADD @IP,IP
 
 .include "words/branch.asm"
 .include "words/q-branch.asm"
-
-
 .include "words/do-do.asm"
 .include "words/do-loop.asm"
 .include "words/do-plusloop.asm"
 .include "words/i.asm"
 .include "words/j.asm"
 .include "words/unloop.asm"
-
 
 ; ----------------------------------------------------------------------
 ; MULTIPLY AND DIVIDE
@@ -229,9 +217,8 @@ dodoes: ; -- a-addr     ; 3 for MOV #DODOES,PC
 .include "words/fill.asm"
 .include "words/cmove.asm"
 .include "words/cmove-up.asm"
-.include "words/i-to-d.asm"
-
 .include "words/cskip.asm"
 .include "words/cscan.asm"
 .include "words/s-equal.asm"
 .include "words/n-equal.asm"
+.include "words/i-to-d.asm"
