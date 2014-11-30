@@ -21,7 +21,6 @@
 	<sequential>
 		<echo>Producing Hexfiles for @{mcu}</echo>
 		<exec executable="@{binary}" spawn="false" failonerror="true">
-		    <arg line="-I @{includes}"/>
 		    <arg line="-I @{amforth.core}/msp430/devices/@{mcu}"/>
 		    <arg line="-I @{amforth.core}/msp430"/>
 		    <arg line="-I @{amforth.core}/common"/>
