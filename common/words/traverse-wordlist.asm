@@ -1,6 +1,12 @@
 ; ( i*x xt wid -- j*x ) 
 ; Tools Ext (2012)
 ; call the xt for every member of the wordlist wid until xt returns false
+
+.if cpu_msp430==1
+    HEADER(XT_TRAVERSEWORDLIST,17,"traverse-wordlist",DOCOLON)
+.endif
+
+.if cpu_avr8==1
 VE_TRAVERSEWORDLIST:
     .dw $ff11
     .db "traverse-wordlist",0
@@ -9,23 +15,27 @@ VE_TRAVERSEWORDLIST:
 XT_TRAVERSEWORDLIST:
     .dw DO_COLON
 PFA_TRAVERSEWORDLIST:
+
+.endif
     .dw XT_FETCHE
 PFA_TRAVERSEWORDLIST1:
     .dw XT_DUP           ; ( -- xt nt nt )
     .dw XT_DOCONDBRANCH  ; ( -- nt ) is nfa = counted string
-    .dw PFA_TRAVERSEWORDLIST2       ;
+    DEST(PFA_TRAVERSEWORDLIST2)
     .dw XT_2DUP
-    .dw XT_2TO_R
+    .dw XT_TO_R
+    .dw XT_TO_R
     .dw XT_SWAP
     .dw XT_EXECUTE
-    .dw XT_2R_FROM
+    .dw XT_R_FROM
+    .dw XT_R_FROM
     .dw XT_ROT
     .dw XT_DOCONDBRANCH
-    .dw PFA_TRAVERSEWORDLIST2
+    DEST(PFA_TRAVERSEWORDLIST2)
     .dw XT_NFA2LFA
-    .dw XT_FETCHI        ; ( -- addr )
+    .dw XT_FETCHI
     .dw XT_DOBRANCH      ; ( -- addr )
-    .dw PFA_TRAVERSEWORDLIST1       ; ( -- addr )
+    DEST(PFA_TRAVERSEWORDLIST1)       ; ( -- addr )
 PFA_TRAVERSEWORDLIST2:
     .dw XT_2DROP
     .dw XT_EXIT
