@@ -15,12 +15,10 @@ PFA_TRAVERSEWORDLIST1:
     .dw XT_DOCONDBRANCH  ; ( -- nt ) is nfa = counted string
     .dw PFA_TRAVERSEWORDLIST2       ;
     .dw XT_2DUP
-    .dw XT_TO_R
-    .dw XT_TO_R
+    .dw XT_2TO_R
     .dw XT_SWAP
     .dw XT_EXECUTE
-    .dw XT_R_FROM
-    .dw XT_R_FROM
+    .dw XT_2R_FROM
     .dw XT_ROT
     .dw XT_DOCONDBRANCH
     .dw PFA_TRAVERSEWORDLIST2
