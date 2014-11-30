@@ -255,6 +255,10 @@
 .include "words/flaligned.asm"
 .include "words/marker.asm"
 .include "words/words.asm"
+.include "words/traverse-wordlist.asm"
+.include "words/name2string.asm"
+.include "words/show-wordlist.asm"
+
 
 .include "words/u-dot-r.asm"
 .include "words/ud-dot.asm"
@@ -280,4 +284,7 @@
 
 .include "words/backslash.asm"
 .include "words/parse-name.asm"
+.include "words/r-fail.asm"
+.include "words/r-find.asm"
+.include "words/r-number.asm"
 
