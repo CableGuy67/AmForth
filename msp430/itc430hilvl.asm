@@ -285,6 +285,4 @@
 .include "words/backslash.asm"
 .include "words/parse-name.asm"
 .include "words/r-fail.asm"
-.include "words/r-find.asm"
-.include "words/r-number.asm"
 
