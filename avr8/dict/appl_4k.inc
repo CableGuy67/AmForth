@@ -70,6 +70,7 @@
 .include "words/r-fail.asm"
 .include "words/search-wordlist.asm"
 .include "words/traverse-wordlist.asm"
+.include "words/name2string.asm"
 .include "words/find-name.asm"
 
 .include "dict/compiler1.inc"
