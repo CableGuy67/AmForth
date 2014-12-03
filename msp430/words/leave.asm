@@ -4,5 +4,4 @@
 ;   ; IMMEDIATE      unconditional forward branch
     IMMED(LEAV,5,"leave",DOCOLON)
         DW lit,XT_UNLOOP,COMMAXT
-        DW lit,bran,COMMABRANCH
-        DW IHERE,COMMANONE,TOL,XT_EXIT
+        DW XT_AHEAD,TOL,XT_EXIT

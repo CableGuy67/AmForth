@@ -229,6 +229,7 @@
 .include "words/l-mark.asm"
 .include "words/compile.asm"
 
+.include "words/ahead.asm"
 .include "words/if.asm"
 .include "words/then.asm"
 .include "words/else.asm"
