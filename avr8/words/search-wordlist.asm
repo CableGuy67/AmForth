@@ -45,7 +45,7 @@ PFA_ISWORD:
       .dw XT_DROP
       ; ... get the XT ...
       .dw XT_R_FETCH
-      .dw XT_NAME2INTERPRET
+      .dw XT_NFA2CFA
       ; .. and get the header flag
       .dw XT_TRUE
       .dw XT_R_FROM

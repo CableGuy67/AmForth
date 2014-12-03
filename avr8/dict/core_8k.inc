@@ -160,7 +160,7 @@
 .include "words/search-wordlist.asm"
 .include "words/traverse-wordlist.asm"
 .include "words/name2string.asm"
-.include "words/name2int.asm"
+.include "words/nfa2cfa.asm"
 .include "words/icompare.asm"
 
 .include "words/star.asm"
