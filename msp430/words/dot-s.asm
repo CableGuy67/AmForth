@@ -4,7 +4,7 @@
 ;   THEN ;
     HEADER(XT_DOTS,2,".s",DOCOLON)
         DW XT_DEPTH,XT_UDOT,XT_SPACE
-	DW XT_DEPTH, XT_DUP,qbran
+	DW XT_DEPTH, XT_QDUP,qbran
         DEST(DOTS2)
         DW XT_ZERO,xdo
 DOTS1:  DW XT_I,XT_PICK,XT_UDOT,xloop
