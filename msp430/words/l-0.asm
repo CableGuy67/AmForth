@@ -1,3 +1,3 @@
 ;Z l0       -- a-addr     bottom of Leave stack
-    HEADER(L0,2,"l0",DOUSER)
+    HEADER(XT_LP0,3,"lp0",DOUSER)
         DW LSTACK-UAREA

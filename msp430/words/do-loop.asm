@@ -9,6 +9,7 @@
 ;.set link = $
 ;        DB      6,"(loop)"
 ;        .align 16
+XT_DOLOOP:
 xloop: DW     $+2
         ADD     #1,INDEX
         BIT     #100h,SR    ; is overflow bit set?

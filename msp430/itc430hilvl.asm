@@ -241,6 +241,7 @@
 .include "words/to-l.asm"
 .include "words/l-from.asm"
 .include "words/do.asm"
+.include "words/qdo.asm"
 .include "words/endloop.asm"
 .include "words/loop.asm"
 .include "words/plusloop.asm"

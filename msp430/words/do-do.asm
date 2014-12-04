@@ -13,7 +13,6 @@
 ;        DB      4,"(do)"
 ;        .align 16
 XT_DODO:
-XT_DOQDO:
 xdo: DW     $+2       
         SUB     #4,RSP          ; push old loop values on return stack
         MOV     LIMIT,2(RSP)

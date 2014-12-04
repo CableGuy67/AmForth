@@ -4,7 +4,6 @@
 
 .if cpu_msp430==1
     HEADER(XT_QUIT,4,"quit",DOCOLON)
-    DW L0,LP,XT_STORE
 .endif
 
 .if cpu_avr8==1
@@ -18,6 +17,7 @@ XT_QUIT:
 PFA_QUIT:
 .endif
 PFA_QUIT1:
+    .dw XT_LP0,XT_LP,XT_STORE
     .dw XT_SP0
     .dw XT_SP_STORE
     .dw XT_RP0
