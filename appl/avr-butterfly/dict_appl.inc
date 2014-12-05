@@ -4,4 +4,3 @@
 
 .include "words/applturnkey.asm"
 
-.include "words/built.asm"
