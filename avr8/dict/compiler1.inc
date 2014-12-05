@@ -29,7 +29,12 @@
 .include "words/plusloop.asm"
 .include "words/leave.asm"
 .include "words/qdo.asm"
-
+.include "words/endloop.asm"
+; leave address stack
+.include "words/l-from.asm"
+.include "words/to-l.asm"
+.include "words/lp0.asm"
+.include "words/lp.asm"
 
 .include "words/create.asm"
 .include "words/header.asm"

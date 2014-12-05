@@ -3,7 +3,14 @@
 ; singed PNO with single cell numbers, right aligned in width w
 
 .if cpu_msp430==1
-
+;    HEADER(XT_DOTR,2,"..",DOCOLON)
+        DW      link
+        DB      0FFh
+.set link = $
+        DB      2,".",'r'
+        .align 16
+XT_DOTR:
+	.DW      DOCOLON
 .endif
 
 .if cpu_avr8==1

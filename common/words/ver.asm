@@ -19,9 +19,6 @@ PFA_DOT_VER:
     .dw XT_ENV_FORTHNAME
     .dw XT_ITYPE
     .dw XT_SPACE
-;    .dw XT_ENV_FORTHVERSION
-;    .dw XT_DOT
-
     .dw XT_BASE
     .dw XT_FETCH
 
@@ -36,7 +33,6 @@ PFA_DOT_VER:
     .dw XT_SHARP_S
     .dw XT_SHARP_G
     .dw XT_TYPE
-    .dw XT_SPACE
     .dw XT_BASE
     .dw XT_STORE
     .dw XT_SPACE
