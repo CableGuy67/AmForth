@@ -9,7 +9,7 @@
 ;        DB      7,"(+loop)"
 ;        .align 16
 XT_DOPLUSLOOP:
-xplusloop: DW     $+2
+	DW     $+2
         ADD     TOS,INDEX
         MOV     @PSP+,TOS   ; get new TOS, doesn't change flags
         BIT     #100h,SR    ; is overflow bit set?
