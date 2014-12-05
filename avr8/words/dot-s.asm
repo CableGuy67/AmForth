@@ -14,8 +14,10 @@ PFA_DOTS:
     .dw XT_SPACE
     .dw XT_DEPTH
     .dw XT_ZERO
-    .dw XT_DOQDO
+    .dw XT_QDOCHECK
+    .dw XT_DOCONDBRANCH
     .dw PFA_DOTS2
+    .dw XT_DODO
 PFA_DOTS1:
     .dw XT_I
     .dw XT_PICK

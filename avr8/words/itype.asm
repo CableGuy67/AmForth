@@ -16,8 +16,10 @@ PFA_ITYPE:
     .dw XT_MINUS  ; ( -- addr len/2 rem
     .dw XT_TO_R
     .dw XT_ZERO
-    .dw XT_DOQDO
+    .dw XT_QDOCHECK
+    .dw XT_DOCONDBRANCH
     .dw PFA_ITYPE2
+    .dw XT_DODO
 PFA_ITYPE1:
     .dw XT_DUP         ; ( -- addr addr )
     .dw XT_FETCHI      ; ( -- addr c1c2 )

@@ -32,8 +32,10 @@ PFA_DOSCOMMA:
     .dw XT_MINUS  ; ( -- addr len/2 rem
     .dw XT_TO_R
     .dw XT_ZERO
-    .dw XT_DOQDO
+    .dw XT_QDOCHECK
+    .dw XT_DOCONDBRANCH
     .dw PFA_SCOMMA2
+    .dw XT_DODO
 PFA_SCOMMA1:
     .dw XT_DUP         ; ( -- addr addr )
     .dw XT_FETCH       ; ( -- addr c1c2 )

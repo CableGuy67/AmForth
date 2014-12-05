@@ -17,8 +17,10 @@ PFA_N_FETCH_E:
     .dw XT_TO_R
     .dw XT_ZERO
     .dw XT_SWAP    ; go from bigger to smaller addresses
-    .dw XT_DOQDO
-    .dw PFA_N_FETCH_E2
+    .dw XT_QDOCHECK
+    .dw XT_DOCONDBRANCH
+    DEST(PFA_N_FETCH_E2)
+    .dw XT_DODO
 PFA_N_FETCH_E1:
     ; ( ee-addr )
     .dw XT_I

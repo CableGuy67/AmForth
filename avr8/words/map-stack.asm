@@ -22,8 +22,10 @@ PFA_MAPSTACK:
     .dw XT_FETCHE
     .dw XT_CELLS
     .dw XT_BOUNDS
-    .dw XT_DOQDO
+    .dw XT_QDOCHECK
+    .dw XT_DOCONDBRANCH
     .dw PFA_MAPSTACK3
+    .dw XT_DODO
 PFA_MAPSTACK1:
       .dw XT_I
       .dw XT_FETCHE   ; -- i*x XT id

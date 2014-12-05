@@ -13,6 +13,4 @@ PFA_UNLOOP:
     pop temp0
     pop temp1
     pop temp0
-    pop temp1
-    pop temp0
     jmp_ DO_NEXT

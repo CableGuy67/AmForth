@@ -10,8 +10,7 @@ XT_EE2RAM:
   .dw DO_COLON
 PFA_EE2RAM:          ; ( -- )
     .dw XT_ZERO
-    .dw XT_DOQDO
-    .dw PFA_EE2RAM_2
+    .dw XT_DODO
 PFA_EE2RAM_1:
     ; ( -- e-addr r-addr )
     .dw XT_OVER

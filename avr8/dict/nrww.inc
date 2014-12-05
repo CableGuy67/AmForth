@@ -72,7 +72,6 @@
 .include "words/spstore.asm"
 
 .include "words/dodo.asm"
-.include "words/doqdo.asm"
 .include "words/i.asm"
 .include "words/doplusloop.asm"
 .include "words/doloop.asm"

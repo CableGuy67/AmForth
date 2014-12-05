@@ -22,8 +22,10 @@ PFA_ICOMPARE:
 PFA_ICOMPARE_SAMELEN:
     .dw XT_SWAP ; ( -- r-addr f-addr len )
     .dw XT_ZERO
-    .dw XT_DOQDO
+    .dw XT_QDOCHECK
+    .dw XT_DOCONDBRANCH
     .dw PFA_ICOMPARE_DONE
+    .dw XT_DODO
 PFA_ICOMPARE_LOOP:
     ; ( r-addr f-addr --)
     .dw XT_OVER

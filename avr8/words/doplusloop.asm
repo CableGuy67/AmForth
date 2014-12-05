@@ -24,7 +24,5 @@ PFA_DOPLUSLOOP_NEXT:
 PFA_DOPLUSLOOP_LEAVE:
     pop  temp0
     pop  temp1  ; remove limit
-    pop  temp0
-    pop  temp1  ; remove leave destination
     adiw xl, 1  ; skip branch-back address
     jmp_ DO_NEXT

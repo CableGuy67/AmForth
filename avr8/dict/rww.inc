@@ -2,7 +2,8 @@
 .include "words/ud-star.asm"
 .include "words/umax.asm"
 .include "words/umin.asm"
-
+.include "words/lp0.asm"
+.include "words/lp.asm"
 
 .if AMFORTH_NRWW_SIZE > 8000
 .include "dict/appl_8k.inc"

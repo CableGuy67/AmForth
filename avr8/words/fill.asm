@@ -11,9 +11,10 @@ XT_FILL:
 PFA_FILL:
     .dw XT_ROT
     .dw XT_ROT
+    .dw XT_QDUP,XT_DOCONDBRANCH
+    DEST(PFA_FILL2)
     .dw XT_BOUNDS
-    .dw XT_DOQDO
-    .dw PFA_FILL2
+    .dw XT_DODO
 PFA_FILL1:
     .dw XT_DUP
     .dw XT_I

@@ -10,8 +10,10 @@ XT_TYPE:
     .dw DO_COLON
 PFA_TYPE:
     .dw XT_BOUNDS
-    .dw XT_DOQDO
+    .dw XT_QDOCHECK
+    .dw XT_DOCONDBRANCH
     .dw PFA_TYPE2
+    .dw XT_DODO
 PFA_TYPE1:
     .dw XT_I
     .dw XT_CFETCH

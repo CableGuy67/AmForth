@@ -13,9 +13,10 @@ PFA_DEFINITIONS:
     .dw XT_OVER
     .dw XT_SET_CURRENT
     ; now empty the order list on stack
+    .dw XT_QDUP,XT_DOCONDBRANCH
+    DEST(PFA_DEFINITIONS2)
     .dw XT_ZERO
-    .dw XT_DOQDO
-    .dw PFA_DEFINITIONS2
+    .dw XT_DODO
 PFA_DEFINITIONS1:
     .dw XT_DROP
     .dw XT_DOLOOP
