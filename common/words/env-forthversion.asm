@@ -2,7 +2,7 @@
 ; Environment
 ; version number of amforth
 .if cpu_msp430==1
-    HEADER(XT_ENV_FORTHVERSION,7,"version",DOCOLON)
+    ENVIRONMENT(XT_ENV_FORTHVERSION,7,"version")
 .endif
 
 .if cpu_avr8==1

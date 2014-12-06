@@ -251,7 +251,6 @@
 ; OTHER OPERATIONS ==============================
 .include "words/within.asm"
 .include "words/depth.asm"
-.include "words/environment-q.asm"
 
 ; UTILITY WORDS AND STARTUP =====================
 .include "words/flaligned.asm"
@@ -260,7 +259,6 @@
 .include "words/traverse-wordlist.asm"
 .include "words/name2string.asm"
 .include "words/show-wordlist.asm"
-
 
 .include "words/u-dot-r.asm"
 .include "words/ud-dot.asm"
@@ -272,6 +270,7 @@
 .include "words/dot-s.asm"
 .include "words/cold.asm"
 .include "words/applturnkey.asm"
+.include "words/environment.asm"
 .include "words/env-cpu.asm"
 .include "words/env-forthname.asm"
 .include "words/env-forthversion.asm"

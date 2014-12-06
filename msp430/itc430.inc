@@ -78,6 +78,7 @@ cpu_avr8   EQU 0
 ; HEADER CONSTRUCTION MACROS
 
 .set link = 0
+.set envlink = 0
 
 .macro HEADER(asmname,length,litname,action)
         DW      link
@@ -111,6 +112,16 @@ asmname: DW      action
         DB      litname
         .align 16
 asmname: DW      action
+.endm
+
+.macro ENVIRONMENT(asmname,length,litname)
+        DW      envlink
+        DB      0FFh       ; not immediate
+.set envlink = $
+        DB      length
+        DB      litname
+        .align 16
+asmname: DW     DOCOLON
 .endm
 
 

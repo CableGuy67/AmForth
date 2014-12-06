@@ -138,8 +138,8 @@ USAVE:  DS16  UAREA_SIZE
 .include "itc430irpts.asm"
 ; .include "430g2553install.asm"
 .include "430g2553save.asm"
-.include "words/build-info.asm"
 .include "words/dump.asm"
+
 INITIP   equ XT_COLD+2         ; default coldstart word (high-level)
 .include "430g2553init.asm"
 
@@ -147,5 +147,6 @@ INITIP   equ XT_COLD+2         ; default coldstart word (high-level)
 ; END OF FORTH KERNEL
 
 .set lastword = link           ; last word in dictionary
+.set lastenv  = envlink
 
         END

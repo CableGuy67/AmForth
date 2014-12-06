@@ -2,7 +2,7 @@
 ; Environment
 ; flash address of the amforth name string
 .if cpu_msp430==1
-    HEADER(XT_ENV_FORTHNAME,10,"forth-name",DOCOLON)
+    ENVIRONMENT(XT_ENV_FORTHNAME,10,"forth-name")
     .dw XISQUOTE
     .db 7
 .endif
@@ -20,4 +20,7 @@ PFA_EN_FORTHNAME:
     .dw 7
 .endif
     .db "amforth"
+.if cpu_msp430==1
+    .align 16
+.endif
     .dw XT_EXIT
