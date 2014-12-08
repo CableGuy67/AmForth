@@ -12,5 +12,5 @@ PFA_INTFETCH:
     .dw XT_DOLITERAL
     .dw intvec
     .dw XT_PLUS
-    .dw XT_FETCH
+    .dw XT_FETCHE
     .dw XT_EXIT

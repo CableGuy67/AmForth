@@ -1,6 +1,7 @@
 ; ISR routines
 .dseg
 intcur: .byte 1
+.eseg
 intvec: .byte INTVECTORS * CELLSIZE
 .cseg
 

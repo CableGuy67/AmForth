@@ -12,5 +12,5 @@ PFA_INTSTORE:
     .dw XT_DOLITERAL
     .dw intvec
     .dw XT_PLUS
-    .dw XT_STORE
+    .dw XT_STOREE
     .dw XT_EXIT
