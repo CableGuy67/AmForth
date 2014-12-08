@@ -3,7 +3,7 @@
 ; flash address of the amforth name string
 .if cpu_msp430==1
     ENVIRONMENT(XT_ENV_FORTHNAME,10,"forth-name")
-    .dw XISQUOTE
+    .dw XT_DOSLITERAL
     .db 7
 .endif
 

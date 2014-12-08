@@ -11,7 +11,6 @@
         .align 16
 XT_ABORTQUOTE: 
 	.DW      DOCOLON
-        DW ISQUOTE
 .endif
 
 .if cpu_avr8==1
@@ -23,8 +22,8 @@ VE_ABORTQUOTE:
 XT_ABORTQUOTE:
     .dw DO_COLON
 PFA_ABORTQUOTE:
-    .dw XT_SQUOTE
 .endif
+    .dw XT_SQUOTE
     .dw XT_COMPILE
     .dw XT_QABORT
     .DW XT_EXIT

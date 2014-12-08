@@ -11,6 +11,8 @@
         DW 0,0          ; HP,LP init'd elsewhere
         DW ROMDICT      ; IDP
         DW 0            ; NEWEST not init'd
+	DW 0            ; HANDLER not init'd
+	DW lastenv      ; environment wordlist
         DW 0,0,0,0      ; user variables TBD
     ; RAM interrupt vectors, 15 vectors of 2 cells each
         MOV #nullirq,PC

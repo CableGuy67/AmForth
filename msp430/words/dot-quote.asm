@@ -20,7 +20,7 @@
         DB      2,'.','"'
         .align 16
 DOTQUOTE: DW      DOCOLON
-        DW ISQUOTE
+        DW XT_SQUOTE
         DW lit,XT_ITYPE,COMMAXT
         DW XT_EXIT
 

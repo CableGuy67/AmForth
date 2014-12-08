@@ -8,10 +8,11 @@
         DW      link
         DB      0FEh       ; immediate
 .set link = $
-        DB      3,"is",'"'
+        DB      3,"s",','
         .align 16
-ISQUOTE: DW      DOCOLON
-        DW lit,XISQUOTE,COMMAXT
-        DW lit,22h,XT_PARSE
+XT_SCOMMA: 
+	DW      DOCOLON
+
+        DW lit,XT_DOSLITERAL,COMMAXT
         DW XT_DUP,XT_TO_R,ICCOMMA,IHERE,XT_R_FETCH,DTOI
         DW XT_R_FROM,IALLOT,ALIGNN,XT_EXIT

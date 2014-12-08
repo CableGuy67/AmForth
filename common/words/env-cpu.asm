@@ -4,7 +4,7 @@
 
 .if cpu_msp430==1
     ENVIRONMENT(XT_ENV_CPU,3,"cpu")
-    .dw XISQUOTE
+    .dw XT_DOSLITERAL
     .db 11,"MSP430G2553" 
     .dw XT_EXIT
 .endif

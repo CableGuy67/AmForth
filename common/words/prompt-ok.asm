@@ -4,7 +4,7 @@
 
 .if cpu_msp430==1
     HEADER(XT_PROMPTOK,2,"ok",DOCOLON)
-    DW XISQUOTE
+    DW XT_DOSLITERAL
     DB 3," ok" 
 .endif
 

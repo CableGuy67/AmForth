@@ -4,7 +4,7 @@
 
 .if cpu_msp430==1
     HEADER(XT_PROMPTERROR,5,"error",DOCOLON)
-    DW XISQUOTE
+    DW XT_DOSLITERAL
     DB 4," ?? " 
     .align 16
 .endif
