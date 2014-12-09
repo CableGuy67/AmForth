@@ -1,6 +1,6 @@
 ; ( r-addr r-len f-addr f-len --  f) 
 ; Tools
-; compares string in RAM with string in flash
+; compares string in RAM with string in flash. f is zero if equal like COMPARE
 VE_ICOMPARE:
     .dw $ff08
     .db "icompare"
@@ -17,7 +17,7 @@ PFA_ICOMPARE:
     .dw PFA_ICOMPARE_SAMELEN
       .dw XT_2DROP
       .dw XT_DROP
-      .dw XT_ZERO
+      .dw XT_TRUE
       .dw XT_EXIT
 PFA_ICOMPARE_SAMELEN:
     .dw XT_SWAP ; ( -- r-addr f-addr len )
@@ -57,7 +57,7 @@ PFA_ICOMPARE_LASTCELL:
     .dw XT_DOCONDBRANCH
     .dw PFA_ICOMPARE_NEXTLOOP
     .dw XT_2DROP
-    .dw XT_ZERO
+    .dw XT_TRUE
     .dw XT_UNLOOP
     .dw XT_EXIT
 PFA_ICOMPARE_NEXTLOOP:
@@ -71,7 +71,7 @@ PFA_ICOMPARE_NEXTLOOP:
     .dw PFA_ICOMPARE_LOOP
 PFA_ICOMPARE_DONE:
     .dw XT_2DROP
-    .dw XT_TRUE
+    .dw XT_ZERO
     .dw XT_EXIT
 
 .if WANT_IGNORECASE == 1

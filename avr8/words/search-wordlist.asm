@@ -40,6 +40,12 @@ PFA_ISWORD:
     .dw XT_ICOMPARE      ; (-- addr len 0 f )
     .dw XT_DOCONDBRANCH
     .dw PFA_ISWORD3
+      ; not now
+      .dw XT_R_FROM
+      .dw XT_DROP
+      .dw XT_TRUE         ; maybe next word
+      .dw XT_EXIT
+PFA_ISWORD3:
       ; we found the word, now clean up iteration data ...
       .dw XT_2DROP
       .dw XT_DROP
@@ -57,9 +63,5 @@ PFA_ISWORD:
 PFA_ISWORD1:
       .dw XT_ZERO       ; finish traverse-wordlist
       .dw XT_EXIT
-PFA_ISWORD3:
-    .dw XT_R_FROM
-    .dw XT_DROP
-    .dw XT_TRUE         ; maybe next word
-    .dw XT_EXIT
+
 
