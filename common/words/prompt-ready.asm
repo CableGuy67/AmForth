@@ -3,7 +3,7 @@
 ; process the error prompt
 
 .if cpu_msp430==1
-   HEADER(XT_PROMPTREADY,6,"prompt",DOCOLON)
+   HEADLESS(XT_PROMPTREADY,DOCOLON)
     DW XT_DOSLITERAL
     DB 2,"> " 
     .align 16
