@@ -1246,7 +1246,11 @@ additional definitions (e.g. register names)
             return # Something went wrong, just silently ignore
         mcudef = words[:-3].lower()
         self._amforth_regs = {}
-        sys.path.insert(1,os.path.join(os.path.dirname(sys.argv[0]),"..", "core", "devices",mcudef))
+	if mcudef.startswith("msp"):
+	    flavor="msp430"
+	else:
+	    flavor="avr8"
+        sys.path.insert(1,os.path.join(os.path.dirname(sys.argv[0]),"..", flavor, "devices",mcudef))
         try:
           from device import MCUREGS
           self._amforth_regs=MCUREGS
