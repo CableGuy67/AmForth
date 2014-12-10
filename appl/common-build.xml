@@ -19,7 +19,7 @@
     <target name="git-info">
 	<git-branch output="branch" />
 	<length property="length" string="${branch}"/>
-        <copy tofile="words/git-info.asm" file="words/git-info.tmpl" overwrite="true">
+        <copy tofile="words/git-info.asm" file="../../common/words/git-info.tmpl" overwrite="true">
           <filterset>
             <filter token="BRLEN" value="${length}"/>
             <filter token="BRNAME" value="${branch}"/>
@@ -33,7 +33,7 @@
           <format property="touch.time" pattern="MMM dd yyyy HH:mm:ss"/>
         </tstamp>
 	<length property="touch.length" string="${touch.time}"/>
-        <copy tofile="words/build-info.asm" file="words/build-info.tmpl" overwrite="true">
+        <copy tofile="words/build-info.asm" file="../../common/words/build-info.tmpl" overwrite="true">
           <filterset>
             <filter token="TSTAMPLEN" value="${touch.length}"/>
             <filter token="TSTAMP" value="${touch.time}"/>

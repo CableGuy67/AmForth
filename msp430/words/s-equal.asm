@@ -1,6 +1,6 @@
 ;Z S=    c-addr1 c-addr2 u -- n   string compare
 ;Z             n<0: s1<s2, n=0: s1=s2, n>0: s1>s2
-        CODEHEADER(SEQUAL,2,"s=")
+        CODEHEADER(XT_SEQUAL,2,"s=")
         MOV     @PSP+,W     ; adrs2
         MOV     @PSP+,X     ; adrs1
         CMP     #0,TOS

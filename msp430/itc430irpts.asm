@@ -102,35 +102,3 @@ XHLRETI: DW $+2     ; cfa of a code word
 ;   have defined CODE words that use them, and those
 ;   CODE words are part of your interrupt handler, then
 ;   you should modify this to save them properly.
-
-; Begin an INTERRUPT colon definition
-; Usage:   INTERRUPT: name  ...high level code...  ;
-; Executing 'name' will return the address of the 
-; interrupt handler (the machine code CALL #HLIRPT).
-
-;Z INTERRUPT:   --      begin a high-level interrupt word
-;   <BUILDS HIDE ] 
-;   -2 IALLOT DOIRPT ,CF      like !COLON except DOIRPT
-;   HLIRPT ,CALL ;
-
-    HEADER(INTERRUPT,10,"INTERRUPT:",DOCOLON)
-        DW BUILDS,HIDE,XT_RBRACKET
-        DW lit,-2,IALLOT,lit,DOIRPT,XT_COMMACF
-        DW lit,HLIRPT,COMMACALL,XT_EXIT
-
-; DOIRPT enters an interrupt handler, i.e., a machine
-; code routine that ends with IRET.  This works with both
-; pure machine code and high-level Forth interrupt code.
-; This allows an INTERRUPT: word to be tested from the 
-; command line.  Note that this is not recommended for
-; normal execution, since it will push nine cells on the
-; return stack!
-; DOIRPT sets up the IRET return frame and then jumps to
-; the handler at the pfa (address supplied in W).
-
-DOIRPT: 
-        PUSH #DONEIRPT  ; push return address on stack
-        PUSH SR         ; push SR
-        MOV W,PC        ; jump to the word's parameter field
-        ; when the handler does IRET, it will go here:
-DONEIRPT: NEXT       

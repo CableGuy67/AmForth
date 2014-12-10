@@ -28,12 +28,10 @@ PFA_APPLTURNKEY:
     .dw XT_DROP
     .dw XT_DECIMAL
     .dw XT_DOT
-    .dw XISQUOTE
+    .dw XT_DOSLITERAL
     .db 4
     .db "kHz "
     .align 16
     .dw XT_ITYPE
 
-    .dw XT_CR
-    .dw XT_TSTAMPINFO
     .dw XT_EXIT

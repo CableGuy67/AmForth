@@ -288,3 +288,7 @@
 .include "words/parse-name.asm"
 .include "words/r-fail.asm"
 
+.include "words/scomma.asm"
+.include "words/compare.asm"
+.include "words/search-wordlist.asm"
+.include "words/immediate-q.asm"

@@ -9,5 +9,5 @@
         DB      7,"(does>)"
         .align 16
 XDOES: DW      DOCOLON
-        DW XT_R_FROM,LATEST,XT_FETCH,NFATOCFA,XT_STORECF
+        DW XT_R_FROM,LATEST,XT_FETCH,XT_NFA2CFA,XT_STORECF
         DW XT_EXIT

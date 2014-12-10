@@ -47,7 +47,6 @@
 .include "words/compile-comma.asm"
 .include "words/store-cf.asm"
 .include "words/comma-cf.asm"
-.include "words/comma-call.asm"
 .include "words/comma-jmp.asm"
 .include "words/store-colon.asm"
 .include "words/comma-exit.asm"
@@ -57,7 +56,6 @@
 ; CONTROL STRUCTURES 
 ; These words allow Forth control structure words
 ; to be defined portably.
-.include "words/comma-branch.asm"
 .include "words/comma-dest.asm"
 .include "words/store-dest.asm"
 .include "words/comma-none.asm"
