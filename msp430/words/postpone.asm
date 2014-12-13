@@ -8,7 +8,7 @@
 ;   ELSE  ,XT      immed: compile into cur. def'n
 ;   THEN ; IMMEDIATE
     IMMED(POSTPONE,8,"postpone",DOCOLON)
-        DW XT_BL,XT_WORD,FIND,XT_DUP,XT_ZEROEQUAL,XT_DOSLITERAL
+        DW XT_BL,XT_WORD,XT_FIND,XT_DUP,XT_ZEROEQUAL,XT_DOSLITERAL
         DB 1,'?'
         DW XT_QABORT,XT_ZEROLESS,qbran
         DEST(POST1)

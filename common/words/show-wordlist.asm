@@ -36,4 +36,3 @@ PFA_SHOWWORD:
     .dw XT_SPACE         ; ( -- addr n)
     .dw XT_TRUE
     .dw XT_EXIT
-

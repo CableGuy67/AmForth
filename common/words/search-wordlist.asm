@@ -16,11 +16,11 @@ XT_SEARCH_WORDLIST:
     .dw DO_COLON
 PFA_SEARCH_WORDLIST:
 .endif
+    .dw XT_TO_R
     .dw XT_ZERO
-    .dw XT_SWAP
     .dw XT_DOLITERAL
     .dw XT_ISWORD
-    .dw XT_SWAP
+    .dw XT_R_FROM
     .dw XT_TRAVERSEWORDLIST
     .dw XT_DUP
     .dw XT_ZEROEQUAL
@@ -29,7 +29,15 @@ PFA_SEARCH_WORDLIST:
        .dw XT_2DROP
        .dw XT_DROP
        .dw XT_ZERO
+       .dw XT_EXIT
 PFA_SEARCH_WORDLIST1:
+      ; ... get the XT ...
+      .dw XT_DUP
+      .dw XT_NFA2CFA
+      ; .. and get the header flag
+      .dw XT_SWAP
+      .dw XT_NAME2FLAGS
+      .dw XT_IMMEDIATEQ
     .dw XT_EXIT
 
 .if cpu_msp430==1
@@ -41,40 +49,24 @@ XT_ISWORD:
     .dw DO_COLON
 PFA_ISWORD:
 .endif
-    ; ( c-addr len 0 nt -- c-addr len 0 true| xt +/-1 false )
+    ; ( c-addr len 0 nt -- c-addr len 0 true| nt false )
     .dw XT_TO_R
-    .dw XT_TO_R
+    .dw XT_DROP
     .dw XT_2DUP
-    .dw XT_R_FROM
-    .dw XT_ROT
-    .dw XT_ROT
-    .dw XT_R_FETCH  ; -- addr len 0 addr len nt
+    .dw XT_R_FETCH  ; -- addr len addr len nt
     .dw XT_NAME2STRING
-    .dw XT_ICOMPARE      ; (-- addr len 0 f )
+    .dw XT_ICOMPARE      ; (-- addr len f )
     .dw XT_DOCONDBRANCH
     DEST(PFA_ISWORD3)
       ; not now
       .dw XT_R_FROM
       .dw XT_DROP
+      .dw XT_ZERO
       .dw XT_TRUE         ; maybe next word
       .dw XT_EXIT
 PFA_ISWORD3:
       ; we found the word, now clean up iteration data ...
       .dw XT_2DROP
-      .dw XT_DROP
-      ; ... get the XT ...
-      .dw XT_R_FETCH
-      .dw XT_NFA2CFA
-      ; .. and get the header flag
-      .dw XT_TRUE
       .dw XT_R_FROM
-      .dw XT_FETCHI
-      .dw XT_IMMEDIATEQ
-      .dw XT_DOCONDBRANCH
-      DEST(PFA_ISWORD1)
-         .dw XT_NEGATE  ; it's not immediate
-PFA_ISWORD1:
       .dw XT_ZERO       ; finish traverse-wordlist
       .dw XT_EXIT
-
-

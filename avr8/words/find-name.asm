@@ -1,6 +1,6 @@
-; ( addr len --  0 | xt -1 | xt 1 ) 
+; ( c-addr len --  0 | xt -1 | xt 1 ) 
 ; Tools
-; search wordlists for the name from string addr/len
+; search wordlists for an entry with the name from c-addr/len
 VE_FINDNAME:
     .dw $ff09
     .db "find-name",0
@@ -42,7 +42,7 @@ PFA_FINDNAMEA:
 PFA_FINDNAMEA1:
     .dw XT_EXIT
     
-;   : find-name ( addr len -- xt +/-1 | 0)
+;   : find-name ( c-addr len -- xt +/-1 | 0)
 ;      [: ( addr len wid -- xt +/-1 -1 | addr len 0 ) 
 ;         >r 2dup r>
 ;         search-wordlist

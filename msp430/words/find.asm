@@ -1,7 +1,7 @@
 ;C FIND   c-addr -- c-addr 0   if not found
 ;C                  xt  1      if immediate
 ;C                  xt -1      if "normal"
-    HEADER(FIND,4,"find",DOCOLON)
+    HEADER(XT_FIND,4,"find",DOCOLON)
     DW XT_DUP,XT_TO_R,XT_COUNT,LATEST
     DW XT_SEARCH_WORDLIST
     DW XT_DUP,XT_DOCONDBRANCH

@@ -84,11 +84,11 @@
         DW 0
 
 ;Z 1    -- n        constant 1
-    HEADER(ONE,1,"1",DOCON)
+    HEADER(XT_ONE,1,"1",DOCON)
         DW 1
 
 ;Z 2    -- n        constant 2
-    HEADER(TWO,1,"2",DOCON)
+    HEADER(XT_TWO,1,"2",DOCON)
         DW 2
 
 ;Z -1    -- n       constant -1
