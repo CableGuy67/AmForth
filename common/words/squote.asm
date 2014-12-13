@@ -12,8 +12,6 @@ XT_SQUOTE: DW      DOCOLON
 .endif
 
 .if cpu_avr8==1
-
-
 VE_SQUOTE:
   .dw $0002
   .db "s",$22
