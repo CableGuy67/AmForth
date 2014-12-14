@@ -57,7 +57,7 @@
 
 
 .include "words/is.asm"
-.include "words/dotstring.asm"
+.include "words/dot-quote.asm"
 .include "words/squote.asm"
 .include "words/fill.asm"
 
