@@ -88,6 +88,7 @@ FLASHEND   equ 0DFFFh
 MAINSEG    equ 512
 INFOSEG    equ 64
 
+F_CPU EQU 8000000
 
 ; ----------------------------------------------------------------------
 ; RAM DATA AREAS 
