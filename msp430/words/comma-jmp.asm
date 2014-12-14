@@ -8,4 +8,4 @@
         DB      4,",jmp"
         .align 16
 COMMAJMP: DW      DOCOLON        
-        DW lit,4030h,ICOMMA,ICOMMA,XT_EXIT
+        DW XT_DOLITERAL,4030h,XT_COMMA,XT_COMMA,XT_EXIT

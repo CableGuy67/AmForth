@@ -48,6 +48,7 @@
 .include "words/dp.asm"
 .include "words/tick-source.asm"
 .include "words/latest.asm"
+.include "words/get-current.asm"
 .include "words/hld.asm"
 .include "words/lp.asm"
 .include "words/idp.asm"
@@ -153,14 +154,13 @@
 ; Data-space counterparts.
 .include "words/i-here.asm"
 .include "words/i-allot.asm"
-.include "words/i-comma.asm"
 .include "words/i-c-comma.asm"
 
 
 ; SEPARATE HEADER EXTENSIONS ARE NOT USED
 #define HHERE IHERE
 #define HALLOT IALLOT
-#define HCOMMA ICOMMA
+#define HCOMMA XT_COMMA
 #define HCCOMMA ICCOMMA
 #define HCFETCH ICFETCH
 #define HFETCH IFETCH

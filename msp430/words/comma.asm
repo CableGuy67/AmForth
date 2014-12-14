@@ -1,4 +1,10 @@
-;C ,    x --           append cell to dict
-;   HERE ! 1 CELLS ALLOT ;
-    HEADER(COMMA,1,02Ch,DOCOLON)
-        DW XT_HERE,XT_STORE,lit,1,XT_CELLS,ALLOT,XT_EXIT
+;C I,    x --           append cell to Code dict
+;   IHERE I! 1 CELLS IALLOT ;
+    ; HEADER(COMMA,2,",",DOCOLON)
+        DW      link
+        DB      0FFh       ; not immediate
+.set link = $
+        DB      1,","
+        .align 16
+XT_COMMA: DW      DOCOLON
+        DW IHERE,ISTORE,XT_ONE,XT_CELLS,IALLOT,XT_EXIT

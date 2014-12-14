@@ -7,4 +7,4 @@
         DB      2,"c,"
         .align 16
 CCOMMA: DW      DOCOLON
-        DW XT_HERE,XT_CSTORE,lit,1,ALLOT,XT_EXIT
+        DW XT_HERE,XT_CSTORE,XT_ONE,ALLOT,XT_EXIT

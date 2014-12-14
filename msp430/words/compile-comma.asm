@@ -9,4 +9,4 @@
         DB      8,"compile,"
         .align 16
 COMMAXT: DW      DOALIAS        
-        DW  ICOMMA
+        DW  XT_COMMA

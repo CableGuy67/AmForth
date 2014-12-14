@@ -7,4 +7,4 @@
         DB      3,",cf"
         .align 16
 XT_COMMACF: DW      DOCOLON        
-        DW IHERE,XT_STORECF,lit,2,IALLOT,XT_EXIT
+        DW IHERE,XT_STORECF,XT_TWO,IALLOT,XT_EXIT

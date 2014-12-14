@@ -3,4 +3,4 @@
 ;   DOES> (machine code fragment)
 ; Note that the constant is stored in Code space.
         HEADER(CONSTANT,8,"constant",DOCOLON)
-        DW BUILDS,ICOMMA,XDOES
+        DW BUILDS,XT_COMMA,XDOES

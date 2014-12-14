@@ -10,4 +10,4 @@
         DB      5,",dest"
         .align 16
 COMMADEST: DW      DOCOLON       
-        DW  IHERE,XT_MINUS,ICOMMA,XT_EXIT
+        DW  IHERE,XT_MINUS,XT_COMMA,XT_EXIT

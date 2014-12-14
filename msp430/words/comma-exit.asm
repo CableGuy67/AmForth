@@ -9,4 +9,4 @@
         DB      5,",exit"
         .align 16
 CEXIT: DW      DOCOLON        
-        DW lit,XT_EXIT,COMMAXT,XT_EXIT
+        DW XT_DOLITERAL,XT_EXIT,COMMAXT,XT_EXIT

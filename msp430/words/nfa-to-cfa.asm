@@ -2,4 +2,4 @@
 ;   HCOUNT 7F AND + ALIGNED ;   mask off 'smudge' bit
     HEADER(XT_NFA2CFA,7,"nfa>cfa",DOCOLON)
         DW XT_ICOUNT
-        DW lit,07Fh,XT_AND,XT_PLUS,ALIGNED,XT_EXIT
+        DW XT_DOLITERAL,07Fh,XT_AND,XT_PLUS,ALIGNED,XT_EXIT

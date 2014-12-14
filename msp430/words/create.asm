@@ -6,5 +6,5 @@
 ; Separate headers model.
     HEADER(CREATE,6,"create",DOCOLON)
         DW HEADR
-        DW lit,docreate,XT_COMMACF
-        DW XT_HERE,ICOMMA,XT_EXIT
+        DW XT_DOLITERAL,docreate,XT_COMMACF
+        DW XT_HERE,XT_COMMA,XT_EXIT

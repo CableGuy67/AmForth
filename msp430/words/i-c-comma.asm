@@ -7,4 +7,4 @@
         DB      3,"ic,"
         .align 16
 ICCOMMA: DW      DOCOLON
-        DW IHERE,ICSTORE,lit,1,IALLOT,XT_EXIT
+        DW IHERE,ICSTORE,XT_ONE,IALLOT,XT_EXIT

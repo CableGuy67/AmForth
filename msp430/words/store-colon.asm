@@ -4,5 +4,5 @@
 ; This is made a distinct word, because on an STC
 ; Forth, colon definitions have no code field.
         HEADER(STORCOLON,6,"!colon",DOCOLON)
-        DW lit,-2,IALLOT
-        DW lit,DOCOLON,XT_COMMACF,XT_EXIT
+        DW XT_DOLITERAL,-2,IALLOT
+        DW XT_DOLITERAL,DOCOLON,XT_COMMACF,XT_EXIT

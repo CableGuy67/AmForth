@@ -2,7 +2,7 @@
 ;C                  xt  1      if immediate
 ;C                  xt -1      if "normal"
     HEADER(XT_FIND,4,"find",DOCOLON)
-    DW XT_DUP,XT_TO_R,XT_COUNT,LATEST
+    DW XT_DUP,XT_TO_R,XT_COUNT,XT_LATEST
     DW XT_SEARCH_WORDLIST
     DW XT_DUP,XT_DOCONDBRANCH
     DEST(FIND1)
