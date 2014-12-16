@@ -1,21 +1,3 @@
-;Z IS"      --            compile in-line string  OLD DEF'N
-;   COMPILE (IS")  [ HEX ]
-;   22 IWORD
-;   IC@ 1+ ALIGNED IALLOT ; IMMEDIATE
-; Harvard model: string is stored in Code space
-;   IMMED  ISQUOTE,3,"IS"',DOCOLON
-;       DW lit,XISQUOTE,COMMAXT
-;       DW lit,22H,IWORD
-;       DW ICFETCH,ONEPLUS,ALIGNED,IALLOT,XT_EXIT
-
-;C S"       --             compile in-line string
-;   COMPILE (S")  [ HEX ]
-;   HERE I,                     data address
-;   22 PARSE     ( -- c-addr n ) 
-;   DUP >R IC,  IHERE R@ D->I
-;   R@ 1+ ALLOT                 reserve RAM space
-;   R> IALLOT ALIGN ; IMMEDIATE
-; Harvard model: string is stored in Code space
     ; IMMED(SQUOTE,2,"S"",DOCOLON)
         DW      link
         DB      0FEh       ; immediate
