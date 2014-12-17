@@ -185,6 +185,7 @@
 .include "words/literal.asm"
 .include "words/digit-q.asm"
 .include "words/q-sign.asm"
+.include "words/set-base.asm"
 .include "words/to-number.asm"
 .include "words/q-number.asm"
 .include "words/interpret.asm"

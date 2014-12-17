@@ -12,10 +12,10 @@ PFA_NUMBER:
     .dw XT_BASE
     .dw XT_FETCH
     .dw XT_TO_R
-    .dw XT_NUMBERSIGN
+    .dw XT_QSIGN
     .dw XT_TO_R
-    .dw XT_PRAEFIX
-    .dw XT_NUMBERSIGN
+    .dw XT_SET_BASE
+    .dw XT_QSIGN
     .dw XT_R_FROM
     .dw XT_OR
     .dw XT_TO_R
@@ -96,91 +96,4 @@ PFA_NUMBER5:
     .dw XT_BASE
     .dw XT_STORE
     .dw XT_TRUE
-    .dw XT_EXIT
-
-; ( addr len -- addr' len' ) 
-; Numeric IO
-; skip a numeric prefix character
-;VE_PRAEFIX:
-;    .dw $FF07 
-;    .db "praefix",0
-;    .dw VE_HEAD
-;    .set VE_HEAD = VE_PRAEFIX
-XT_PRAEFIX:
-    .dw DO_COLON 
-PFA_PRAEFIX:        ; ( adr1 len1 -- adr2 len2 ) 
-    .dw XT_OVER 
-    .dw XT_CFETCH 
-    .dw XT_DUP 
-    .dw XT_DOLITERAL
-    .dw '$' 
-    .dw XT_EQUAL 
-    .dw XT_DOCONDBRANCH
-    .dw PFA_SETBASE0
-    .dw XT_HEX
-    .dw XT_DOBRANCH
-    .dw PFA_SETBASE_FOUND
-PFA_SETBASE0:
-    .dw XT_DUP 
-    .dw XT_DOLITERAL
-    .dw '%' 
-    .dw XT_EQUAL 
-    .dw XT_DOCONDBRANCH
-    .dw PFA_SETBASE1 
-    .dw XT_BIN
-    .dw XT_DOBRANCH
-    .dw PFA_SETBASE_FOUND
-PFA_SETBASE1:
-    .dw XT_DUP 
-    .dw XT_DOLITERAL
-    .dw '&'
-    .dw XT_EQUAL 
-    .dw XT_DOCONDBRANCH
-    .dw PFA_SETBASE2 
-    .dw XT_DECIMAL 
-    .dw XT_DOBRANCH
-    .dw PFA_SETBASE_FOUND
-PFA_SETBASE2:
-    .dw XT_DUP
-    .dw XT_DOLITERAL
-    .dw '#'
-    .dw XT_EQUAL 
-    .dw XT_DOCONDBRANCH
-    .dw PFA_SETBASE3 
-    .dw XT_DECIMAL 
-PFA_SETBASE_FOUND:
-    .dw XT_DROP
-    .dw XT_DOLITERAL
-    .dw 1
-    .dw XT_SLASHSTRING
-    .dw XT_EXIT
-PFA_SETBASE3:
-    .dw XT_DROP
-    .dw XT_EXIT 
-
-; (c -- ) Numeric IO
-; R( -- )
-; get sign flag.
-;VE_NUMBERSIGN:
-;    .dw $FF08
-;    .db "get-sign"
-;    .dw VE_HEAD
-;    .set VE_HEAD = VE_NUMBERSIGN
-XT_NUMBERSIGN:
-    .dw DO_COLON 
-PFA_NUMBERSIGN:        ; ( c -- ) 
-    .dw XT_OVER    ; ( -- addr len addr )
-    .dw XT_CFETCH
-    .dw XT_DOLITERAL
-    .dw '-'
-    .dw XT_EQUAL  ; ( -- addr len flag )
-    .dw XT_DUP
-    .dw XT_TO_R
-    .dw XT_DOCONDBRANCH
-    .dw PFA_NUMBERSIGN_DONE
-    .dw XT_DOLITERAL      ; skip sign character
-    .dw 1
-    .dw XT_SLASHSTRING
-PFA_NUMBERSIGN_DONE:
-    .dw XT_R_FROM
     .dw XT_EXIT

@@ -1,6 +1,12 @@
 ; ( -- ) 
 ; Numeric IO
-; set base for number conversion to 2
+; set base for numeric conversion to 10
+
+.if cpu_msp430==1
+    HEADER(XT_BIN,3,"bin",DOCOLON)
+.endif
+
+.if cpu_avr8==1
 VE_BIN:
     .dw $ff03
     .db "bin",0
@@ -9,6 +15,7 @@ VE_BIN:
 XT_BIN:
     .dw DO_COLON
 PFA_BIN:
+.endif
     .dw XT_DOLITERAL
     .dw 2
     .dw XT_BASE

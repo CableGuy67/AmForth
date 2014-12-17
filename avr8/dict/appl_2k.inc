@@ -111,6 +111,8 @@
 .include "words/refill.asm"
 .include "words/char.asm"
 .include "words/number.asm"
+.include "words/q-sign.asm"
+.include "words/set-base.asm"
 .include "words/to-number.asm"
 .include "words/parse.asm"
 .include "words/source.asm"
