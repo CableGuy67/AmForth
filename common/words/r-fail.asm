@@ -3,7 +3,7 @@
 ; there is no parser for this recognizer, this is the default and failsafe part
 
 .if cpu_msp430==1
-    HEADER(XT_R_FAIL,6,"r:fail",DOCON)
+    HEADER(XT_R_FAIL,6,"r:fail",DOROM)
 .endif
 
 .if cpu_avr8==1
