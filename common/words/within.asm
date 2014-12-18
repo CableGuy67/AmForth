@@ -3,7 +3,7 @@
 ; check if n is within min..max
 
 .if cpu_msp430==1
-    HEADER(WITHIN,6,"within",DOCOLON)
+    HEADER(XT_WITHIN,6,"within",DOCOLON)
 .endif
 
 .if cpu_avr8==1

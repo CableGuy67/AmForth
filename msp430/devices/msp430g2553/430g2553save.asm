@@ -9,7 +9,7 @@
 ;
 ; This program is distributed in the hope that it will be useful,
 ; but WITHOUT ANY WARRANTY; without even the implied warranty of
-; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+; MERCHANTABILY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 ; GNU General Public License for more details.
 ;
 ; You should have received a copy of the GNU General Public License
@@ -28,17 +28,17 @@
 ; SAVE erases the first 128 bytes of Info Flash, then
 ; copies the User Area and subsequent RAM variables there.
         HEADER(SAVE,4,"SAVE",DOCOLON)
-        DW  U0,lit,USAVE,lit,INFO_SIZE
+        DW  U0,XT_DOLITERAL,USAVE,XT_DOLITERAL,INFO_SIZE
         DW  XT_2DUP,FLERASE,DTOI,XT_EXIT
         
 ; RESTORE copies the first 128 bytes of Info Flash to
 ; the User Area and subsequent RAM.
         HEADER(RESTORE,7,"RESTORE",DOCOLON)
-        DW  lit,USAVE,U0,lit,INFO_SIZE
+        DW  XT_DOLITERAL,USAVE,U0,XT_DOLITERAL,INFO_SIZE
         DW  ITOD,XT_EXIT
 
 ; SCRUB erases the application area of the Program Flash,
 ; and then does COLD to reset the User Variables.
         HEADER(SCRUB,5,"SCRUB",DOCOLON)
-        DW  lit,FLASHSTART,lit,(FLASHEND-FLASHSTART),FLERASE
+        DW  XT_DOLITERAL,FLASHSTART,XT_DOLITERAL,(FLASHEND-FLASHSTART),FLERASE
         DW  XT_COLD,XT_EXIT
