@@ -288,9 +288,13 @@
 
 .include "words/backslash.asm"
 .include "words/parse-name.asm"
+.include "words/map-stack.asm"
+.include "words/do-recognizer.asm"
 .include "words/r-fail.asm"
 .include "words/r-word.asm"
+.include "words/r-intnumber.asm"
 
 .include "words/scomma.asm"
 .include "words/compare.asm"
 .include "words/search-wordlist.asm"
+.include "words/num-constants.asm"

@@ -24,7 +24,7 @@ PFA_MAPSTACK:
     .dw XT_BOUNDS
     .dw XT_QDOCHECK
     .dw XT_DOCONDBRANCH
-    .dw PFA_MAPSTACK3
+    DEST(PFA_MAPSTACK3)
     .dw XT_DODO
 PFA_MAPSTACK1:
       .dw XT_I
@@ -35,7 +35,7 @@ PFA_MAPSTACK1:
       .dw XT_EXECUTE  ; i*x id -- j*y true | i*x false
       .dw XT_QDUP
       .dw XT_DOCONDBRANCH
-      .dw PFA_MAPSTACK2
+      DEST(PFA_MAPSTACK2)
          .dw XT_R_FROM
          .dw XT_DROP
          .dw XT_UNLOOP
@@ -45,7 +45,7 @@ PFA_MAPSTACK2:
       .dw XT_DOLITERAL
       .dw 2
       .dw XT_DOPLUSLOOP
-      .dw PFA_MAPSTACK1
+      DEST(PFA_MAPSTACK1)
 PFA_MAPSTACK3:
     .dw XT_DROP
     .dw XT_ZERO

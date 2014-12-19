@@ -23,7 +23,7 @@ PFA_DORECOGNIZER:
     .dw XT_MAPSTACK
     .dw XT_ZEROEQUAL
     .dw XT_DOCONDBRANCH
-    .dw PFA_DORECOGNIZER1
+    DEST(PFA_DORECOGNIZER1)
       .dw XT_2DROP
       .dw XT_R_FAIL
 PFA_DORECOGNIZER1:
@@ -43,16 +43,18 @@ PFA_DORECOGNIZER_A:
    .dw XT_ROT  ; -- len xt addr
    .dw XT_ROT  ; -- xt addr len
    .dw XT_2DUP 
-   .dw XT_2TO_R
+   .dw XT_TO_R
+   .dw XT_TO_R
    .dw XT_ROT  ; -- addr len xt
    .dw XT_EXECUTE ; -- i*x r:foo | r:fail
-   .dw XT_2R_FROM
+   .dw XT_R_FROM
+   .dw XT_R_FROM
    .dw XT_ROT
    .dw XT_DUP
    .dw XT_R_FAIL
    .dw XT_EQUAL
    .dw XT_DOCONDBRANCH
-   .dw PFA_DORECOGNIZER_A1
+   DEST(PFA_DORECOGNIZER_A1)
      .dw XT_DROP
      .dw XT_ZERO
      .dw XT_EXIT

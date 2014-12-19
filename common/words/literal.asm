@@ -3,7 +3,7 @@
 ; compile a literal in colon defintions
 
 .if cpu_msp430==1
-    IMMED(LITERAL,7,"literal",DOCOLON)
+    IMMED(XT_LITERAL,7,"literal",DOCOLON)
 .endif
 
 .if cpu_avr8==1

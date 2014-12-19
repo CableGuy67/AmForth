@@ -1,6 +1,6 @@
 ; ( addr len -- addr' len' ) 
 ; Numeric IO
-; skip a numeric prefix character and set BASE accordingly
+; skip a numeric prefix character
 
 .if cpu_msp430==1
     HEADLESS(XT_BASES,DOROM)
@@ -10,7 +10,7 @@
 XT_BASES:
     .dw PFA_DOCONSTANT
 .endif
-    .dw 10,16,2,10 ; last could be a 8 as well.
+    .dw 10,16,2,10 ; last one could a 8 instead.
 
 .if cpu_msp430==1
     HEADLESS(XT_SET_BASE,DOCOLON)

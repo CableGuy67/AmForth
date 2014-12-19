@@ -14,7 +14,7 @@ VE_ONE:
     .dw VE_HEAD
     .set VE_HEAD = VE_ONE
 XT_ONE:
-    .dw PFA_DOCONSTANT
+    .dw PFA_DOVARIABLE
 PFA_ONE:
 .endif
         .DW 1
@@ -30,7 +30,7 @@ VE_TWO:
     .dw VE_HEAD
     .set VE_HEAD = VE_TWO
 XT_TWO:
-    .dw PFA_DOCONSTANT
+    .dw PFA_DOVARIABLE
 PFA_TWO:
 .endif
         .DW 2
@@ -45,7 +45,7 @@ VE_MINUSONE:
     .dw VE_HEAD
     .set VE_HEAD = VE_MINUSONE
 XT_MINUSONE:
-    .dw PFA_DOCONSTANT
+    .dw PFA_DOVARIABLE
 PFA_MINUSONE:
 .endif
         .DW -1

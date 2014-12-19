@@ -52,7 +52,7 @@ PFA_R_WORD:
 ; Interpreter
 ; interpret method for WORD recognizer
 .if cpu_msp430==1
-    HEADLESS(XT_R_WORD_INTERPRET,DOROM)
+    HEADLESS(XT_R_WORD_INTERPRET,DOCOLON)
 .endif
 
 .if cpu_avr8==1
@@ -68,7 +68,7 @@ PFA_R_WORD_INTERPRET:
 ; Interpreter
 ; Compile method for WORD recognizer
 .if cpu_msp430==1
-    HEADLESS(XT_R_WORD_COMPILE,DOROM)
+    HEADLESS(XT_R_WORD_COMPILE,DOCOLON)
 .endif
 .if cpu_avr8==1
 XT_R_WORD_COMPILE:
@@ -88,7 +88,7 @@ PFA_R_WORD_COMPILE1:
 ; Interpreter
 ; Postpone method for WORD recognizer
 .if cpu_msp430==1
-    HEADLESS(XT_R_WORD_POSTPONE,DOROM)
+    HEADLESS(XT_R_WORD_POSTPONE,DOCOLON)
 .endif
 .if cpu_avr8==1
 XT_R_WORD_POSTPONE:

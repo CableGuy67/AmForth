@@ -1,0 +1,8 @@
+
+
+; INFO flash memory, Pendant to EEPROM on ATMEGA's?
+
+; .org 1070h
+
+EE_RECOGNIZERLISTLEN: DW 2
+EE_RECOGNIZERLIST:    DW XT_REC_WORD,XT_REC_NUM
