@@ -134,7 +134,7 @@
 .include "words/do-recognizer.asm"
 .include "words/interpret.asm"
 .include "words/r-intnumber.asm"
-.include "words/r-find.asm"
+.include "words/r-word.asm"
 .include "words/r-fail.asm"
 
 .include "words/q-stack.asm"

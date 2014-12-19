@@ -2,7 +2,7 @@
         DW      link
         DB      0FEh       ; immediate
 .set link = $
-        DB      3,"s",','
+        DB      2,"s",','
         .align 16
 XT_SCOMMA: 
 	DW      DOCOLON

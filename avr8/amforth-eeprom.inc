@@ -34,6 +34,10 @@ EE_RECOGNIZERLIST:
 EE_WLSCOPE:
     .dw XT_GET_CURRENT  ; default wordlist scope
 
+; LEAVE stack is between data stack and return stack.
+EE_LP0:
+    .dw stackstart+1
+
 ; MARKER saves everything up to here. Nothing beyond gets saved
 EE_MARKER:
     .dw EE_MARKER

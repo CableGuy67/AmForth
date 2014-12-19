@@ -39,8 +39,9 @@
 .include "words/greaterzero.asm"
 .include "words/d-greaterzero.asm"
 .include "words/d-lesszero.asm"
-.include "words/zero.asm"
+
 .include "words/true.asm"
+.include "words/zero.asm"
 .include "words/uless.asm"
 .include "words/u-greater.asm"
 .include "words/less.asm"
@@ -109,3 +110,4 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;
 .include "words/2literal.asm"
 .include "words/equal.asm"
+.include "words/num-constants.asm"
