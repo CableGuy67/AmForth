@@ -4,11 +4,11 @@
 ;   BL HWORD HC@ 1+ HALLOT    name field
 ;   ALIGN ;
 ; Separate headers model.
-    HEADER(HEADR,6,"header",DOCOLON)
-        DW XT_GET_CURRENT,HCOMMA    ; link
-        DW XT_DOLITERAL,0FFh,HCCOMMA         ; immediate flag - see note below
-        DW HHERE,XT_LATEST,XT_STORE
-        DW XT_BL,XT_IWORD,HCFETCH,XT_1PLUS,HALLOT
+    HEADER(XT_HEADER,6,"header",DOCOLON)
+        DW XT_GET_CURRENT,XT_COMMA    ; link
+        DW XT_DOLITERAL,0FFh,XT_CCOMMA         ; immediate flag - see note below
+        DW XT_IHERE,XT_LATEST,XT_STORE
+        DW XT_BL,XT_IWORD,XT_CFETCHI,XT_1PLUS,XT_IALLOT
         DW ALIGNN,XT_EXIT   ; MSP430: headers in I space must be aligned
 ; Note for Flashable MSP430: when compiling to RAM, we need to set
 ; the immediate byte to 0FFH.  When compiling to Flash, the word IC!

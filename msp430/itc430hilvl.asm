@@ -153,18 +153,6 @@
 ; Data-space counterparts.
 .include "words/i-here.asm"
 .include "words/i-allot.asm"
-.include "words/i-c-comma.asm"
-
-
-; SEPARATE HEADER EXTENSIONS ARE NOT USED
-#define HHERE IHERE
-#define HALLOT IALLOT
-#define HCOMMA XT_COMMA
-#define HCCOMMA ICCOMMA
-#define HCFETCH ICFETCH
-#define HFETCH IFETCH
-#define HCSTORE ICSTORE
-#define HSTORE ISTORE
 
 ; INTERPRETER ===================================
 ; Note that NFA>LFA, NFA>CFA, IMMED?, and FIND

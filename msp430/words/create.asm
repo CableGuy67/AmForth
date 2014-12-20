@@ -5,6 +5,6 @@
 ; Harvard model, separate Code and Data spaces.
 ; Separate headers model.
     HEADER(CREATE,6,"create",DOCOLON)
-        DW HEADR
-        DW XT_DOLITERAL,docreate,XT_COMMACF
+        DW XT_HEADER
+        DW XT_DOLITERAL,docreate,XT_COMMA
         DW XT_HERE,XT_COMMA,XT_EXIT

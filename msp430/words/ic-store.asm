@@ -1,5 +1,5 @@
 ;Z IC!        x a-addr --   store char in Instruction memory
-        CODEHEADER(ICSTORE,3,"ic!")
+        CODEHEADER(XT_CSTOREI,3,"c!i")
         MOV     @PSP+,W         ; get data to write
         CMP.B   @TOS,W
         JZ      IST_X           ; if memory is desired value, do not write

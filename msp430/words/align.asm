@@ -1,4 +1,4 @@
 ;C ALIGN    --                         align HERE
-;   IHERE 1 AND IALLOT ;
+;   XT_IHERE 1 AND IALLOT ;
         HEADER(ALIGNN,5,"align",DOCOLON)
-        DW  IHERE,XT_ONE,XT_AND,IALLOT,XT_EXIT
+        DW  XT_IHERE,XT_ONE,XT_AND,XT_IALLOT,XT_EXIT

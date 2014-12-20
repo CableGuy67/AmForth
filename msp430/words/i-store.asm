@@ -1,5 +1,5 @@
 ;Z I!        x a-addr --   store cell in Instruction memory
-        CODEHEADER(ISTORE,2,"i!")
+        CODEHEADER(XT_STOREI,2,"!i")
         MOV     @PSP+,W         ; get data to write
         BIT     #1,TOS
         JNZ     IST_X           ; if not even address, do not write
