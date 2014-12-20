@@ -93,7 +93,6 @@
 .include "words/2swap.asm"
 
 ; INPUT/OUTPUT ==================================
-.include "words/count.asm"
 .include "words/cr.asm"
 .include "words/space.asm"
 .include "words/spaces.asm"
@@ -181,7 +180,6 @@
 .include "words/nfa-to-cfa.asm"
 .include "words/name2flags.asm"
 .include "words/immediate-q.asm"
-.include "words/find.asm"
 .include "words/find-name.asm"
 .include "words/literal.asm"
 .include "words/digit-q.asm"

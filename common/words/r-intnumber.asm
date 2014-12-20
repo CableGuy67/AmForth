@@ -57,11 +57,11 @@ PFA_R_DNUM:
 .endif
 
 .if cpu_avr8==1
-VE_FAILNUM:
-    .dw $ff06
-    .db "fail:i"
-    .dw VE_HEAD
-    .set VE_HEAD = VE_FAILNUM
+;VE_FAILNUM:
+;    .dw $ff06
+;    .db "fail:i"
+;    .dw VE_HEAD
+;    .set VE_HEAD = VE_FAILNUM
 XT_FAILNUM:
     .dw DO_COLON
 PFA_FAILNUM:
@@ -82,10 +82,10 @@ PFA_FAILNUM:
 .if cpu_avr8==1
 
 VE_FAILDNUM:
-    .dw $ff06
-    .db "fail:d"
-    .dw VE_HEAD
-    .set VE_HEAD = VE_FAILDNUM
+;    .dw $ff06
+;    .db "fail:d"
+;    .dw VE_HEAD
+;    .set VE_HEAD = VE_FAILDNUM
 XT_FAILDNUM:
     .dw DO_COLON
 PFA_FAILDNUM:

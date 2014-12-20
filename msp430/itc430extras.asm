@@ -78,19 +78,3 @@
 		MOV.B	@TOS,TOS
 		AND		@PSP+,TOS
 		NEXT
-
-;Z 0    -- n        constant 0
-    HEADER(XT_ZERO,1,"0",DOCON)
-        DW 0
-
-;Z 1    -- n        constant 1
-    HEADER(XT_ONE,1,"1",DOCON)
-        DW 1
-
-;Z 2    -- n        constant 2
-    HEADER(XT_TWO,1,"2",DOCON)
-        DW 2
-
-;Z -1    -- n       constant -1
-    HEADER(XT_MINUSONE,2,"-1",DOCON)
-        DW -1

@@ -1,4 +1,3 @@
-;Z ICOUNT  c-addr1 -- c-addr2 u  counted->adr/len
-;   DUP CHAR+ XT_SWAP IC@ ;          from Code space
+;C COUNT   c-addr1 -- c-addr2 u  counted->adr/len
     HEADER(XT_ICOUNT,6,"icount",DOCOLON)
-        DW XT_COUNT,XT_EXIT
+        DW XT_DUP,CHARPLUS,XT_SWAP,XT_CFETCH,XT_EXIT

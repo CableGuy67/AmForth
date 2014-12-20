@@ -24,14 +24,14 @@ PFA_R_FAIL:
 ; Interpreter
 ; default failure action: throw exception -13.
 .if cpu_msp430==1
-    HEADER(XT_FAIL,4,"fail",DOCOLON)
+    HEADLESS(XT_FAIL,DOCOLON)
 .endif
 .if cpu_avr8==1
-VE_FAIL:
-    .dw $ff04
-    .db "fail"
-    .dw VE_HEAD
-    .set VE_HEAD = VE_FAIL
+;VE_FAIL:
+;    .dw $ff04
+;    .db "fail"
+;    .dw VE_HEAD
+;    .set VE_HEAD = VE_FAIL
 XT_FAIL:
     .dw DO_COLON
 PFA_FAIL:

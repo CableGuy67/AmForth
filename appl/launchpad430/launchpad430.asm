@@ -135,7 +135,7 @@ USAVE:  DS16  UAREA_SIZE
 .include "430g2553io.asm"
 .include "itc430deps.asm"
 .include "itc430hilvl.asm"
-;.include "itc430extras.asm"
+.include "itc430extras.asm"
 .include "itc430irpts.asm"
 ; .include "430g2553install.asm"
 .include "430g2553save.asm"
