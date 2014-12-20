@@ -18,16 +18,17 @@ uses 38400/8N1 without flow control.
 
 It currently compiles to RAM only.
 
-A lot of the amforth features are still missing
-- wordlists
-- recognizers
-- compile to flash / a save routine
+A lot of the amforth features are still missing or work
+only parially:
+- wordlists (currently only one)
+- recognizers (currently only static)
+- defers, values
 
 what already works (and not with camelforth)
 - exceptions
-- double cell number output
+- double cell number input and output
 
-what camelforth does
+what camelforth can do
 - compiles to flash (unclear, why lost)
 - soft flow control on the terminal
 - autostart logic via switches (may return with turnkey)
