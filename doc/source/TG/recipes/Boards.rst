@@ -7,3 +7,4 @@ Popular Boards
    Arduino-HelloWorld
    Arduino-Analog
    AVR-Butterfly
+   TI-Launchpad430

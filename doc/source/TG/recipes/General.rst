@@ -17,5 +17,6 @@ General Code Examples
    Simple-Strings
    Structures
    Timeout
+   Trouble-Shooting
    Turnkey
    Upload

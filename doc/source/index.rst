@@ -43,14 +43,20 @@ released but will be part of the next release.
 See the code section at Sourceforge to get the
 `most recent sources <http://sourceforge.net/p/amforth/code/HEAD/tree/trunk/>`__
 
-* New architecture: MSP430 (G2553) with code from 
-  `Camelforth <http://www.camelforth.com>`__. Use 
-  it only if you're brave.
-* core: re-arranged source files.
-* core: changed license to GPLv3.
+* core(AVR): :command:`icompare` got the same return flag semantics as 
+  :command:`compare`. The :command:`leave` and :command:`?do` forward branches
+  are now resolved at compile time, saves one cell per loop on the return 
+  stack at runtime.
+* core(AVR): interrupt vectors are moved from RAM to EEPROM. Saves RAM space
+  and simplifies turnkey actions (remove any ``int!`` from your turnkey!)
+* core: re-arranged source files: controller specific and common code.
+* New architecture: MSP430 (G2553) as used in the :ref:`TI_LaunchPad_430` 
+  with code from `Camelforth <http://www.camelforth.com>`__ and 
+  `4€4th <http://www.somersetweb.com/4E4th/EN.html>`__.
 * core: generalized existing :ref:`Stacks` in EEPROM into :command:`map-stack`, 
   :command:`get-stack` and :command:`set-stack`. Used for the search order
-  and the recognizer stacks.
+  and recognizer stacks.
+* all: changed license to GPLv3.
 
 6.10.2014: release 5.5
 ......................

@@ -21,6 +21,7 @@ Programming and Debugging
    Quotations
    RAM-Efficiency
    Recognizer
+   Stacks
    Testing
    Tracer
    Upgrade-Amforth
