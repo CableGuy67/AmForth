@@ -45,7 +45,6 @@
 .include "words/to-body.asm"
 .include "words/comma-jmp.asm"
 .include "words/store-colon.asm"
-.include "words/comma-exit.asm"
 
 ; ----------------------------------------------------------------------
 ; CONTROL STRUCTURES 
@@ -53,7 +52,6 @@
 ; to be defined portably.
 .include "words/comma-dest.asm"
 .include "words/store-dest.asm"
-.include "words/comma-none.asm"
 
 ; ----------------------------------------------------------------------
 ; HEADER STRUCTURE 
