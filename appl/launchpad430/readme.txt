@@ -39,21 +39,4 @@ Todo (major only)
   on both systems without modification. create
   portability libraries (csetb+cclrb vs portpin:)
 
-------------------------------------------
-
-The red LED can be used as follows
-
-  : red:on     1 33 csetb ;
-  : green:on  64 33 csetb ;
-  : red:off    1 33 cclrb ;
-  : green:off 64 33 cclrb ;
-
-example for code
-
-code red:on  $D3D2 , $0021 , end-code
-code red:off $C3D2 , $0021 , end-code
-
-The compiled version is *much* faster than the
-sequence "1 33 csetb 1 33 cclrb" (watch the
-red flash).
 

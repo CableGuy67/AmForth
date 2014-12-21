@@ -79,7 +79,8 @@ characters like
    |
 
 Thats all. If nothing has happened look for error messages
-in the mspdebug window. Try replugging the launchpad.
+in the mspdebug window. Try replugging the launchpad. Some
+more information are in the :ref:`TI-Raspberry` recipe.
 
 You can reprogram the controller via USB whilst the terminal
 session is still active. In this case you'll see repeated 

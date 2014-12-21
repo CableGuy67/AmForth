@@ -8,3 +8,4 @@ Popular Boards
    Arduino-Analog
    AVR-Butterfly
    TI-Launchpad430
+   TI-Raspberry
