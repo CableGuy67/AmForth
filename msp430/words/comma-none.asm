@@ -5,4 +5,4 @@
 ; In general Flash memory can only be written once!
 ; ,NONE should be used wherever !DEST will resolve the branch.
 	HEADLESS(XT_COMMANONE,DOCOLON)
-        DW  CELL,XT_IALLOT,XT_EXIT
+        DW  XT_TWO,XT_IALLOT,XT_EXIT

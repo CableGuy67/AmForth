@@ -39,7 +39,6 @@
 ; and so are defined as CODE words.
 .include "words/align.asm"
 .include "words/aligned.asm"
-.include "words/cell.asm"
 .include "words/cellplus.asm"
 .include "words/cells.asm"
 .include "words/charplus.asm"
@@ -48,7 +47,6 @@
 .include "words/store-colon.asm"
 .include "words/comma-exit.asm"
 
-
 ; ----------------------------------------------------------------------
 ; CONTROL STRUCTURES 
 ; These words allow Forth control structure words
@@ -56,8 +54,6 @@
 .include "words/comma-dest.asm"
 .include "words/store-dest.asm"
 .include "words/comma-none.asm"
-
-
 
 ; ----------------------------------------------------------------------
 ; HEADER STRUCTURE 
