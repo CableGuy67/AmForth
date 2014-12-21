@@ -175,7 +175,6 @@
 .include "words/to-number.asm"
 .include "words/number.asm"
 .include "words/interpret.asm"
-.include "words/evaluate.asm"
 .include "words/prompt-ok.asm"
 .include "words/prompt-ready.asm"
 .include "words/prompt-error.asm"
@@ -204,6 +203,7 @@
 .include "words/semicolon.asm"
 .include "words/brackettick.asm"
 .include "words/postpone.asm"
+.include "words/immediate.asm"
 
 ; EXCEPTIONS ======================
 .include "words/catch.asm"

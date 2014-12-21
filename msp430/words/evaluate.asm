@@ -1,9 +1,0 @@
-;C EVALUATE  i*x c-addr u -- j*x  interprt string
-;   'SOURCE 2@ >R >R  >IN @ >R
-;   INTERPRET
-;   R> >IN !  R> R> 'SOURCE 2! ;
-    HEADER(XT_EVALUATE,8,"evaluate",DOCOLON)
-        DW TICKSOURCE,TWOFETCH,XT_TO_R,XT_TO_R
-        DW XT_TO_IN,XT_FETCH,XT_TO_R,XT_INTERPRET
-        DW XT_R_FROM,XT_TO_IN,XT_STORE,XT_R_FROM,XT_R_FROM
-        DW TICKSOURCE,TWOSTORE,XT_EXIT
