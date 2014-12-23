@@ -43,12 +43,10 @@ PFA_DORECOGNIZER_A:
    .dw XT_ROT  ; -- len xt addr
    .dw XT_ROT  ; -- xt addr len
    .dw XT_2DUP 
-   .dw XT_TO_R
-   .dw XT_TO_R
+   .dw XT_2TO_R
    .dw XT_ROT  ; -- addr len xt
    .dw XT_EXECUTE ; -- i*x r:foo | r:fail
-   .dw XT_R_FROM
-   .dw XT_R_FROM
+   .dw XT_2R_FROM
    .dw XT_ROT
    .dw XT_DUP
    .dw XT_R_FAIL

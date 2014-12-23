@@ -41,12 +41,10 @@ PFA_NUMBER:
       .dw XT_ZERO
       .dw XT_EXIT
 PFA_NUMBER0:
-    .dw XT_TO_R
-    .dw XT_TO_R
+    .dw XT_2TO_R
     .dw XT_ZERO       ; starting value
     .dw XT_ZERO
-    .dw XT_R_FROM
-    .dw XT_R_FROM
+    .dw XT_2R_FROM
     .dw XT_TO_NUMBER ; ( 0. addr len -- d addr' len'
     ; check length of the remaining string.
     ; if zero: a single cell number is entered
