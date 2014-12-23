@@ -1,6 +1,12 @@
 ; ( c -- C ) 
 ; String
 ; if c is a lowercase letter convert it to uppercase
+
+.if cpu_msp430==1
+    HEADER(XT_TOUPPER,7,"toupper",DOCOLON)
+.endif
+
+.if cpu_avr8==1
 VE_TOUPPER:
     .dw $ff07 
     .db "toupper",0
@@ -9,6 +15,7 @@ VE_TOUPPER:
 XT_TOUPPER:
     .dw DO_COLON 
 PFA_TOUPPER:
+.endif
     .dw XT_DUP 
     .dw XT_DOLITERAL 
     .dw 'a' 
@@ -16,9 +23,9 @@ PFA_TOUPPER:
     .dw 'z'+1
     .dw XT_WITHIN 
     .dw XT_DOCONDBRANCH
-    .dw PFA_TOUPPER0 
+    DEST(PFA_TOUPPER0)
     .dw XT_DOLITERAL
-    .dw $df ; inverse of 0x20
+    .dw 223 ; inverse of 0x20: 0xdf
     .dw XT_AND 
 PFA_TOUPPER0:
     .dw XT_EXIT 

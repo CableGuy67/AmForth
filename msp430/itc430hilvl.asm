@@ -63,8 +63,7 @@
 .include "words/tib.asm"
 .include "words/tibsize.asm"
 .include "words/bl.asm"
-
-
+.include "words/to-upper.asm"
 .include "words/uinit.asm"
 .include "words/sharp-init.asm"
 
