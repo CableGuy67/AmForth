@@ -98,12 +98,6 @@ reset:
         MOV.B   #0,&P2SEL               ; no functions enabled
         MOV.B   #0,&P2SEL2
 
-        ; Timer A
-        ; *TBD*
-
-        ; Timer B
-        ; *TBD*
-
         ; USCI_A0
         BIS.B   #UCSWRST,&UCA0CTL1      ; SWRST while configuring!
         MOV.B   #00h,&UCA0CTL0          ; UART, 8N1, LSB first
@@ -132,17 +126,8 @@ BRDELAY: SUB     #1,TOS     ; delay to let baud rate settle?
         MOV     #PSTACK,PSP
         MOV     #UAREA,&UP              ; initial user pointer
         
-        ; AUTOSTART LOGIC
-	; User Area and Variables RAM are restored from Info Flash.  
-        MOV		#UAREA,W		; User Area in RAM
-		MOV		#USAVE,X		; saved user data in Info Flash
-		MOV		#UAREA_SIZE+VARS_SIZE,TOS
-URESTORE:	MOV	@X+,0(W)
-        ADD     #2,W
-        SUB     #1,TOS
-		JNZ		URESTORE		; leaves TOS=0
-		; default startup is to perform COLD
-NOAUTO: MOV     #INITIP,IP
+	; now hand over to Forth with COLD (a colon word)
+        MOV     #XT_COLD+2,IP
         NEXT
 
 ; ----------------------------------------------------------------------

@@ -41,7 +41,7 @@
 ; SYSTEM VARIABLES & CONSTANTS ==================
 
 .include "words/u-0.asm"
-
+.include "words/a-to-info.asm"
 .include "words/to-in.asm"
 .include "words/base.asm"
 .include "words/state.asm"
