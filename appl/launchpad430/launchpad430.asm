@@ -136,9 +136,7 @@ USAVE:  DS16  UAREA_SIZE
 .include "itc430deps.asm"
 .include "itc430hilvl.asm"
 .include "itc430irpts.asm"
-.include "430g2553save.asm"
 
-INITIP   equ XT_COLD+2         ; default coldstart word (high-level)
 .include "430g2553init.asm"
 .include "info-map.inc"
 
