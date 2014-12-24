@@ -132,7 +132,6 @@ USAVE:  DS16  UAREA_SIZE
 .include "430g2553vecs.asm" ; note: sets .org for vector tables
         .org 0E000h         ; start address of CamelForth kernel
 .include "itc430core.asm"   ; code primitives
-.include "430g2553io.asm"
 .include "itc430deps.asm"
 .include "itc430hilvl.asm"
 .include "itc430irpts.asm"

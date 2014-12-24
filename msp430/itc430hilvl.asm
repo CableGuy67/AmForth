@@ -38,6 +38,18 @@
 ; 11 jan 09 - modified QUIT for Xon/Xoff flow control
 ; 4 jan 09 - created from Camel86h.asm.
 
+; INPUT/OUTPUT ==================================
+.include "words/usart-emit.asm"
+.include "words/usart-key.asm"
+.include "words/usart-keyq.asm"
+.include "words/cr.asm"
+.include "words/space.asm"
+.include "words/spaces.asm"
+.include "words/umin.asm"
+.include "words/umax.asm"
+.include "words/accept.asm"
+.include "words/type.asm"
+
 ; SYSTEM VARIABLES & CONSTANTS ==================
 
 .include "words/u-0.asm"
@@ -91,14 +103,6 @@
 .include "words/2dup.asm"
 .include "words/2swap.asm"
 
-; INPUT/OUTPUT ==================================
-.include "words/cr.asm"
-.include "words/space.asm"
-.include "words/spaces.asm"
-.include "words/umin.asm"
-.include "words/umax.asm"
-.include "words/accept.asm"
-.include "words/type.asm"
 
 ; HARVARD MODEL EXTENSIONS (split Code & Data)
 .include "words/icount.asm"
@@ -282,5 +286,3 @@
 .include "words/compare.asm"
 .include "words/search-wordlist.asm"
 .include "words/num-constants.asm"
-
-.include "words/save.asm"
