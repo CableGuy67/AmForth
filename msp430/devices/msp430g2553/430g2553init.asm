@@ -21,32 +21,8 @@
 ; or via email to bj@camelforth.com
 ; ----------------------------------------------------------------------
 ; 430g2553init.asm: CPU Configuration - MSP430G2553
-; B. Rodriguez  26 Oct 2012
+; B. Rodriguez  26 Oct 2012, modified for amforth
 ; 
-; Revision History
-;  1 mar 2014 bjr - adapted for naken_asm from init430g2553.s43.
-;       Memory map and RAM allocation moved to camel430g2553.asm.
-
-; ----------------------------------------------------------------------
-; This configuration is for the MSP430G2553 microcontroller installed
-; in a T.I. "Launchpad" board, with the following I/O assignments:
-; ----------------------------------------------------------------------
-; P1.0 - LED1 output
-; P1.1 - UART RXD
-; P1.2 - UART TXD
-; P1.3 - S2 input
-; P1.4
-; P1.5
-; P1.6 - LED2 output
-; P1.7
-;
-; P2.0
-; P2.1
-; P2.2
-; P2.3
-; P2.4
-; P2.5
-;
 ; Clocks:
 ; on-chip oscillator is used
 ;
@@ -83,39 +59,6 @@ reset:
         MOV #FWKEY+0,&FCTL1             ; write & erase modes OFF
         MOV #FWKEY+FSSEL1+16,&FCTL2     ; SMCLK/17 = 471 kHz.
         MOV #FWKEY+LOCK,&FCTL3          ; lock flash memory against writing
-
-        ; Digital I/O
-        MOV.B   #08h,&P1OUT             ; P1.3 is on for pullup
-        MOV.B   #08h,&P1REN             ; P1.3 pullup enabled
-        MOV.B   #45h,&P1DIR             ; P1.0,2,6 are outputs
-        MOV.B   #0,&P1IE                ; no port 1 interrupts
-        MOV.B   #06,&P1SEL              ; P1.1,2 are UART
-        MOV.B   #06,&P1SEL2             ; P1.1,2 are UART
-
-        ; MOV.B   # ,P2OUT
-        MOV.B   #0,&P2DIR               ; P2 all inputs
-        MOV.B   #0,&P2IE                ; no port 2 interrupts
-        MOV.B   #0,&P2SEL               ; no functions enabled
-        MOV.B   #0,&P2SEL2
-
-        ; USCI_A0
-        BIS.B   #UCSWRST,&UCA0CTL1      ; SWRST while configuring!
-        MOV.B   #00h,&UCA0CTL0          ; UART, 8N1, LSB first
-        MOV.B   #81h,&UCA0CTL1          ; BRCLK = SMCLK, SWRST set
-        MOV.B   #41h,&UCA0BR0           ; 9600 Baud at 8 MHz
-        MOV.B   #03h,&UCA0BR1
-        MOV.B   #04h,&UCA0MCTL          ; UCBRFx=0, UCBRSx=2 for 9600 baud
-        BIC.B   #UCSWRST,&UCA0CTL1      ; done configuring
-
-        MOV     #0,TOS
-BRDELAY: SUB     #1,TOS     ; delay to let baud rate settle?
-        JNZ     BRDELAY
-
-        ; Comparator A
-        ; *TBD*
-
-        ; ADC10
-        ; *TBD*
 
         ; Interrupt Enables
         MOV.B   #0,&IE1                 ; no interrupts enabled

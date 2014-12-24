@@ -15,9 +15,9 @@ VE_APPLTURNKEY:
 XT_APPLTURNKEY:
     .dw DO_COLON
 PFA_APPLTURNKEY:
-    .dw XT_USART
     .dw XT_INTON
 .endif
+    .dw XT_USART
     .dw XT_DOT_VER
     .dw XT_SPACE
     .dw XT_F_CPU

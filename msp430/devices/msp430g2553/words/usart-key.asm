@@ -6,5 +6,4 @@ KEYLOOP:
         SUB     #2,PSP          ; 1  push old TOS..
         MOV     TOS,0(PSP)      ; 4  ..onto stack
         MOV.B   &UCA0RXBUF,TOS
-donoop:
 donext: NEXT
