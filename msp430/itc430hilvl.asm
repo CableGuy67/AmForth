@@ -261,7 +261,8 @@
 
 .include "words/dot-s.asm"
 .include "words/cold.asm"
-.include "words/applturnkey.asm"
+.include "words/warm.asm"
+.include "words/applturnkey.asm"  ; from application!
 .include "words/environment.asm"
 .include "words/env-cpu.asm"
 .include "words/env-forthname.asm"
@@ -287,3 +288,4 @@
 .include "words/compare.asm"
 .include "words/search-wordlist.asm"
 .include "words/num-constants.asm"
+.include "words/save.asm"
