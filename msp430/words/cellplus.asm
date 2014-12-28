@@ -2,4 +2,4 @@
 ;   2 + ;
         CODEHEADER(XT_CELLPLUS,5,"cell+")
         ADD     #2,TOS
-        JMP     donext
+        NEXT
