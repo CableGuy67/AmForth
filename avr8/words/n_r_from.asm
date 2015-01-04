@@ -1,4 +1,4 @@
-; ( -- xn .. x0 n ) (R: xn .. x0 n -- )
+; ( -- x-n .. x-1 n ) (R: x-n .. x-1 n -- )
 ; Stack
 ; move n items from return stack to data stack
 VE_N_R_FROM:

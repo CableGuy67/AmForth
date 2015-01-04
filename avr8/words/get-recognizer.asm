@@ -1,4 +1,4 @@
-; ( -- recn .. rec0 n) 
+; ( -- rec-n .. rec-1 n) 
 ; Interpreter
 ; Get the current recognizer list
 VE_GET_RECOGNIZER:

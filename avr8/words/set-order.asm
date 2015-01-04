@@ -1,4 +1,4 @@
-; ( widn .. wid0 n -- ) 
+; ( widn .. wid-1 n -- ) 
 ; Search Order
 ; replace the search order list
 VE_SET_ORDER:

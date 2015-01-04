@@ -1,4 +1,4 @@
-; ( recn .. rec0 n -- ) 
+; ( rec-n .. rec-1 n -- ) 
 ; Interpreter
 ; replace the recognizer list
 VE_SET_RECOGNIZER:

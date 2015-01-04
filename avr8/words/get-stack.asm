@@ -1,4 +1,4 @@
-; ( e-addr -- itemn .. item0 n) 
+; ( e-addr -- item-n .. item-1 n) 
 ; Tools
 ; Get a stack from EEPROM
 VE_GET_STACK:

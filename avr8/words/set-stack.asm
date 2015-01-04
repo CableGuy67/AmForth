@@ -1,4 +1,4 @@
-; ( recn .. rec0 n ee-addr -- ) 
+; ( rec-n .. rec-1 n ee-addr -- ) 
 ; Tools
 ; Write a stack to EEPROM
 VE_SET_STACK:

@@ -1,4 +1,4 @@
-; ( -- widn .. wid0 n) 
+; ( -- wid-n .. wid-1 n) 
 ; Search Order
 ; Get the current search order word list
 VE_GET_ORDER:
