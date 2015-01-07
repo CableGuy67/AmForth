@@ -298,27 +298,61 @@ the one, which is terminated with the :command:`repeat`.
 Counted Loops
 #############
 
-Counted loops need to store the starting address
-and the address of the last word of the loop body. The first
-one is needed to jump back if the counter has not yet reached
-its limit. The forward jump is made in :command:`leave` to
-unconditionally exit the loop body.
+Counted loops repeat a sequence of words for some predefined
+number of iterations. It is possible to exit prematurely. The
+standard loop checks for the exit condition after the loop body
+has been executed. A special variant (?DO) does it once at the
+beginning and may skip the loop body completely. To actually
+implement the loop and its possible exit points a separate LEAVE
+stack (named after the LEAVE forth word) is used at compile time.
+It receives all premature exit points which are resolved when
+compiling LOOP (or +LOOP).
 
 .. code-block:: forth
 
-   : do postpone (do) >mark <mark ; immediate
-   : loop postpone (loop) <resolve >resolve ; immediate
+   : endloop 
+    <resolve \ standard backward loop
+    \ now resolve the premature exits from the leave stack
+    begin l> ?dup while postpone then repeat ;
 
-The other loop commands :command:`?do` and :command:`+loop`
-are almost identical to their respective counterparts, the
-compile only a different runtime action to their goals.
+   : do postpone (do) <mark 0 >l ; immediate
+   : loop postpone (loop) endloop ;  immediate
+   : +loop postpone (+loop) endloop ; immediate
+   : leave postpone unloop postpone ahead >l ; immediate
+
+:command:`unloop` is an assembly word dropping the loop 
+counter and loop limit information from the return stack.
+
+The :command:`?do` works differently. It uses the 
+:command:`do` and the leave stack to achieve its 
+goals. 
+
+.. code-block:: forth
+
+   ... ?docheck if do ... loop then ....
+
+The helper word :command:`?docheck` checks the loop 
+numbers and creates a well prepared stack content.
+
+.. code-block:: forth
+    
+    \ helper word
+    : ?docheck ( count limit -- count limit true | false )
+	2dup = dup >r if 2drop then r> invert ;
+
+    : ?do postpone ?docheck 
+        postpone if \ here we create the forward branch
+        postpone do \ initialite leave stack
+	swap >l     \ put the IF destination on the leave stack
+    ; immediate
 
 The runtime action of :command:`do` (the :command:`(do)`)
-puts three information onto the return stack: The loop
-counter, the loop limit and the destination address for the
-:command:`leave`. The first two parameters are taken from the
-data stack at runtime, the leave-address comes from the compiler
-(from the :command:`>mark`).
+puts two information onto the return stack: The modified loop
+counter abd  the loop limit. The loop index and the loop limit
+are modified by adding 0x8000 to both numbers. That makes
+it easy to check the boundary cross required by Forth by simply
+checking the controller overflow check. The price to pay is
+a slightly slower access to the loop index (I and J).
 
 The runtime of :command:`loop` (the :command:`(loop)`)
 checks the limits and with :command:`0branch` decides whether to

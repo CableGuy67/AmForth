@@ -2,6 +2,36 @@
 History
 =======
 
+6.10.2014: release 5.5
+......................
+
+* core: Bugfix in :command:`warm` to initialize the interpreter for 
+  :command:`turnkey`. Thanks to David.
+* core: bugfixes for handling some negative numbers in :command:`+loop` 
+  and :command:`*/`.
+* core: simplified assembly primitves for counted loops. They are
+  now faster except for :command:`i`. The return stack gets different
+  numbers now.
+* core: rewrite of :command:`accept`. The user visible change is that the final CR/LF
+  is no longer sent here. The forth text interpreter does it elsewhere thus
+  the user interface is unchanged.
+* core: Fixed a regression introduced after 5.1: a<b is not always the same 
+  as a-b<0.
+
+16.8.2014: release 5.4
+......................
+
+* lib: Almost complete :ref:`Blocks` wordset support. Only a few dark corners behave differently.
+* lib: renamed TWI to I2C, added many tools for it :ref:`I2C Values`, :ref:`I2C EEPROM Blocks` and 
+  a few more.
+* recipes: `Test Driven Development <http://en.wikipedia.org/wiki/Test-driven_development>`_ 
+  with :ref:`Amforth <Testing>`, :ref:`Conditional Interpret`
+* lib: Fully support the ANS94 String wordset.
+* core: Double cell return stack access words (:command:`2>r` and 
+  :command:`2r>`) missed the internal swap's. Added new :command:`2r@`.
+* lib: Limited LOCALs
+
+
 7.5.2013: release 5.3
 ......................
 
