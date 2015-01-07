@@ -206,6 +206,7 @@
 .include "words/semicolon.asm"
 .include "words/brackettick.asm"
 .include "words/postpone.asm"
+.include "words/i-cellplus.asm"
 .include "words/immediate.asm"
 
 ; EXCEPTIONS ======================
