@@ -16,7 +16,7 @@ XT_BACKSLASH:
 .if cpu_avr8==1
 VE_BACKSLASH:
     .dw $0001
-    .db $5d,0
+    .db $5c,0
     .dw VE_HEAD
     .set VE_HEAD = VE_BACKSLASH
 XT_BACKSLASH:

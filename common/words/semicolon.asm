@@ -3,7 +3,7 @@
 ; finish colon defintion, compiles (exit) and returns to interpret state 
 
 .if cpu_msp430==1
-    IMMED(SEMICOLON,1,";",DOCOLON)
+    IMMED(XT_SEMICOLON,1,";",DOCOLON)
 .endif
 
 .if cpu_avr8==1
