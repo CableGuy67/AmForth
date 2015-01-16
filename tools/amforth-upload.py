@@ -44,26 +44,31 @@ def merge(seq):
 def search_and_open_file(filename):
     directorylist=["","."]
     filedirs={}
-
+    basefilename=os.path.basename(filename)
     if os.environ.has_key("AMFORTH_LIB"):
       directorylist = merge([directorylist, os.environ["AMFORTH_LIB"].split(":")])
     for p in directorylist:
       for root, dirs, files in os.walk(p):
         for f in files:
-          if os.path.join(root, f).endswith(filename): # better than fnmatch since it can deal with directiories
+          if os.path.join(root, f).endswith("/"+basefilename): # better than fnmatch since it can deal with directiories
+            fpath=os.path.realpath(os.path.join(root, f))
             if filedirs.has_key(f):
-              filedirs[f].append([root])
+              for d in filedirs[f]:
+                if d==fpath:
+                  fpath=None
+              if fpath: filedirs[f].append(fpath)
             else:
-              filedirs[f]=[root]
-    if len(filedirs[f])==1:
-       print "using ", f," from", filedirs[f][0]
-       filehandle = file(os.path.join(filedirs[f][0], f))
+              filedirs[f]=[fpath]
+    if len(filedirs[basefilename])==1:
+       print "\nusing ", filename," from", filedirs[filename][0]
+       filehandle = file(filedirs[filename][0])
        return filehandle
     else:
-    # oops, too many files or no one at all no file found?
-       print "wrong # of files:", f , " can be found in ", len(filedirs[f]), " directories"
-       print >>sys.stderr, "Sorry, giving up. You should check the controller!"
-       sys.exit(2)
+      # oops, too many files or no one at all no file found?
+      print "\n", filename , " was found in ", len(filedirs[basefilename]), " directories"
+      print "\t\n".join(filedirs[basefilename])
+      print >>sys.stderr, "Sorry, giving up. You should check the controller!"
+      sys.exit(2)
 
 def write_line_flow(string,dest):
 	# strip comments
@@ -79,7 +84,7 @@ def write_line_flow(string,dest):
 		    string = string + "\n"
 	string = re.sub("(^| )\( .*?\)"," ",string)
 	string = re.sub("(^| )\( [^\)]*$"," \n",string)
-    #string = re.sub("(^| )\\\\ .*","",string)
+        #string = re.sub("(^| )\\\\ .*","",string)
 
 #	if re.match("^\s*$",string):
 #		if verbose:
@@ -220,7 +225,10 @@ for opt, arg in opts:
 		debug = True
 	elif opt == "-c":
 		mcudef = arg
-		sys.path.append("core/devices/"+mcudef)
+                if mcudef.startswith("msp"):
+                    sys.path.append("msp430/devices/"+mcudef)
+                else:
+                    sys.path.append("avr8/devices/"+mcudef)
 		try:
 			from device import *
 			usemcudef = True

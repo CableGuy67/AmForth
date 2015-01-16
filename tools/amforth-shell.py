@@ -749,7 +749,7 @@ additional definitions (e.g. register names)
             self.progress_callback("Error", None,  "file "+ filename+" not found in search path")
             raise AMForthException("file " + filename + " not found in search path")
           if len(self._filedirs[filename])!=1:
-            # oops, too many files or no one at all no file found?
+            # oops, too many files or no one at all found?
             raise AMForthException("Wrong # of file occurances: " + filename + " ("+str(len(self._filedirs[filename]))+")\n\t"+"\n\t".join(self._filedirs[filename]))
           self.progress_callback("Information", None,  "using "+ filename+" from"+ self._filedirs[filename][0])
           fpath = os.path.join(self._filedirs[filename][0], filename)
