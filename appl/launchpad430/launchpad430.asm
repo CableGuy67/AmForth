@@ -67,17 +67,6 @@
 ;   INFO+080h (INFOB):  user interrupt vectors
 ;   INFO+0C0h (INFOA):  configuration data - do not use
 
-UAREA_SIZE equ 18         ; cells
-VARS_SIZE equ 46          ; cells
-RSTACK_SIZE equ 48        ; cells
-PSTACK_SIZE equ 48        ; cells
-; following only required for terminal tasks
-HOLD_SIZE equ 20          ; bytes (must be even)
-PAD_SIZE equ 0            ; bytes (must be even)
-TIB_SIZE equ 82           ; bytes (must be even)
-
-INFO_SIZE equ (UAREA_SIZE+VARS_SIZE)*2    ; bytes
-
 ; FLASH MEMORY LIMITS
 ; for Flash memory operations - this includes information and main
 ; ROM, but not the main ROM used by the kernel (above E000h)
@@ -87,6 +76,16 @@ FLASHSTART equ 0C000h
 FLASHEND   equ 0DFFFh
 MAINSEG    equ 512
 INFOSEG    equ 64
+INFO_SIZE  equ 128    ; bytes
+
+UAREA_SIZE equ 28         ; cells
+VARS_SIZE  equ 36 ; ((INFO_SIZE/2)-UAREA_SIZE) ; cells
+RSTACK_SIZE equ 48        ; cells
+PSTACK_SIZE equ 48        ; cells
+; following only required for terminal tasks
+HOLD_SIZE equ 20          ; bytes (must be even)
+PAD_SIZE equ 0            ; bytes (must be even)
+TIB_SIZE equ 82           ; bytes (must be even)
 
 F_CPU EQU 8000000
 
@@ -106,10 +105,8 @@ PSTACK: ; end of parameter stack area
 RSTACK: ; end of return stack area
 
 UP:     DS16    1                   ; User Pointer
-
-UAREA:  DS16    UAREA_SIZE
-
-RAMDICT: DS16   VARS_SIZE     ; 96 bytes for variables
+UAREA:  
+RAMDICT: 
 ; ROMDICT:          ; all RAM following is program dictionary
 ROMDICT EQU     FLASHSTART  ; to use Flash ROM for program dictionary
 
@@ -118,9 +115,8 @@ ROMDICT EQU     FLASHSTART  ; to use Flash ROM for program dictionary
 
         .org 1000h      ; start of info Flash
 
-        ; 128 bytes at start of Info area, for saved User Area & variables
-USAVE:  DS16  UAREA_SIZE
-        DS16  VARS_SIZE
+; 128 bytes at start of Info area, for saved User Area & variables
+USAVE:  DS8  INFO_SIZE
 
 .if $>1080h
 .error "SAVE area does not fit in Info Flash"
@@ -135,7 +131,9 @@ USAVE:  DS16  UAREA_SIZE
 .include "itc430deps.asm"
 .include "itc430hilvl.asm"
 .include "itc430irpts.asm"
-
+.include "words/dump.asm"
+.include "words/1-ms.asm"
+.include "words/turnkey.asm"
 .include "430g2553init.asm"
 .include "info-map.inc"
 
