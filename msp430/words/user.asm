@@ -8,3 +8,8 @@ DOUSER: ; -- a-addr     ; add constant to User Pointer, result in TOS
         MOV @W,TOS
         ADD &UP,TOS
         NEXT
+
+CODEHEADER(XT_UP_FETCH,3,"up@")
+        SUB    #2,PSP
+        MOV &UP,TOS
+	NEXT
