@@ -17,6 +17,6 @@ XT_AGAIN:
 PFA_AGAIN:
 .endif
     .dw XT_COMPILE
-    .dw XT_DOCONDBRANCH
+    .dw XT_DOBRANCH
     .dw XT_LRESOLVE
     .dw XT_EXIT
