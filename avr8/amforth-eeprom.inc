@@ -18,15 +18,14 @@ EE_CURRENT:
     .dw EE_FORTHWORDLIST
 EE_FORTHWORDLIST:
     .dw VE_HEAD      ; pre-defined (compiled in) wordlist
-EE_ORDERLISTLEN:
+CFG_ORDERLISTLEN:
     .dw 1
-EE_ORDERLIST: ; list of wordlist id, exactly numwordlist entries
+CFG_ORDERLIST: ; list of wordlist id, exactly numwordlist entries
     .dw EE_FORTHWORDLIST      ; get/set-order
     .byte  (NUMWORDLISTS-1)*CELLSIZE ; one slot is already used
-EE_RECOGNIZERS:
-EE_RECOGNIZERLISTLEN:
+CFG_RECOGNIZERLISTLEN:
     .dw 2
-EE_RECOGNIZERLIST:
+CFG_RECOGNIZERLIST:
     .dw XT_REC_WORD
     .dw XT_REC_NUM
     .byte  (NUMRECOGNIZERS-2)*CELLSIZE ; two slots are already used

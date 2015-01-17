@@ -10,7 +10,7 @@ XT_WORDS:
     .dw DO_COLON
 PFA_WORDS:
     .dw XT_DOLITERAL
-    .dw EE_ORDERLIST
+    .dw CFG_ORDERLIST
     .dw XT_FETCHE
     .dw XT_SHOWWORDLIST
     .dw XT_EXIT

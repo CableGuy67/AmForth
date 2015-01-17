@@ -52,5 +52,3 @@ PFA_SOURCETIB:
     .dw XT_NUMBERTIB
     .dw XT_FETCH
     .dw XT_EXIT
-
-

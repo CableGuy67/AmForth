@@ -1,11 +1,11 @@
 ; ( i*x -- j*x )
 ; System
 ; runtime of defer
-VE_DOEDEFER:
+VE_DODEFER:
     .dw $ff07
     .db "(defer)", 0
     .dw VE_HEAD
-    .set VE_HEAD = VE_DOEDEFER
+    .set VE_HEAD = VE_DODEFER
 XT_DODEFER:
     .dw DO_COLON
 PFA_DODEFER:
