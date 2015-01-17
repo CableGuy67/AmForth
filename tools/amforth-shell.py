@@ -769,7 +769,9 @@ additional definitions (e.g. register names)
             except AMForthException, e:
                 self.progress_callback("Error", None, str(e))
                 raise
-            self._update_cpu()
+	    if self._amforth_cpu=="":
+                self._update_cpu()
+    	        self._update_files()
             self.progress_callback("File", None, fpath)
             try:
                 with open(fpath, "r") as f:
@@ -1251,6 +1253,8 @@ additional definitions (e.g. register names)
 	else:
 	    flavor="avr8"
         sys.path.insert(1,os.path.join(os.path.dirname(sys.argv[0]),"..", flavor, "devices",mcudef))
+        self._search_list.append(os.path.abspath(os.path.join(os.path.dirname(sys.argv[0]),"..", flavor, "lib")))
+
         try:
           from device import MCUREGS
           self._amforth_regs=MCUREGS
@@ -1266,6 +1270,7 @@ additional definitions (e.g. register names)
         self.progress_callback("Information", None, "  Reading "+p)
         for root, dirs, files in os.walk(p):
           for f in files:
+#            print f
             fpath=os.path.realpath(os.path.join(root, f))
             fpathdir=os.path.dirname(fpath)
             if self._filedirs.has_key(f):
