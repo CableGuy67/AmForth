@@ -78,8 +78,7 @@ MAINSEG    equ 512
 INFOSEG    equ 64
 INFO_SIZE  equ 128    ; bytes
 
-UAREA_SIZE equ 28         ; cells
-VARS_SIZE  equ 36 ; ((INFO_SIZE/2)-UAREA_SIZE) ; cells
+UAREA_SIZE equ 36         ; bytes 
 RSTACK_SIZE equ 48        ; cells
 PSTACK_SIZE equ 48        ; cells
 ; following only required for terminal tasks
@@ -96,16 +95,20 @@ F_CPU EQU 8000000
 
         DS8    HOLD_SIZE
 ; HOLDAREA: ; end of hold area - hold area grows down from PAD
-PADAREA: DS8   PAD_SIZE             ; must follow HOLDAREA
-TIBAREA: DS8    TIB_SIZE            ; Terminal Input Buffer
+PADAREA: DS8   PAD_SIZE       ; must follow HOLDAREA
+TIBAREA: DS8   TIB_SIZE       ; Terminal Input Buffer
 
 LSTACK: DS16    PSTACK_SIZE   ; leave stack grows up into PSTACK area
 PSTACK: ; end of parameter stack area
         DS16    RSTACK_SIZE
 RSTACK: ; end of return stack area
 
-UP:     DS16    1                   ; User Pointer
-UAREA:  
+UP:     DS16    1             ; User Pointer
+RAMINFOAREA:
+CFG_RECOGNIZERLISTLEN:
+	DW 2,XT_REC_WORD,XT_REC_NUM,0,0
+	DW 1,XT_LATEST,0,0,0,0,0,0,0
+UAREA:  DS8    UAREA_SIZE     ; user area follows
 RAMDICT: 
 ; ROMDICT:          ; all RAM following is program dictionary
 ROMDICT EQU     FLASHSTART  ; to use Flash ROM for program dictionary
@@ -134,8 +137,10 @@ USAVE:  DS8  INFO_SIZE
 .include "words/dump.asm"
 .include "words/1-ms.asm"
 .include "words/turnkey.asm"
+
+.include "words/restore.asm"
+
 .include "430g2553init.asm"
-.include "info-map.inc"
 
 ; ----------------------------------------------------------------------
 ; END OF FORTH KERNEL
