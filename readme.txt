@@ -1,4 +1,4 @@
-Date: 9.11.2014
+Date: 17.1.2015
 
 Author:
     Matthias Trute <mtrute@users.sourceforge.net>
@@ -30,7 +30,8 @@ ATmega:
 MSP430
   
   The Forth dictionary is in the flash memory, new words are
-  compiled to RAM.
+  compiled to flash. Use SAVE to keep the code accessible across
+  reboots. 
 
 AmForth is implemented in assembly and forth. The code is stable
 and well tested. The MSP430 variant is less tested however. It
