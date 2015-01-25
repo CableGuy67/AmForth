@@ -49,10 +49,9 @@
 ;   UAREA-0C2h  Parameter stack, 96 bytes, grows down from end
 ;   UAREA-62h   Return stack, 96 bytes, grows down from end
 ;   UP          User Pointer, 2 bytes
+;   CFG...      Configuration Stack Area
 ;   UAREA       User area, 32 bytes
-;   UAREA+20h   RAM variables space, 96 bytes
-;   UAREA+80h   start of Forth dictionary, 88 bytes available
-; The User Area and RAM Variables space will be restored from 
+; The User Area and Configuration Stack Area spaces will be restored from 
 ; Info ROM, so they should total 128 bytes.
 ;
 ; Note all must be word-aligned.
@@ -78,9 +77,9 @@ MAINSEG    equ 512
 INFOSEG    equ 64
 INFO_SIZE  equ 128    ; bytes
 
-UAREA_SIZE equ 36         ; bytes 
-RSTACK_SIZE equ 48        ; cells
-PSTACK_SIZE equ 48        ; cells
+UAREA_SIZE  equ 36        ; bytes, see uinit.asm
+RSTACK_SIZE equ 40        ; cells
+PSTACK_SIZE equ 40        ; cells
 ; following only required for terminal tasks
 HOLD_SIZE equ 20          ; bytes (must be even)
 PAD_SIZE equ 0            ; bytes (must be even)
@@ -103,23 +102,26 @@ PSTACK: ; end of parameter stack area
         DS16    RSTACK_SIZE
 RSTACK: ; end of return stack area
 
-UP:     DS16    1             ; User Pointer
-RAMINFOAREA:
-CFG_RECOGNIZERLISTLEN:
-	DW 2,XT_REC_WORD,XT_REC_NUM,0,0
-	DW 1,XT_LATEST,0,0,0,0,0,0,0
-UAREA:  DS8    UAREA_SIZE     ; user area follows
-RAMDICT: 
-; ROMDICT:          ; all RAM following is program dictionary
-ROMDICT EQU     FLASHSTART  ; to use Flash ROM for program dictionary
+UP:     DS16    1             ; User Pointer, set in device init.
+RAMINFOAREA:                  ; 128 byte copy from INFO flash or uinit defaults
+                              ; configuration stacks
+CFG_RECOGNIZERLISTLEN:        ; RECOGNIZER stack
+	DS16 5                ; place for the count word and 4 slots
+CFG_ORDERLISTLEN:             ; ORDER stack
+	DS16 9                ; place for the count word and 8 slots
+                              ; USER area starts here
+UAREA:  DS8    UAREA_SIZE     ; 
+RAMDICT:                      ; start value for DP/HERE.
+
+ROMDICT EQU     FLASHSTART    ; use Flash ROM for program dictionary
 
 ; ----------------------------------------------------------------------
 ; DATA FLASH AREAS 
 
         .org 1000h      ; start of info Flash
-
 ; 128 bytes at start of Info area, for saved User Area & variables
-USAVE:  DS8  INFO_SIZE
+FLASHINFOAREA: 
+         DS8  INFO_SIZE
 
 .if $>1080h
 .error "SAVE area does not fit in Info Flash"
@@ -134,9 +136,7 @@ USAVE:  DS8  INFO_SIZE
 .include "itc430deps.asm"
 .include "itc430hilvl.asm"
 .include "itc430irpts.asm"
-.include "words/dump.asm"
 .include "words/1-ms.asm"
-.include "words/turnkey.asm"
 
 .include "words/restore.asm"
 
