@@ -1,5 +1,5 @@
 ;Z FLERASE  a-addr n -- 
-        CODEHEADER(FLERASE,7,"flerase")
+        CODEHEADER(XT_FLERASE,7,"flerase")
         MOV     @PSP+,W         ; get address in W
         ADD     W,TOS           ; TOS=end adrs (first unerased adrs)
 FLE_1:

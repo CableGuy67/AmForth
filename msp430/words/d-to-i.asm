@@ -3,7 +3,7 @@
 ; For the MSP430, this uses a "smart" algorithm that uses word writes,
 ; rather than byte writes, whenever possible.  Note that byte reads
 ; are used for the source, so it need not be aligned.
-        CODEHEADER(DTOI,4,"d->i")
+        CODEHEADER(XT_DTOI,4,"d->i")
         MOV     @PSP+,W     ; dest adrs
         MOV     @PSP+,X     ; src adrs
         CMP     #0,TOS

@@ -1,4 +1,4 @@
 ;C ALLOT   n --         allocate n bytes in dict
 ;   DP +! ;
-    HEADER(ALLOT,5,"allot",DOCOLON)
-        DW DDP,XT_PLUSSTORE,XT_EXIT
+    HEADER(XT_ALLOT,5,"allot",DOCOLON)
+        DW XT_DP,XT_PLUSSTORE,XT_EXIT

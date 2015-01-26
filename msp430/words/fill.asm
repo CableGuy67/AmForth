@@ -1,5 +1,5 @@
 ;C FILL   c-addr u char --  fill memory with char
-        CODEHEADER(FILL,4,"fill")
+        CODEHEADER(XT_FILL,4,"fill")
         MOV     @PSP+,X     ; count
         MOV     @PSP+,W     ; address
         CMP     #0,X

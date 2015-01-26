@@ -2,5 +2,5 @@
 ;   <BUILDS  I,   Flashable Harvard model
 ;   DOES> (machine code fragment)
 ; Note that the constant is stored in Code space.
-        HEADER(CONSTANT,8,"constant",DOCOLON)
-        DW BUILDS,XT_COMMA,XDOES
+        HEADER(XT_CONSTANT,8,"constant",DOCOLON)
+        DW XT_BUILDS,XT_COMMA,XDOES
