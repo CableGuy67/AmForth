@@ -75,14 +75,6 @@ DOROM:  ; -- a-addr     ; Table in ROM: get PFA into TOS
 
 .include "words/user.asm"
 
-; DOALIAS  used to build a word which performs the action of
-; another word.  Its action is to fetch the "alias" CFA from
-; the parameter field, and execute that, e.g. DOES> I@ EXECUTE ;
-; This is currently used only within the Forth kernel.
-DOALIAS:  ; --          ; fetch CFA of word to execute
-        MOV @W,W        ; 2 fetch from parameter field to W
-        MOV @W+,PC      ; 2 fetch code address into PC, W=PFA
-
 ; DODOES is the code action of a DOES> clause.  For ITC Forth:
 ; defined word:  CFA: doescode
 ;                PFA: parameter field

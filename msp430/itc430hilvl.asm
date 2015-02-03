@@ -115,11 +115,6 @@
 .include "words/sliteral.asm"
 
 ; NUMERIC OUTPUT ================================
-; Numeric conversion is done l.s.digit first, so
-; the output buffer is built backwards in memory.
-
-; Some double-precision arithmetic operators are
-; needed to implement ANSI numeric conversion.
 .include "words/ud-slash-mod.asm"
 .include "words/ud-star.asm"
 .include "words/hold.asm"
@@ -132,35 +127,17 @@
 .include "words/dot.asm"
 .include "words/decimal.asm"
 .include "words/hex.asm"
-
 .include "words/bounds.asm"
 .include "words/pick.asm"
+
 ; DICTIONARY MANAGEMENT =========================
 .include "words/here.asm"
 .include "words/comma.asm"
 .include "words/c-comma.asm"
-
-; The following additional words support the
-; "Harvard" model, with separate address spaces
-; for Instructions (Code) and Data.  ANSI
-; requires DP to manage the Data space, so a
-; separate Instruction Dictionary Pointer, IDP,
-; is added to manage the Code space.  Also added:
-;   I@ IC@ I! IC! I->D D->I   (in the primitives)
-;   ITYPE ICOUNT IWORD        (above)
-;   IHERE IALLOT I, IC,       (below)
-; It should be possible to convert the Harvard
-; implementation to a combined-code-and-data
-; system, by equating these words to their
-; Data-space counterparts.
 .include "words/i-here.asm"
 .include "words/i-allot.asm"
 
 ; INTERPRETER ===================================
-; Note that NFA>LFA, NFA>CFA, IMMED?, and FIND
-; are dependent on the structure of the Forth
-; header.  This may be common across many CPUs,
-; or it may be different.
 .include "words/source.asm"
 .include "words/slash-string.asm"
 .include "words/place.asm"
@@ -270,11 +247,6 @@
 .include "words/ver.asm"
 .include "words/f_cpu.asm"
 .include "words/q-stack.asm"
-
-; Note: the first character sent from the MSP430 seems to get
-; scrambled.  I conjecture this is because the baud rate generator
-; has not reset to the new rate when we attempt to send a character.
-; See init430f1611.s43 for delay after initialization.
 
 .include "words/backslash.asm"
 .include "words/parse-name.asm"
