@@ -135,12 +135,10 @@ FLASHINFOAREA:
 .include "itc430core.asm"   ; code primitives
 .include "itc430deps.asm"
 .include "itc430hilvl.asm"
+.include "430g2553init.asm"
 
 .include "words/dump.asm"
-.include "words/1-ms.asm"
 .include "words/turnkey.asm"
-
-.include "430g2553init.asm"
 
 ; ----------------------------------------------------------------------
 ; END OF FORTH KERNEL
