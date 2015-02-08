@@ -21,10 +21,11 @@
 \ PD.F pin@              ( get the lower nibble bits )
 \ 5 PD.F pin!            ( put the lower nibble bits, do not change the others )
 
-: bitmask: create ( C: "ccc" portadr bmask -- ) ( R: -- pinmask portadr )
+: bitmask: ( C: "ccc" portadr bmask -- ) ( R: -- pinmask portadr )
+  <builds
      , ,
   does> 
-    dup @i swap 1+ @i
+    dup @i swap i-cell+ @i
 ;
 
 : portpin: ( C: "ccc" portadr n -- ) ( R: -- pinmask portadr )
