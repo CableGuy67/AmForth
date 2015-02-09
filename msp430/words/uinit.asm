@@ -6,7 +6,6 @@
     HEADER(UINIT,5,"uinit",DOROM)
 	DW 2,XT_REC_WORD,XT_REC_NUM,0,0
 	DW 1,XT_LATEST,0,0,0,0,0,0,0
-
         DW 0,0,10,0     ; reserved,>IN,XT_BASE,STATE
         DW RAMDICT      ; DP
         DW 0,0          ; SOURCE init'd elsewhere
