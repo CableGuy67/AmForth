@@ -172,6 +172,7 @@
 .include "words/header.asm"
 .include "words/builds.asm"
 .include "words/create.asm"
+.include "words/do-create.asm"
 .include "words/do-does.asm"
 .include "words/does.asm"
 .include "words/recurse.asm"

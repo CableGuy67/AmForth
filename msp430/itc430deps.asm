@@ -43,7 +43,6 @@
 .include "words/cells.asm"
 .include "words/to-body.asm"
 .include "words/comma-jmp.asm"
-.include "words/store-colon.asm"
 
 ; ----------------------------------------------------------------------
 ; CONTROL STRUCTURES 
