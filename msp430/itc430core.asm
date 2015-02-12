@@ -59,6 +59,7 @@ DOCOLON:
 docreate: ; -- a-addr   ; ROMable CREATE fetches address from PFA
 DOVAR:  ; -- a-addr     ; ROMable VARIABLE fetches address from PFA
 DOCON:  ; -- x          ; CONSTANT fetches cell from PFA to TOS
+PFA_DOVARIABLE:
         SUB #2,PSP      ; make room on stack
         MOV TOS,0(PSP)
         MOV @W,TOS      ; fetch from parameter field to TOS
@@ -67,6 +68,7 @@ DOCON:  ; -- x          ; CONSTANT fetches cell from PFA to TOS
 ; DOCREATE's action is for a table in RAM.
 ; DOROM is the code action for a table in ROM;
 ; it returns the address of the parameter field.
+
 DOROM:  ; -- a-addr     ; Table in ROM: get PFA into TOS
         SUB #2,PSP 
         MOV TOS,0(PSP)
