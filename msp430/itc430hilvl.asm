@@ -180,6 +180,7 @@
 .include "words/right-bracket.asm"
 .include "words/reveal.asm"
 .include "words/colon.asm"
+.include "words/colon-noname.asm"
 .include "words/semicolon.asm"
 .include "words/brackettick.asm"
 .include "words/postpone.asm"
