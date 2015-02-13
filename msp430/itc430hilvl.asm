@@ -178,7 +178,6 @@
 .include "words/recurse.asm"
 .include "words/left-bracket.asm"
 .include "words/right-bracket.asm"
-.include "words/hide.asm"
 .include "words/reveal.asm"
 .include "words/colon.asm"
 .include "words/semicolon.asm"
