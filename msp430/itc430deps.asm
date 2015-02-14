@@ -42,22 +42,3 @@
 .include "words/cellplus.asm"
 .include "words/cells.asm"
 .include "words/to-body.asm"
-.include "words/comma-jmp.asm"
-
-; ----------------------------------------------------------------------
-; CONTROL STRUCTURES 
-; These words allow Forth control structure words
-; to be defined portably.
-.include "words/comma-dest.asm"
-.include "words/store-dest.asm"
-
-; ----------------------------------------------------------------------
-; HEADER STRUCTURE 
-; The structure of the Forth dictionary headers (name, link, immediate 
-; flag, and "smudge" bit) does not necessarily differ across CPUs.  This
-; structure is not easily factored into distinct "portable" words; 
-; instead, it is implicit in the definitions of FIND and CREATE, and 
-; also in NFA>LFA, NFA>CFA, IMMED?, IMMEDIATE, HIDE, and REVEAL.
-; These words must be (substantially) rewritten if either the header 
-; structure or its inherent assumptions are changed.
-
