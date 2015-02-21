@@ -215,3 +215,13 @@ dodoes: ; -- a-addr     ; 3 for MOV #DODOES,PC
 .include "words/cscan.asm"
 .include "words/s-equal.asm"
 .include "words/i-to-d.asm"
+
+; ----------------------------------------------------------------------
+; ALIGNMENT AND PORTABILITY OPERATORS 
+; Many of these are synonyms for other words,
+; and so are defined as CODE words.
+.include "words/align.asm"
+.include "words/aligned.asm"
+.include "words/cellplus.asm"
+.include "words/cells.asm"
+.include "words/to-body.asm"

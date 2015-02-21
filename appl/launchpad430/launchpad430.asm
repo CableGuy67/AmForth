@@ -133,7 +133,6 @@ FLASHINFOAREA:
 .include "430g2553vecs.asm" ; note: sets .org for vector tables
         .org 0E000h         ; start address of CamelForth kernel
 .include "itc430core.asm"   ; code primitives
-.include "itc430deps.asm"
 .include "itc430hilvl.asm"
 .include "430g2553init.asm"
 
