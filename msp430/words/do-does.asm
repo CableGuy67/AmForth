@@ -8,6 +8,6 @@
 .set link = $
         DB      7,"(does>)"
         .align 16
-XDOES: DW      DOCOLON
+XT_DODOES: DW      DOCOLON
         DW XT_R_FROM,XT_GET_CURRENT,XT_NFA2CFA,XT_STOREI
         DW XT_EXIT
