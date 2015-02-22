@@ -170,7 +170,6 @@
 
 ; COMPILER ======================================
 .include "words/header.asm"
-.include "words/builds.asm"
 .include "words/create.asm"
 .include "words/do-create.asm"
 .include "words/do-does.asm"
@@ -224,7 +223,6 @@
 
 ; UTILITY WORDS AND STARTUP =====================
 .include "words/flaligned.asm"
-.include "words/marker.asm"
 .include "words/words.asm"
 .include "words/traverse-wordlist.asm"
 .include "words/name2string.asm"
