@@ -1,4 +1,4 @@
 ;Z 'source  -- a-addr      two cells: len, adrs
 ; 10 USER 'SOURCE
     HEADER(TICKSOURCE,7,"\'source",DOUSER)
-        DW 10
+        DW USER_TICKSOURCE
