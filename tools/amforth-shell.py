@@ -1254,7 +1254,7 @@ additional definitions (e.g. register names)
 	    flavor="avr8"
         self._search_list.insert(0,os.path.abspath(os.path.join(os.path.dirname(sys.argv[0]),"..", flavor, "lib")))
         self._search_list.insert(0,os.path.abspath(os.path.join(os.path.dirname(sys.argv[0]),"..", flavor, "devices",mcudef)))
-
+	sys.path.insert(1,os.path.join(os.path.dirname(sys.argv[0]),"..", flavor, "devices",mcudef))
         try:
           from device import MCUREGS
           self._amforth_regs=MCUREGS
