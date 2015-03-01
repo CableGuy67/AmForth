@@ -55,8 +55,6 @@
 .include "words/show-wordlist.asm"
 .include "words/words.asm"
 
-
-.include "words/is.asm"
 .include "words/dot-quote.asm"
 .include "words/squote.asm"
 .include "words/fill.asm"

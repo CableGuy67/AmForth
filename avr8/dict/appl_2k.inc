@@ -12,8 +12,6 @@
 .include "dict/interrupt.inc"
 
 .include "words/pick.asm"
-.include "words/is.asm"
-
 .include "words/dot-quote.asm"
 .include "words/squote.asm"
 
