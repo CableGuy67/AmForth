@@ -492,7 +492,7 @@ class AMForth(object):
     ]
     def __init__(self, serial_port="/dev/amforth", rtscts=False, speed=38400):
         self.debug = False
-        self.max_line_length = 80
+        self.max_line_length = 90
         self.progress_callback = self.print_progress
         self.editor = None
         self._serial_port = serial_port
@@ -1252,8 +1252,8 @@ additional definitions (e.g. register names)
 	    flavor="msp430"
 	else:
 	    flavor="avr8"
-        sys.path.insert(1,os.path.join(os.path.dirname(sys.argv[0]),"..", flavor, "devices",mcudef))
-        self._search_list.append(os.path.abspath(os.path.join(os.path.dirname(sys.argv[0]),"..", flavor, "lib")))
+        self._search_list.insert(0,os.path.abspath(os.path.join(os.path.dirname(sys.argv[0]),"..", flavor, "lib")))
+        self._search_list.insert(0,os.path.abspath(os.path.join(os.path.dirname(sys.argv[0]),"..", flavor, "devices",mcudef)))
 
         try:
           from device import MCUREGS
