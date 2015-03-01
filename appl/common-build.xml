@@ -30,7 +30,7 @@
 
     <target name="build-info">
         <tstamp>
-          <format property="touch.time" pattern="MMM dd yyyy HH:mm:ss"/>
+          <format property="touch.time" pattern="MMM dd, yyyy HH:mm:ss" locale="C"/>
         </tstamp>
 	<length property="touch.length" string="${touch.time}"/>
         <copy tofile="words/build-info.asm" file="../../common/words/build-info.tmpl" overwrite="true">
