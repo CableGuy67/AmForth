@@ -25,3 +25,6 @@ life.frt: Conveys game of life. Its very memory intensive, the example
 
 string-rec.frt: converts a " delimited string into a printable,
    compilable and postponable text object. It replaces the s" command.
+
+sierpinski.frt: simple fractal generator. Illustrates the use of
+   the amforth-shell to include library files.
