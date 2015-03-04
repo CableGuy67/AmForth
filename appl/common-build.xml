@@ -43,28 +43,9 @@
     </target>
 	
 
-    <macrodef name="git-revision">
-	<attribute name="output" />
-	<sequential>
-	    <exec executable="git" outputproperty="head" >
-		<arg value="rev-parse" />
-		<arg value="HEAD" />
-                <env key="LANG" value="C"/>
-	    </exec>
-	    <exec executable="git" outputproperty="dirty">
-		<arg value="diff" />
-		<arg value="--shortstat" />
-                <env key="LANG" value="C"/>
-	    </exec>
-	    <condition property="@{output}" value="${head}" else="${head} (dirty)">
-		<equals arg1="${dirty}" arg2="" />
-	    </condition>
-	</sequential>
-    </macrodef>
     <macrodef name="git-branch">
 	<attribute name="output" />
 	<sequential>
-
 	    <exec executable="git" outputproperty="branch" >
 		<arg value="rev-parse"/>
 		<arg value="--abbrev-ref"/>
