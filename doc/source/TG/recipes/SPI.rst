@@ -1,8 +1,8 @@
 .. _SPI:
 
-==============================
-Serial Peripheral Inteface SPI
-==============================
+===============================
+Serial Peripheral Interface SPI
+===============================
 
 The Serial Peripheral Interface is used for high-speed data exchange between
 the controller and some peripheral devices. There are several modes available.

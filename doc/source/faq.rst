@@ -10,6 +10,10 @@ Where do I find more information?
 There are 2 documentation files: a :ref:`User Guide`
 written by Karl Lunt and a more :ref:`Technical Guide`.
 
+A lot of information is in the cookbook. There you can find
+many small recipes on a specific topic. Most of them can be
+combined.
+
 More can be found in the
 `Maillinglist archive <http://sourceforge.net/mailarchive/forum.php?forum_name=amforth-devel>`_
 
@@ -104,8 +108,19 @@ Check the mailing list archive for other hints or (finally) ask there for help.
 What do all the words do?
 -------------------------
 
-amforth tries to implement the ans94 dialect of forth. The last public
+amforth tries to implement the Forth 2012 dialect of forth. The last public
 version is available at (e.g.) `Taygeta Archive <http://www.taygeta.com/forth/dpans.htm>`_
+
+I miss a word!
+--------------
+
+The default configuration includes most but not all words. A few
+words are written in assembly and can be found in the platform/words
+directory. The file names usually reflect the forth names. If you
+need on of those words, you'll have to edit your project files and
+recompile amforth. A lot more words are available as forth code.
+To use them you only need to send the forth code to the controller.
+The Amforth-Shell may become your friend for that.
 
 Can I embed amforth into other programs?
 ----------------------------------------

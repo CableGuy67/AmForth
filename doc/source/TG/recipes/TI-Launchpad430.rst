@@ -22,7 +22,7 @@ Connect your Launchpad to the USB port of your PC.
 It may take a while until the modem manager detects
 that it is not a device it can handle. Now open a 
 terminal (I use minicom) and set the serial port 
-settings: /dev/acm0, 38400 and 8N1 without flow 
+settings: `/dev/acm0`, 9600 and 8N1 without flow 
 control. Nothing's happening so far.
 
 Open another shell command window and navigate to
@@ -101,50 +101,46 @@ welcome strings from amforth due to some resets.
 Playing with the Launchpad
 --------------------------
 
-The > sign denotes the command prompt.
-Do not enter it.
-
 The LEDs can be used as follows
 
 .. code-block:: forth
 
-   > : red:on     1 33 csetb ;
-   > : green:on  64 33 csetb ;
-   > : red:off    1 33 cclrb ;
-   > : green:off 64 33 cclrb ;
+   : red:init   1 34 bm-set ;
+   : red:on     1 33 bm-set ;
+   : red:off    1 33 bm-clear ;
+   : green:init 64 34 bm-set ;
+   : green:on   64 33 bm-set ;
+   : green:off  64 33 bm-clear ;
 
-The compiled version is *much* faster than the
-sequence "1 33 csetb 1 33 cclrb" (watch the
-red flashes).
 
 Example for (machine) code (instead of 
 the forth code above)
 
 .. code-blocK:: forth
 
-   > code red:on  $D3D2 , $0021 , end-code
-   > code red:off $C3D2 , $0021 , end-code
-
+   code red:on  $D3D2 , $0021 , end-code
+   code red:off $C3D2 , $0021 , end-code
 
 There are many ways to wait, e.g. do other
-things while waiting. A simple approach is
-simply do nothing:
+things while waiting (`PAUSE`). A simple 
+approach is do nothing:
 
 .. code-blocK:: forth
  
-   > : ms 0 ?do 1ms loop ;                                                         
+   : ms 0 ?do 1ms loop ;                                                         
 
 Now let the red LED blink ONCE
 
 .. code-blocK:: forth
 
-   > : blink red:on 100 ms red:off 100 ms ;                                          
+   : blink red:on 100 ms red:off 100 ms ;                                          
 
-Test it! Now! Next is to let it blink until a 
-key is pressed
+Test it! Now! The compiled version is *much* 
+faster than the sequence "1 33 bm-set 1 33 bm-clear"
+(watch the red flashes). Next is to let it blink until 
+a key is pressed
 
 .. code-blocK:: forth
 
-   > : blink-forever begin blink key? until key drop ;                                        
+   : blink-forever begin blink key? until key drop ;                                        
 
-Enjoy!
