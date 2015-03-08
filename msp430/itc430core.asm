@@ -151,7 +151,6 @@ dodoes: ; -- a-addr     ; 3 for MOV #DODOES,PC
 .include "words/ic-store.asm"
 .include "words/i-fetch.asm"
 .include "words/ic-fetch.asm"
-
 .include "words/d-to-i.asm"
 
 ; ----------------------------------------------------------------------

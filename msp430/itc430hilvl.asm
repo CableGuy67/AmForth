@@ -172,6 +172,7 @@
 .include "words/header.asm"
 .include "words/create.asm"
 .include "words/do-create.asm"
+.include "words/wlscope.asm"
 .include "words/do-does.asm"
 .include "words/does.asm"
 .include "words/recurse.asm"
@@ -215,7 +216,6 @@
 .include "words/loop.asm"
 .include "words/plusloop.asm"
 .include "words/leave.asm"
-
 
 ; OTHER OPERATIONS ==============================
 .include "words/within.asm"

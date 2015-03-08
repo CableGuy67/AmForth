@@ -4,8 +4,10 @@
 ; Per init430f1611.s43, allocate 16 cells for user
 ; variables, followed by 30 cells for interrupt vectors.
     HEADER(UINIT,5,"uinit",DOROM)
+; CFG Area
 	DW 2,XT_REC_WORD,XT_REC_NUM,0,0
 	DW 1,XT_LATEST,0,0,0,0,0,0,0
+; USER Area
         DW 0,0,10,0     ; reserved,>IN,XT_BASE,STATE
         DW RAMDICT      ; DP
         DW 0,0          ; SOURCE init'd elsewhere
@@ -15,7 +17,7 @@
         DW 0            ; NEWEST not init'd
 	DW 0            ; HANDLER not init'd
 	DW lastenv      ; environment wordlist
-        DW XT_DOTS ; TURNKEY
+        DW XT_APPLTURNKEY   ; TURNKEY
 	DW 0,0,0        ; user variables TBD
 
     ; RAM interrupt vectors, 15 vectors of 2 cells each
