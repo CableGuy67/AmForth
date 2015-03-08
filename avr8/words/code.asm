@@ -12,6 +12,6 @@ PFA_CODE:
     .dw XT_DOCREATE
     .dw XT_REVEAL
     .dw XT_DP
-    .dw XT_1PLUS
+    .dw XT_ICELLPLUS
     .dw XT_COMMA
     .dw XT_EXIT
