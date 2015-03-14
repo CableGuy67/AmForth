@@ -1,5 +1,7 @@
 \ copy a string from flash to RAM
-
+\
+\ i->d on the msp430, and the same stack as cmove
+\
 : imove ( i-addr len ram -- )
   rot rot dup 1 and >r                  \ ( ram i-addr len ) ( r: odd )
   2/ over + dup >r                      \ ( ram i-addr i-addr' ) ( r: odd i-addr' )
