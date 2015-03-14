@@ -132,9 +132,8 @@
           .set  loop_cycles = (cycles / 4)      
           ldi   zl,low(loop_cycles)
           ldi   zh,high(loop_cycles)
-delay_loop:
           sbiw  Z, 1
-          brne  delay_loop
+          brne  pc-1
           .set  cycles = (cycles - (loop_cycles * 4))
         .endif
         .if (cycles > 0)
