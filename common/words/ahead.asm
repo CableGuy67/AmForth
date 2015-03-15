@@ -3,7 +3,7 @@
 ; do a unconditional branch
 
 .if cpu_msp430==1
-    HEADER(XT_AHEAD,5,"ahead",DOCOLON)
+    IMMED(XT_AHEAD,5,"ahead",DOCOLON)
 .endif
 
 .if cpu_avr8==1
