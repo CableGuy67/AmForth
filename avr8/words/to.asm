@@ -10,7 +10,7 @@ XT_TO:
     .dw DO_COLON
 PFA_TO:
     .dw XT_TICK
-    .dw XT_1PLUS  		; to body
+    .dw XT_ICELLPLUS  ; to body
     .dw XT_STATE
     .dw XT_FETCH
     .dw XT_DOCONDBRANCH
@@ -33,13 +33,13 @@ XT_DOTO:
 PFA_DOTO:
     .dw XT_R_FROM
     .dw XT_DUP
-    .dw XT_1PLUS
+    .dw XT_ICELLPLUS
     .dw XT_TO_R
     .dw XT_FETCHI
 PFA_TO1:
     .dw XT_DUP
-    .dw XT_1PLUS
-    .dw XT_1PLUS
+    .dw XT_ICELLPLUS
+    .dw XT_ICELLPLUS
     .dw XT_FETCHI
     .dw XT_EXECUTE
     .dw XT_EXIT
