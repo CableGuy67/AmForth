@@ -8,15 +8,20 @@ Initial Setup
 
 This guide makes a few assumtions. Your linux should be a fairly recent
 linux distribution. For this document an Ubuntu 12.04 LTS is used, 
-others should work in a similiar way.
+others should work in a similiar way. Most of the following is for AVR8.
+The MSP430 is only for the TI Launchpad and needs no further configuration
+(yet).
 
 First you'll have to install some packages with the package manager:
 
-* wine (any version)
+* wine (any version, only for AVR8
+* naken_asm (any version, only for MSP430)
 * ant or make (any version)
-* avrdude
+* avrdude (only for AVR8)
+* mspdebug (any version, only for MSP430)
 
-They may need quite a lot more packages, install all of them.
+They may need quite a lot more packages especially wine, install all of 
+them.
 
 Next download the amforth package and un-tar (or unzip) it 
 into a new, empty folder:
@@ -26,28 +31,23 @@ into a new, empty folder:
   > pwd
   .../amforth
   > ls
-  > tar xvf amforth-x.y.tgz
+  > tar xvfz amforth-x.y.tgz
   .. lots of files
   > ls
-  appl  core  doc  examples  lib  LICENSE.txt  readme.txt  
+  appl  common avr8 msp430  doc  examples  lib  LICENSE.txt  readme.txt  
   tools
-  > mkdir Atmel
   >
 
-Now you need access to an installed Atmel Studio 6 installation. Locate
-the program directory and copy the file :file:`avrasm2.exe` and the whole
-:file:`Appnotes2` directory into a newly created directory called 
-:file:`Atmel`:
+Now you need to download the Atmel-Assembler package from the same source
+as you downloaded the amforth sources. Extract in the in the amforth base
+directory. This will create a subdirectory :file:`avr8/Atmel` that contains
+the assembler (as an exe file) and the necessary include files. 
 
 .. code-block:: bash
 
-   > ls Atmel
+   > ls avr8/Atmel
    avrasm2.exe Appnotes2/
    >
-
-The :file:`Appnotes2` directory contains a lot of :file:`inc` files. 
-They are text files. There is no need to convert them from DOS to unix 
-text format. Take them as they are.
 
 Testing
 -------
@@ -60,8 +60,9 @@ test the assembler setup.
 .. code-block:: bash
 
    > make template.hex
-   wine ../../Atmel/avrasm2.exe -I ../../Atmel/Appnotes2 
-     -I ../../core -I ../../core/devices/atmega1284p -fI 
+   wine ../../avr8/Atmel/avrasm2.exe -I ../../avr8(Atmel/Appnotes2 
+     -I ../../avr8/devices/atmega1284p -I ../../avr8 ../../common 
+     -I ../../core/devices/atmega1284p -fI 
      -v0 -e template.eep.hex -l template.lst template.asm
    >
 
@@ -166,8 +167,8 @@ in the :file:`build.xml` find and change all occurances that look like
    mcu="atmega1284p"
 
 with the proper name. The mcu names are taken verbatim as file names
-in the :file:`Atmel/Appnotes2` directory and as directory names in the 
-:file:`core/devices` directory. Case is significant (should be almost 
+in the :file:`avr8/Atmel/Appnotes2` directory and as directory names in the 
+:file:`avr8/devices` directory. Case is significant (should be almost 
 always lower case).
 
 With these changes, rebuild the hex files as described above.
