@@ -7,7 +7,7 @@ User's Manual for Windows
 .. toctree::
    :maxdepth: 1
 
-by Karl Lunt for amforth v4.2
+by Karl Lunt for amforth v4.2 (updated for 5.4)
 
 
 Document contributed to the amforth project on SourceForge.net.
@@ -24,7 +24,7 @@ information on developing amforth applications in the Linux/Unix
 environment, consult the Web.
 
 amforth is a variant of the ans94 Forth language, designed for the AVR
-ATmega family of  microcontrollers (MCUs).  amforth v2.3 was developed
+ATmega family of  microcontrollers (MCUs).  amforth was developed
 and maintained by Matthias Trute; the amforth project is hosted and
 maintained on SourceForge.net (http://sourceforge.net/projects/amforth).
 
@@ -90,9 +90,11 @@ following subdirectory layout:
 
 .. code-block:: none
 
- c:\projects\amforth-4.2\              <-- main directory, holds your project files
+ c:\projects\amforth-x.y\              <-- main directory, holds your project files
                       \appl            <-- holds amforth systems for various MCUs
-                      \core            <-- holds source for amforth primitives
+                      \common          <-- holds common source for amforth primitives
+                      \avr8            <-- holds sources specific for avr atmega
+                      \msp430          <-- holds sources specific for msp430 
                       \doc             <-- holds amforth documentation
                       \examples        <-- holds small projects written in amforth
                       \lib             <-- holds libraries of Forth source files
@@ -112,13 +114,13 @@ The following sections describe the various subdirectories and files
 found in the initial installation of amforth.
 
 
-:file:`core\\words` subdirectory
+:file:`*\\words` subdirectory
 ................................
 
-The :file:`core\\words` subdirectory holds a large collection of amforth words,
-each defined in a separate :file:`.asm` file.  Each file in this subdirectory is
-a complete word definition, ready to assemble into the final
-application.    For example, here is the entire contents of equal.asm,
+The :file:`*\\words` subdirectory in the :file:`avr8`, :file:`msp430` and :file:`common`
+directory hold a large collection of amforth words, each defined in a separate :file:`.asm` 
+file.  Each file in this subdirectory is a complete word definition, ready to assemble 
+into the final application.    For example, here is the entire contents of :file:`equal.asm`,
 the source file for the word :command:`=`, which compares two values on the top of
 the stack and leaves behind a flag that is TRUE if the values match or
 FALSE if they don't.
@@ -151,12 +153,10 @@ need to define your own amforth words, you will need to follow the
 layout shown here to make sure your words properly integrate into the
 dictionary.
 
-
-
-:file:`core\\devices` subdirectory
+:file:`*\\devices` subdirectory
 ..................................
 
-The :file:`core\\devices` subdirectory holds several folders, each defining a
+The :file:`*\\devices` subdirectories hold several folders, each defining a
 target MCU.  For each target MCU defined, the associated folder holds
 four files..
 
@@ -191,10 +191,11 @@ existing amforth source files.
 (Add details on how the device.py file is generated.)
 
 
-:file:`core\\amforth.asm`
+:file:`*\\amforth.asm`
 .........................
 
-:file:`amforth.asm` contains a small amount of assembly language source that:
+:file:`amforth.asm` in the :file:`avr8` and :file:`msp430` contains a 
+small amount of assembly language source that:
 * defines the Forth inner interpreter,
 * declares the starting address of the Forth kernel,
 * allocates the memory for the final system,
@@ -218,85 +219,6 @@ provides a typical Forth interactive environment.  You can customize
 :file:`applturnkey.asm` as needed; see the section below on :file:`applturnkey.asm`.
 
 
-
-:file:`core\\dict_core.inc`
-...........................
-
-This file lists all amforth words that will be included in that part of
-amforth's dictionary stored in high flash memory (also known as the
-bootloader area or NRWW flash).  The following excerpt from the standard
-:file:`dict_core.inc` file shows how the file fits into the amforth system.
-
-.. code-block:: none
-
- ; this part of the dictionay has to fit into the nrww flash
- ; section together with the forth inner interpreter
- .include "words/int-on.asm"
- .include "words/int-off.asm"
- .include "words/int-restore.asm"
-
- .include "words/exit.asm"
- .include "words/execute.asm"
- .include "words/dobranch.asm"
- .include "words/docondbranch.asm"
-
- ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
- .include "words/doliteral.asm"
- .include "words/dovariable.asm"
- .include "words/doconstant.asm"
- .include "words/douser.asm"
- .include "words/fetch.asm"
- .include "words/store.asm"
- .include "words/cstore.asm"
- .include "words/cfetch.asm"
-
-Each line in :file:`dict_core.inc` is either a comment or an `.include` statement
-that adds an assembly language source file from the :file:`words/` folder.
-Thus, the words listed in this file and the order in which they appear
-define the high-memory portion of  your amforth project dictionary.
-
-In general, the words in dict_core.inc provide flash read and write
-capability, though other primitives, such as branch operations and the
-inner interpreter, may also be included.  The amforth design puts these
-flash read/write operations in high flash memory because the AVR MCU
-does not allow instructions in one area of flash memory to modify that
-same area of flash memory.  Putting the flash read/write primitives in
-high flash memory allows amforth words in low flash memory to use these
-primitives to modify the dictionary, which is kept in low flash.
-
-The amount of high flash memory varies based on the type of AVR device.
-Some small devices may have so little high flash memory that you won't
-be able to fit all of the words in this file into the available memory.
-Should this happen, you may be able to move some of the `.include`
-statements from this file into :file:`dict_minimum.inc` (see below).  Note,
-however, that this must be done carefully, to keep the flash read/write
-words (at least) in high flash memory.
-
-For nearly all applications, you can simply leave :file:`dict_core.inc`
-unchanged.
-
-
-:file:`core\\dict_minimum.inc`
-..............................
-
-This file was called :file:`dict_low.inc` in previous versions of amforth.  Like
-:file:`dict_core.inc`, it contains a series of .include statements that add a
-list of core amforth words to the final system.
-
-The words included in :file:`dict_minimum.inc` are stored in the target system
-in low flash memory.  The entire dictionary in low flash memory that is
-created when you build an amforth system becomes your application's
-dictionary.  The last word in :file:`dict_minimum.inc` will be the last word
-created in your application, assuming you don't add any other words as
-you build your application.
-
-You could, if you chose, edit :file:`dict_minimum.inc` to change the order or
-content of your application's dictionary.  However, this really should
-be avoided.  Instead, use :file:`dict_minimum.inc` as provided and add your own
-custom `.include` file that defines your application.  That file, named
-:file:`dict_appl.inc`, is discussed below.
-
-
 Developing your own amforth system
 ----------------------------------
 
@@ -311,7 +233,7 @@ these files; just copy and edit them to make your own files.
 
 The file :file:`dict_appl.inc` is created by you and contains those amforth
 words that you want to add to your application above and beyond the
-words added by :file:`dict_minimum.inc` and :file:`dict_core.inc`.
+words added by default.
 
 You create your own :file:`dict_appl.inc` file using a standard text editor,
 such as AVRStudio4's text editor. Here is a simple :file:`dict_appl.inc` file
@@ -326,39 +248,18 @@ Here is the :file:`dict_appl.inc` file I created for my sample amforth system.
  ; this dictionary contains optional words
  ; they may be moved to the core dictionary if needed
 
- .include "dict_minimum.inc"				; <-- required!
- .include "words/fill.asm"
- .include "words/d-2star.asm"
- .include "words/d-plus.asm"
- .include "words/d-minus.asm"
- .include "words/d-invert.asm"
- .include "words/udot.asm"
- .include "words/dot-s.asm"
-
- .include "words/dotstring.asm"
- .include "words/squote.asm"
-
- .include "words/words.asm"
-
- .include "words/edefer.asm"
- .include "words/rdefer.asm"
- .include "words/is.asm"
-
  .include "applturnkey.asm"
- .include "words/int-store.asm"
- .include "words/1ms.asm"
  .include "words/ms.asm"
-
- .include "dict_compiler.inc"
- .include "words/show-wordlist.asm"
- .include "devices/atmega328p/device.inc"		; <-- hard-coded path!
- .include "dict_usart.inc"
+ 
+ ; optionally 
+ .include "dict/compiler2.inc"
 
 
-Note that the first statement in my file includes the :file:`dict_minimum.inc`
-file.  Note also that I have hard-coded the path to the appropriate
-:file:`device.inc` file.  If you build your application for a different MCU, you
-will need to adjust this path.
+Note that none of the files in the :file:`core/dict` directory are included.
+This is done automatically depending on the free flash space. The only exception
+which can be added manually is the file :file:`dict/compiler2.inc`. Tnis file
+is automatically included for devices with 8KB NRWW flash memory. It is possible
+to add multiple ``.include`` statements, the file will only be included once.
 
 You are free to include whatever words from the :file:`words/` folder you want
 in your application.  Note that if you accidentally include a duplicate
@@ -382,20 +283,18 @@ file for my sample amforth system.
 
 .. code-block:: none
 
-	.include "dict_core.inc"				; <-- required!
 	.include "words/estore.asm"
 	.include "words/efetch.asm"
-
 	.include "words/istore.asm"
 	.include "words/istore_nrww.asm"
 	.include "words/ifetch.asm"
 
-Note that my file starts by including the :file:`dict_core.inc` file.  You can
-add additional words in your :file:`dict_appl_core.inc`, subject to space
-limitations in your MCU.  If you accidentally include words already
-included by other segments of the amforth system, you will get assembler
-errors for the duplicates; just remove the duplicates from your
-:file:`dict_appl_core.inc` file.
+This file looks almost the same for all current atmega devices. You'll need
+to change some entries only for devices from the atxmega line and some bigger 
+atmega types. There are examples in the :file:`appl` directory for this.
+If you accidentally include words already included by other segments of 
+the amforth system, you will get assembler errors for the duplicates; 
+just remove the duplicates from your :file:`dict_appl_core.inc` file.
 
 
 
@@ -453,9 +352,6 @@ assembler reports a warning that it had to add an zero-byte to pad out
 an even number of bytes.  (I could have also used the ,0 technique shown
 in the declaration of the applturnkey string at the top of the file.)
 
-
-
-
 The template file
 .................
 
@@ -480,84 +376,30 @@ system running on an Atmega328P MCU with a clock frequency of 16 MHz.
  ; changed since it is very important that the settings are in the
  ; right order
  ;
- ; first is to include the macros from the amforth
- ; directory
- .include "macros.asm"
-
- ; include the amforth device definition file. These
- ; files include the *def.inc from atmel internally.
- .include "devices/atmega328p/device.asm"		; <-- hard-coded path!
+ ; first is to include macros and default settings from the amforth
+ ; directory.
+ .include "preamble.inc"
 
  ; amforth needs two essential parameters
  ; cpu clock in hertz, 1MHz is factory default
  .equ F_CPU = 16000000
-
- ; terminal settings
- .set WANT_ISR_RX = 1 ; interrupt driven receive
- .set WANT_ISR_TX = 0 ; send slowly but with less code space
-
- ; initial baud rate of terminal
+ ; and the actual usart port.
  .include "drivers/usart_0.asm"
- .equ BAUD = 38400
-
- .if WANT_ISR_RX == 1
-  .set USART_B_VALUE = (1<<TXEN0) | (1<<RXEN0)| (1<<RXCIE0)
- .else
-  .set USART_B_VALUE = (1<<TXEN0) | (1<<RXEN0)
- .endif
-
- .equ USART_C_VALUE = (3<<UCSZ00)
-
- .equ TIBSIZE  = $64    ; ANS94 needs at least 80 characters per line
- .equ APPUSERSIZE = 10  ; size of application specific user area in bytes
-
- ; addresses of various data segments
- .set here = ramstart           ; start address of HERE, grows upward
- .set rstackstart = RAMEND      ; start address of return stack, grows downward
- .set stackstart  = RAMEND - 80 ; start address of data stack, grows downward
- .equ amforth_interpreter = max_dict_addr ; the same value as NRWW_START_ADDR
- ; change only if you know what to you do
- .equ NUMWORDLISTS = 8 ; number of word lists in the searh order, at least 8
-
- .equ want_fun = 1 ; in case of an error out print an additional line with an caret indicating the error position
 
  ; include the whole source tree.
  .include "amforth.asm"
 
 
-Your template file must include the file :file:`macros.asm`, and this should be
-the first statement (except for comments, of course) in your template
-file.  The file :file:`macros.asm` contains a set of macros specific to amforth,
-used to simplify the coding of the amforth words and underlying assembly
-language routines.
-
-Next, your template file should include the :file:`device.asm` file specific to
-your target hardware.  This file is found in the :file:`core\\devices\\<target>`
-folder that matches your target hardware.  Note that in the above
-sample, the path to the :file:`device.asm` file is hard-coded in the `.include`
-statement.  If you are using a different MCU, you will need to edit this
-`.include` statement.
-
-Next, your template file should declare a key equate required by
+Your template file should declare a key equate required by
 amforth.  The equate `F_CPU` defines the oscillator frequency, in Hertz,
 of your target hardware and is expressed as a long integer.  The example
 shown above shows the target system uses an 16 MHz clock; F_CPU is
 declared as 16000000.
 
-Next, you need to set a couple of equates defining how your target
-hardware will use USART0.  As shown, my amforth system will use receive
-interrupts for incoming characters ( `WANT_ISR_RX = 1`) but will poll when
-sending characters (`WANT_ISR_TX = 0`).  For your first system, leave
-these as defined.  After you get more skilled in amforth, you can change
-these equates to tweak performance.
-
 Next, your template file should include the assembly source file
 supporting the USART you intend to use as a console on your target
 hardware.  The example above uses USART0 and includes the appropriate
-device include file.  The equates BAUD, USART_B_VALUE, and USART_C_VALUE
-defines the characteristics of the USART that will ultimately serve as
-the console on your target hardware.  You may need to alter these values
-in your own template file to match your target.
+device include file.  
 
 In general, the remaining equate values (`.equ` and `.set`) in the template
 file will be calculated automatically, based on previously defined
@@ -574,7 +416,7 @@ Setting up AVRStudio4
 
 Begin by creating a new assembly-language project in AVRStudio4.  For my
 sample, I named this project myproj and created it in the
-:file:`c:\\projects\\amforth-4.2` folder.
+:file:`c:\\projects\\amforth-x.y` folder.
 
 I then created the four above files in my project folder (the folder
 holding :file:`myproj.aps`).
@@ -635,25 +477,11 @@ the path you added in the Additional include path field.  Edit the
 Additional parameters field to include the following text, all entered
 on a single line::
 
- -I C:\projects\amforth-4.2\core -I C:\projects\amforth-4.2\core\devices\atmega328p
+ -I C:\projects\amforth-x.y\core -I C:\projects\amforth-4.2\core\devices\atmega328p
 
 Note that the above entry is for my project; adjust as needed for your
 file paths and target MCU.  Be sure to include the single space after
 each `-I` as shown!
-
-With this change in place, you can now remove the hard-coded paths in
-your template file and your :file:`dict_appl.inc` file.  For example, in my
-:file:`myproj.asm` template file above, I had the line::
-
- .include "devices/atmega328p/device.asm"		; <-- hard-coded path!
-
-After adding the above change to the  Additional parameters field, this line becomes::
-
-	.include "device.asm"
-
-Make a similar change in :file:`dict_appl.inc` and reassemble.
-
-
 
 Revision History
 ----------------
@@ -666,4 +494,6 @@ Revision History
 | 4.2.1   | Karl Lunt      | Minor changes to introduction            |
 +---------+----------------+------------------------------------------+
 | 4.2.2   | Matthias Trute | Reformatted with ReST                    |
++---------+----------------+------------------------------------------+
+| 4.2.3   | Matthias Trute | Update for include file changes          |
 +---------+----------------+------------------------------------------+

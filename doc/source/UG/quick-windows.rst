@@ -23,8 +23,9 @@ Uno.
 Prerequisites
 -------------
 
-#. Download and installation of the free version of Atmel Studio 6.1 on a
-   Windows computer
+#. Download and install the and installation of the free version of Atmel Studio 6.1 on a
+   Windows computer *OR* download and unpack the Atmel Assembler package from the
+   amforth file download serice pages.
 #. Being comfortable running a command prompt in the Windows environment
 
 Process
@@ -33,18 +34,19 @@ Process
 #. Create a project directory into which we are going to copy a bunch of
    files. I chose :file:`c:\\amforth` for my project directory.
 
-#. Copy avrasm2.exe and the complete include directory from
-   :file:`c:\\Program Files\\Atmel\\Atmel Toolchain\\AVR Assembler\\Native\\2.1.39.1005\\avrassembler`
-   into the project directory
-
 #. Uncompress and un tar the amforth-5.1 distribution file
-   (:file:`amforth-5.1.tar.gz`) into the project directory
+   (:file:`amforth-5.3.tar.gz`) into the project directory
+
+#. If you installed the Atmel Studio locate and copy the avrasm2.exe and the 
+   complete include directory from e.g. :file:`c:\\Program Files\\Atmel\\Atmel
+   Toolchain\\AVR Assembler\\Native\\2.1.39.1005\\avrassembler` into the project 
+   directory
 
 #. Go into the :file:`amforth-5.1\\appl\\arduino` directory of the distribution and
    copy :file:`uno.asm`, :file:`dict_appl_code.inc`, :file:`dict_appl.inc` and the 
    :file:`words` directory into the project directory.
 
-#. Go into the :file:`amforth-5.1\\core\\devices` directory and find the directory
+#. Go into the :file:`amforth-5.1\\avr8\\devices` directory and find the directory
    named with the processor you are going to use (in my case atmega328p) and 
    from that directory copy :file:`device.asm` and :file:`device.inc` into the
    project directory.
@@ -54,7 +56,7 @@ Process
 .. code-block:: bat
 
    REM batch file for assembling amforth on windows
-   avrasm2.exe -fI -o uno.hex -e uno.eep -l uno.lst -I .\ -I amforth-5.1\core -I include -v0 uno.asm
+   avrasm2.exe -fI -o uno.hex -e uno.eep -l uno.lst -I .\ -I amforth-5.1\common -I amforth-5.1\avr8 -I include -v0 uno.asm
 
 I named my bat file make.bat.
 
@@ -64,9 +66,11 @@ as follows:
 .. code-block:: none
 
   c:\amforth          - your project directory
-    amforth-5.1       - the uncompressed and untarred amforth-5.1 distribution
+    amforth-5.3       - the uncompressed and untarred amforth-5.1 distribution
       appl
-      core
+      avr8
+      common
+      msp430
       doc
       . . .
       include           - copied from c:\Program Files\Ateml\AtmelToolchain\AVR Assembler\Native\2.1.39.1005\avrassembler
