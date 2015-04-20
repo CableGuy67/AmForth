@@ -61,7 +61,7 @@ test the assembler setup.
 
    > make template.hex
    wine ../../avr8/Atmel/avrasm2.exe -I ../../avr8(Atmel/Appnotes2 
-     -I ../../avr8/devices/atmega1284p -I ../../avr8 ../../common 
+     -I ../../avr8/devices/atmega1284p -I ../../avr8 -I ../../common 
      -I ../../core/devices/atmega1284p -fI 
      -v0 -e template.eep.hex -l template.lst template.asm
    >

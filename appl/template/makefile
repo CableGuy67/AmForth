@@ -12,7 +12,7 @@ TARGET=template
 # _always_ use the trunk.
 
 #AMFORTH=../../releases/3.6
-AMFORTH=../../avr8
+AMFORTH=../..
 
 # the MCU should be identical to the device
 MCU=atmega1284p
@@ -26,7 +26,7 @@ EFUSE=0xnn
 CONSOLE=/dev/ttyUSB0
 
 # directories
-DIR_ATMEL=../../Atmel
+DIR_ATMEL=../../avr8/Atmel
 
 # programms / flags
 USB=-c avr911  -P /dev/ttyUSB3
@@ -36,13 +36,11 @@ BURNER=$(USB)
 AVRDUDE=avrdude
 AVRDUDE_FLAGS=-q $(BURNER) -p $(MCU)
 
-AVRA=avra -I $(DIR_ATMEL)/Appnotes2
-
 AVRASM=wine $(DIR_ATMEL)/avrasm2.exe -I $(DIR_ATMEL)/Appnotes2
 
 # ----------------------------------------------------------
 
-INCLUDE=-I $(AMFORTH) -I $(AMFORTH)/devices/$(MCU)
+INCLUDE=-I $(AMFORTH)/avr8/devices/$(MCU) -I $(AMFORTH)/avr8 -I $(AMFORTH)/common
 
 default:  $(TARGET).hex
 
@@ -52,8 +50,7 @@ erase:
 install: $(TARGET).hex
 	$(AVRDUDE) $(AVRDUDE_FLAGS)  -e -U flash:w:$(TARGET).hex:i -U eeprom:w:$(TARGET).eep.hex:i
 
-$(TARGET).hex: $(TARGET).asm $(AMFORTH)/*.asm $(AMFORTH)/words/*.asm $(AMFORTH)/devices/$(MCU)/*.asm
-#	$(AVRA) $(INCLUDE) --listmac -l $(TARGET).lst -m $(TARGET).map $(TARGET).asm
+$(TARGET).hex: $(TARGET).asm words/*.asm $(AMFORTH)/common/words/*.asm $(AMFORTH)/avr8/words/*.asm $(AMFORTH)/avr8/devices/$(MCU)/*.asm
 	$(AVRASM) $(INCLUDE) -fI -v0 -e $(TARGET).eep.hex -l $(TARGET).lst $(TARGET).asm
 
 $(TARGET).back:
