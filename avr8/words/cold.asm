@@ -13,6 +13,15 @@ PFA_COLD:
     clr zerol
     clr zeroh
     out_ MCUSR, zerol
+    ; clear RAM
+    ldi zl, low(ramstart)
+    ldi zh, high(ramstart)
+clearloop:
+    st Z+, zerol
+    cpi zl, low(sram_size+ramstart)
+    brne clearloop
+    cpi zh, high(sram_size+ramstart)
+    brne clearloop
     ; init first user data area
     ; allocate space for User Area
 .dseg
