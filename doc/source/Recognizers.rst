@@ -19,7 +19,7 @@ discussed earlier.
 * Recent developments were presented at the `Euroforth conference 2012 <http://www.complang.tuwien.ac.at/anton/euroforth/ef12/papers/paysan-recognizers-ho.pdf>`__
 
 The `1st formal RFD </pr/Recognizer-rfc.pdf>`__  (3.10.2014) is available.
-A `Draft of Version 2 </pr/Recognizer-rfc-B.pdf>`__ (9.1.2015) is
+A `Draft of Version 2 </pr/Recognizer-rfc-B.pdf>`__ (9.5.2015) is
 currently beeing worked on. It incorporates the results of the discussions
 and some more ideas.
 
