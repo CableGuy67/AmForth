@@ -18,7 +18,7 @@ terminal.
 
 The command language is `Forth <http://www.forth.org/tutorials.html>`_.
 AmForth implements an almost compatible `Forth 2012 
-<http://http://www.forth200x.org/documents/html3/>`_ indirect 
+<http://www.forth200x.org/documents/html3/>`_ indirect 
 threading 16bit Forth. 
 
 AmForth needs 8 to 12 KB Flash memory, 80 bytes EEPROM, and 200 bytes
@@ -32,8 +32,15 @@ released but will be part of the next release.
 See the code section at Sourceforge to get the
 `most recent sources <http://sourceforge.net/p/amforth/code/HEAD/tree/trunk/>`__
 
-* core(MSP430): new :command:`:noname` and the :command:`defer` group of
-  commands.
+* lib: :command:`for` and :command:`next`. The implementation provides the :command:`i`
+  as well.
+* core(AVR8): clear all RAM at :command:`cold`.
+
+25.3.2015: release 5.8
+......................
+
+* core(MSP430): new :command:`:noname` and the :command:`defer` and :command:`value` 
+  groups of commands.
 * core(All): words with the same name do the same (mostly).
 * core(AVR8): introduce :command:`<builds`. Together with :command:`does>` saves 
   one flash erase cycle and makes the source work on the MSP430 as well.
@@ -79,6 +86,7 @@ More To Read
    UG/amforth_user
    faq
    TG/TG
+   Projects/index
    TG/Cookbook
    Recognizers
    TG/refcard
