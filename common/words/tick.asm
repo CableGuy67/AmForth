@@ -17,12 +17,14 @@ XT_TICK:
 PFA_TICK:
 .endif
     .dw XT_PARSENAME
-    .dw XT_FINDNAME
-    .dw XT_ZEROEQUAL
+    .dw XT_DORECOGNIZER
+    .dw XT_R_WORD
+    .dw XT_EQUAL
     .dw XT_DOCONDBRANCH
     DEST(PFA_TICK1)
+    .dw XT_DROP
+    .dw XT_EXIT
+PFA_TICK1:
     .dw XT_DOLITERAL
     .dw -13
     .dw XT_THROW
-PFA_TICK1:
-    .dw XT_EXIT
