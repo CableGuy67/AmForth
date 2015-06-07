@@ -16,8 +16,6 @@ XT_BRACKETTICK:
     .dw DO_COLON
 PFA_BRACKETTICK:
 .endif
-    .dw XT_COMPILE
-    .dw XT_DOLITERAL
     .dw XT_TICK
-    .dw XT_COMMA
+    .dw XT_LITERAL
     .dw XT_EXIT
