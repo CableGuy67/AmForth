@@ -47,3 +47,12 @@ $48 constant EE_ORDERLISTLEN
 
 \ replace rec:word with rec:name
 \ everthing else should work as before
+
+\ redefine '
+: ' parse-name do-recognizer r:name = 
+    if
+      name>interpret
+    else
+      -13 throw
+    then
+;
