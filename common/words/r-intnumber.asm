@@ -6,8 +6,6 @@
 
 .if cpu_msp430==1
     XT_2LITERAL EQU XT_LITERAL
-    HEADLESS(XT_NOOP,DOCOLON)
-    DW XT_EXIT
 .endif
 
 .if cpu_msp430==1
