@@ -17,25 +17,21 @@ XT_INTERPRET:
 .endif
 PFA_INTERPRET:
     .dw XT_PARSENAME ; ( -- addr len )
-    .dw XT_QDUP   ; ( -- addr len len | addr 0)
+    .dw XT_DUP   ; ( -- addr len flag)
     .dw XT_DOCONDBRANCH
     DEST(PFA_INTERPRET2)
-    .dw XT_DORECOGNIZER
-
-    .dw XT_STATE
-    .dw XT_FETCH
-    .dw XT_DOCONDBRANCH
+      .dw XT_DORECOGNIZER
+      .dw XT_STATE
+      .dw XT_FETCH
+      .dw XT_DOCONDBRANCH
     DEST(PFA_INTERPRET1)
-      .dw XT_1PLUS   ; we need the compile action
-    .if cpu_msp430==1
-      .dw XT_1PLUS
-    .endif
+      .dw XT_ICELLPLUS   ; we need the compile action
 PFA_INTERPRET1:
-    .dw XT_FETCHI
-    .dw XT_EXECUTE
-    .dw XT_QSTACK
+      .dw XT_FETCHI
+      .dw XT_EXECUTE
+      .dw XT_QSTACK
     .dw XT_DOBRANCH
     DEST(PFA_INTERPRET)
 PFA_INTERPRET2:
-    .dw XT_DROP
+    .dw XT_2DROP
     .dw XT_EXIT
