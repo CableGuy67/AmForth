@@ -4,6 +4,7 @@
 .include "words/noop.asm"
 .include "words/unused.asm"
 .include "words/to.asm"
+.include "words/i-cellplus.asm"
 .include "words/icompare.asm"
 .include "words/star.asm"
 .include "words/j.asm"

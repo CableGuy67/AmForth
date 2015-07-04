@@ -97,3 +97,4 @@
 .include "words/space.asm"
 .include "words/spaces.asm"
 .include "words/s-to-d.asm"
+.include "words/to-body.asm"

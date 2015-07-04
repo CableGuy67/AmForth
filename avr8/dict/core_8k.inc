@@ -146,6 +146,7 @@
 .include "words/unused.asm"
 
 .include "words/to.asm"
+.include "words/i-cellplus.asm"
 
 .include "words/edefer-fetch.asm"
 .include "words/edefer-store.asm"
@@ -177,3 +178,4 @@
 .include "dict/compiler2.inc"
 .include "words/bounds.asm"
 .include "words/s-to-d.asm"
+.include "words/to-body.asm"

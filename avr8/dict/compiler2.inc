@@ -17,5 +17,4 @@
 .include "words/end-code.asm"
 .include "words/marker.asm"
 .include "words/postpone.asm"
-.include "words/i-cellplus.asm"
 .endif
