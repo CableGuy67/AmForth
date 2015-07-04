@@ -18,12 +18,7 @@ PFA_COMPILE:
 .endif
     .dw XT_R_FROM
     .dw XT_DUP
-.if cpu_msp430==1
-    .dw XT_CELLPLUS
-.endif
-.if cpu_avr8==1
-    .dw XT_1PLUS
-.endif
+    .dw XT_ICELLPLUS
     .dw XT_TO_R
     .dw XT_FETCHI
     .dw XT_COMMA
