@@ -7,6 +7,7 @@
 ; CFG Area
 	DW 2,XT_REC_WORD,XT_REC_NUM,0,0
 	DW 1,XT_LATEST,0,0,0,0,0,0,0
+	DW XT_NOOP      ; PAUSE vector
 ; USER Area
         DW 0,0,10,0     ; reserved,>IN,XT_BASE,STATE
         DW RAMDICT      ; DP

@@ -17,8 +17,11 @@ PFA_DODEFER:
 PFA_DODEFER1:
     call_ DO_DODOES
     .dw XT_DUP
-    .dw XT_1PLUS
+    .dw XT_ICELLPLUS
     .dw XT_FETCHI
     .dw XT_EXECUTE 
     .dw XT_EXECUTE
     .dw XT_EXIT
+
+; : (defer) <builds does> dup i-cell+ @i execute execute ;
+

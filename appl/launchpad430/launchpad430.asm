@@ -1,6 +1,7 @@
 ; ----------------------------------------------------------------------
-; CamelForth for the Texas Instruments MSP430 
+; Forth for the Texas Instruments MSP430 
 ; (c) 2009,2014 Bradford J. Rodriguez.
+; (c) 2015 Matthias Trute
 ;
 ; This program is free software; you can redistribute it and/or modify
 ; it under the terms of the GNU General Public License as published by
@@ -15,16 +16,6 @@
 ; You should have received a copy of the GNU General Public License
 ; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ;
-; Commercial inquiries should be directed to the author at 
-; 115 First St., #105, Collingwood, Ontario L9Y 4W3 Canada
-; or via email to bj@camelforth.com
-; ----------------------------------------------------------------------
-; camel430g2553.asm - build file for naken_asm
-; B. Rodriguez  1 Mar 2014
-;
-; Revision History
-;  1 mar 2014 bjr - adapted for naken_asm from init430g2553.s43.
-; 27 nov 2012 bjr - moved UP to just below UAREA
 
 .msp430
 
@@ -42,7 +33,7 @@
 ; C000-FFFF = 16KB flash ROM 
 ;   FFE0-FFFF = interrupt vectors
 ;
-; CamelForth REVISED memory map (puts UAREA last, before dictionary):
+; Forth REVISED memory map (puts UAREA last, before dictionary):
 ;   UAREA-128h  HOLD area, 20 bytes, grows down from end
 ;   UAREA-114h  PAD buffer, 82 bytes, must follow HOLD area
 ;   UAREA-114h  TIB Terminal Input Buffer, 82 bytes, overlaps PAD
@@ -51,7 +42,7 @@
 ;   UP          User Pointer, 2 bytes
 ;   CFG...      Configuration Stack Area
 ;   UAREA       User area, 32 bytes
-; The User Area and Configuration Stack Area spaces will be restored from 
+; The User Area and Configuration Area spaces will be restored from 
 ; Info ROM, so they should total 128 bytes.
 ;
 ; Note all must be word-aligned.
@@ -77,7 +68,7 @@ MAINSEG    equ 512
 INFOSEG    equ 64
 INFO_SIZE  equ 128    ; bytes
 
-UAREA_SIZE  equ 36        ; bytes, see uinit.asm
+UAREA_SIZE  equ 34        ; bytes, see uinit.asm
 RSTACK_SIZE equ 40        ; cells
 PSTACK_SIZE equ 40        ; cells
 ; following only required for terminal tasks
@@ -104,11 +95,13 @@ RSTACK: ; end of return stack area
 
 UP:     DS16    1             ; User Pointer, set in device init.
 RAMINFOAREA:                  ; 128 byte copy from INFO flash or uinit defaults
-                              ; configuration stacks
+                              ; configuration stacks. extreme care has to be taken here
 CFG_RECOGNIZERLISTLEN:        ; RECOGNIZER stack
 	DS16 5                ; place for the count word and 4 slots
 CFG_ORDERLISTLEN:             ; ORDER stack
 	DS16 9                ; place for the count word and 8 slots
+RAM_PAUSE:                    ; some actions
+	DS16 1
                               ; USER area starts here
 UAREA:  DS8    UAREA_SIZE     ; 
 RAMDICT:                      ; start value for DP/HERE.
@@ -131,14 +124,20 @@ FLASHINFOAREA:
 ; SOURCE FILES
 
 .include "430g2553vecs.asm" ; note: sets .org for vector tables
-        .org 0E000h         ; start address of CamelForth kernel
+        .org 0E000h         ; start address of Forth kernel
+.include "words/do-defer.asm"
 .include "itc430core.asm"   ; code primitives
 .include "itc430hilvl.asm"
 .include "430g2553init.asm"
-
-.include "words/dump.asm"
 .include "words/turnkey.asm"
+.include "words/to.asm"
+.include "words/defer-fetch.asm"
+.include "words/defer-store.asm"
+.include "words/noop.asm"
+.include "words/rdefer-fetch.asm"
+.include "words/rdefer-store.asm"
 
+.include "words/pause.asm"
 ; ----------------------------------------------------------------------
 ; END OF FORTH KERNEL
 

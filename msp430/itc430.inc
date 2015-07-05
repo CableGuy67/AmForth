@@ -124,6 +124,15 @@ asmname: DW      action
 asmname: DW     DOCOLON
 .endm
 
+.macro DEFER(asmname,length,litname)
+        DW      link
+        DB      0FFh       ; not immediate
+.set link = $
+        DB      length
+        DB      litname
+        .align 16
+asmname: DW      DODEFER
+.endm
 
 .include "compat.inc"
 .include "user.inc"
