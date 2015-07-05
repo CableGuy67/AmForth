@@ -17,7 +17,9 @@ PFA_DOVALUE:
 PFA_DOVALUE1:
     call_ DO_DODOES
     .dw XT_DUP
-    .dw XT_1PLUS
+    .dw XT_ICELLPLUS
     .dw XT_FETCHI
     .dw XT_EXECUTE
     .dw XT_EXIT
+
+; : (value) <builds does> dup icell+ @i execute ;
