@@ -1,9 +1,5 @@
 
-HEADER(XT_TURNKEY,7,"turnkey",DOCOLON)
-  .dw XT_UP_FETCH
-  .dw XT_DOLITERAL
-  .dw USER_TURNKEY
-  .dw XT_PLUS
-  .dw XT_FETCH
-  .dw XT_EXECUTE
-  .dw XT_EXIT
+DEFER(XT_TURNKEY,7,"turnkey")
+  .dw RAM_TURNKEY
+  .dw XT_RDEFERFETCH
+  .dw XT_RDEFERSTORE
