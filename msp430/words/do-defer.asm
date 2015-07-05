@@ -6,9 +6,8 @@ HEADER(XT_DODEFER,7,"(defer)",DOCOLON)
     .dw DODEFER
     .dw XT_EXIT
 
-HEADLESS(XT_DODODEFER,DODEFER)
 DODEFER:
-    .dw 04030h, dodoes ; same as got compiled in DOES>
+    .dw 04030h, dodoes ; that compiles DOES>
     .dw XT_DUP
     .dw XT_ICELLPLUS
     .dw XT_FETCHI
