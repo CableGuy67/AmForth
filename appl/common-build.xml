@@ -16,18 +16,6 @@
 	    </delete>
 	</target>
 
-    <target name="git-info">
-	<git-branch output="branch" />
-	<length property="length" string="${branch}"/>
-        <copy tofile="words/git-info.asm" file="../../common/words/git-info.tmpl" overwrite="true">
-          <filterset>
-            <filter token="BRLEN" value="${length}"/>
-            <filter token="BRNAME" value="${branch}"/>
-          </filterset>
-        </copy>
-	
-    </target>
-
     <target name="build-info">
         <tstamp>
           <format property="touch.time" pattern="MMM dd, yyyy HH:mm:ss" locale="C"/>
@@ -41,7 +29,6 @@
         </copy>
 	
     </target>
-	
 
     <macrodef name="git-branch">
 	<attribute name="output" />

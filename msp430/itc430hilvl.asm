@@ -260,3 +260,12 @@
 .include "words/search-wordlist.asm"
 .include "words/num-constants.asm"
 .include "words/save.asm"
+
+.include "words/turnkey.asm"
+.include "words/to.asm"
+.include "words/defer-fetch.asm"
+.include "words/defer-store.asm"
+.include "words/noop.asm"
+.include "words/rdefer-fetch.asm"
+.include "words/rdefer-store.asm"
+.include "words/do-value.asm"
