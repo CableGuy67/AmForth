@@ -6,11 +6,13 @@ General Code Examples
 
    Arrays
    Blocks
+   Builds
    Create-Does
    Deferred-Words
    Disable-Echo
    Macros
    Multitasking
+   Pitfalls
    Power-Save
    Redirect-IO
    Reset

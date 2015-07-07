@@ -76,6 +76,24 @@ Writing to any address is just as simple:
          17  ok
          >
 
+What means ``??``
+-----------------
+
+At the terminal prompt the ``??`` means that an error occured. If 
+it is displayed, the normal interpreter command prompt got active.
+Interrupts will continue to work. It is followed by at least one 
+number, if the error occures during a commoand session a second 
+number may appear.
+
+The first number is the error code. Technically it is a negative
+number. The numbers are in fact an exception code, that is not
+handled. The standard systems uses a few of them. 
+
+The second number is the position in the current input line at
+which the error has been detected. E.g. when the error code is
+-13 (not found), the second number points to the last character
+of the word that could not be found.
+
 There are no hexfiles in the distribution archive!
 --------------------------------------------------
 

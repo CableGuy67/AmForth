@@ -32,9 +32,14 @@ released but will be part of the next release.
 See the code section at Sourceforge to get the
 `most recent sources <http://sourceforge.net/p/amforth/code/HEAD/tree/trunk/>`__
 
-* lib: :command:`for` and :command:`next`. The implementation provides the :command:`i`
-  as well.
+* lib: :command:`for` and :command:`next`. The :command:`i` and :command:`j`
+  can be used as well.
 * core(AVR8): clear all RAM at :command:`cold`.
+* core(MSP430): :command:`DEFER` and :command:`VALUE` were missing in release 
+  5.8. :command:`pause`  and :command:`turnkey` using them (RAM based, save-able
+  to info flash).
+* core(All): ``'`` uses the recognizer stack.
+* core(ALL): Fix regression in :command:`literal` (broke e.g. quotations)
 
 25.3.2015: release 5.8
 ......................

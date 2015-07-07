@@ -12,7 +12,7 @@ is only one way to change it: use of :command:`TO`.
 
 .. code-block:: forth
 
-   > 42 value answer
+   > 42 Evalue answer
     ok
    > answer .
     42 ok
@@ -30,14 +30,17 @@ double cell data, :command:`FVALUE` for floating point numbers and
 the single cell sized :command:`VALUE` itself.  They all use the same
 :command:`TO` command to change their content. This requires 
 a non-trivial implementation to achieve it. Amforth uses a simple data 
-structure for each value in the dictionary (flash). The first element contains 
+structure for each value in the dictionary (flash), almost identical to the
+one used by :command:`defer`. The first element contains 
 the address of the actual data. This first field is followed by 2 execution 
 tokens (XT) for the read and write operations. This makes the runtime operations 
 fairly easy. The read operation (the 2nd element in the data structure) is 
 called with the address of the 1st element. It is expected that the read 
 operation leaves the data on the data stack. Similiar the write operation. 
 The :command:`TO` command simply executes the write execution token (the 
-3rd element).
+3rd element). The similarities between values and defers goes as far as
+:command:`to` and :command:`is` are in fact identical and can be used with 
+both.
 
 This generic approach allows not only single cell data in EEPROM but 
 any data everwhere. The following examples illustrate 
@@ -200,9 +203,5 @@ word) makes use of :ref:`Quotations`:
 
 This value stores a double cell information in RAM. The read and write
 methods are embedded as quotations.
-
-.. note::
-
-   This recipe requires amforth version 5.2 and newer.
 
 .. seealso:: :ref:`I2C Values`

@@ -11,48 +11,88 @@ effect is entirely that of the stored execution token code. The basic
 specification is at `www.forth200x.org/deferred.html 
 <http://www.forth200x.org/deferred.html>`_ which is a must-read now.
 
-AmForth has 3 different variants of :command:`defer` which differ 
-in the place, where the execution is stored: :command:`Edefer` stores in 
-EEPROM, :command:`Rdefer` stores in RAM and :command:`Udefer` stores 
-in the USER area. The definition of a deferred word does not set a useful 
-execution token. Using a deferred word without giving it a XT will crash 
-the system. After the definition of the words, the further handling is 
-always the same: :command:`IS` stores the execution token into the 
-deferred word. Further the standard words :command:`defer@` and 
-:command:`defer!` read and write the execution token regardless of 
-the exact storage location.
+Amforth supports different locations to store the execution
+token. The AVR8 provides  3 different variants: :command:`Edefer` stores 
+in EEPROM, :command:`Rdefer` stores in RAM and :command:`Udefer` stores 
+in the USER area. The MSP430 has only RAM (Rdefer) since flash is
+not changeable, except the info flash area.
 
-AmForth uses the deferred words technique already internally:
+Depending on the storage location, different initalization actions 
+may be required at startup. Only the AVR8 EEPROM based defers work
+without further actions and every changes are kept likewise.
 
-* :command:`turnkey` is an EEPROM based deferred word that is executed
-  from :command:`QUIT` usually during startup and reset.
+Assigning a new execution token uses the command :command:`IS`
+for all defers, regardless of the actual location used.
+
+AmForth uses the deferred words technique internally:
+
+* :command:`turnkey` is an EEPROM (AVR8) or info flash (MSP430) 
+  based deferred word that is executed from :command:`QUIT` 
+  during startup and reset.
 * the words :command:`key`, :command:`key?`,
   :command:`emit`, and :command:`emit?` are USER
-  deferred words for low level terminal IO.
+  deferred words for low level terminal IO. (AVR8)
 * :command:`refill` and :command:`source` are
   USER deferred words used by the forth interpreter
   to get the next command line.
 * :command:`pause` is a RAM based deferred word
   that is called whenever a task switch can be done.
+  It is set to :command:`noop` per default.
 * :command:`!i` does the actual flash write of a single
-  cell. It is intended for :ref:`Unbreakable`
+  cell. It is intended for :ref:`Unbreakable` (AVR8)
 
-Since there is no standard defer word, the programmer
-has to take care where to store the execution tokens. An
-EEPROM location is keept over resets/restarts and is valid 
+Since there is no standard :command:`defer` word, the developer
+has to choose where to store the execution tokens. An EEPROM 
+location is keept over resets/restarts and is valid 
 without further initialization. A USER based deferred word 
 can be targeted to different words in a multitasking environment 
 and finally a RAM based deferred word can be changed frequently. 
-To get a standard however, the following definition may be
-helpful:
+
+How Defers work
+===============
+
+Defers store an execution token. When the name of the defered
+word is called, they fetch this token and execute it. When the
+name is  compiled into another definition, this fetch-execute
+happens when calling this other word. That way even a compiled
+deferred word can be changed later on since it's only the defer
+definition that got compiled, not its content.
 
 .. code-block:: forth
 
- > Edefer defer      \ keeps the assignment during resets
- ok
- > ' Rdefer is defer \ assignment is lost after reset
- ok
- >
+   > Xdefer foo
+   > : bar foo ;
+   > ' words is foo 
+   > bar
+    <long list of words>
+   > ' noop is foo
+   > bar
+    <nothing>
+   >
+
+:command:`Xdefer` is one of the various defer defining word.
+Regardless of the actual type, all defers behave the same way.
+
+The defer defining words are created with the same design:
+
+.. code-block:: forth
+
+   : Rdefer ( "name" -- )
+       (defer)
+       here , 2 allot
+       [: @i @ ;] , \ used to read
+       [: @i ! ;] , \ used by IS
+   ;
+
+The first command :command:`(defer)` creates the dictionary entry "name"
+and sets up the runtime behaviour (execution token). The next line allocates
+a memory region (RAM in the example) and compiles its address. The two
+quotations are called to access the data item. They are called with the
+address of the compiled address (thus the :command:`@i`). That way two
+memory accesses are performed: first is to get the address from the
+dictionary entry the second to fetch/store from/to the address in 
+the right memory pool.
+
 
 Sealing Defers
 ==============
@@ -108,5 +148,3 @@ content as if it was defined as
 This is possible since a deferred word occupies 3 flash cells in the body
 and the faked colon definition needs only 2: the XT of the deferred word
 and the exit call.
-
-.. note:: sealing a deferred word is a hack.

@@ -9,26 +9,24 @@ Stack Dumps
 
 Stack dumps can be generated with the command
 :command:`.s`. The standard does not specify,
-how the output has to formatted. The built-in
-command is for core development. This means that
-numbers are printed as unsigned (hex is highly
-recommended) and the TOS is on the left hand
-side. This makes it easy to get the most important
-information easily and the numbers are quickly
-found in memory dumps and the assembler LST and
-MAP files.
-
-The output looks like:
+how the output has to be formatted. There is an
+assembly version available intended for core
+development. This means that numbers are printed 
+as unsigned (hex is highly recommended) and the TOS 
+is on the left hand side. This makes it easy to get 
+the most important information easily and the numbers
+are quickly found in memory dumps and the assembler 
+LST and MAP files.
 
 .. code-block:: console
 
- > -1 -2 -3 .s
- 65533 65534 65535  ok
- > hex .s
- FFFD FFFE FFFF  ok
- >
+    > -1 -2 -3 .s
+      65533 65534 65535  ok
+    > hex .s
+      FFFD FFFE FFFF  ok
+    >
 
-Most other forth's and the various books use another
+Many other Forth's and the various books use another
 stack dump format. It uses signed numbers and
 places the TOS on the right side. This can be
 achieved with the following definition, kindly
@@ -36,22 +34,22 @@ provided by Enoch on the mailing list:
 
 .. code-block:: forth
 
- : .s  ( -- )	\ stack picture listing order
-    depth
-    begin dup while dup pick . 1- repeat
-    drop
- ;
+   : .s  ( -- ) \ stack picture listing order
+     depth
+     begin dup while dup pick . 1- repeat
+     drop
+   ;
 
 
 The output looks like:
 
 .. code-block:: console
 
- > -1 -2 -3 .s
- -1 -2 -3  ok
- >
+   > -1 -2 -3 .s
+    -1 -2 -3  ok
+   >
 
-Other stack dumps are as follows. They are kindly provided by Erich:
+Other stack dumps are kindly provided by Erich:
 
 .. code-block:: forth
 
