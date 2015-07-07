@@ -42,7 +42,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'AmForth'
-copyright = u'2013, Matthias Trute'
+copyright = u'2015, Matthias Trute'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -249,7 +249,7 @@ texinfo_documents = [
 epub_title = u'amforth'
 epub_author = u'Matthias Trute'
 epub_publisher = u'Matthias Trute'
-epub_copyright = u'2013, Matthias Trute'
+epub_copyright = u'2015, Matthias Trute'
 
 # The language of the text. It defaults to the language option
 # or en if the language is not set.
