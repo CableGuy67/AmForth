@@ -261,6 +261,8 @@
 .include "words/num-constants.asm"
 .include "words/save.asm"
 
+.include "words/do-defer.asm"
+.include "words/do-value.asm"
 .include "words/turnkey.asm"
 .include "words/to.asm"
 .include "words/defer-fetch.asm"
@@ -268,4 +270,5 @@
 .include "words/noop.asm"
 .include "words/rdefer-fetch.asm"
 .include "words/rdefer-store.asm"
-.include "words/do-value.asm"
+
+

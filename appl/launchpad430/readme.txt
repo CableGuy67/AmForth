@@ -14,29 +14,20 @@ code base leads whenever it makes sense. A remote vision is to
 have a single code base for all higer level code and the tools.
 
 The MSP430 G2553 is used. It runs at 8MHz. The serial terminal
-uses 38400/8N1 without flow control.
+uses 9600/8N1 without flow control.
 
-It currently compiles to RAM only.
-
-A lot of the amforth features are still missing or work
-only parially:
-- wordlists (currently only one)
-- recognizers (currently only static)
-- defers, values
-
+A lot of the amforth features are already available
 what already works (and not with camelforth)
 - exceptions
 - double cell number input and output
+- defers and values
+- recognizers
 
-what camelforth can do
-- compiles to flash (unclear, why lost)
-- soft flow control on the terminal
-- autostart logic via switches (may return with turnkey)
+Some features are not fully functional yet
+- wordlists (currently only one)
 
 Todo (major only)
 - find a way to mimic the atmega eeprom contents
 - identify library and example code that works
   on both systems without modification. create
   portability libraries (csetb+cclrb vs portpin:)
-
-

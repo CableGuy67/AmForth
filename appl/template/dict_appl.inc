@@ -20,6 +20,11 @@
 ; lib/tools/dot-s.frt has a .s for the opposite.
 .include "words/dot-s.asm"
 
+; print the date and time the amforth hex files are created
+; comment the next line if not needed. Depends on a make/ant
+; rule to create the actual include file from a template.
+.include "words/build-info.asm"
+
 ; now add words which are either not included by default but
 ; part of amforth (e.g. words for counted strings) or add
 ; your own ones (from the words directory in this one)
