@@ -83,11 +83,10 @@ F_CPU EQU 8000000
 .include "ram.inc"
 .include "430g2553vecs.asm" ; note: sets .org for vector tables
         .org 0E000h         ; start address of Forth kernel
-.include "words/do-defer.asm"
 .include "itc430core.asm"   ; code primitives
 .include "itc430hilvl.asm"
 .include "430g2553init.asm"
-.include "words/dump.asm"
+;.include "words/dump.asm"
 ;.include "words/code.asm"
 ;.include "words/end-code.asm"
 ;.include "words/bm-set.asm"
