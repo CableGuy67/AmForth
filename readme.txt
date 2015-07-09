@@ -13,7 +13,9 @@ Major Contributors:
     Bradford Rodriguez (MSP430 code)
 
 License: General Public License (GPL) Version 3 from 2007. See the
-file LICENSE.txt or http://www.gnu.org/licenses/gpl.html
+file LICENSE.txt or http://www.gnu.org/licenses/gpl.html. This
+license applies to all files unless a file has some different
+attribution in it.
 
 AmForth is an interactive 16-bit Forth for Atmel ATmega and
 Texas Instruments MSP430 microcontrollers. It does not need
