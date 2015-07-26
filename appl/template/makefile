@@ -51,6 +51,10 @@ install: $(TARGET).hex
 	$(AVRDUDE) $(AVRDUDE_FLAGS)  -e -U flash:w:$(TARGET).hex:i -U eeprom:w:$(TARGET).eep.hex:i
 
 $(TARGET).hex: $(TARGET).asm words/*.asm $(AMFORTH)/common/words/*.asm $(AMFORTH)/avr8/words/*.asm $(AMFORTH)/avr8/devices/$(MCU)/*.asm
+	( TSTAMP=$$(date +"%Y-%m-%dT%H:%M:%S"); \
+         TSTAMPLEN=$${#TSTAMP}; \
+         echo "($$TSTAMPLEN) $$TSTAMP"; \
+         sed -e "s/@TSTAMPLEN@/$$TSTAMPLEN/g" -e "s/@TSTAMP@/$$TSTAMP/g" $(AMFORTH)/common/words/build-info.tmpl > words/build-info.asm )
 	$(AVRASM) $(INCLUDE) -fI -v0 -e $(TARGET).eep.hex -l $(TARGET).lst $(TARGET).asm
 
 $(TARGET).back:
