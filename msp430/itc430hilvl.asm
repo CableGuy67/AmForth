@@ -107,9 +107,7 @@
 ; HARVARD MODEL EXTENSIONS (split Code & Data)
 .include "words/icount.asm"
 .include "words/itype.asm"
-.include "words/do-rquote.asm"
 .include "words/do-squote.asm"
-.include "words/rquote.asm"
 .include "words/squote.asm"
 .include "words/dot-quote.asm"
 .include "words/sliteral.asm"
