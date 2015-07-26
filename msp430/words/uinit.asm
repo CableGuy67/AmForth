@@ -6,11 +6,11 @@
     HEADER(UINIT,5,"uinit",DOROM)
 ; CFG Area
 	DW 2,XT_REC_WORD,XT_REC_NUM,0,0
-	DW 1,XT_LATEST,0,0,0,0,0,0,0
+	DW 1,USER_LATEST+UAREA,0,0,0,0,0,0,0
 	DW XT_NOOP      ; PAUSE vector
 	DW XT_APPLTURNKEY ; TURNKEY vector
 ; USER Area
-        DW 0,0,10,0     ; reserved,>IN,XT_BASE,STATE
+        DW 0,0,10       ; reserved,>IN,XT_BASE,STATE
         DW RAMDICT      ; DP
         DW 0,0          ; SOURCE init'd elsewhere
         DW lastword     ; LATEST

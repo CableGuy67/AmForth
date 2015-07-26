@@ -1,6 +1,7 @@
 ;Z HEADER   ( addr len wid -- nt )     create a Forth word header
 ; Separate headers model.
     HEADER(XT_HEADER,6,"header",DOCOLON)
+	DW XT_FETCH
         DW XT_COMMA    ; link
         DW XT_DOLITERAL,0FFh,XT_CCOMMA         ; immediate flag - see note below
         DW XT_IHERE,XT_TO_R
