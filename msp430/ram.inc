@@ -24,6 +24,8 @@ RAM_PAUSE:                    ; some actions
 	DS16 1
 RAM_TURNKEY:
 	DS16 1
+RAM_STATE:
+	DS16 0
                               ; USER area starts here
 UAREA:  DS8    UAREA_SIZE     ; 
 RAMDICT:                      ; start value for DP/HERE.
