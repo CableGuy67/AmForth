@@ -6,9 +6,10 @@
 	<attribute name="projectname"  default="undefined"/>
 	<attribute name="mcu"          default="undefined"/>
 	<attribute name="amforth.core" default="../.."/>
+	<attribute name="programmer"   default=""/>
 	<sequential>
 		<exec executable="@{binary}" spawn="false" failonerror="true">
-		    <arg line="rf2500 'prog @{projectname}.hex'"/>
+		    <arg line="@{programmer} 'prog @{projectname}.hex'"/>
 		</exec>
 	</sequential>
     </macrodef>

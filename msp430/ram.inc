@@ -1,7 +1,7 @@
 ; ----------------------------------------------------------------------
 ; RAM DATA AREAS 
 
-        .org 0200h      ; start of RAM
+        .org RAMSTART
 
         DS8    HOLD_SIZE
 ; HOLDAREA: ; end of hold area - hold area grows down from PAD
@@ -35,11 +35,7 @@ ROMDICT EQU     FLASHSTART    ; use Flash ROM for program dictionary
 ; ----------------------------------------------------------------------
 ; DATA FLASH AREAS 
 
-        .org 1000h      ; start of info Flash
+        .org INFOFLASHSTART      ; start of info Flash
 ; 128 bytes at start of Info area, for saved User Area & variables
 FLASHINFOAREA: 
          DS8  INFO_SIZE
-
-.if $>1080h
-.error "SAVE area does not fit in Info Flash"
-.endif

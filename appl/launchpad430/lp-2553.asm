@@ -16,12 +16,6 @@
 ; You should have received a copy of the GNU General Public License
 ; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ;
-
-.msp430
-
-.include "msp430g2553.inc"  ; MCU-specific register equates
-.include "itc430.inc"       ; registers, macros, and header structure
-
 ; ----------------------------------------------------------------------
 ; MEMORY MAP of the MSP430G2553
 ; 16KB flash ROM, 0.5KB RAM
@@ -60,13 +54,6 @@
 ; FLASH MEMORY LIMITS
 ; for Flash memory operations - this includes information and main
 ; ROM, but not the main ROM used by the kernel (above E000h)
-INFOSTART  equ 01000h
-INFOEND    equ 010BFh     ; do not allow config flash to be erased
-FLASHSTART equ 0C000h
-FLASHEND   equ 0DFFFh
-MAINSEG    equ 512
-INFOSEG    equ 64
-INFO_SIZE  equ 128    ; bytes
 
 UAREA_SIZE  equ 34        ; bytes, see uinit.asm
 RSTACK_SIZE equ 40        ; cells
@@ -77,24 +64,8 @@ PAD_SIZE equ 0            ; bytes (must be even)
 TIB_SIZE equ 82           ; bytes (must be even)
 
 F_CPU EQU 8000000
+AMFORTH_START equ 0E000h
 
-; ----------------------------------------------------------------------
-; SOURCE FILES
-.include "ram.inc"
-.include "430g2553vecs.asm" ; note: sets .org for vector tables
-        .org 0E000h         ; start address of Forth kernel
-.include "itc430core.asm"   ; code primitives
-.include "itc430hilvl.asm"
-.include "430g2553init.asm"
-;.include "words/dump.asm"
-;.include "words/code.asm"
-;.include "words/end-code.asm"
-;.include "words/bm-set.asm"
-;.include "words/bm-clear.asm"
-; ----------------------------------------------------------------------
-; END OF FORTH KERNEL
+; now include all and everything
 
-.set lastword = link           ; last word in dictionary
-.set lastenv  = envlink
-
-        END
+.include "amforth.asm"

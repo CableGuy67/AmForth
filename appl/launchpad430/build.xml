@@ -1,19 +1,43 @@
 <!-- make multiple targets with antelope -->
-<project name="launchpad430" basedir="." default="Help">
+<project name="Launchpad 430" basedir="." default="Help">
     <import file="../msp-build.xml"/>
     <property name="mcu" value="msp430g2553"/>
     <property name="programmer" value="mspdebug"/>
 
-
-    <target name="launchpad430.hex" depends="" description="Hexfiles for TI launchpad430">
-      <nakenasm projectname="launchpad430" mcu="${mcu}"/> 
+    <target name="lp-2553.hex" depends="" description="Hexfiles for TI launchpad430">
+      <nakenasm projectname="lp-2553" mcu="msp430g2553"/> 
     </target>
 
-    <target name="launchpad430" depends="launchpad430.hex" description="launchpad430 launchpad430">
-        <echo>Uploading Hexfiles for TI LP</echo>
+    <target name="lp-2553" depends="lp-2553.hex" description="Launchpad G2553">
+        <echo>Uploading Hexfiles for TI LP 2553</echo>
         <mspdebug   mcu="${mcu}"
-		    projectname="launchpad430"/>
+		    projectname="lp-2553"
+		    programmer="rf2500"/>
         <echo>Finished on ${fintim}</echo>
     </target>
-    <target name="compile" depends="launchpad430.hex"/>
+
+    <target name="lp-5529.hex" depends="" description="Hexfiles for TI LP F5529">
+      <nakenasm projectname="lp-5529" mcu="msp430f5529"/> 
+    </target>
+
+    <target name="lp-5529" depends="lp-5529.hex" description="Launchpad F5529">
+        <echo>Uploading Hexfiles for TI LP 5529</echo>
+        <mspdebug   mcu="${mcu}"
+		    projectname="lp-5529"
+		    programmer="tilib"/>
+    </target>
+
+
+    <target name="lp-5969.hex" depends="" description="Hexfiles for TI LP FR5969">
+      <nakenasm projectname="lp-5969" mcu="msp430fr5969"/> 
+    </target>
+
+    <target name="lp-5969" depends="lp-5969.hex" description="Launchpad FR5969">
+        <echo>Uploading Hexfiles for TI LP 5969</echo>
+        <mspdebug   mcu="${mcu}"
+		    projectname="lp-5969"
+		    programmer="tilib"/>
+    </target>
+
+    <target name="compile" depends="lp-2553.hex,lp-5529.hex,lp-5969.hex"/>
 </project>
