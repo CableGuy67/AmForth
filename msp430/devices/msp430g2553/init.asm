@@ -74,8 +74,7 @@ reset:
         NEXT
 
 mcu_name:
-	.dw 12
-	.db "MSP430 G2553" ; needs alignment
+	.db 11,"MSP430F5529"
 
 ; ----------------------------------------------------------------------
 ; DEFAULT INTERRUPT HANDLER
