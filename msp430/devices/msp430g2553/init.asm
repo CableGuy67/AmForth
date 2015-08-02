@@ -73,6 +73,10 @@ reset:
         MOV     #XT_COLD+2,IP
         NEXT
 
+mcu_name:
+	.dw 12
+	.db "MSP430 G2553" ; needs alignment
+
 ; ----------------------------------------------------------------------
 ; DEFAULT INTERRUPT HANDLER
 
