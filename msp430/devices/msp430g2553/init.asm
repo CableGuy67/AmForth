@@ -74,7 +74,7 @@ reset:
         NEXT
 
 mcu_name:
-	.db 11,"MSP430F5529"
+	.db 11,"MSP430G2553"
 
 ; ----------------------------------------------------------------------
 ; DEFAULT INTERRUPT HANDLER
