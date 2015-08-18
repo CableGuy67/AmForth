@@ -62,10 +62,8 @@
 		<arg line="-p @{mcu}"/>
 		<arg line="-P @{port}"/>
 		<arg line="-e"/> 
-                <arg line="-B 22"/>
 		<arg line="-U flash:w:@{flashfile}"/>
 		<arg line="-U eeprom:w:@{eepromfile}"/>
-		<arg line="-v"/>
 	    </exec>
 	</sequential>
     </macrodef>
@@ -86,7 +84,6 @@
 		<arg line="-P @{port}"/>
 		<arg line="-U flash:r:@{flashfile}:i"/>
 		<arg line="-U eeprom:r:@{eepromfile}:i"/>
-		<arg line="-v"/>
 	    </exec>
 	</sequential>
     </macrodef>
@@ -108,7 +105,6 @@
 		<!-- $(AVRDUDE) $(USB) -p $(MCU) -U hfuse:w:$(HFUSE):m -U lfuse:w:$(LFUSE):m -->
 		<arg line="-U hfuse:w:@{hfuse}:m"/>
 		<arg line="-U lfuse:w:@{lfuse}:m"/>
-		<arg line="-v"/>
 	    </exec>
 	</sequential>
     </macrodef>
@@ -131,7 +127,6 @@
 		<arg line="-U hfuse:w:@{hfuse}:m"/>
 		<arg line="-U lfuse:w:@{lfuse}:m"/>
 		<arg line="-U efuse:w:@{efuse}:m"/>
-		<arg line="-v"/>
 	    </exec>
 	</sequential>
     </macrodef>
