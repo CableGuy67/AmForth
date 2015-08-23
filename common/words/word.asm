@@ -3,7 +3,7 @@
 ; skip leading delimiter character and parse SOURCE until the next delimiter. copy the word to HERE
 
 .if cpu_msp430==1
-    HEADER(XT_WORD,5,"word",DOCOLON)
+    HEADER(XT_WORD,4,"word",DOCOLON)
 .endif
 
 .if cpu_avr8==1
