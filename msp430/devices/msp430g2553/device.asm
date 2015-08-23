@@ -2,6 +2,8 @@
 .include "msp430g2553.inc"  ; MCU-specific register equates
 
 RAMSTART equ 0200h
+RAMEND   equ 0400h
+
 INFOFLASHSTART equ 1000h
 INFOSTART  equ 01000h
 INFOEND    equ 010BFh     ; do not allow config flash to be erased

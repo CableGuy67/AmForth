@@ -7,10 +7,10 @@
 ; CFG Area
 	DW 2,XT_REC_WORD,XT_REC_NUM,0,0
 	DW 1,USER_LATEST+UAREA,0,0,0,0,0,0,0
-	DW XT_NOOP      ; PAUSE vector
 	DW XT_APPLTURNKEY ; TURNKEY vector
+	DW RAMDICT        ; HERE
 ; USER Area
-        DW 0,0,10       ; reserved,>IN,XT_BASE,STATE
+        DW 0,0,10       ; reserved,>IN,XT_BASE
         DW RAMDICT      ; DP
         DW 0,0          ; SOURCE init'd elsewhere
         DW lastword     ; LATEST
@@ -19,22 +19,4 @@
         DW 0            ; NEWEST not init'd
 	DW 0            ; HANDLER not init'd
 	DW lastenv      ; environment wordlist
-        DW XT_APPLTURNKEY   ; TURNKEY
 	DW 0,0,0        ; user variables TBD
-
-    ; RAM interrupt vectors, 15 vectors of 2 cells each
-        MOV #nullirq,PC
-        MOV #nullirq,PC
-        MOV #nullirq,PC
-        MOV #nullirq,PC
-        MOV #nullirq,PC
-        MOV #nullirq,PC
-        MOV #nullirq,PC
-        MOV #nullirq,PC
-        MOV #nullirq,PC
-        MOV #nullirq,PC
-        MOV #nullirq,PC
-        MOV #nullirq,PC
-        MOV #nullirq,PC
-        MOV #nullirq,PC
-        MOV #nullirq,PC

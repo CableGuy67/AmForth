@@ -67,7 +67,7 @@ reset:
         ; Forth registers
         MOV     #RSTACK,SP              ; set up stack
         MOV     #PSTACK,PSP
-        MOV     #UAREA,&UP              ; initial user pointer
+        MOV     #UAREA,UP              ; initial user pointer
         
 	; now hand over to Forth with COLD (a colon word)
         MOV     #XT_COLD+2,IP
