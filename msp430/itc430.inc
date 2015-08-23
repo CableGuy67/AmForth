@@ -144,6 +144,16 @@ asmname: DW      DODEFER
 asmname: DW      DOVALUE
 .endm
 
+.macro VARIABLE(asmname,length,litname)
+        DW      link
+        DB      0FFh       ; not immediate
+.set link = $
+        DB      length
+        DB      litname
+        .align 16
+asmname: DW      PFA_DOVARIABLE
+.endm
+
 .include "device.asm"
 .include "compat.inc"
 .include "user.inc"

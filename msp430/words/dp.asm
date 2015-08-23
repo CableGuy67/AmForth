@@ -1,4 +1,4 @@
 ;Z dp      -- a-addr       holds dictionary ptr
 ;  8 USER DP
-    HEADER(XT_DP,2,"dp",PFA_DOVARIABLE)
+    VARIABLE(XT_DP,2,"dp")
         DW RAM_DP

@@ -6,17 +6,22 @@
     HEADER(UINIT,5,"uinit",DOROM)
 ; CFG Area
 	DW 2,XT_REC_WORD,XT_REC_NUM,0,0
-	DW 1,USER_LATEST+UAREA,0,0,0,0,0,0,0
+	DW 1,RAM_LATEST,0,0,0,0,0,0,0
 	DW XT_APPLTURNKEY ; TURNKEY vector
-	DW RAMDICT        ; HERE
+	DW RAMDICT        ; HERE / DP
+	DW ROMDICT        ; IHERE / IDP
+	DW lastword       ; latest
+        DW lastenv        ; environment
 ; USER Area
-        DW 0,0,10       ; reserved,>IN,XT_BASE
-        DW RAMDICT      ; DP
-        DW 0,0          ; SOURCE init'd elsewhere
-        DW lastword     ; LATEST
-        DW 0,0          ; HP,LP init'd elsewhere
-        DW ROMDICT      ; IDP
-        DW 0            ; NEWEST not init'd
-	DW 0            ; HANDLER not init'd
-	DW lastenv      ; environment wordlist
+	DW 0,0          ; STATE/FOLLOWER
+	DW 0,0,0        ; RP,SP0, SP
+        DW 0            ; HANDLER
+	DW 10		; BASE
+	DW XT_EMIT
+	DW XT_TRUE
+	DW XT_KEY
+	DW XT_KEYQ
+	DW XT_TIB_SOURCE
+	DW 0
+	DW XT_TIB_REFILL
 	DW 0,0,0        ; user variables TBD

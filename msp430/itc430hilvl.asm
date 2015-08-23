@@ -53,13 +53,11 @@
 
 ; SYSTEM VARIABLES & CONSTANTS ==================
 
-.include "words/u-0.asm"
 .include "words/a-to-info.asm"
 .include "words/to-in.asm"
 .include "words/base.asm"
 .include "words/state.asm"
 .include "words/dp.asm"
-.include "words/tick-source.asm"
 .include "words/latest.asm"
 .include "words/get-current.asm"
 .include "words/hld.asm"
@@ -138,9 +136,7 @@
 ; INTERPRETER ===================================
 .include "words/source.asm"
 .include "words/slash-string.asm"
-.include "words/place.asm"
 .include "words/parse.asm"
-.include "words/word.asm"
 .include "words/nfa-to-lfa.asm"
 .include "words/nfa-to-cfa.asm"
 .include "words/name2flags.asm"
@@ -236,6 +232,7 @@
 .include "words/dot-s.asm"
 .include "words/cold.asm"
 .include "words/init-ram.asm"
+.include "words/pause.asm"
 .include "words/warm.asm"
 .include "words/applturnkey.asm"  ; from application!
 .include "words/environment.asm"
