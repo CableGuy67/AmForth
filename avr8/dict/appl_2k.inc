@@ -41,7 +41,6 @@
 .include "words/tuck.asm"
 
 .include "words/to-in.asm"
-.include "words/sharptib.asm"
 .include "words/pad.asm"
 .include "words/emit.asm"
 .include "words/emitq.asm"

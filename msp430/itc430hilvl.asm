@@ -72,7 +72,6 @@
 .include "words/r-0.asm"
 .include "words/s-0.asm"
 .include "words/tib.asm"
-.include "words/tibsize.asm"
 .include "words/bl.asm"
 .include "words/to-upper.asm"
 .include "words/uinit.asm"

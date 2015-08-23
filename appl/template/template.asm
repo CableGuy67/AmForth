@@ -74,7 +74,7 @@
 ; change them if necessary.
 
 ; Size of the Terminal Input Buffer. This is the command line buffer.
-; .set TIBSIZE  = $64    ; bytes; ANS94 needs at least 80 characters per line
+; .set TIB_SIZE  = $64    ; bytes; ANS94 needs at least 80 characters per line
 
 ; The total USER size is the sum of the system internal USER area plus
 ; the size specified here.

@@ -21,7 +21,7 @@
 .set WANT_UNIFIED = 0
 
 ; terminal input buffer
-.set TIBSIZE  = 90    ; ANS94 needs at least 80 characters per line
+.set TIB_SIZE  = 90    ; ANS94 needs at least 80 characters per line
 
 ; USER variables *in addition* to system ones
 .set APPUSERSIZE = 10  ; size of application specific user area in bytes
