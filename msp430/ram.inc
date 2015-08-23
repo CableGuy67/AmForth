@@ -29,7 +29,7 @@ CFG_ORDERLISTLEN:             ; ORDER stack
 	DS16 9                ; place for the count word and 8 slots
 RAM_TURNKEY:
 	DS16 1
-RAM_HERE:
+RAM_DP:
 	DS16 1
 ; default USER area comes from info flash as well
 UAREA:  DS8    UAREA_SIZE     ; 
