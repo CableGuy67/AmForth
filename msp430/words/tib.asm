@@ -1,7 +1,7 @@
 ;X tib     -- a-addr     Terminal Input Buffer
 ;  HEX 80 USER TIB       8086: above user area
-    HEADER(XT_TIB,3,"tib",DOUSER)
-        DW TIBAREA-UAREA
+    VARIABLE(XT_TIB,3,"tib")
+        DW TIBAREA
 
     HEADLESS(XT_TIB_SOURCE,DOCOLON)
 	DW XT_TIB
