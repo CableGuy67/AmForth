@@ -235,6 +235,7 @@
 
 .include "words/dot-s.asm"
 .include "words/cold.asm"
+.include "words/init-ram.asm"
 .include "words/warm.asm"
 .include "words/applturnkey.asm"  ; from application!
 .include "words/environment.asm"

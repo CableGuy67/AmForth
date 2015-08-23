@@ -30,14 +30,14 @@ PFA_EE2RAM_2:
 ; ( -- )
 ; Tools
 ; setup the default user area from eeprom
-VE_INITUSER:
-  .dw $ff09
-  .db "init-user",0
+VE_INIT_RAM:
+  .dw $ff08
+  .db "init-ram"
   .dw VE_HEAD
-  .set VE_HEAD = VE_INITUSER
-XT_INITUSER:
+  .set VE_HEAD = VE_INIT_RAM
+XT_INIT_RAM:
   .dw DO_COLON
-PFA_INITUSER:          ; ( -- )
+PFA_INI_RAM:          ; ( -- )
     .dw XT_DOLITERAL
     .dw EE_INITUSER
     .dw XT_UP_FETCH

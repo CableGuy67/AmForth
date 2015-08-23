@@ -174,7 +174,7 @@
 
 .include "words/tib.asm"
 
-.include "words/init-user.asm"
+.include "words/init-ram.asm"
 .include "dict/compiler2.inc"
 .include "words/bounds.asm"
 .include "words/s-to-d.asm"

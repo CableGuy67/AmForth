@@ -170,7 +170,7 @@
 
 .include "words/tib.asm"
 
-.include "words/init-user.asm"
+.include "words/init-ram.asm"
 .include "words/bounds.asm"
 .include "words/s-to-d.asm"
 .include "words/to-body.asm"

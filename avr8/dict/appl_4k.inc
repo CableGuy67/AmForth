@@ -13,7 +13,7 @@
 .include "words/cmove.asm"
 .include "words/2swap.asm"
 .include "words/tib.asm"
-.include "words/init-user.asm"
+.include "words/init-ram.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 

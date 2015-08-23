@@ -15,8 +15,8 @@ VE_WARM:
 XT_WARM:
     .dw DO_COLON
 PFA_WARM:
-    .dw XT_INITUSER
 .endif
+    .dw XT_INIT_RAM
     .dw XT_DOLITERAL
     .dw XT_NOOP
     .dw XT_DOLITERAL
