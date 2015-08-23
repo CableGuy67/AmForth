@@ -1,6 +1,4 @@
 
-.include "words/dump.asm"
-.include "words/pause.asm"
 .include "words/d-plus.asm"
 .include "words/d-minus.asm"
 ;.include "words/code.asm"
