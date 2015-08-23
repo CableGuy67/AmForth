@@ -3,7 +3,7 @@
 ; create a dictionary entry for a variable and allocate 1 cell RAM
 
 .if cpu_msp430==1
-    HEADER(VARIABLE,8,"variable",DOCOLON)
+    HEADER(XT_VARIABLE,8,"variable",DOCOLON)
 .endif
 
 .if cpu_avr8==1
