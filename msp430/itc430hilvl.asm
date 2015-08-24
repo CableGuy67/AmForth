@@ -267,5 +267,7 @@
 .include "words/rdefer-store.asm"
 .include "words/udefer-fetch.asm"
 .include "words/udefer-store.asm"
-
-
+.include "words/emit.asm"
+.include "words/emitq.asm"
+.include "words/key.asm"
+.include "words/keyq.asm"
