@@ -265,5 +265,7 @@
 .include "words/noop.asm"
 .include "words/rdefer-fetch.asm"
 .include "words/rdefer-store.asm"
+.include "words/udefer-fetch.asm"
+.include "words/udefer-store.asm"
 
 

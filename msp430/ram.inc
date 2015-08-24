@@ -3,13 +3,8 @@
 
 .org RAMSTART
 
-TIBAREA: DS8   TIB_SIZE       ; Terminal Input Buffer
-LSTACK:  DS16  PSTACK_SIZE    ; leave stack grows up into PSTACK area
-PSTACK:  DS16    RSTACK_SIZE
-RSTACK: ; end of return stack area
 
 ; initalized at runtime (e.g. COLD or <# )
-UP:          DS16 1    ; User Pointer, set in device init.
 RAM_PAUSE:   DS16 1
 RAM_STATE:   DS16 1
 RAM_HLD:     DS16 1
@@ -31,7 +26,13 @@ RAM_LATEST:  DS16 1
 RAM_ENVWID:  DS16 1
 
 ; default USER area comes from info flash as well
-UAREA:  DS8    UAREA_SIZE     ; 
+UAREA:  DS8    SYSUSERSIZE
+APPUSER: DS8   APPUSERSIZE
+TIBAREA: DS8   TIB_SIZE       ; Terminal Input Buffer
+LSTACK:  DS16  PSTACK_SIZE    ; leave stack grows up into PSTACK area
+PSTACK:  DS16    RSTACK_SIZE
+RSTACK: ; end of return stack area
+
 RAMDICT:                      ; start value for HERE.
 
 ROMDICT EQU     FLASHSTART    ; use Flash ROM for program dictionary

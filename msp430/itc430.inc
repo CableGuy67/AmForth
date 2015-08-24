@@ -43,6 +43,7 @@ cpu_avr8   EQU 0
 #define W   R6
 #define TOS R7
 
+
 ; Loop parameters in registers
 #define INDEX R8
 #define LIMIT R9
@@ -52,6 +53,8 @@ cpu_avr8   EQU 0
 #define Y  R11
 #define Q  R12
 #define T  R13
+
+#define UP  R15
 
 ; T.I. Integer Subroutines Definitions
 #define IROP1   TOS

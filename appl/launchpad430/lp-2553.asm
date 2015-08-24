@@ -55,13 +55,11 @@
 ; for Flash memory operations - this includes information and main
 ; ROM, but not the main ROM used by the kernel (above E000h)
 
-UAREA_SIZE  equ 34        ; bytes, see uinit.asm
+APPUSERSIZE equ 10        ; bytes, see uinit.asm
 RSTACK_SIZE equ 40        ; cells
 PSTACK_SIZE equ 40        ; cells
 ; following only required for terminal tasks
-HOLD_SIZE equ 20          ; bytes (must be even)
-PAD_SIZE equ 0            ; bytes (must be even)
-TIB_SIZE equ 82           ; bytes (must be even)
+TIB_SIZE  equ 82          ; bytes (must be even)
 
 F_CPU EQU 8000000
 AMFORTH_START equ 0E000h

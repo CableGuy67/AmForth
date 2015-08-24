@@ -24,4 +24,3 @@
 	DW XT_SOURCETIB
 	DW 0
 	DW XT_REFILLTIB
-	DW 0,0,0        ; user variables TBD

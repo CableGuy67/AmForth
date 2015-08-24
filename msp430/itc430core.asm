@@ -225,3 +225,4 @@ dodoes: ; -- a-addr     ; 3 for MOV #DODOES,PC
 .include "words/cellplus.asm"
 .include "words/cells.asm"
 .include "words/to-body.asm"
+.include "words/up.asm"
