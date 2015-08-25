@@ -3,14 +3,6 @@
 
 .org RAMSTART
 
-; initalized at runtime (e.g. COLD or <# )
-RAM_PAUSE:   DS16 1  ; defered 
-RAM_STATE:   DS16 1  ; 
-RAM_HLD:     DS16 1  ; hold pointer
-RAM_LP:      DS16 1  ; leave stack pointer
-RAM_NEWEST:  DS16 1  ; currently active colon definition
-RAM_NUMBERTIB:  DS16 1 ; number of input data
-
 ; initialized from info flash
 RAMINFOAREA:                  ; 128 byte copy from INFO flash or uinit defaults
                               ; configuration stacks. extreme care has to be taken here
@@ -21,12 +13,27 @@ CFG_ORDERLISTLEN:             ; ORDER stack
 RAM_TURNKEY: DS16 1           ; deferred action
 RAM_DP:      DS16 1           ; data space pointer (HERE)
 RAM_IDP:     DS16 1           ; code space pointer (dictionary)
+RAM_INFODP:  DS16 1           ; Info Flash pointer
 RAM_LATEST:  DS16 1           ; starting point for FIND
 RAM_ENVWID:  DS16 1           ; wordlist id for environment queries
-
+RAM_WLSCOPE: DS16 1           ; wordlist scope (wlscope)
 ; default USER area comes from info flash or, if invalid from uinit.
-UAREA:  DS8    SYSUSERSIZE    ; standard user area
-APPUSER: DS8   APPUSERSIZE    ; not initalized from uinit.
+UAREA:   DS8  SYSUSERSIZE     ; standard user area
+APPUSER: DS8  APPUSERSIZE     ; not initalized from uinit.
+
+INFODICT:
+
+; leave room for more info-savable data.
+.org (RAMSTART+INFO_SIZE)
+
+; initalized at runtime (e.g. COLD or <# )
+RAM_PAUSE:   DS16 1  ; defered 
+RAM_STATE:   DS16 1  ; 
+RAM_HLD:     DS16 1  ; hold pointer
+RAM_LP:      DS16 1  ; leave stack pointer
+RAM_NEWEST:  DS16 1  ; currently active colon definition
+RAM_NUMBERTIB:  DS16 1 ; number of input data
+
 
 ; buffer region
 TIBAREA: DS8   TIB_SIZE       ; Terminal Input Buffer

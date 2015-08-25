@@ -10,8 +10,10 @@
 	DW XT_APPLTURNKEY ; TURNKEY vector
 	DW RAMDICT        ; HERE / DP
 	DW ROMDICT        ; IHERE / IDP
+	DW INFODICT       ; INFOHERE / INFODP
 	DW lastword       ; latest
         DW lastenv        ; environment
+        DW XT_GET_CURRENT ; wlscope
 ; USER Area
 	DW 0,0          ; STATE/FOLLOWER
 	DW 0,0,0        ; RP,SP0, SP
