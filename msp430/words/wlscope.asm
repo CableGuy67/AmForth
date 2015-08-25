@@ -1,5 +1,5 @@
 
 DEFER(XT_WLSCOPE,6,"wlscope")
-  .dw RAM_WLSCOPE
+  .dw CFG_WLSCOPE
   .dw XT_RDEFERFETCH
   .dw XT_RDEFERSTORE

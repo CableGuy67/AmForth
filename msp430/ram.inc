@@ -10,13 +10,13 @@ CFG_RECOGNIZERLISTLEN:        ; RECOGNIZER stack
 	DS16 5                ; place for the count word and 4 slots
 CFG_ORDERLISTLEN:             ; ORDER stack
 	DS16 9                ; place for the count word and 8 slots
-RAM_TURNKEY: DS16 1           ; deferred action
-RAM_DP:      DS16 1           ; data space pointer (HERE)
-RAM_IDP:     DS16 1           ; code space pointer (dictionary)
-RAM_INFODP:  DS16 1           ; Info Flash pointer
-RAM_LATEST:  DS16 1           ; starting point for FIND
-RAM_ENVWID:  DS16 1           ; wordlist id for environment queries
-RAM_WLSCOPE: DS16 1           ; wordlist scope (wlscope)
+CFG_TURNKEY: DS16 1           ; deferred action
+CFG_DP:      DS16 1           ; data space pointer (HERE)
+CFG_IDP:     DS16 1           ; code space pointer (dictionary)
+CFG_INFODP:  DS16 1           ; Info Flash pointer
+CFG_LATEST:  DS16 1           ; starting point for FIND
+CFG_ENVWID:  DS16 1           ; wordlist id for environment queries
+CFG_WLSCOPE: DS16 1           ; wordlist scope (wlscope)
 ; default USER area comes from info flash or, if invalid from uinit.
 UAREA:   DS8  SYSUSERSIZE     ; standard user area
 APPUSER: DS8  APPUSERSIZE     ; not initalized from uinit.

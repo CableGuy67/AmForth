@@ -1,4 +1,4 @@
 ;Z IDP    -- a-addr        ROM dictionary pointer
 ;   20 USER IDP
     VARIABLE(IDP,3,"idp")
-        DW RAM_IDP
+        DW CFG_IDP

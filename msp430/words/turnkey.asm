@@ -1,5 +1,5 @@
 
 DEFER(XT_TURNKEY,7,"turnkey")
-  .dw RAM_TURNKEY
+  .dw CFG_TURNKEY
   .dw XT_RDEFERFETCH
   .dw XT_RDEFERSTORE
