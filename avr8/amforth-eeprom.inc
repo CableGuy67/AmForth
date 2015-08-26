@@ -1,23 +1,16 @@
     .dw -1           ; EEPROM Address 0 should not be used
-EE_DP:
-    .dw DPSTART      ; Dictionary Pointer
-EE_HERE:
-    .dw HERESTART    ; Memory Allocation
-EE_EHERE:
-    .dw EHERESTART     ; EEProm Memory Allocation
-EE_TURNKEY:
-    .dw XT_APPLTURNKEY  ; TURNKEY
-EE_STOREI:
-    .dw XT_DO_STOREI  ; Store a cell into flash
-
-EE_ENVIRONMENT:
-    .dw VE_ENVHEAD   ; environmental queries
-EE_WL_FORTH:
-    .dw EE_FORTHWORDLIST; forth-wordlist
-EE_CURRENT:
-    .dw EE_FORTHWORDLIST
-EE_FORTHWORDLIST:
-    .dw VE_HEAD      ; pre-defined (compiled in) wordlist
+; some configs
+CFG_DP:      .dw DPSTART         ; Dictionary Pointer
+EE_HERE:     .dw HERESTART       ; Memory Allocation
+EE_EHERE:    .dw EHERESTART      ; EEProm Memory Allocation
+CFG_WLSCOPE: .dw XT_GET_CURRENT  ; default wordlist scope
+; LEAVE stack is between data stack and return stack.
+CFG_LP0:     .dw stackstart+1
+CFG_TURNKEY: .dw XT_APPLTURNKEY  ; TURNKEY
+CFG_ENVIRONMENT:.dw VE_ENVHEAD   ; environmental queries
+EE_WL_FORTH: .dw EE_FORTHWORDLIST; forth-wordlist
+CFG_CURRENT: .dw EE_FORTHWORDLIST
+EE_FORTHWORDLIST:.dw VE_HEAD      ; pre-defined (compiled in) wordlist
 CFG_ORDERLISTLEN:
     .dw 1
 CFG_ORDERLIST: ; list of wordlist id, exactly numwordlist entries
@@ -30,12 +23,8 @@ CFG_RECOGNIZERLIST:
     .dw XT_REC_NUM
     .byte  (NUMRECOGNIZERS-2)*CELLSIZE ; two slots are already used
 
-EE_WLSCOPE:
-    .dw XT_GET_CURRENT  ; default wordlist scope
-
-; LEAVE stack is between data stack and return stack.
-EE_LP0:
-    .dw stackstart+1
+EE_STOREI:
+    .dw XT_DO_STOREI  ; Store a cell into flash
 
 ; MARKER saves everything up to here. Nothing beyond gets saved
 EE_MARKER:

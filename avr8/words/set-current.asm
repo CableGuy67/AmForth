@@ -10,6 +10,6 @@ XT_SET_CURRENT:
     .dw DO_COLON
 PFA_SET_CURRENT:
     .dw XT_DOLITERAL
-    .dw EE_CURRENT
+    .dw CFG_CURRENT
     .dw XT_STOREE
     .dw XT_EXIT

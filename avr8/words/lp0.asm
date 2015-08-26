@@ -9,6 +9,6 @@ VE_LP0:
 XT_LP0:
     .dw PFA_DOVALUE1
 PFA_LP0:
-    .dw EE_LP0
+    .dw CFG_LP0
     .dw XT_EDEFERFETCH
     .dw XT_EDEFERSTORE
