@@ -228,7 +228,6 @@
 .include "words/d-dot.asm"
 .include "words/d-dot-r.asm"
 
-.include "words/dot-s.asm"
 .include "words/cold.asm"
 .include "words/init-ram.asm"
 .include "words/pause.asm"
