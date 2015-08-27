@@ -24,8 +24,7 @@ PFA_APPLTURNKEY:
     .dw XT_DOLITERAL
     .dw 1000
     .dw XT_UMSLASHMOD
-    .dw XT_SWAP
-    .dw XT_DROP
+    .dw XT_NIP
     .dw XT_DECIMAL
     .dw XT_DOT
     .dw XT_DOSLITERAL

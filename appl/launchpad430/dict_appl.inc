@@ -1,7 +1,5 @@
-
-.include "words/d-plus.asm"
-.include "words/d-minus.asm"
-;.include "words/code.asm"
-;.include "words/end-code.asm"
-;.include "words/bm-set.asm"
-;.include "words/bm-clear.asm"
+; words not part of the essentials
+; but written in assembly language / notoation
+; 
+.include "words/dot-s.asm"
+.include "words/infodp.asm"
