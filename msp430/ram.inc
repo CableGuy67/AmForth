@@ -5,16 +5,16 @@
 
 ; initialized from info flash
 RAMINFOAREA:                  ; 128 byte copy from INFO flash or uinit defaults
-                              ; configuration stacks. extreme care has to be taken here
 CFG_RECOGNIZERLISTLEN:        ; RECOGNIZER stack
-	DS16 5                ; place for the count word and 4 slots
+	DS16 5                ; room for the count word and 4 slots
 CFG_ORDERLISTLEN:             ; ORDER stack
-	DS16 9                ; place for the count word and 8 slots
-CFG_TURNKEY: DS16 1           ; deferred action
+	DS16 9                ; room for the count word and 8 slots
+CFG_TURNKEY: DS16 1           ; deferred startup action
 CFG_DP:      DS16 1           ; data space pointer (HERE)
 CFG_IDP:     DS16 1           ; code space pointer (dictionary)
 CFG_INFODP:  DS16 1           ; Info Flash pointer
-CFG_LATEST:  DS16 1           ; starting point for FIND
+CFG_CURRENT: DS16 1           ; Place for new words (CREATE)
+CFG_FORTHWID:DS16 1           ; the Forth wordlist
 CFG_ENVWID:  DS16 1           ; wordlist id for environment queries
 CFG_WLSCOPE: DS16 1           ; wordlist scope (wlscope)
 ; default USER area comes from info flash or, if invalid from uinit.

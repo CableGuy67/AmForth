@@ -58,7 +58,6 @@
 .include "words/base.asm"
 .include "words/state.asm"
 .include "words/dp.asm"
-.include "words/latest.asm"
 .include "words/get-current.asm"
 .include "words/hld.asm"
 .include "words/lp.asm"

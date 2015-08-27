@@ -1,13 +1,13 @@
 ;Z INIT_RAM     --      initialize RAM 
-    HEADER(XT_INIT_RAM,8,"init-ram",DOCOLON)
+HEADER(XT_INIT_RAM,8,"init-ram",DOCOLON)
 	DW XT_BASE,XT_ADDR_TO_INFO,XT_FETCH,XT_1MINUS,XT_ZEROLESS
 	DW XT_DOCONDBRANCH
 	DEST(COLD1)
-	; there is no valid data in INFO flash
-        DW UINIT,XT_DOBRANCH
+; there is no valid data in INFO flash
+        DW XT_UINIT,XT_DOBRANCH
 	DEST(COLD2)
 COLD1:
-	; there is valid content in INFO, restore it
+; there is valid content in INFO, restore it
         DW XT_DOLITERAL, INFOSTART
 COLD2:
 	DW XT_DOLITERAL,RAMINFOAREA,XT_DOLITERAL,INFO_SIZE,XT_ITOD
