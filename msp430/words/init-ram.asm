@@ -1,6 +1,8 @@
 ;Z INIT_RAM     --      initialize RAM 
 HEADER(XT_INIT_RAM,8,"init-ram",DOCOLON)
-	DW XT_BASE,XT_ADDR_TO_INFO,XT_FETCH,XT_1MINUS,XT_ZEROLESS
+; the first cell is either FFFF or the recognizer stack depth, see ram.asm
+        DW XT_DOLITERAL, INFOSTART, XT_FETCH 
+	DW XT_ZEROLESS
 	DW XT_DOCONDBRANCH
 	DEST(COLD1)
 ; there is no valid data in INFO flash

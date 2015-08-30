@@ -5,7 +5,7 @@
 
 ; initialized from info flash
 RAMINFOAREA:                  ; 128 byte copy from INFO flash or uinit defaults
-CFG_RECOGNIZERLISTLEN:        ; RECOGNIZER stack
+CFG_RECOGNIZERLISTLEN:        ; RECOGNIZER stack, must be first cell for init-ram.
 	DS16 5                ; room for the count word and 4 slots
 CFG_ORDERLISTLEN:             ; ORDER stack
 	DS16 9                ; room for the count word and 8 slots
