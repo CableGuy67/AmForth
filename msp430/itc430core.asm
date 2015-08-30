@@ -214,7 +214,6 @@ dodoes: ; -- a-addr     ; 3 for MOV #DODOES,PC
 .include "words/cskip.asm"
 .include "words/cscan.asm"
 .include "words/s-equal.asm"
-.include "words/i-to-d.asm"
 
 ; ----------------------------------------------------------------------
 ; ALIGNMENT AND PORTABILITY OPERATORS 
