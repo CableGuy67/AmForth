@@ -9,6 +9,9 @@
 	<attribute name="programmer"   default=""/>
 	<sequential>
 		<exec executable="@{binary}" spawn="false" failonerror="true">
+		    <arg line="@{programmer} 'erase all'"/>
+		</exec>
+		<exec executable="@{binary}" spawn="false" failonerror="true">
 		    <arg line="@{programmer} 'prog @{projectname}.hex'"/>
 		</exec>
 	</sequential>
