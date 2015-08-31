@@ -43,6 +43,9 @@ cpu_avr8   EQU 0
 #define W   R6
 #define TOS R7
 
+#define UP    R13 ; User pointer
+#define REG_A R14 ; extended VM register A
+#define REG_B R15 ; extended VM register B
 
 ; Loop parameters in registers
 #define INDEX R8
@@ -52,9 +55,6 @@ cpu_avr8   EQU 0
 #define X  R10
 #define Y  R11
 #define Q  R12
-#define T  R13
-
-#define UP  R15
 
 ; T.I. Integer Subroutines Definitions
 #define IROP1   TOS
@@ -156,7 +156,3 @@ asmname: DW      DOVALUE
         .align 16
 asmname: DW      PFA_DOVARIABLE
 .endm
-
-.include "device.asm"
-.include "compat.inc"
-.include "user.inc"

@@ -1,7 +1,7 @@
 
 .msp430
 
-.include "itc430.inc"       ; registers, macros, and header structure
+.include "macros.asm"       ; registers, macros, and header structure
 .include "ram.inc"          ; RAM Leyout
 .include "vecs.asm" ; note: sets .org for vector tables
 

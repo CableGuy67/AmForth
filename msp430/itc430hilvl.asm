@@ -1,42 +1,6 @@
 ; ----------------------------------------------------------------------
-; CamelForth for the Texas Instruments MSP430 
-; (c) 2009,2014 Bradford J. Rodriguez.
-; 
-; This program is free software; you can redistribute it and/or modify
-; it under the terms of the GNU General Public License as published by
-; the Free Software Foundation; either version 3 of the License, or
-; (at your option) any later version.
-;
-; This program is distributed in the hope that it will be useful,
-; but WITHOUT ANY WARRANTY; without even the implied warranty of
-; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-; GNU General Public License for more details.
-;
-; You should have received a copy of the GNU General Public License
-; along with this program.  If not, see <http://www.gnu.org/licenses/>.
-;
-; Commercial inquiries should be directed to the author at 
-; 115 First St., #105, Collingwood, Ontario L9Y 4W3 Canada
-; or via email to bj@camelforth.com
-; ----------------------------------------------------------------------
-; itc430hilvl.asm - High Level Words - MSP430
-; B. Rodriguez  4 Jan 09
 
-;   Forth words are documented as follows:
-;x   NAME     stack -- stack    description
-;   where x=C for ANS Forth Core words, X for ANS
-;   Extensions, Z for internal or private words.
-; ----------------------------------------------------------------------
-; REVISION HISTORY
-;  1 mar 14 bjr - adapted from hilvl430.s43 for naken_asm.
-; 22 dec 13 bjr - added XON/OFF logic to interpreter loop
-; 27 nov 12 bjr - fixed S" IS" to use PARSE
-; 13 nov 12 bjr - added PARSE, fixed ( to use PARSE.
-; 12 nov 12 bjr - fixed FM/MOD.
-; 17 jan 09 bjr - changed label _DP to DDP for compatibility with token
-;   naming convention.  Now uses DEST macro to compute branch offsets.
-; 11 jan 09 - modified QUIT for Xon/Xoff flow control
-; 4 jan 09 - created from Camel86h.asm.
+; most highlevel words for the core system.
 
 ; INPUT/OUTPUT ==================================
 .include "words/usart-emit.asm"
@@ -64,7 +28,6 @@
 .include "words/idp.asm"
 .include "words/newest.asm"
 .include "words/allot.asm"
-; user variables 26,28,30 tbd
 
 .include "words/pad.asm"
 .include "words/l-0.asm"
