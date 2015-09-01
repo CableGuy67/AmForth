@@ -56,8 +56,6 @@
 .include "words/min.asm"
 
 ; DOUBLE OPERATORS ==============================
-.include "words/2-fetch.asm"
-.include "words/2-store.asm"
 .include "words/2drop.asm"
 .include "words/2dup.asm"
 .include "words/2swap.asm"
