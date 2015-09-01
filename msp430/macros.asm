@@ -43,9 +43,8 @@ cpu_avr8   EQU 0
 #define W   R6
 #define TOS R7
 
-#define UP    R13 ; User pointer
-#define REG_A R14 ; extended VM register A
-#define REG_B R15 ; extended VM register B
+#define UP    R14 ; User pointer
+#define REG_A R15 ; extended VM register A
 
 ; Loop parameters in registers
 #define INDEX R8
