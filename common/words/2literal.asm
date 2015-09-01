@@ -2,7 +2,7 @@
 ; Compiler
 ; compile a cell pair literal in colon definitions
 .if cpu_msp430==1
-    HEADER(XT_2LITERAL,8,"2literal",DOCOLON)
+    IMMED(XT_2LITERAL,8,"2literal",DOCOLON)
 .endif
 
 .if cpu_avr8==1
