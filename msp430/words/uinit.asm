@@ -19,7 +19,7 @@
 	DW 0,0          ; STATE/FOLLOWER
 	DW 0,0,0        ; RP,SP0, SP
         DW 0            ; HANDLER
-	DW 10		; BASE
+	DW 10           ; BASE
 	DW XT_USART_TX
 	DW XT_TRUE
 	DW XT_USART_RX
