@@ -1,13 +1,6 @@
 ; ( -- addr )
 ; Interpreter
 ; Method table for single cell integers
-
-
-
-.if cpu_msp430==1
-    XT_2LITERAL EQU XT_LITERAL
-.endif
-
 .if cpu_msp430==1
     HEADER(XT_R_NUM,5,"r:num",DOROM)
 .endif

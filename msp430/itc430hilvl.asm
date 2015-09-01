@@ -70,6 +70,7 @@
 .include "words/squote.asm"
 .include "words/dot-quote.asm"
 .include "words/sliteral.asm"
+.include "words/2literal.asm"
 
 ; NUMERIC OUTPUT ================================
 .include "words/ud-slash-mod.asm"
