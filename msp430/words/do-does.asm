@@ -1,7 +1,4 @@
 ;Z (DOES>)  --      run-time action of DOES>
-;   R>              adrs of headless DOES> def'n
-;   GET-CURRENT NFA>CFA    code field to fix up
-;   !CF ;
     ; HEADER(XDOES,7,"(DOES>)",DOCOLON)
         DW      link
         DB      0FFh       ; not immediate
