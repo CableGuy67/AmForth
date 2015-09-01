@@ -16,11 +16,6 @@ XT_2LITERAL:
 PFA_2LITERAL:
 .endif
     .dw XT_SWAP
-    .dw XT_COMPILE
-    .dw XT_DOLITERAL
-    .dw XT_COMMA
-    .dw XT_COMPILE
-    .dw XT_DOLITERAL
-    .dw XT_COMMA
-    
+    .dw XT_LITERAL
+    .dw XT_LITERAL
     .dw XT_EXIT
