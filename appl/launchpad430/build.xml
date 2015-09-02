@@ -39,5 +39,5 @@
 		    programmer="tilib"/>
     </target>
 
-    <target name="compile" depends="lp-2553.hex,lp-5529.hex,lp-5969.hex"/>
+    <target name="compile" depends="lp-2553.hex"/>
 </project>
