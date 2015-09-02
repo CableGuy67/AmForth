@@ -1,8 +1,8 @@
 ; Layout of the user area
 ; 
 
- USER_STATE    EQU 0
- USER_FOLLOWER EQU 2
+ USER_STATE    EQU 0   ; the task state, not the interpreter state
+ USER_FOLLOWER EQU 2   ; used by multitasker
  USER_RP       EQU 4
  USER_SP0      EQU 6
  USER_SP       EQU 8

@@ -27,8 +27,8 @@ INFODICT:
 .org (RAMSTART+INFO_SIZE)
 
 ; initalized at runtime (e.g. COLD or <# )
-RAM_PAUSE:   DS16 1  ; defered 
-RAM_STATE:   DS16 1  ; 
+RAM_PAUSE:   DS16 1  ; defered multitasker
+RAM_STATE:   DS16 1  ; global interpreter state
 RAM_HLD:     DS16 1  ; hold pointer
 RAM_LP:      DS16 1  ; leave stack pointer
 RAM_NEWEST:  DS16 1  ; currently active colon definition
@@ -38,7 +38,7 @@ RAM_NUMBERTIB:  DS16 1 ; number of input data
 ; buffer region
 TIBAREA: DS8   TIB_SIZE       ; Terminal Input Buffer
 LSTACK:  DS16  PSTACK_SIZE    ; leave stack grows up into PSTACK area
-PSTACK:  DS16  RSTACK_SIZE    ; 
+PSTACK:  DS16  RSTACK_SIZE    ; data stack grows downward
 RSTACK: ; end of return stack area
 
 RAMDICT:                      ; start value for DP / HERE.
