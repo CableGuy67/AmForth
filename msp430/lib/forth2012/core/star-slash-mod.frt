@@ -1,6 +1,6 @@
 
 \ MSP has another division type
 
-:  */mod ( 
+:  */mod ( )
     >r m* r> fm/mod
 ;

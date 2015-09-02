@@ -14,9 +14,9 @@ variable str
     0 >in !
     strlen !
     str !
-    ['] source-string is source
+    ['] source-string to source
     ['] interpret catch
     r> >in !
-    r> is source
+    r> to source
     throw
 ;

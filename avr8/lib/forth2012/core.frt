@@ -1,5 +1,4 @@
 \ 'core.frt' generated automatically, do not edit
-#include  q-negate.frt
 #include  2over.frt
 #include  2swap.frt
 #include  aligned.frt
