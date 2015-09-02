@@ -1,4 +1,4 @@
-Date: 17.1.2015
+Date: 3.9.2015
 
 Author:
     Matthias Trute <mtrute@users.sourceforge.net>
@@ -39,10 +39,9 @@ AmForth is implemented in assembly and forth. The code is stable
 and well tested. The MSP430 variant is less tested however. It
 has less features as well.
 
-All words have ans94-draft6 (CORE and various extension word sets)
-and forth 2012 stack diagrams, but not necessarily the complete
-semantics. Some words from the standards are left out, ask for them
-if you need them.
+All words have Forth 2012 (CORE and various extension word sets)
+stack diagrams, but not necessarily the complete semantics. Some 
+words from the standards are left out, ask for them if you need them.
 
 Development hardware are evaluation boards running various Amega's
 between 2 and 20 MHz with various external hardware: none,
