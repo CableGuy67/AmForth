@@ -6,15 +6,14 @@ EE_EHERE:    .dw EHERESTART      ; EEProm Memory Allocation
 CFG_WLSCOPE: .dw XT_GET_CURRENT  ; default wordlist scope
 ; LEAVE stack is between data stack and return stack.
 CFG_LP0:     .dw stackstart+1
-CFG_TURNKEY: .dw XT_APPLTURNKEY  ; TURNKEY
-CFG_ENVIRONMENT:.dw VE_ENVHEAD   ; environmental queries
-EE_WL_FORTH: .dw EE_FORTHWORDLIST; forth-wordlist
-CFG_CURRENT: .dw EE_FORTHWORDLIST
-EE_FORTHWORDLIST:.dw VE_HEAD      ; pre-defined (compiled in) wordlist
+CFG_TURNKEY: .dw XT_APPLTURNKEY    ; TURNKEY
+CFG_ENVIRONMENT:.dw VE_ENVHEAD     ; environmental queries
+CFG_CURRENT: .dw CFG_FORTHWORDLIST ; forth-wordlist
+CFG_FORTHWORDLIST:.dw VE_HEAD      ; pre-defined (compiled in) wordlist
 CFG_ORDERLISTLEN:
     .dw 1
 CFG_ORDERLIST: ; list of wordlist id, exactly numwordlist entries
-    .dw EE_FORTHWORDLIST      ; get/set-order
+    .dw CFG_FORTHWORDLIST      ; get/set-order
     .byte  (NUMWORDLISTS-1)*CELLSIZE ; one slot is already used
 CFG_RECOGNIZERLISTLEN:
     .dw 2

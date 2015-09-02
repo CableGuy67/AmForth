@@ -8,7 +8,6 @@
 .include "words/set-current.asm"
 .include "words/wordlist.asm"
 
-.include "words/only.asm"
 .include "words/forth-wordlist.asm"
 .include "words/set-order.asm"
 .include "words/set-recognizer.asm"
