@@ -27,6 +27,7 @@
 .include "words/lp.asm"
 .include "words/idp.asm"
 .include "words/newest.asm"
+.include "words/latest.asm"
 .include "words/allot.asm"
 
 .include "words/pad.asm"

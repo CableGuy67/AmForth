@@ -44,8 +44,8 @@ XT_DODOES:
     .dw DO_COLON
 PFA_DODOES:
     .dw XT_R_FROM
-    .dw XT_DOLITERAL
-    .dw COLON_SMUDGE+2
+    .dw XT_NEWEST
+    .dw XT_CELLPLUS
     .dw XT_FETCH
     .dw XT_FETCHE
     .dw XT_NFA2LFA

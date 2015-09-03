@@ -1,5 +1,7 @@
 
-.include "words/docreate.asm"
+.include "words/newest.asm"
+.include "words/latest.asm"
+.include "words/do-create.asm"
 .include "words/backslash.asm"
 .include "words/l-paren.asm"
 
@@ -40,7 +42,6 @@
 .include "words/header.asm"
 .include "words/wlscope.asm"
 .include "words/reveal.asm"
-.include "words/latest.asm"
 .include "words/does.asm"
 .include "words/colon.asm"
 .include "words/colon-noname.asm"

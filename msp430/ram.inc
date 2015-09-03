@@ -31,7 +31,8 @@ RAM_PAUSE:   DS16 1  ; defered multitasker
 RAM_STATE:   DS16 1  ; global interpreter state
 RAM_HLD:     DS16 1  ; hold pointer
 RAM_LP:      DS16 1  ; leave stack pointer
-RAM_NEWEST:  DS16 2  ; currently active colon definition
+RAM_NEWEST:  DS16 2  ; currently active wordlist entry (NT and WID)
+RAM_LATEST:  DS16 1  ; currently active colon definition (XT)
 RAM_NUMBERTIB:  DS16 1 ; number of input data
 
 
