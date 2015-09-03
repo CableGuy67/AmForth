@@ -14,7 +14,6 @@ VE_GET_STACK:
     .set VE_HEAD = VE_GET_STACK
 XT_GET_STACK:
     .dw DO_COLON
-PFA_N_FETCH_E:
 .endif
     .dw XT_DUP
     .dw XT_CELLPLUS
