@@ -16,18 +16,17 @@ have a single code base for all higer level code and the tools.
 The MSP430 G2553 is used. It runs at 8MHz. The serial terminal
 uses 9600/8N1 without flow control.
 
-A lot of the amforth features are already available
-what already works (and not with camelforth)
+A lot of the amforth features are already available:
 - exceptions
-- double cell number input and output
+- double cell numbers
 - defers and values
 - recognizers
+- wordlists
 
-Some features are not fully functional yet
-- wordlists (currently only one)
+Some features are not (fully) functional yet
+- interrupts
 
 Todo (major only)
-- find a way to mimic the atmega eeprom contents
 - identify library and example code that works
   on both systems without modification. create
   portability libraries (csetb+cclrb vs portpin:)
