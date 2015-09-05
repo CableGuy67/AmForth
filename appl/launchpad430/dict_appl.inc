@@ -2,10 +2,21 @@
 ; but written in assembly language / notoation
 
 ; simple stack dump
-.include "words/dot-s.asm"
+;.include "words/dot-s.asm"
+
+; bleeding edge
+;.include "words/build-info.asm"
+;.include "words/git-info.asm"
 
 ; next some words that may be useful in certain
-; applications only
+; applications only. Including them by default
+; would make the image too large to fit into 8kB
+; all other words are written in forth and have to
+; be uploaded as such.
+
+;; generic tools
+;.include "words/get-stack.asm"
+;.include "words/set-stack.asm"
 
 ;; wordlist management.
 ;.include "words/infodp.asm"
@@ -13,6 +24,7 @@
 ;.include "words/set-order.asm"
 ;.include "words/get-order.asm"
 ;.include "words/set-current.asm"
+;.include "words/forth-wordlist.asm"
 
 ;; double cell arithmetics
 ;.include "words/d-plus.asm"
@@ -34,3 +46,8 @@
 ;; legacy words
 ;.include "words/word.asm"
 ;.include "words/count.asm"
+
+;; bit level operations
+;.include "words/bm-set.asm"
+;.include "words/bm-clear.asm"
+;.include "words/bm-test.asm"
