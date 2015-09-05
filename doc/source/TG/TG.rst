@@ -11,5 +11,8 @@ Technical Guide
    Hardware
    Sources
    Architecture
-   Implementation
+   Compiler
+   Standards
+   AVR8
+   MSP430
    Tools

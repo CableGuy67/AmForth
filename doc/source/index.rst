@@ -21,16 +21,32 @@ AmForth implements an almost compatible `Forth 2012
 <http://www.forth200x.org/documents/html3/>`_ indirect 
 threading 16bit Forth. 
 
-AmForth needs 8 to 12 KB Flash memory, 80 bytes EEPROM, and 200 bytes
-RAM for the core system. The MSP430 fits into 8KB flash.
+AmForth fro the AVR8 needs 8 to 12 KB Flash memory, 80 bytes EEPROM, and 200 bytes
+RAM for the core system. A similar code for the MSP430 fits into 8KB flash. The MSP430
+info flash is used for similar purposes as the EEPROm for the AVR8 platform.
 
 Work In Progress
 ................
 
-Here you'll find things that are not yet
-released but will be part of the next release.
+Here you'll find things that are not yet released but will be part of the next release.
 See the code section at Sourceforge to get the
 `most recent sources <http://sourceforge.net/p/amforth/code/HEAD/tree/trunk/>`__
+
+* core(ALL): Fix a few more regressions like the TAB handling in 
+  :command:`accept`.
+* core(AVR8): Fix :command:`forth-wordlist` to return a valid wordlist id.
+* core(MSP430): many small changes to bring it closer to the AVR8. Still fits into 8KB flash
+
+  * global variables like DP (HERE), STATE, HLD etc instead of USER.
+  * Same USER area layout. Including deferred words for terminal IO.
+  * complete wordlist support including search order and current.
+  * Emulate AVR EEPROM configuration with a info flash segment. Needs :command:`save` to
+    store the data permantly.
+  * Lots of common code, optimized versions of standard words if applicable.
+  * preparing for more MSP430 device types.
+
+9.7.2015: release 5.9
+......................
 
 * lib: :command:`for` and :command:`next`. The :command:`i` and :command:`j`
   can be used as well.
@@ -38,7 +54,7 @@ See the code section at Sourceforge to get the
 * core(MSP430): :command:`DEFER` and :command:`VALUE` were missing in release 
   5.8. :command:`pause`  and :command:`turnkey` using them (RAM based, save-able
   to info flash).
-* core(All): ``'`` uses the recognizer stack.
+* core(All): :command:`'` uses the recognizer stack.
 * core(ALL): Fix regression in :command:`literal` (broke e.g. quotations)
 
 25.3.2015: release 5.8
@@ -72,7 +88,7 @@ See the code section at Sourceforge to get the
   are now resolved at compile time, saves one cell per loop on the return 
   stack at runtime.
 * core(AVR): interrupt vectors are moved from RAM to EEPROM. Saves RAM space
-  and simplifies turnkey actions (remove any ``int!`` from your turnkey!)
+  and simplifies turnkey actions (remove any :command:`int!` from your turnkey!)
 * core: re-arranged source files: controller specific and common code.
 * New architecture: MSP430 (G2553) as used in the :ref:`TI_LaunchPad_430` 
   with code from `Camelforth <http://www.camelforth.com>`__ and 

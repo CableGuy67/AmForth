@@ -11,25 +11,75 @@ many tools like the amforth-shell work for both
 too. Since the MSP430 is new, bugs and other oddities
 are more likely than for the Atmegas.
 
-Getting started on linux with mspdebug
---------------------------------------
-
 The sources are made for the 
 `naken_asm <http://www.mikekohn.net/micro/naken_asm.php>`__
 assembler. 
 
+Playing with the Launchpad
+--------------------------
+
+The LEDs can be used as follows
+
+.. code-block:: forth
+
+   : red:init   1 34 bm-set ;
+   : red:on     1 33 bm-set ;
+   : red:off    1 33 bm-clear ;
+   : green:init 64 34 bm-set ;
+   : green:on   64 33 bm-set ;
+   : green:off  64 33 bm-clear ;
+
+
+Example for (machine) code (instead of 
+the forth code above)
+
+.. code-blocK:: forth
+
+   code red:on  $D3D2 , $0021 , end-code
+   code red:off $C3D2 , $0021 , end-code
+
+There are many ways to wait, e.g. do other
+things while waiting (`PAUSE`). A simple 
+approach is do nothing:
+
+.. code-blocK:: forth
+ 
+   : ms 0 ?do 1ms loop ;                                                         
+
+Now let the red LED blink ONCE
+
+.. code-blocK:: forth
+
+   : blink red:on 100 ms red:off 100 ms ;                                          
+
+Test it! Now! The compiled version is *much* 
+faster than the sequence "1 33 bm-set 1 33 bm-clear"
+(watch the red flashes). Next is to let it blink until 
+a key is pressed
+
+.. code-blocK:: forth
+
+   : blink-forever begin blink key? until key drop ;                                        
+
+
+Hardware Setup
+--------------
+
+At the first glance, the hardware setup is trivial:
 Connect your Launchpad to the USB port of your PC.
 It may take a while until the modem manager detects
 that it is not a device it can handle. Now open a 
 terminal (I use minicom) and set the serial port 
 settings: `/dev/acm0`, 9600 and 8N1 without flow 
-control. Nothing's happening so far.
+control.
 
-Open another shell command window and navigate to
-the launchpad430 directory. There is a hex file with
-the compiled amforth. Try `ant compile` to get it.
 
-Now run mspdebug to actually program the controller
+
+MSP430 G2553
+............
+
+The mspdebug to actually program the controller uses
+the rf2500 protocol:
 
 .. code-block:: bash
 
@@ -98,49 +148,231 @@ welcome strings from amforth due to some resets.
    |
 
 
-Playing with the Launchpad
---------------------------
+MSP430 F5529 & FR5969
+.....................
 
-The LEDs can be used as follows
+Thess chips require the libmsp430.so from TI which is (at least
+with ubuntu) *not* part of the mspdebug package. I used the one
+from `Energia <https://s3.amazonaws.com/energiaUS/energia-0101E0016-linux64.tgz>`__
+and copied it into :file:`/usr/lib`.
 
-.. code-block:: forth
+.. code-block:: bash
 
-   : red:init   1 34 bm-set ;
-   : red:on     1 33 bm-set ;
-   : red:off    1 33 bm-clear ;
-   : green:init 64 34 bm-set ;
-   : green:on   64 33 bm-set ;
-   : green:off  64 33 bm-clear ;
+   $ mspdebug tilib "prog amforth-5529.hex"
+   MSPDebug version 0.22 - debugging tool for MSP430 MCUs
+   Copyright (C) 2009-2013 Daniel Beer <dlbeer@gmail.com>
+   This is free software; see the source for copying conditions.  There is NO
+   warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
+   tilib: can't find libmsp430.so: libmsp430.so: cannot open shared object file: No such file or directory
 
-Example for (machine) code (instead of 
-the forth code above)
+If the following error message is displayed
 
-.. code-blocK:: forth
+.. code-block:: bash
 
-   code red:on  $D3D2 , $0021 , end-code
-   code red:off $C3D2 , $0021 , end-code
+   tilib: MSP430_Initialize: Interface Communication error (error = 35)
 
-There are many ways to wait, e.g. do other
-things while waiting (`PAUSE`). A simple 
-approach is do nothing:
+the modem manager is still using the serial port. Just wait for it.
 
-.. code-blocK:: forth
+The next error message is potentially more troublesome
+
+.. code-block:: bash
+
+   mspdebug tilib "prog amforth-5529.hex"
+   MSPDebug version 0.22 - debugging tool for MSP430 MCUs
+   Copyright (C) 2009-2013 Daniel Beer <dlbeer@gmail.com>
+   This is free software; see the source for copying conditions.  There is NO
+   warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+   MSP430_GetNumberOfUsbIfs
+   MSP430_GetNameOfUsbIf
+   Found FET: ttyACM0
+   MSP430_Initialize: ttyACM0
+   FET firmware update is required.
+   Re-run with --allow-fw-update to perform a firmware update.
+   tilib: device initialization failed
+
+Now have to update the programming module on the launchpad. Be aware
+that this is a potentially dangerous action, it may seem to brick the 
+chip (if not, you're lucky) if something goes wrong:
+
+.. code-block:: bash
  
-   : ms 0 ?do 1ms loop ;                                                         
+   $ mspdebug tilib --allow-fw-update
+   MSPDebug version 0.22 - debugging tool for MSP430 MCUs
+   Copyright (C) 2009-2013 Daniel Beer <dlbeer@gmail.com>
+   This is free software; see the source for copying conditions.  There is NO
+   warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
-Now let the red LED blink ONCE
+   MSP430_GetNumberOfUsbIfs
+   MSP430_GetNameOfUsbIf
+   Found FET: HID_FET
+   MSP430_Initialize: HID_FET
+   FET firmware update is required.
+   Starting firmware update (this may take some time)...
+   tilib: MSP430_FET_FwUpdate: MSP-FET / eZ-FET recovery failed (error = 73)
+   tilib: device initialization failed
 
-.. code-blocK:: forth
+In this case try running the command as root e.g. via sudo
 
-   : blink red:on 100 ms red:off 100 ms ;                                          
+.. code-block:: bash
 
-Test it! Now! The compiled version is *much* 
-faster than the sequence "1 33 bm-set 1 33 bm-clear"
-(watch the red flashes). Next is to let it blink until 
-a key is pressed
+   $ sudo mspdebug tilib --allow-fw-update 
+   [sudo] password for <user>: 
+   MSPDebug version 0.22 - debugging tool for MSP430 MCUs
+   Copyright (C) 2009-2013 Daniel Beer <dlbeer@gmail.com>
+   This is free software; see the source for copying conditions.  There is NO
+   warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
-.. code-blocK:: forth
+   MSP430_GetNumberOfUsbIfs
+   MSP430_GetNameOfUsbIf
+   Found FET: HID_FET
+   MSP430_Initialize: HID_FET
+   FET firmware update is required.
+   Starting firmware update (this may take some time)...
+   Initializing bootloader...
+   Programming new firmware...
+     0 percent done
+    34 percent done
+    67 percent done
+   100 percent done
+   Update complete
+   Done, finishing...
+   MSP430_VCC: 3000 mV
+   tilib: MSP430_VCC: Internal error (error = 68)
+   tilib: device initialization failed
 
-   : blink-forever begin blink key? until key drop ;                                        
+The error 68 signals "ok, I'm almost done". Now re-run the same command to
+finally do the firmware update. Note some subtle differences in the
+output like the HID_FET vs. ttyACM0.
+
+.. code-block:: bash
+
+   $ sudo mspdebug tilib --allow-fw-update 
+   MSPDebug version 0.22 - debugging tool for MSP430 MCUs
+   Copyright (C) 2009-2013 Daniel Beer <dlbeer@gmail.com>
+   This is free software; see the source for copying conditions.  There is NO
+   warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+   MSP430_GetNumberOfUsbIfs
+   MSP430_GetNameOfUsbIf
+   Found FET: ttyACM0
+   MSP430_Initialize: ttyACM0
+   FET firmware update is required.
+   Starting firmware update (this may take some time)...
+   Initializing bootloader...
+   Programming new firmware...
+     4 percent done
+    20 percent done
+    36 percent done
+    52 percent done
+    68 percent done
+    84 percent done
+   100 percent done
+   Update complete
+   Done, finishing...
+   MSP430_VCC: 3000 mV
+   MSP430_OpenDevice
+   MSP430_GetFoundDevice
+   Device: MSP430F5529 (id = 0x0030)
+   8 breakpoints available
+   MSP430_EEM_Init
+   Chip ID data: 55 29 18
+
+   Available commands:
+     =           erase       isearch     power       save_raw    simio       
+     alias       exit        load        prog        set         step        
+     break       fill        load_raw    read        setbreak    sym         
+     cgraph      gdb         md          regs        setwatch    verify      
+     delbreak    help        mw          reset       setwatch_r  verify_raw  
+     dis         hexout      opt         run         setwatch_w  
+
+   Available options:
+     color                       gdb_loop                    
+     enable_bsl_access           gdbc_xfer_size              
+     enable_locked_flash_access  iradix                      
+     fet_block_size              quiet                       
+     gdb_default_port            
+
+   Type "help <topic>" for more information.
+   Use the "opt" command ("help opt") to set options.
+   Press Ctrl+D to quit.
+
+   (mspdebug) <Ctrl-D> 
+   MSP430_Run
+   MSP430_Close
+
+IF done properly the actions looks like as follows
+
+.. code-block:: bash
+
+   $ sudo mspdebug tilib --allow-fw-update 
+   MSPDebug version 0.22 - debugging tool for MSP430 MCUs
+   Copyright (C) 2009-2013 Daniel Beer <dlbeer@gmail.com>
+   This is free software; see the source for copying conditions.  There is NO
+   warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+   MSP430_GetNumberOfUsbIfs
+   MSP430_GetNameOfUsbIf
+   Found FET: ttyACM0
+   MSP430_Initialize: ttyACM0
+   FET firmware update is required.
+   Starting firmware update (this may take some time)...
+   Initializing bootloader...
+   Programming new firmware...
+     75 percent done
+     84 percent done
+     84 percent done
+     91 percent done
+     96 percent done
+     99 percent done
+    100 percent done
+    100 percent done
+   Initializing bootloader...
+   Programming new firmware...
+      4 percent done
+     20 percent done
+     36 percent done
+     52 percent done
+     68 percent done
+     84 percent done
+    100 percent done
+   Update complete
+   Done, finishing...
+   MSP430_VCC: 3000 mV
+   MSP430_OpenDevice
+   MSP430_GetFoundDevice
+   Device: MSP430FR5969 (id = 0x012d)
+   3 breakpoints available
+   MSP430_EEM_Init
+   Chip ID data: 69 81 30
+
+   Available commands:
+     =           erase       isearch     power       save_raw    simio       
+     alias       exit        load        prog        set         step        
+     break       fill        load_raw    read        setbreak    sym         
+     cgraph      gdb         md          regs        setwatch    verify      
+     delbreak    help        mw          reset       setwatch_r  verify_raw  
+     dis         hexout      opt         run         setwatch_w  
+
+   Available options:
+     color                       gdb_loop                    
+     enable_bsl_access           gdbc_xfer_size              
+     enable_locked_flash_access  iradix                      
+     fet_block_size              quiet                       
+     gdb_default_port            
+
+   Type "help <topic>" for more information.
+   Use the "opt" command ("help opt") to set options.
+   Press Ctrl+D to quit.
+
+   (mspdebug)  <Ctrl-D>
+   MSP430_Run
+   MSP430_Close
+
+Now your hardware is configured to upload the hexfiles from amforth
+
+.. code-block:: bash
+
+   $ mspdebug tilib "prog amforth-5529.hex"
 

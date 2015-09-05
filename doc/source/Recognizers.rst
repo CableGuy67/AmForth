@@ -20,7 +20,7 @@ discussed earlier.
 
 The `1st formal RFD </pr/Recognizer-rfc.pdf>`__  `(txt) </pr/Recognizer-rfc.text>`__  
 (3.10.2014) has beed discussed. A `Draft of Version 2 </pr/Recognizer-rfc-B.pdf>`__ 
-`(txt) </pr/Recognizer-rfc-B.text>`__  (22.6.2015) is currently beeing worked on. 
+`(txt) </pr/Recognizer-rfc-B.text>`__  (30.8.2015) is currently beeing worked on. 
 It incorporates the results of the discussions and some more ideas.
 
 The papers linked below give some background information and

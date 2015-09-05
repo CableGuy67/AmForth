@@ -1,0 +1,231 @@
+======
+MSP430
+======
+
+The MSP430 is a 16-bit microcontroller from Texas Instruments. The
+Amforth implementation is based on code from Camelforth by Brad
+Rodriguez. This code is heavily modified and completely merged
+with the AVR code from the initial Amforth code base.
+
+This merge affects all higher order word like the interpreter
+itself. Most low-level stuff remained unchanged however. E.g. the
+inner interpreter is completely unchanged thus almost all
+assembly words work as before. To make room in the 8KB sized
+code segment, many words were removed. Some of them reappear
+as loadable forth source however. Some other like :command:`,jmp`
+are gone, since they make no real sense within amforth.
+
+.. _msp430_register_mappings:
+
+CPU Register Mapping
+--------------------
+
+Standard Use
+............
+
++------------------------------+--------------------+
+| Forth Register               | MSP430 Register    |
++------------------------------+--------------------+
+| W: Working Register          | R6                 |
++------------------------------+--------------------+
+| IP: Instruction Pointer      | R5                 |
++------------------------------+--------------------+
+| RSP: Return Stack Pointer    | SP (HW Stack)      |
++------------------------------+--------------------+
+| PSP: Parameter Stack Pointer | R4                 |
++------------------------------+--------------------+
+| UP: User Pointer             | R14                |
++------------------------------+--------------------+
+| TOS: Top Of Stack            | R7                 |
++------------------------------+--------------------+
+| X: temporary register        | R10                |
++------------------------------+--------------------+
+| Loop Index                   | R8                 |
++------------------------------+--------------------+
+| Loop Limit                   | R9                 |
++------------------------------+--------------------+
+| Y: temporary register        | R11                |
++------------------------------+--------------------+
+| Q: temporary register        | R12                |
++------------------------------+--------------------+
+| R: temporary register        | R13                |
++------------------------------+--------------------+
+
+The remaining registers are used by the CPU itself (R0-R3).
+
+Extended Forth VM Register Mapping
+..................................
+
++------------------------------+--------------------+
+| Forth Register               | MSP430 Register(s) |
++------------------------------+--------------------+
+| A: Index and Scratch Register| R15                |
++------------------------------+--------------------+
+
+The B register is not yet available.
+
+Core System
+-----------
+
+Threading Model
+...............
+
+AmForth implements the classic indirect threaded variant of
+forth. The registers and their mappings are shown in table
+:ref:`msp430_register_mappings`.
+
+Inner Interpreter
+.................
+
+For the indirect threading model an inner interpreter is
+needed. On the MSP 430 it almost the same as on the AVR8
+platform. There are two major differences.
+
+* the NEXT routine is compiled into each word, there is no
+  central NEXT code.
+* It does not support interrupts.
+
+
+Memory Allocation
+-----------------
+
+The ANS 94 standard defines three major data regions: name space,
+code space and data space. The MSP430 system architecture
+uses three memory types too: Flash, RAM and Info Flash. These three
+memory types share a common address space. The Info Flash is copied
+to a pre-defined RAM region, that can be written back using :command:`SAVE`.
+This write back is *not* performed automatically. That is a major difference
+to the EEPROM based configuration area in the AVR8.
+
+User Area
+---------
+
+The User Area is a special RAM storage area. It
+contains the USER variables and the User deferred
+definitions. Access is based upon the value of the
+user pointer UP. It can be changed with the word
+:command:`UP!` and read with :command:`UP@`
+. The UP itself is stored in a register pair.
+
+The size of the user area is determined by the size 
+the system itself uses plus a configurable number at
+compile time. For self defined tasks this user supplied 
+number can be changed for task local variables.
+
+The first USER area is located at the first data address
+(usually RAMSTART).
+
+.. _msp430_userarea:
+
++--------------------------+-----------------------------+
+| Address offset (bytes)   | Purpose                     |
++--------------------------+-----------------------------+
+| 0                        | Multitasker Status          |
++--------------------------+-----------------------------+
+| 2                        | Multitasker Follower        |
++--------------------------+-----------------------------+
+| 4                        | RP0                         |
++--------------------------+-----------------------------+
+| 6                        | SP0                         |
++--------------------------+-----------------------------+
+| 8                        | SP (used by multitasker)    |
++--------------------------+-----------------------------+
+| 10                       | HANDLER (exception handling)|
++--------------------------+-----------------------------+
+| 12                       | BASE (number conversion)    |
++--------------------------+-----------------------------+
+| 14                       | EMIT (deferred)             |
++--------------------------+-----------------------------+
+| 16                       | EMIT? (deferred)            |
++--------------------------+-----------------------------+
+| 18                       | KEY (deferred)              |
++--------------------------+-----------------------------+
+| 20                       | KEY? (deferred)             |
++--------------------------+-----------------------------+
+| 22                       | SOURCE (deferred)           |
++--------------------------+-----------------------------+
+| 24                       | >IN                         |
++--------------------------+-----------------------------+
+| 26                       | REFILL (deferred)           |
++--------------------------+-----------------------------+
+
+The User Area is used to provide task local
+information. Without an active multitasker it
+contains the starting values for the stackpointers,
+the deferred words for terminal IO, the BASE
+variable and the exception handler.
+
+The multitasker uses the first 2 cells to store the
+status and the link to the next entry in the task
+list. In that situation the user area is/can be seen
+as the task control block.
+
+Dictionary Management
+---------------------
+
+The dictionary has all words and code. It is located in the flash
+region. The memory is managed with the :command:`dp` dictionary
+pointer. It is a configuration RAM variable.
+
+.. code-block:: forth
+
+   \ ( n -- )
+   : , dp !i dp 1 +! ;
+
+
+Wordlists too use the configuration RAM. The wordlist identifier is 
+the address of a RAM cell, that contains the link to the first word
+in the list.
+
+.. code-block:: forth
+
+   : wordlist ( -- wid )
+       infodp @ 0 over !
+       dup cell+ infodp !e ;
+
+
+The :command:`header` command starts a new dictionary entry. It creates
+the same layout as the AVR8 but differs in the way, the header is built. 
+
+.. code-block:: forth
+
+   : header ( addr len wid -- NT )
+     @ ,      \ link field
+     $ff c,   \ flag field
+     ihere >r \ Name Token NT
+     s,       \ copy the string from RAM to flash
+     r>       \ 
+   ;
+
+All higher level structures are identical.
+
+
+Memories
+--------
+
+Flash
+.....
+
+Flash contains the dictionary. The actual placement depends on the device type but
+usually the amforth core system is at the higher addresses. User specific words start
+at flash start.
+
+Reqriting flash pages is only possible if enough RAM ressources are available to buffer
+a whole page. Since a page is usually 512 bytes in size, the smaller device types like
+the G2553 cannot rewrite flash cells.
+
+Info Flash
+..........
+
+A 128 bytes segment is used for configuration data. This block is copied to RAM at
+startup. Any changes to the data are applied to this RAM copy. Only an explicit
+command :command:`SAVE` writes the configuration settings back to the info flash.
+
+RAM
+...
+
+RAM is used for the info flash copy, data like the USER area, buffers like the terminal
+input buffer and the acutal user data. Technically it would be possible to place the 
+dictionary here too since nothing in the MSP430 architecture prevents this. Only the
+very limited RAM size (512 bytes for the G2553).
+

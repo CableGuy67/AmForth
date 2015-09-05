@@ -2,17 +2,17 @@
 First Steps
 ===========
 
-The first steps require an ATmega micro controller with an
-RS232 connection to an PC or a terminal like the
-VT100
-or similar hardware. A customization may change these requirements.
+The first steps require an ATmega micro controller or a
+TI Launchpad 430 with a MSP430G2553 controller. The AVR
+needs a separate RS232 connection to an PC, the MSP430 works
+with the USB connection for both the command terminal and the
+reprogramming. 
 
 User Interface
 --------------
 
-amforth has a simple user interface. Connect your system to a serial
-terminal (or a PC) and you get, after pressing the enter key, the
-forth prompt :command:`>`
+amforth has a simple user interface. It is available as a serial
+port.
 
 .. code-block:: console
 
@@ -22,4 +22,9 @@ forth prompt :command:`>`
     nr> n>r (i!) !i @i @e !e nip not s>d up! up@ ...
     >
 
+Next Steps
+----------
 
+The next steps are performing some actions like LED on / off
+and defining new commands to extent the interpreter. The
+:ref:`Cookbook` has a lot of recipes for both.

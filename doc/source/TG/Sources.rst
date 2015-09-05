@@ -6,36 +6,20 @@ Source Organization
 Overview
 --------
 
-amforth is written using the standard Atmel AVR 8 bit assembly
-language. That does not mean that every word is actually written in
-assembly language however. Most of the words are written in forth
-itself, but are precompiled into the assembler syntax. This solves
-the chicken-and-egg problem: how to compile the compiler words.
+amforth is written in assembler. Only a few are actually assembly words, most
+are pre-compiled forth code. There are three major directories containing the
+code: :file:`avr8`, :file:`msp430` and :file:`common`. Each contain a number of
+subdirectories like :file:`lib` and :file:`words` that contain actual source files.
+Almost every word uses its own source file with a descriptive name. These elementary
+source files are collected in include file sets, called dictionary files. Depending
+on the controller type, different dictionary file sets should be used. Most of the
+decisions are made automatically by using the single top-level file :file:`amforth.asm`.
 
-The source code can be processed with both the AVR Studio and
-the Linux avr assembler avra.
-
-amforth consists of a great number of small source files. Nearly all
-words are coded in their own source files. These files are organized
-with include files, named after the pattern :file:`dict*.inc` or are 
-located in the :file:`core/dict` directory.
-
-The include hierarchy is as follows: Top level is the application specific
-file (template.asm). It includes two files :file:`core/preamble.inc` and 
-:file:`core/amforth.asm`. The :file:`core/preamble.inc` sets up the controller
-specific things and the default settings for the amforth system. Most of them
-can be changed in the file :file:`template.asm` afterwards until finally the
-file :file:`core/amforth.asm` is included.
-
-This file includes two files from the core/dict directory: :file:`rww.inc`
-and :file:`nrww.inc`. In addition two files from the application directory
-are included as well: :file:`dict_appl.inc` for the low address words (RWW space) 
-and :file:`dict_appl_core.inc` for the high address space words (NRWW).
-
-Currently only one optional dict file may be added to the user supplied
-files: :file:`compiler2.inc`. It contains words which are useful but not
-strictly necessairy. It is automatically included for systems with 8KB
-bootloader flash space.
+The assemblers used suuport a list of include directories which is used
+in order. That makes it possible to have an application specific :file:`words`
+directory that may contain the same file names as the amforth provided ones that
+take precedence during the assembly process. Likewise the controller specific
+directories are searched before the :file:`common` directory.
 
 Device Settings
 ---------------
