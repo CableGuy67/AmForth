@@ -1,5 +1,5 @@
 
-all: lp-2553.hex lp-5529.hex lp-5969.hex
+all: lp-2553
 
 lp-2553.hex: lp-2553.asm ../../msp430/*
 	naken_asm -I words \
