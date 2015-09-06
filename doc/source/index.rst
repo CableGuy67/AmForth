@@ -32,12 +32,16 @@ Here you'll find things that are not yet released but will be part of the next r
 See the code section at Sourceforge to get the
 `most recent sources <http://sourceforge.net/p/amforth/code/HEAD/tree/trunk/>`__
 
+6.9.2015: release 6.0
+......................
+
 * core(ALL): Fix a few more regressions like the TAB handling in 
   :command:`accept`.
 * core(AVR8): Fix :command:`forth-wordlist` to return a valid wordlist id.
-* core(MSP430): many small changes to bring it closer to the AVR8. Still fits into 8KB flash
+* core(MSP430): many small changes to bring it closer to the AVR8. Still fits into 8KB flash.
 
-  * global variables like DP (HERE), STATE, HLD etc instead of USER.
+  * global variables like :command:`DP` (:command:`HERE`), :command:`STATE`, :command:`HLD` 
+    etc instead of USER variables-
   * Same USER area layout. Including deferred words for terminal IO.
   * complete wordlist support including search order and current.
   * Emulate AVR EEPROM configuration with a info flash segment. Needs :command:`save` to
