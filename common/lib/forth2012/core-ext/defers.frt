@@ -6,6 +6,7 @@
 \ but needs to be initialized at startup
 
 : Rdefer ( "name" -- )
+    (defer)
     here , 
     ['] Rdefer@ ,
     ['] Rdefer! ,
