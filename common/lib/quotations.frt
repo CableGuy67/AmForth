@@ -9,12 +9,14 @@
 \
 
 : [: ( -- quotation-sys )
-     postpone ahead :noname  ; immediate
-    
+     postpone ahead 
+     latest @ newest 2@ \ save definition state
+     :noname  
+; immediate
 
 : ;] ( compile-time: quotation-sys -- ; run-time: -- xt )
-    postpone ;
-    >r
+    postpone ;  >r
+    newest 2! latest ! \ restore definiion state
     postpone then
     r>
     postpone literal 
