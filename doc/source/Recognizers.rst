@@ -18,10 +18,10 @@ discussed earlier.
   in 2007.
 * Recent developments were presented at the `Euroforth conference 2012 <http://www.complang.tuwien.ac.at/anton/euroforth/ef12/papers/paysan-recognizers-ho.pdf>`__
 
-The `1st formal RFD </pr/Recognizer-rfc.pdf>`__  `(txt) </pr/Recognizer-rfc.text>`__  
-(3.10.2014) has beed discussed. A `Draft of Version 2 </pr/Recognizer-rfc-B.pdf>`__ 
-`(txt) </pr/Recognizer-rfc-B.text>`__  (30.8.2015) is currently beeing worked on. 
-It incorporates the results of the discussions and some more ideas.
+There was a `1st formal RFD </pr/Recognizer-rfc.pdf>`__  `(txt) </pr/Recognizer-rfc.text>`__  
+available 3.10.2014. `Version 2 </pr/Recognizer-rfc-B.pdf>`__  `(txt) </pr/Recognizer-rfc-B.text>`__  
+has been published 20.9.2015. It improves the proposed standard section and adds a long chapter 
+discussing the recognizer design based on feedback from v1.
 
 The papers linked below give some background information and
 describe the concept. Examples can be found in the code base.

@@ -23,7 +23,7 @@ threading 16bit Forth.
 
 AmForth fro the AVR8 needs 8 to 12 KB Flash memory, 80 bytes EEPROM, and 200 bytes
 RAM for the core system. A similar code for the MSP430 fits into 8KB flash. The MSP430
-info flash is used for similar purposes as the EEPROm for the AVR8 platform.
+info flash is used for similar purposes as the EEPROM for the AVR8 platform.
 
 Work In Progress
 ................
@@ -32,11 +32,13 @@ Here you'll find things that are not yet released but will be part of the next r
 See the code section at Sourceforge to get the
 `most recent sources <http://sourceforge.net/p/amforth/code/HEAD/tree/trunk/>`__
 
+* core(MSP430): Extended VM Register A. See :ref:`Extended-VM`
+* lib(ALL): Fix :command:`Rdefer`
+
 6.9.2015: release 6.0
 ......................
 
-* core(ALL): Fix a few more regressions like the TAB handling in 
-  :command:`accept`.
+* core(ALL): Fix a few regressions like the TAB handling in :command:`accept`.
 * core(AVR8): Fix :command:`forth-wordlist` to return a valid wordlist id.
 * core(MSP430): many small changes to bring it closer to the AVR8. Still fits into 8KB flash.
 
