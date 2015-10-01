@@ -109,7 +109,7 @@ VERSION=code
 CORE=$(AMFORTH)/avr8
 
 # directories
-ATMEL=$(AMFORTH)/Atmel
+ATMEL=$(AMFORTH)/avr8/Atmel
 
 # ------------------------
 # PROGRAMMER CONFIGURATION
@@ -125,7 +125,7 @@ AVRDUDE_FLAGS=-q -P $(PORT) -c $(PROGRAMMER)
 # ASSEMBLER TO USE
 # ----------------
 
-AS_INCLUDE=-I $(ATMEL)/Appnotes2 -I$(CORE)
+AS_INCLUDE=-I $(ATMEL)/Appnotes2 -I$(CORE)  -I$(CORE)/devices/ -I$(AMFORTH)/common
 
 ASM=wine $(ATMEL)/avrasm2.exe
 # flags Specific to avrasm2.exe
