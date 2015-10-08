@@ -8,6 +8,8 @@
 .org AMFORTH_START         ; start address of Forth kernel
 
 .include "init.asm"
+.include "drivers.asm"
+
 .include "itc430core.asm"   ; code primitives
 .include "itc430hilvl.asm"
 

@@ -70,7 +70,8 @@
 .include "words/dot-quote.asm"
 .include "words/sliteral.asm"
 .include "words/2literal.asm"
-
+.include "words/i-fetch.asm"
+.include "words/ic-fetch.asm"
 ; NUMERIC OUTPUT ================================
 .include "words/ud-slash-mod.asm"
 .include "words/ud-star.asm"
@@ -177,21 +178,17 @@
 .include "words/depth.asm"
 
 ; UTILITY WORDS AND STARTUP =====================
-.include "words/flaligned.asm"
 .include "words/words.asm"
 .include "words/traverse-wordlist.asm"
 .include "words/name2string.asm"
 .include "words/show-wordlist.asm"
-
 .include "words/u-dot-r.asm"
 .include "words/ud-dot.asm"
 .include "words/ud-dot-r.asm"
 .include "words/dot-r.asm"
 .include "words/d-dot.asm"
 .include "words/d-dot-r.asm"
-
 .include "words/cold.asm"
-.include "words/init-ram.asm"
 .include "words/pause.asm"
 .include "words/warm.asm"
 .include "words/applturnkey.asm"  ; from application!
@@ -215,7 +212,6 @@
 .include "words/compare.asm"
 .include "words/search-wordlist.asm"
 .include "words/num-constants.asm"
-.include "words/save.asm"
 
 .include "words/do-defer.asm"
 .include "words/do-value.asm"

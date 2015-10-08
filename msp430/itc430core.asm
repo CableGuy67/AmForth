@@ -139,20 +139,6 @@ dodoes: ; -- a-addr     ; 3 for MOV #DODOES,PC
 .include "words/c-fetch.asm"
 .include "words/c-store.asm"
 
-; FLASH MEMORY OPERATIONS
-; Note that an I! or IC! to a RAM address >FLASHSTART will work -- it 
-; will enable the flash, write the RAM, and then disable the flash.
-; An FLERASE to a RAM address will merely clear that one RAM cell.
-
-.include "words/flerase.asm"
-
-; Program Space (Flash) operators 
-
-.include "words/i-store.asm"
-.include "words/ic-store.asm"
-.include "words/i-fetch.asm"
-.include "words/ic-fetch.asm"
-.include "words/d-to-i.asm"
 
 ; ----------------------------------------------------------------------
 ; ARITHMETIC OPERATIONS
