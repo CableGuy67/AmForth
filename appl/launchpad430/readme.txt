@@ -16,6 +16,8 @@ have a single code base for all higer level code and the tools.
 The MSP430 G2553 is used. It runs at 8MHz. The serial terminal
 uses 9600/8N1 without flow control.
 
+The MSP430 F5529 runs at 8MHz, the terminal uses 115200 (!) 8N1
+
 A lot of the amforth features are already available:
 - exceptions
 - double cell numbers
