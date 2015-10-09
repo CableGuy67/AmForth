@@ -48,8 +48,6 @@ PFA_DODOES:
     .dw XT_CELLPLUS
     .dw XT_FETCH
     .dw XT_FETCHE
-    .dw XT_NFA2LFA
-    .dw XT_1PLUS   ; lfa>xt
-
+    .dw XT_NFA2CFA
     .dw XT_STOREI
     .dw XT_EXIT
