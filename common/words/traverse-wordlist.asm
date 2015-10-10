@@ -38,10 +38,12 @@ PFA_TRAVERSEWORDLIST2:
     .dw XT_2DROP
     .dw XT_EXIT
 
-; : traverse-wordlist ( i*x xt wid -- i*x' ) 
-;        begin @ dup 
-;        while 
-;          2dup 2>r 
-;          cell + swap execute ( i*x nt -- i*x' f ) 
-;          2r> rot 
-;        while repeat then 2drop ; 
+; : traverse-wordlist ( i*x xt wid -- i*x' )
+;        begin @ dup
+;        while
+;          2dup 2>r
+;          swap execute ( i*x nt -- i*x' f )
+;          2r> rot
+;        while
+;          nfa>lfa @i
+;        repeat then 2drop ;
