@@ -19,7 +19,6 @@ PFA_VARIABLE:
 .endif
     .dw XT_HERE
     .dw XT_CONSTANT
-    .dw XT_DOLITERAL
-    .dw 2
+    .dw XT_TWO
     .dw XT_ALLOT
     .dw XT_EXIT

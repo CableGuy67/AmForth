@@ -16,8 +16,7 @@ PFA_TO_L:
 ;Z >L   x --   L: -- x        move to leave stack
 ;   CELL LP +!  LP @ ! ;      (L stack grows up)
 
-        .dw XT_DOLITERAL
-	.dw 2
+        .dw XT_TWO
 	.dw XT_LP
 	.dw XT_PLUSSTORE
 	.dw XT_LP

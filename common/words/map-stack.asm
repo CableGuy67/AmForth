@@ -42,8 +42,7 @@ PFA_MAPSTACK1:
          .dw XT_EXIT
 PFA_MAPSTACK2:
       .dw XT_R_FROM
-      .dw XT_DOLITERAL
-      .dw 2
+      .dw XT_TWO
       .dw XT_DOPLUSLOOP
       DEST(PFA_MAPSTACK1)
 PFA_MAPSTACK3:

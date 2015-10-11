@@ -16,8 +16,7 @@ XT_BIN:
     .dw DO_COLON
 PFA_BIN:
 .endif
-    .dw XT_DOLITERAL
-    .dw 2
+    .dw XT_TWO
     .dw XT_BASE
     .dw XT_STORE
     .dw XT_EXIT
