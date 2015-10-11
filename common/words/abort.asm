@@ -15,6 +15,5 @@ XT_ABORT:
     .dw DO_COLON
 PFA_ABORT:
 .endif
-    .dw XT_DOLITERAL
-    .dw -1
+    .dw XT_TRUE
     .dw XT_THROW

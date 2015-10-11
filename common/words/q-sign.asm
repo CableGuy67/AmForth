@@ -17,8 +17,7 @@ PFA_QSIGN:        ; ( c -- )
     .dw XT_TO_R
     .dw XT_DOCONDBRANCH
     DEST(PFA_NUMBERSIGN_DONE)
-    .dw XT_DOLITERAL      ; skip sign character
-    .dw 1
+    .dw XT_ONE    ; skip sign character
     .dw XT_SLASHSTRING
 PFA_NUMBERSIGN_DONE:
     .dw XT_R_FROM

@@ -41,8 +41,7 @@ PFA_SET_BASE:        ; ( adr1 len1 -- adr2 len2 )
 	.dw XT_FETCHI
 	.dw XT_BASE
 	.dw XT_STORE
-	.dw XT_DOLITERAL
-	.dw 1
+	.dw XT_ONE
 	.dw XT_SLASHSTRING
 	.dw XT_DOBRANCH
 	DEST(SET_BASE2)

@@ -27,8 +27,7 @@ PFA_CSKIP1:
     .dw XT_EQUAL          ; ( -- addr' n' f )
     .dw XT_DOCONDBRANCH   ; ( -- addr' n')
     DEST(PFA_CSKIP2)
-    .dw XT_DOLITERAL
-    .dw 1
+    .dw XT_ONE
     .dw XT_SLASHSTRING
     .dw XT_DOBRANCH
     DEST(PFA_CSKIP1)

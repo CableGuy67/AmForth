@@ -109,8 +109,7 @@ PFA_REC_NUM:
     .dw XT_NUMBER
     .dw XT_DOCONDBRANCH
     DEST(PFA_REC_NONUMBER)
-    .dw XT_DOLITERAL
-    .dw 1
+    .dw XT_ONE
     .dw XT_EQUAL
     .dw XT_DOCONDBRANCH
     DEST(PFA_REC_INTNUM2)

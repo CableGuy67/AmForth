@@ -16,8 +16,7 @@ XT_RBRACKET:
     .dw DO_COLON
 PFA_RBRACKET:
 .endif
-    .dw XT_DOLITERAL
-    .dw 1
+    .dw XT_ONE
     .dw XT_STATE
     .dw XT_STORE
     .dw XT_EXIT

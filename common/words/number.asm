@@ -52,8 +52,7 @@ PFA_NUMBER0:
     .dw XT_DOCONDBRANCH
     DEST(PFA_NUMBER1)
     ; if equal 1: mayba a trailing dot? --> double cell number
-    .dw XT_DOLITERAL
-    .dw 1
+    .dw XT_ONE
     .dw XT_EQUAL
     .dw XT_DOCONDBRANCH
     DEST(PFA_NUMBER2)
@@ -93,8 +92,7 @@ PFA_NUMBER1:
     DEST(PFA_NUMBER4)
     .dw XT_NEGATE
 PFA_NUMBER4:
-    .dw XT_DOLITERAL
-    .dw 1
+    .dw XT_ONE
 PFA_NUMBER5:
     .dw XT_R_FROM
     .dw XT_BASE

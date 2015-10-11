@@ -28,7 +28,6 @@ PFA_PARSE:
     .dw XT_1PLUS
     .dw XT_TO_IN        ; ( -- addr' len'' len'' >in)
     .dw XT_PLUSSTORE   ; ( -- addr' len')
-    .dw XT_DOLITERAL
-    .dw 1
+    .dw XT_ONE
     .dw XT_SLASHSTRING
     .dw XT_EXIT
