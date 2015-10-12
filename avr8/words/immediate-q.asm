@@ -1,6 +1,6 @@
-; ( addr -- addr+1 n )  
+; ( flagset -- +/-1 )  
 ; Tools
-; get count information out of a counted string in flash
+; return +1 if immediate, -1 otherwise, flag from name>flags
 ;VE_IMMEDIATEQ:
 ;    .dw $ff06
 ;    .db "immediate?"
