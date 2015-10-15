@@ -18,8 +18,14 @@ PFA_POSTPONE:
 .endif
     .dw XT_PARSENAME
     .dw XT_DORECOGNIZER
-    .dw XT_ICELLPLUS 
+    .dw XT_DUP
+    .dw XT_TO_R
+    .dw XT_ICELLPLUS
     .dw XT_ICELLPLUS
     .dw XT_FETCHI
     .dw XT_EXECUTE
+    .dw XT_R_FROM
+    .dw XT_ICELLPLUS
+    .dw XT_FETCHI
+    .dw XT_COMMA
     .dw XT_EXIT

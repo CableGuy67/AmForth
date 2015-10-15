@@ -46,7 +46,7 @@ PFA_R_WORD:
 .endif
     .dw XT_R_WORD_INTERPRET
     .dw XT_R_WORD_COMPILE
-    .dw XT_R_WORD_POSTPONE
+    .dw XT_2LITERAL
 
 ; ( XT flags -- )
 ; Interpreter
@@ -82,24 +82,4 @@ PFA_R_WORD_COMPILE:
         .dw XT_EXIT
 PFA_R_WORD_COMPILE1:
         .dw XT_EXECUTE
-    .dw XT_EXIT
-
-; ( XT flags -- )
-; Interpreter
-; Postpone method for WORD recognizer
-.if cpu_msp430==1
-    HEADLESS(XT_R_WORD_POSTPONE,DOCOLON)
-.endif
-.if cpu_avr8==1
-XT_R_WORD_POSTPONE:
-    .dw DO_COLON
-PFA_R_WORD_POSTPONE:
-.endif
-    .dw XT_ZEROLESS
-    .dw XT_DOCONDBRANCH
-    DEST(PFA_R_WORD_POSTPONE1)
-      .dw XT_COMPILE
-      .dw XT_COMPILE
-PFA_R_WORD_POSTPONE1:
-    .dw XT_COMMA
     .dw XT_EXIT

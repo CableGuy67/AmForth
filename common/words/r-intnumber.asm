@@ -17,7 +17,7 @@ PFA_R_NUM:
 .endif
     .dw XT_NOOP    ; interpret
     .dw XT_LITERAL ; compile
-    .dw XT_FAILNUM ; postpone
+    .dw XT_LITERAL ; postpone
 
 ; ( -- addr )
 ; Interpreter
@@ -38,54 +38,7 @@ PFA_R_DNUM:
 .endif
     .dw XT_NOOP     ; interpret
     .dw XT_2LITERAL ; compile
-    .dw XT_FAILDNUM ; postpone
-
-; ( -- addr )
-; Interpreter
-; Method to print a number and throw exception "invalid postpone"
-.if cpu_msp430==1
-    HEADLESS(XT_FAILNUM,DOCOLON)
-.endif
-
-.if cpu_avr8==1
-;VE_FAILNUM:
-;    .dw $ff06
-;    .db "fail:i"
-;    .dw VE_HEAD
-;    .set VE_HEAD = VE_FAILNUM
-XT_FAILNUM:
-    .dw DO_COLON
-PFA_FAILNUM:
-.endif
-    .dw XT_DOT
-    .dw XT_DOLITERAL
-    .dw -48
-    .dw XT_THROW
-    .dw XT_EXIT
-
-; ( -- addr )
-; Interpreter
-; Method to print a double cell number and throw exception "invalid postpone"
-.if cpu_msp430==1
-    HEADLESS(XT_FAILDNUM,DOCOLON)
-.endif
-
-.if cpu_avr8==1
-
-VE_FAILDNUM:
-;    .dw $ff06
-;    .db "fail:d"
-;    .dw VE_HEAD
-;    .set VE_HEAD = VE_FAILDNUM
-XT_FAILDNUM:
-    .dw DO_COLON
-PFA_FAILDNUM:
-.endif
-    .dw XT_DDOT
-    .dw XT_DOLITERAL
-    .dw -48
-    .dw XT_THROW
-    .dw XT_EXIT
+    .dw XT_2LITERAL ; postpone
 
 ; ( addr len -- f )
 ; Interpreter
