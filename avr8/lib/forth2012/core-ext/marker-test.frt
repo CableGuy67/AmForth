@@ -1,5 +1,5 @@
-#include ../core/postpone.frt
-#include ../tools/dumper.frt
+#include dumper.frt
+#include order.frt
 #include marker.frt
 
 wordlist constant test-wl
