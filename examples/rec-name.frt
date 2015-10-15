@@ -5,7 +5,7 @@
 \ from forth 2012
 :noname name>interpret execute ;
 :noname name>compile execute ;
-:noname name>compile swap postpone literal compile, ;
+:noname postpone literal ;
 recognizer: r:name
 
 \ helper words
