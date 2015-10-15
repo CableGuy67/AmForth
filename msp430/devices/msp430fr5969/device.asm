@@ -1,0 +1,13 @@
+; device specific 
+.include "msp430fr5969.inc"  ; MCU-specific register equates
+
+RAMSTART equ 1C00h
+RAMEND   equ 2400h
+INFOFLASHSTART equ 1000h
+INFOSTART  equ 01800h
+INFOEND    equ 0197fh     ; do not allow config flash to be erased
+FLASHSTART equ 4400h
+FLASHEND   equ 0FFFFh
+MAINSEG    equ 512
+INFOSEG    equ 64
+INFO_SIZE  equ 128    ; bytes
