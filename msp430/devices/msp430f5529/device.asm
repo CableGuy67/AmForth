@@ -3,7 +3,6 @@
 
 RAMSTART equ 2400h
 RAMEND   equ 4400h
-INFOFLASHSTART equ 01800h
 INFOSTART  equ 01800h
 INFOEND    equ 0198Fh     ; do not allow config flash to be erased
 FLASHSTART equ 04400h
