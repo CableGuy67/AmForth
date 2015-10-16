@@ -1,5 +1,4 @@
 
-\ #require q-negate.frt
 
 : fm/mod ( d1 n1 -- n2 n3 )
   dup >r

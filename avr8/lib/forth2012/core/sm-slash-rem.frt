@@ -1,4 +1,3 @@
-\ #require q-negate.frt
 
 : sm/rem ( d1 n1 -- n2 n3 )
   2dup xor >r

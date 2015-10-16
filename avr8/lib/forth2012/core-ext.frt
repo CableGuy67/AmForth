@@ -1,10 +1,10 @@
 \ 'core-ext.frt' generated automatically, do not edit
-#include  case.frt
-\ #include  case-test.frt
-#include  compile-comma.frt
-\ #include  exceptions.frt
-#include  marker.frt
-\ #include  marker-test.frt
+#require  case.frt
+\ #require  case-test.frt
+#require  compile-comma.frt
+\ #require  exceptions.frt
+#require  marker.frt
+\ #require  marker-test.frt
 
 \ update the environment
 \ get-current environment set-current

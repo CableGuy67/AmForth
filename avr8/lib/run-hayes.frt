@@ -16,6 +16,8 @@
 \ controller, e.g. all the dict_* are included
 \ 
 
+#require is.frt
+
 \ include all sources 
 #include core.frt
 #include double.frt
