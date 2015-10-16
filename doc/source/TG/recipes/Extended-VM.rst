@@ -31,7 +31,7 @@ CPU registers, they work faster than variables or other memory based
 data.
 
 To store data into a register, the command ``>a`` is used. Getting back
-the data is done with ``a>``. Unline the similiar  looking ``>r``, 
+the data is done with ``a>``. Unlike the similiar  looking ``>r``, 
 repeated calls to ``>a`` overwrite the register contents. 
 
 .. code-block:: forth

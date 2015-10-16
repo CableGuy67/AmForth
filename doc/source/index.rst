@@ -21,7 +21,7 @@ AmForth implements an almost compatible `Forth 2012
 <http://www.forth200x.org/documents/html3/>`_ indirect 
 threading 16bit Forth. 
 
-AmForth fro the AVR8 needs 8 to 12 KB Flash memory, 80 bytes EEPROM, and 200 bytes
+AmForth for the AVR8 needs 8 to 12 KB Flash memory, 80 bytes EEPROM, and 200 bytes
 RAM for the core system. A similar code for the MSP430 fits into 8KB flash. The MSP430
 info flash is used for similar purposes as the EEPROM for the AVR8 platform.
 
@@ -32,8 +32,12 @@ Here you'll find things that are not yet released but will be part of the next r
 See the code section at Sourceforge to get the
 `most recent sources <http://sourceforge.net/p/amforth/code/HEAD/tree/trunk/>`__
 
+* core(ALL): Adapt :command:`postpone` action of the recognizers to comply with
+  `Rev. 3 </pr/Recognizer-rfc-C.pdf>`__. Change your recognizers accordingly.
+* core(MSP430): New devices MSP430 F5529 (Flash) and FR5969 (FRAM). See :ref:`TI_Launchpad_430`.
 * core(MSP430): Extended VM Register A. See :ref:`Extended-VM`
-* lib(ALL): Fix :command:`Rdefer`
+* lib(ALL): Fix regressions in :command:`Rdefer` and :command:`does>`. 
+  Make quotations more robust in corner cases.
 
 6.9.2015: release 6.0
 ......................

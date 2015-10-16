@@ -18,13 +18,21 @@ discussed earlier.
   in 2007.
 * Recent developments were presented at the `Euroforth conference 2012 <http://www.complang.tuwien.ac.at/anton/euroforth/ef12/papers/paysan-recognizers-ho.pdf>`__
 
-There was a `1st formal RFD </pr/Recognizer-rfc.pdf>`__  `(txt) </pr/Recognizer-rfc.text>`__  
-available 3.10.2014. `Version 2 </pr/Recognizer-rfc-B.pdf>`__  `(txt) </pr/Recognizer-rfc-B.text>`__  
-has been published 20.9.2015. It improves the proposed standard section and adds a long chapter 
-discussing the recognizer design based on feedback from v1.
+The `1st formal RFD </pr/Recognizer-rfc.html>`__  
+`(pdf) </pr/Recognizer-rfc.pdf>`__, 
+`(txt) </pr/Recognizer-rfc.text>`__  
+was published at october, 3 2014. `Version 2 </pr/Recognizer-rfc-B.html>`__
+`(pdf) </pr/Recognizer-rfc-B.pdf>`__, 
+`(txt) </pr/Recognizer-rfc-B.text>`__  
+has been published on september, 20 2015. It improves the proposed standard 
+section and adds a long chapter discussing the recognizer design based on 
+feedback from version 1. The 3rd version has been started immediately after
+v2 due to a suggestion changing the `POSTPONE` action.
+`Version 3 </pr/Recognizer-rfc-C.html>`__
+`(pdf) </pr/Recognizer-rfc-C.pdf>`__, 
+`(txt) </pr/Recognizer-rfc-C.text>`__  
 
-The papers linked below give some background information and
-describe the concept. Examples can be found in the code base.
+The papers linked below give some historical background information.
 
 * `First Generation </pr/Recognizer-en.pdf>`__ is an all in one implementation.
 * `Second Generation </pr/Recognizer2-en.pdf>`__ describes the factored component 

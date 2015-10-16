@@ -7,7 +7,7 @@ User's Manual for Windows
 .. toctree::
    :maxdepth: 1
 
-by Karl Lunt for amforth v4.2 (updated for 5.4)
+by Karl Lunt for amforth v4.2 (updated for v6.1)
 
 
 Document contributed to the amforth project on SourceForge.net.
@@ -249,7 +249,6 @@ Here is the :file:`dict_appl.inc` file I created for my sample amforth system.
  ; they may be moved to the core dictionary if needed
 
  .include "applturnkey.asm"
- .include "words/ms.asm"
  
  ; optionally 
  .include "dict/compiler2.inc"
@@ -477,7 +476,7 @@ the path you added in the Additional include path field.  Edit the
 Additional parameters field to include the following text, all entered
 on a single line::
 
- -I C:\projects\amforth-x.y\core -I C:\projects\amforth-4.2\core\devices\atmega328p
+ -I C:\projects\amforth-x.y\avr8\devices\atmega328p -I C:\projects\amforth-x.y\avr8 -I C:\projects\amforth-x.y\common
 
 Note that the above entry is for my project; adjust as needed for your
 file paths and target MCU.  Be sure to include the single space after
@@ -496,4 +495,6 @@ Revision History
 | 4.2.2   | Matthias Trute | Reformatted with ReST                    |
 +---------+----------------+------------------------------------------+
 | 4.2.3   | Matthias Trute | Update for include file changes          |
++---------+----------------+------------------------------------------+
+| 4.2.4   | Matthias Trute | Update for include file changes          |
 +---------+----------------+------------------------------------------+

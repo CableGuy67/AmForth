@@ -61,6 +61,10 @@ a key is pressed
 
    : blink-forever begin blink key? until key drop ;                                        
 
+A big difference to the AVR's is that amforth for the MSP430
+needs an explicit :command:`save` command to make all writes
+to the dictionary permanent. Otherwise every changes are lost
+at :command:`cold` or reset and moreover a re-flash is necessary.
 
 Hardware Setup
 --------------
@@ -192,7 +196,7 @@ The next error message is potentially more troublesome
    Re-run with --allow-fw-update to perform a firmware update.
    tilib: device initialization failed
 
-Now have to update the programming module on the launchpad. Be aware
+Now you have to update the programming module on the launchpad. Be aware
 that this is a potentially dangerous action, it may seem to brick the 
 chip (if not, you're lucky) if something goes wrong:
 
@@ -302,7 +306,7 @@ output like the HID_FET vs. ttyACM0.
    MSP430_Run
    MSP430_Close
 
-IF done properly the actions looks like as follows
+If done properly the actions looks as follows
 
 .. code-block:: bash
 
@@ -376,3 +380,10 @@ Now your hardware is configured to upload the hexfiles from amforth
 
    $ mspdebug tilib "prog amforth-5529.hex"
 
+giving the amforth command prompt in your serial terminal
+
+.. code-block:: forth
+
+   amforth 6.1 MSP430F5529 8000 kHz
+   > words                        
+   key? key emit? emit ...

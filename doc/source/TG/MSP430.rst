@@ -217,8 +217,8 @@ the G2553 cannot rewrite flash cells.
 Info Flash
 ..........
 
-A 128 bytes segment is used for configuration data. This block is copied to RAM at
-startup. Any changes to the data are applied to this RAM copy. Only an explicit
+A 128 bytes segment called INFO D is used for configuration data. This block is copied 
+to RAM at startup. Any changes to the data are applied to this RAM copy. Only an explicit
 command :command:`SAVE` writes the configuration settings back to the info flash.
 
 RAM
@@ -229,3 +229,8 @@ input buffer and the acutal user data. Technically it would be possible to place
 dictionary here too since nothing in the MSP430 architecture prevents this. Only the
 very limited RAM size (512 bytes for the G2553).
 
+FRAM
+.....
+
+Some devices use FRAM instead of flash memory. While not strictly necessary, they too
+require the :command:`save` command to make all changes to the dictionary permanent.
