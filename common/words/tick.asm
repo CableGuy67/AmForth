@@ -18,13 +18,23 @@ PFA_TICK:
 .endif
     .dw XT_PARSENAME
     .dw XT_DORECOGNIZER
-    .dw XT_R_WORD
+    ; a word is tickable unless R:TABLE is R:FAIL or 
+    ; the interpret action is a NOOP
+    .dw XT_DUP
+    .dw XT_R_FAIL
     .dw XT_EQUAL
+    .dw XT_SWAP
+    .dw XT_FETCHI
+    .dw XT_DOLITERAL
+    .dw XT_NOOP
+    .dw XT_EQUAL
+    .dw XT_OR
     .dw XT_DOCONDBRANCH
     DEST(PFA_TICK1)
+      .dw XT_DOLITERAL
+      .dw -13
+      .dw XT_THROW
+PFA_TICK1:
     .dw XT_DROP
     .dw XT_EXIT
-PFA_TICK1:
-    .dw XT_DOLITERAL
-    .dw -13
-    .dw XT_THROW
+
