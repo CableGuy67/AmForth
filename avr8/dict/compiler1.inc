@@ -64,6 +64,7 @@
 .include "words/set-stack.asm"
 .include "words/map-stack.asm"
 .include "words/get-current.asm"
+.include "words/cfg-order.asm"
 .include "words/get-order.asm"
 
 .include "words/compare.asm"

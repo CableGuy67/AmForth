@@ -16,7 +16,6 @@ XT_GET_ORDER:
     .dw DO_COLON
 PFA_GET_ORDER:
 .endif
-    .dw XT_DOLITERAL
-    .dw CFG_ORDERLISTLEN
+    .dw XT_CFG_ORDER
     .dw XT_GET_STACK
     .dw XT_EXIT
