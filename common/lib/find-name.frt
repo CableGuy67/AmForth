@@ -3,9 +3,9 @@
 
 \ a magic number, check LST file for
 \ the actual value!
-$48 constant 'ORDER
+$3e constant 'ORDER
 
-: (find-name) (addr len wid -- addr len 0 | nt -1 )
+: (find-name) ( addr len wid -- addr len 0 | nt -1 )
   >r 2dup r> search-name dup if nip nip then ;
  
 : find-name ( addr len --  nt|0 ) 
