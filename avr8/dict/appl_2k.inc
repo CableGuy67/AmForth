@@ -115,7 +115,7 @@
 .include "words/source.asm"
 .include "words/slash-string.asm"
 .include "words/parse-name.asm"
-.include "words/find-name.asm"
+.include "words/find-xt.asm"
 
 .include "words/quit.asm"
 .include "words/prompt-ok.asm"
