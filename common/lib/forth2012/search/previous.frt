@@ -4,7 +4,5 @@
 \ #require set-order.frt
 
 : previous
-  get-order nip 1-
-  dup 0= if -50 throw then \ empty search order stack
-  set-order
+  get-order nip 1- set-order
 ;
