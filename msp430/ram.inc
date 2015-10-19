@@ -8,7 +8,8 @@ RAMINFOAREA:                  ; 128 byte copy from INFO flash or uinit defaults
 CFG_RECOGNIZERLISTLEN:        ; RECOGNIZER stack, must be first cell for init-ram.
 	DS16 5                ; room for the count word and 4 slots
 CFG_ORDERLISTLEN:             ; ORDER stack
-	DS16 9                ; room for the count word and 8 slots
+	DS16  1               ; the count word 
+	DS16  NUMWORDLISTS    ; number of word lists in the searh order
 CFG_TURNKEY: DS16 1           ; deferred startup action
 CFG_DP:      DS16 1           ; data space pointer (HERE)
 CFG_IDP:     DS16 1           ; code space pointer (dictionary)
