@@ -4,4 +4,8 @@
    create swap rot , , , 
 ;
 
-\ usage see Recognizer Recipe
+\ get and set the stack content
+: set-recognizers cfg-recs set-stack ;
+: get-recognizers cfg-recs get-stack ;
+
+\ usage see Recognizer Recipes

@@ -103,7 +103,7 @@
 .include "words/nfa-to-cfa.asm"
 .include "words/name2flags.asm"
 .include "words/immediate-q.asm"
-.include "words/find-name.asm"
+.include "words/find-xt.asm"
 .include "words/literal.asm"
 .include "words/digit-q.asm"
 .include "words/q-sign.asm"

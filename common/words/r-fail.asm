@@ -18,7 +18,7 @@ PFA_R_FAIL:
 .endif
     .dw XT_FAIL  ; interpret
     .dw XT_FAIL  ; compile
-    .dw XT_FAIL  ; postpone
+    .dw XT_FAIL  ; postpone, maybe change to -48 (invalid postpone)
 
 ; ( addr len -- )
 ; Interpreter
