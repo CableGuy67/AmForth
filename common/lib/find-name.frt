@@ -1,4 +1,4 @@
-\ #require count.frt
+
 \ #require search-name.frt
 
 : (find-name) ( addr len wid -- addr len 0 | nt -1 )
