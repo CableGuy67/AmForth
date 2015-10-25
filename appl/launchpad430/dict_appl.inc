@@ -14,6 +14,11 @@
 ; all other words are written in forth and have to
 ; be uploaded as such.
 
+; location of some configuration stacks
+;.include "words/cfg-order.asm"
+;.include "words/cfg-recognizer.asm"
+
+
 ;; generic tools
 ;.include "words/get-stack.asm"
 ;.include "words/set-stack.asm"
