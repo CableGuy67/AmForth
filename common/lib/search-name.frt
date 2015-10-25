@@ -7,7 +7,7 @@
 \ helper words
 : isword? ( addr len flag nt -- addr len false | nt true )
   >r drop 2dup r@ name>string icompare if
-    r> drop 0 true 
+    r> drop 0 -1
   else
     2drop r> 0
   then ;

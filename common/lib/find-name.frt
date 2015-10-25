@@ -6,4 +6,5 @@
  
 : find-name ( addr len --  nt|0 ) 
   ['] (find-name) cfg-order map-stack
+  dup 0= if nip nip then
 ;
