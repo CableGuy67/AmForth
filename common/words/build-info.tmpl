@@ -1,9 +1,9 @@
-; ( -- ) System
+; ( -- i-addr len ) System
 ; R( -- )
-; Build Info
+; Build Info as flash string
 
 .if cpu_msp430==1
-    HEADER(XT_TSTAMPINFO,10,"build-info",DOCOLON)
+    HEADER(XT_BUILDINFO,10,"build-info",DOCOLON)
     .dw XT_DOSLITERAL
     .db @TSTAMPLEN@
     .db "@TSTAMP@"
@@ -11,17 +11,16 @@
 .endif
 
 .if cpu_avr8==1
-VE_TSTAMPINFO:
+VE_BUILDINFO:
     .dw $ff0a
     .db "build-info"
     .dw VE_HEAD
-    .set VE_HEAD = VE_TSTAMPINFO
-XT_TSTAMPINFO:
+    .set VE_HEAD = VE_BUILDINFO
+XT_BUILDINFO:
     .dw DO_COLON
-PFA_TSTAMPINFO:
+PFA_BUILDINFO:
     .dw XT_DOSLITERAL
     .dw @TSTAMPLEN@
     .db "@TSTAMP@"
 .endif
-    .dw XT_ITYPE
     .dw XT_EXIT

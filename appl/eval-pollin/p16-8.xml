@@ -22,10 +22,6 @@
 		    mcu="atmega16"
 		    flashfile="p16-8.hex"
 		    eepromfile="p16-8.eep.hex" />
-		<tstamp>
-		  <format property="fintim" pattern="E @ H:m"/>
-		  </tstamp>
-		  <echo>Finished on ${fintim}</echo>
     </target>
     <target name="p16-8.fuses" description="Set fuses for P16-8">
 	<echo>Writing fuses</echo>
