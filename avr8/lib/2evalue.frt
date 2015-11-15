@@ -3,6 +3,7 @@
 \ Date: oct 2015
 
 \ #require quotations.frt
+\ #require eallot.frt
 
 : 2@e ( eaddr -- n2 n1 )
   dup    \ -- addr addr
@@ -18,9 +19,7 @@
   !e     \ -- n2 eaddr
   !e     \ --
 ;
-: eallot ( n -- )
-  ehere +  to ehere
-;
+
 : 2Evalue ( d -- )
     (value)
     ehere ,

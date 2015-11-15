@@ -17,6 +17,7 @@ XT_TICK:
 PFA_TICK:
 .endif
     .dw XT_PARSENAME
+    .dw XT_FORTHRECOGNIZER
     .dw XT_DORECOGNIZER
     ; a word is tickable unless R:TABLE is R:FAIL or 
     ; the interpret action is a NOOP

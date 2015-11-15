@@ -67,6 +67,7 @@
 .include "words/rp0.asm"
 .include "words/depth.asm"
 .include "words/do-recognizer.asm"
+.include "words/forth-recognizer.asm"
 .include "words/interpret.asm"
 .include "words/r-intnumber.asm"
 .include "words/r-word.asm"

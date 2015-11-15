@@ -203,6 +203,7 @@
 .include "words/backslash.asm"
 .include "words/parse-name.asm"
 .include "words/map-stack.asm"
+.include "words/forth-recognizer.asm"
 .include "words/do-recognizer.asm"
 .include "words/r-fail.asm"
 .include "words/r-word.asm"

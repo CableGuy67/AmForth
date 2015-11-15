@@ -1,4 +1,4 @@
-; (addr len -- i*x r:table | r:fail)
+; (addr len recstack -- i*x r:table | r:fail)
 ; System
 ; walk the recognizer stack
 
@@ -18,8 +18,7 @@ PFA_DORECOGNIZER:
 .endif
     .dw XT_DOLITERAL
     .dw XT_DORECOGNIZER_A
-    .dw XT_DOLITERAL
-    .dw CFG_RECOGNIZERLISTLEN
+    .dw XT_SWAP
     .dw XT_MAPSTACK
     .dw XT_ZEROEQUAL
     .dw XT_DOCONDBRANCH
