@@ -41,7 +41,7 @@ variable ACTUAL-RESULTS 20 cells allot  \ reserve space in RAM
 : -> \ ( ... -- ) RECORD DEPTH AND CONTENT OF STACK.
    depth dup ACTUAL-DEPTH !		\ RECORD DEPTH
    START-DEPTH @ > if		\ IF THERE IS SOMETHING ON STACK
-       DEPTH START-DEPTH @ - 0 do ACTUAL-RESULTS i cells + ! loop \ SAVE THEM
+       depth START-DEPTH @ - 0 do ACTUAL-RESULTS i cells + ! loop \ SAVE THEM
    then
 ;
 
