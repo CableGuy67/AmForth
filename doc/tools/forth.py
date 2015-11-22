@@ -148,7 +148,7 @@ class ForthLexer(RegexLexer):
             # Forth 2012
             r'defer|defer@|defer!|action-of|begin-structure|field:|buffer:|'
             r'parse-name|buffer:|traverse-wordlist|n>r|nr>|2value|fvalue|'
-	    r'name>interpret|name>compile|'
+	    r'name>interpret|name>compile|name>string|'
             r'cfield:|end-structure)'+delimiter, Keyword),
 
             # Numbers
@@ -162,8 +162,8 @@ class ForthLexer(RegexLexer):
              r'find-name|1ms|'
              r'sp0|rp0|\(evaluate\)|int-trap|int!)'+delimiter, Name.Constant),
             # a proposal
-            (r'(do-recognizer|r:fail|recognizer:|get-recognizers|set-recognizers|r:float|'
-             r'r:name|r:word|r:dnum|r:num|recognizer|forth-recognizer|rec:number|rec:float|rec:word)'
+            (r'(do-recognizer|r:fail|recognizer:|get-recognizers|set-recognizers|r:float|r>comp|r>int|r>post|'
+             r'r:name|r:word|r:dnum|r:num|recognizer|forth-recognizer|rec:num|rec:float|rec:word)'
                +delimiter, Name.Decorator),
             # defining words. The next word is a new command name
             (r'(Evalue|Rvalue|Uvalue|Edefer|Rdefer|Udefer)(\s+)',bygroups(Keyword.Namespace, Text), 'worddef'),
