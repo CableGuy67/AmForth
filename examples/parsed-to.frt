@@ -8,7 +8,7 @@
 \ actions
 :noname defer! ;
 :noname postpone literal postpone defer! ;
-:noname postpone literal ;
+:noname postpone 2literal ;
 recognizer: r:parsed-to
 
 : rec-parsed-to ( addr len -- addr r:parsed-to | r:fail )
