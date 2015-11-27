@@ -42,8 +42,6 @@
           a+60b  r:dnum
 ;
 
-' rec:h:m:s get-recognizers 1+ set-recognizers
-
 \ wishlist: 
 \ validate the values for minutes and seconds (between 0 and 59)
 \ factor the code
