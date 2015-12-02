@@ -61,14 +61,14 @@ PFA_DORECOGNIZER_A1:
    .dw XT_TRUE
    .dw XT_EXIT
 
-; : do-recognizer ( addr len -- i*x r:table|r:fail )
-;    \ ( addr len -- addr len 0 | i*x r:table -1 )
-;    [: rot rot 2dup 2>r rot execute 2r> rot 
-;          dup r:fail = ( -- addr len r:table f )
-;          if drop 0 else nip nip -1 then
+; : do-recognizer ( addr len stack-id -- i*x r:table|r:fail )
+;   [: ( addr len -- addr len 0 | i*x r:table -1 )
+;      rot rot 2dup 2>r rot execute 2r> rot 
+;      dup r:fail = ( -- addr len r:table f )
+;      if drop 0 else nip nip -1 then
 ;    ;] 
-;    EE_RECOGNIZERLISTLEN map-stack ( -- i*x addr len r:table f )
+;    map-stack ( -- i*x addr len r:table f )
 ;    0= if \ a recognizer did the job, remove addr/len
 ;     2drop r:fail 
-;    then
+;    then ;
 ;
