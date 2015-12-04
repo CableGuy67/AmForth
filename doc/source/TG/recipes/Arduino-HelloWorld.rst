@@ -10,12 +10,12 @@ is already loaded onto the ardiuno. Instructions to do it are in the
 :ref:`User Guide`.
 
 To quickly test the hardware start a terminal (e.g. screen /dev/ttyACM0 38400) 
-and enter the following commands:
+and enter the following commands (assuming an Arduino Uno)
 
 .. code-block:: forth
 
-   > $80 $24 c!
-   > $80 $25 c!
+   > $20 $24 c!
+   > $20 $25 c!
    > $00 $25 c!
 
 The LED turned on until the last command is executed. The character
@@ -43,8 +43,8 @@ The above commands can now be written as
 
 .. code-block:: forth
 
-  > $80 DDRB c! 
-  > $80 PORTB c!
+  > $20 DDRB c! 
+  > $20 PORTB c!
   > $00 PORTB c!
 
 Technically the same but easier to read.
