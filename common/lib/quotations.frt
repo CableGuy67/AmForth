@@ -7,6 +7,8 @@
 \ :noname some words ; Constant #temp#
 \ : foo ... #temp# ... ;
 \
+\ #require 2-fetch.frt
+\ #require 2-store.frt
 
 : [: ( -- quotation-sys )
      postpone ahead 
