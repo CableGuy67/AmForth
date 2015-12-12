@@ -21,6 +21,7 @@
 \ than r@ due to hardware characteristics.
 
 \ marker _multitask_
+\ #require is.frt
 
 decimal
 
