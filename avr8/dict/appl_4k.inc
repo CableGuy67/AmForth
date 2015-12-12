@@ -64,6 +64,7 @@
 .include "words/slash-string.asm"
 .include "words/parse-name.asm"
 .include "words/sp0.asm"
+.include "words/sp.asm"
 .include "words/rp0.asm"
 .include "words/depth.asm"
 .include "words/do-recognizer.asm"

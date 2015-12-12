@@ -130,6 +130,7 @@
 .include "words/warm.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 .include "words/sp0.asm"
+.include "words/sp.asm"
 .include "words/rp0.asm"
 .include "words/depth.asm"
 .include "words/interpret.asm"
