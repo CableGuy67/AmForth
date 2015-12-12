@@ -136,16 +136,6 @@ asmname: DW     DOCOLON
 asmname: DW      DODEFER
 .endm
 
-.macro VALUE(asmname,length,litname)
-        DW      link
-        DB      0FFh       ; not immediate
-.set link = $
-        DB      length
-        DB      litname
-        .align 16
-asmname: DW      DOVALUE
-.endm
-
 .macro VARIABLE(asmname,length,litname)
         DW      link
         DB      0FFh       ; not immediate
