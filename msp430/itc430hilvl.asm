@@ -32,7 +32,7 @@
 
 .include "words/pad.asm"
 .include "words/l-0.asm"
-.include "words/r-0.asm"
+.include "words/rp0.asm"
 .include "words/sp0.asm"
 .include "words/sp.asm"
 .include "words/tib.asm"
