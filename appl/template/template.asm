@@ -41,7 +41,9 @@
 ; check http://amforth.sourceforge.net/TG/recipes/Usart.html
 ; for further information
 
-; serial line settings.
+; serial line settings. The defaults are set in avr8/preamble.inc.
+; You should not change that file but use your own settings *here*
+; since it may get changed in future versions of amforth.
 ;.set BAUD=38400
 ;.set BAUD_MAXERROR=10
 ;.set WANT_ISR_RX = 1 ; interrupt driven receive
@@ -74,7 +76,7 @@
 ; change them if necessary.
 
 ; Size of the Terminal Input Buffer. This is the command line buffer.
-; .set TIB_SIZE  = $64    ; bytes; ANS94 needs at least 80 characters per line
+; .set TIBSIZE  = $64    ; bytes; ANS94 needs at least 80 characters per line
 
 ; The total USER size is the sum of the system internal USER area plus
 ; the size specified here.
