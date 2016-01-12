@@ -114,8 +114,11 @@ of your controller to find the correct fuse settings, they are different for dif
 atemgas and very sensitive, be absolutly careful! Rebuilt the hex files with the proper
 frequency (F_CPU setting).
 
-Finally check the terminal settings: default are 9600 8N1, no flow control. If your terminal
-has different settings, change them.
+Finally check the terminal settings: For the AVR devices the default settings come from
+the file :file:`preamble.inc` and are set to 38400 8N1, no flow control. It is possible
+and the preferred way to overwrite these settings in you application setup file. Some
+example application do so. The MSP430 defaults (9600 8N1) are hard coded inside 
+the device settings and cannot be changed easiely (currently).
 
 Finally check the hardware. You may add a LED (or a scope) to the TX pin to check wether 
 the controller sends out the boot message upon reset. Plug off all programmers (they may 

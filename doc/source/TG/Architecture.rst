@@ -69,10 +69,8 @@ and an object like identifier connected with certain methods.
    "Do Recognizer" -> "Check State"
    "Check State" -> "Compile" [label="Compile"];
    "Check State" -> "Execute" [label="Interpret"];
-   "Check State" -> "Postpone" [label="Postpone"];
    "Compile" -> "Get Next Word"
    "Execute" -> "Get Next Word"
-   "Postpone" -> "Get Next Word"
 
 The Forth text interpreter reads from the input source 
 and splits it into whitespace delimited words. Each word
@@ -92,10 +90,10 @@ the dictioanary or to execute immediate words.
 The third method is used by :command`postpone` to compile the
 compilation semantics. It honors the immediate flags as well.
 
-``Do Recognizer`` is an iteration over the recognizer
+``Do Recognizer`` is an iteration over a recognizer
 stack until the first parsing methods returns something
-different than ``r:fail``. If the recognizer stack is
-exhausted without a match, the ``r:fail`` return value
+different than :command:`r:fail`. If the recognizer stack is
+exhausted without a match, the :command:`r:fail` return value
 is generated. The string location that is passed to the 
 parse actions is preserved and is restored for every iteration
 cycle.
@@ -116,19 +114,16 @@ recognizer itself is named with the prefix ``rec:``. The
 method table name gets the prefix ``r:`` followed by
 the same name as the recognizer.
 
+:command:`POSTPONE` serialises the parsed data as literals and
+adds the compile action from the method table. This an
+almost generic operation, it depends only on the number
+of cells from the parsing actions.
+
 Recognizer List
 ~~~~~~~~~~~~~~~
 
 The interpreter uses a list of recognizers. They are managed
 with the words :command:`get-recognizers` and :command:`set-recognizers`.
-
-.. code-block:: forth
-
-   \ place a recognizer as the last one
-   : place-rec ( xt -- )
-      get-recognizers 1+ set-recognizers
-   ;
-   ' rec:foo place-rec
 
 The entries in the list are called in order until the first 
 one returns a different result but :command:`r:fail`. If the list
@@ -140,8 +135,8 @@ The standard recognizer list is defined as follows
 .. code-block:: forth
 
    : default-recs
-     ['] rec:intnum ['] rec:find  
-     2 set-recognizers
+     ['] rec:intnum ['] rec:word
+     2 forth-recognizer set-recognizers
    ;
 
 The standard word :command:`marker` resets the recognizer list as well.
@@ -157,8 +152,8 @@ and to call the recognizers. It also maintains the state.
    : interpret
      begin
        parse-name ?dup if drop exit then
-       do-recognizer ( addr len -- i*x r:table )
-       state @ if 1+ then \ get compile time action
+       forth-recognizer do-recognizer ( addr len -- i*x r:table )
+       state @ if i-cell+ then \ get compile time action
        @i execute ?stack
      again
    ;
@@ -246,18 +241,17 @@ printed and an exception is thrown.
 
    ' noop
    ' literal
-   :noname . -48 throw ;
+   :noname . -48 throw ; \ subject to dispute
    recognizer: r:num
 
    ' noop
    ' 2literal
-   :noname d. -48 throw ;
+   :noname d. -48 throw ; \ subject to dispute
    recognizer: r:dnum
 
    : rec:intnum ( addr len -- n r:num | d r:dnum | r:fail )
      number if
-      1 = if r:num then
-      r:dnum 
+      1 = if r:num else r:dnum then
      else 
        r:fail
      then
@@ -280,7 +274,7 @@ immediate words for compiling and postponing.
    :noname 0> if postpone [compile] then , ; 
    recognizer: r:word
 
-   : rec:find ( addr len -- XT flags r:word | r:fail )
+   : rec:word ( addr len -- XT flags r:word | r:fail )
      find-name ?dup if
        r:word
      else

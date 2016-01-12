@@ -18,7 +18,7 @@ terminal.
 
 The command language is `Forth <http://www.forth.org/tutorials.html>`_.
 AmForth implements an almost compatible `Forth 2012 
-<http://www.forth200x.org/documents/html3/>`_ indirect 
+<http://forth-standard.org/standard/words/>`_ indirect 
 threading 16bit Forth. 
 
 AmForth for the AVR8 needs 8 to 12 KB Flash memory, 80 bytes EEPROM, and 200 bytes
@@ -31,6 +31,14 @@ Work In Progress
 Here you'll find things that are not yet released but will be part of the next release.
 See the code section at Sourceforge to get the
 `most recent sources <http://sourceforge.net/p/amforth/code/HEAD/tree/trunk/>`__
+
+* core(ALL): smarter :command:`'` (tick).
+* core(ALL): renamed :command:`find-name` to :command:`find-xt` (addr/len -- xt +/-1|0)
+  re-introduced :command:`find-name` (addr len -- nt|0) returning the name token if addr/len
+  was found in the search order. New word :command:`search-name` ( addr len wid -- nt|0).
+
+17.10.2015: release 6.1
+.......................
 
 * core(ALL): Adapt :command:`postpone` action of the recognizers to comply with
   `Rev. 3 </pr/Recognizer-rfc-C.pdf>`__. Change your recognizers accordingly.
@@ -55,58 +63,6 @@ See the code section at Sourceforge to get the
   * Lots of common code, optimized versions of standard words if applicable.
   * preparing for more MSP430 device types.
 
-9.7.2015: release 5.9
-......................
-
-* lib: :command:`for` and :command:`next`. The :command:`i` and :command:`j`
-  can be used as well.
-* core(AVR8): clear all RAM at :command:`cold`.
-* core(MSP430): :command:`DEFER` and :command:`VALUE` were missing in release 
-  5.8. :command:`pause`  and :command:`turnkey` using them (RAM based, save-able
-  to info flash).
-* core(All): :command:`'` uses the recognizer stack.
-* core(ALL): Fix regression in :command:`literal` (broke e.g. quotations)
-
-25.3.2015: release 5.8
-......................
-
-* core(MSP430): new :command:`:noname` and the :command:`defer` and :command:`value` 
-  groups of commands.
-* core(All): words with the same name do the same (mostly).
-* core(AVR8): introduce :command:`<builds`. Together with :command:`does>` saves 
-  one flash erase cycle and makes the source work on the MSP430 as well.
-
-1.2.2015: release 5.7
-.......................
-
-* core(ALL): :command:`name>interpret` and :command:`name>compile` added.
-  New Recognizer :command:`rec:name` able to replace :command:`rec:word`. 
-  Uses name tokens (Forth 2012) instead of execution tokens.
-* core(ALL): Lots of bugfixes and regressions. The AVR port should be 
-  fully usable again.
-* core(MSP430): restructure of the init process: :command:`cold` 
-  now transfers the data from INFO flash back to RAM if BASE is set and 
-  :command:`SAVE` was executed. That way the user code now correctly 
-  survives a restart. :command:`SAVE` is much like marker that 
-  overwrites the previous state and gets no name.
-
-22.12.2014: release 5.6
-.......................
-
-* core(AVR): :command:`icompare` got the same return flag semantics as 
-  :command:`compare`. The :command:`leave` and :command:`?do` forward branches
-  are now resolved at compile time, saves one cell per loop on the return 
-  stack at runtime.
-* core(AVR): interrupt vectors are moved from RAM to EEPROM. Saves RAM space
-  and simplifies turnkey actions (remove any :command:`int!` from your turnkey!)
-* core: re-arranged source files: controller specific and common code.
-* New architecture: MSP430 (G2553) as used in the :ref:`TI_LaunchPad_430` 
-  with code from `Camelforth <http://www.camelforth.com>`__ and 
-  `4€4th <http://www.somersetweb.com/4E4th/EN.html>`__.
-* core: generalized existing :ref:`Stacks` in EEPROM into :command:`map-stack`, 
-  :command:`get-stack` and :command:`set-stack`. Used for the search order
-  and recognizer stacks.
-* all: changed license to GPLv3.
 
 More To Read
 ............

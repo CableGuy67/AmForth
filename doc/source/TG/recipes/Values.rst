@@ -204,4 +204,4 @@ word) makes use of :ref:`Quotations`:
 This value stores a double cell information in RAM. The read and write
 methods are embedded as quotations.
 
-.. seealso:: :ref:`I2C Values`
+.. seealso:: :ref:`I2C Values` :ref:`Quotations`

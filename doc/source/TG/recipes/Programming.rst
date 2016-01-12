@@ -16,6 +16,7 @@ Programming and Debugging
    Extended-VM
    Forget
    Forward
+   Jump-Tables
    Port-From-C
    Profiler
    Quotations

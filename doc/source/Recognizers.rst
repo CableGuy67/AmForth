@@ -30,7 +30,7 @@ feedback from version 1. The 3rd version has been started immediately after
 v2 due to a suggestion changing the `POSTPONE` action.
 `Version 3 </pr/Recognizer-rfc-C.html>`__
 `(pdf) </pr/Recognizer-rfc-C.pdf>`__, 
-`(txt) </pr/Recognizer-rfc-C.text>`__  
+`(txt) </pr/Recognizer-rfc-C.text>`__  `Sourccode </pr/Recognizer.frt>`__ 
 
 The papers linked below give some historical background information.
 

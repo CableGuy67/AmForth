@@ -13,9 +13,7 @@ General Code Examples
    Macros
    Multitasking
    Pitfalls
-   Power-Save
    Redirect-IO
-   Reset
    Simple-Strings
    Structures
    Timeout

@@ -13,11 +13,6 @@ will affect the user area of the interrupted task.
 
  \ TIMER_0 example
  \
- \ requires
- \  in application master file
- \    .set WANT_TIMER_COUNTER_0 = 1
- \  from device.frt
- \    TIMER0_OVFAddr
  \ provides
  \  timer0.tick      -- increasing ticker
  \
@@ -59,7 +54,7 @@ than 4.4 have the limitation that hardware interrupt conditions could
 not be cleared.
 
 ``int!`` (and friends) uses the interrupt address from
-the data sheet as an index, but points to a different address in RAM.
+the data sheet as an index, but points to a different address in EEPROM.
 
 Interrupts are processed in two stages. First stage
 is a simple low-level processing routine.
@@ -76,3 +71,5 @@ routine is activated. It reads the number of the interrupt and calculates
 the index into the RAM based interrupt vector table. This table is identical
 to the atmega interrupt table in the flash except that it holds
 the XT of the forth words that will be started for the interrupt.
+
+.. seealso:: :ref:`Upload` to deal with the register names.
