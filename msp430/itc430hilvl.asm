@@ -4,6 +4,7 @@
 
 ; INPUT/OUTPUT ==================================
 .include "words/usart-emit.asm"
+.include "words/usart-emitq.asm"
 .include "words/usart-key.asm"
 .include "words/usart-keyq.asm"
 .include "words/usart-init.asm"
