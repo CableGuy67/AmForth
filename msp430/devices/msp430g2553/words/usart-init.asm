@@ -10,5 +10,4 @@
         MOV.B   #03h,&UCA0BR1
         MOV.B   #04h,&UCA0MCTL          ; UCBRFx=0, UCBRSx=2 for 9600 baud
         BIC.B   #UCSWRST,&UCA0CTL1      ; done configuring
-
-	NEXT
+        NEXT
