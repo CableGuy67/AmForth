@@ -36,3 +36,11 @@ cold:
 	; now hand over to Forth with COLD (a colon word)
         MOV     #XT_WARM+2,IP
 	NEXT
+
+mcu_name:
+	.db 11,"MSP430G2553"
+
+; ----------------------------------------------------------------------
+; DEFAULT INTERRUPT HANDLER
+
+nullirq: RETI

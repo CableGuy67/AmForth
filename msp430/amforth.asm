@@ -1,14 +1,11 @@
 
 .msp430
 
-.include "macros.asm"       ; registers, macros, and header structure
-.include "ram.inc"          ; RAM Leyout
-.include "vecs.asm" ; note: sets .org for vector tables
+.include "ram.inc"
 
 .org AMFORTH_START         ; start address of Forth kernel
 
-.include "init.asm"
-.include "drivers.asm"
+.include "drivers.asm"     ; 
 
 .include "itc430core.asm"   ; code primitives
 .include "itc430hilvl.asm"

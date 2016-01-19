@@ -42,3 +42,12 @@ reset:
 	; now hand over to Forth with COLD (a colon word)
         MOV     #XT_WARM+2,IP
         NEXT
+
+mcu_name:
+	.db 12,"MSP430FR5969"
+	.align 16
+
+; ----------------------------------------------------------------------
+; DEFAULT INTERRUPT HANDLER
+
+nullirq: RETI

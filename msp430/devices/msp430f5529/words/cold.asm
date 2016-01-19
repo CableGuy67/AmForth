@@ -39,3 +39,11 @@ reset_loop:
 ; now hand over to Forth with COLD (a colon word)
     MOV     #XT_WARM+2,IP
     NEXT
+
+mcu_name:
+	.db 11,"MSP430F5529"
+
+; ----------------------------------------------------------------------
+; DEFAULT INTERRUPT HANDLER
+
+nullirq: RETI
