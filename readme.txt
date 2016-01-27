@@ -1,5 +1,3 @@
-Date: 3.9.2015
-
 Author:
     Matthias Trute <mtrute@users.sourceforge.net>
 
@@ -27,11 +25,11 @@ ATmega:
 
   The forth dictionary is in the flash memory, new words are compiled
   directly into flash. Since no (widely available) bootloader supports
-  an API to write to flash, AmForth needs to replace it.
+  an API to write to flash, AmForth uses the bootloader space itself.
 
 MSP430
   
-  The Forth dictionary is in the flash memory, new words are
+  The Forth dictionary is in the flash or FRAN memory, new words are
   compiled to flash. Use SAVE to keep the code accessible across
   reboots. 
 
@@ -39,14 +37,14 @@ AmForth is implemented in assembly and forth. The code is stable
 and well tested. The MSP430 variant is less tested however. It
 has less features as well.
 
-All words have Forth 2012 (CORE and various extension word sets)
-stack diagrams, but not necessarily the complete semantics. Some 
+All words have Forth 2012 (CORE and various extenion word sets)
+stack diagrams, but not necessarily the complete semantics. Some
 words from the standards are left out, ask for them if you need them.
 
 Development hardware are evaluation boards running various Amega's
 between 2 and 20 MHz with various external hardware: none,
 led, push-buttons, SD-card, ethernet controller, RF module etc.
-The MSP430 is tested with the Stellaris Launchpad MSP430G2553.
+The MSP430 code is tested with Launchpads using e.g. the MSP430G2553.
 
 Documentation can be found in the doc/ subdirectory and
 on the homepage http://amforth.sourceforge.net/.
