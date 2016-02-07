@@ -57,7 +57,6 @@ DOCOLON:
 ; This is also the action of VARIABLE (Harvard model)
 ; This is also the action of CREATE (Harvard model)
 docreate: ; -- a-addr   ; ROMable CREATE fetches address from PFA
-DOVAR:  ; -- a-addr     ; ROMable VARIABLE fetches address from PFA
 DOCON:  ; -- x          ; CONSTANT fetches cell from PFA to TOS
 PFA_DOVARIABLE:
         SUB #2,PSP      ; make room on stack
