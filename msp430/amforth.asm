@@ -9,11 +9,8 @@
 
 .include "drivers.asm"     ; 
 
-.include "itc430core.asm"   ; code primitives
-.include "itc430hilvl.asm"
-
-; now include application specific parts
-.include "dict_appl.inc"
+.include "dict.inc"       ; The system Dictionary
+. include "dict_appl.inc" ; The application specific dictionary
 
 ; ----------------------------------------------------------------------
 ; END OF FORTH KERNEL
