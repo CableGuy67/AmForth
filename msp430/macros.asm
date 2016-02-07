@@ -66,8 +66,7 @@ cpu_avr8   EQU 0
 ; INDIRECT-THREADED NEXT
 
 .macro NEXT
-        MOV @IP+,W      ; fetch word address into W
-        MOV @W+,PC      ; fetch code address into PC, W=PFA
+        MOV #DONEXT,PC
 .endm
 
 ; BRANCH DESTINATION (RELATIVE BRANCH)

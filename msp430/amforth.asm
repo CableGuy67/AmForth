@@ -5,6 +5,10 @@
 
 .org AMFORTH_START         ; start address of Forth kernel
 
+DONEXT:
+        MOV @IP+,W      ; fetch word address into W
+        MOV @W+,PC      ; fetch code address into PC, W=PFA
+
 .include "drivers.asm"     ; 
 
 .include "itc430core.asm"   ; code primitives
