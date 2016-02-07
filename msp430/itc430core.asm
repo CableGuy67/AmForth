@@ -42,13 +42,6 @@
 ; ----------------------------------------------------------------------
 ; DEFINING WORDS - ROMable ITC model 
 
-; DOCOLON enters a new high-level thread (colon definition.)
-; (internal code fragment, not a Forth word)
-DOCOLON: 
-        PUSH IP         ; 3 save old IP on return stack
-        MOV W,IP        ; 1 set new IP to PFA
-        NEXT            ; 4
-
 .include "words/variable.asm"
 .include "words/constant.asm"
 
