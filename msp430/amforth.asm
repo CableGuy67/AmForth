@@ -9,8 +9,8 @@
 
 .include "drivers.asm"     ; 
 
-.include "dict.inc"       ; The system Dictionary
-. include "dict_appl.inc" ; The application specific dictionary
+.include "dict.inc"        ; The system Dictionary
+.include "dict_appl.inc"   ; The application specific dictionary
 
 ; ----------------------------------------------------------------------
 ; END OF FORTH KERNEL

@@ -2,14 +2,24 @@
 .include "words/execute.asm"
 .include "words/lit.asm"
 .include "words/exit.asm"
-; ----------------------------------------------------------------------
-; DEFINING WORDS - ROMable ITC model 
 
 .include "words/variable.asm"
 .include "words/constant.asm"
-.include "words/do-constant.asm"
-.include "words/do-variable.asm"
 .include "words/user.asm"
+.include "words/do-variable.asm"
+.include "words/do-constant.asm"
+
+; ----------------------------------------------------------------------
+; COMPARISON OPERATIONS 
+
+.include "words/zero-equal.asm"
+.include "words/zero-less.asm"
+.include "words/equal.asm"
+.include "words/not-equal.asm"
+.include "words/less.asm"
+.include "words/greater.asm"
+.include "words/u-less.asm"
+.include "words/u-greater.asm"
 
 ; ----------------------------------------------------------------------
 ; STACK OPERATIONS
@@ -64,21 +74,9 @@
 .include "words/lshift.asm"
 .include "words/rshift.asm"
 
-; ----------------------------------------------------------------------
-; COMPARISON OPERATIONS 
-
-.include "words/zero-equal.asm"
-.include "words/zero-less.asm"
-.include "words/equal.asm"
-.include "words/not-equal.asm"
-.include "words/less.asm"
-.include "words/greater.asm"
-.include "words/u-less.asm"
-.include "words/u-greater.asm"
 
 ; ----------------------------------------------------------------------
 ; LOOP AND BRANCH OPERATIONS 
-; These use relative branch addresses: a branch is ADD @IP,IP
 
 .include "words/branch.asm"
 .include "words/q-branch.asm"
@@ -107,8 +105,6 @@
 
 ; ----------------------------------------------------------------------
 ; ALIGNMENT AND PORTABILITY OPERATORS 
-; Many of these are synonyms for other words,
-; and so are defined as CODE words.
 .include "words/align.asm"
 .include "words/aligned.asm"
 .include "words/cellplus.asm"
@@ -120,11 +116,6 @@
 ; most highlevel words for the core system.
 
 ; INPUT/OUTPUT ==================================
-.include "words/usart-emit.asm"
-.include "words/usart-emitq.asm"
-.include "words/usart-key.asm"
-.include "words/usart-keyq.asm"
-.include "words/usart-init.asm"
 .include "words/cr.asm"
 .include "words/space.asm"
 .include "words/spaces.asm"
@@ -191,6 +182,7 @@
 .include "words/2literal.asm"
 .include "words/i-fetch.asm"
 .include "words/ic-fetch.asm"
+
 ; NUMERIC OUTPUT ================================
 .include "words/ud-slash-mod.asm"
 .include "words/ud-star.asm"

@@ -1,12 +1,14 @@
 ; These words not part of the essentials
 ; but written in assembly language / notoation
+; for one of the following reason
+; * they use data available at compile time only (e.g. build-info)
+; * they are useful during core debugging (e.g. .S)
+; * they cannot be implemented in high level forth and
+;   are not necessary for the core system (e.g. D+)
+;
 
-; simple stack dump
-;.include "words/dot-s.asm"
-
-; bleeding edge
-;.include "words/build-info.asm"
-;.include "words/git-info.asm"
+; additional environment queries
+.include "words/env-usersize.asm"
 
 ; next some words that may be useful in certain
 ; applications only. Including them by default
@@ -17,7 +19,6 @@
 ; location of some configuration stacks
 ;.include "words/cfg-order.asm"
 ;.include "words/cfg-recognizer.asm"
-
 
 ;; generic tools
 ;.include "words/get-stack.asm"
@@ -56,3 +57,4 @@
 ;.include "words/bm-set.asm"
 ;.include "words/bm-clear.asm"
 ;.include "words/bm-test.asm"
+

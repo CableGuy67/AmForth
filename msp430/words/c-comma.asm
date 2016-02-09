@@ -1,6 +1,6 @@
 ;C IC,   char --        append char to Code dict
-;   XT_IHERE IC! 1 CHARS IALLOT ;
-    ; HEADER(ICCOMMA,3,"IC,",DOCOLON)
+;   IHERE IC! 1 CHARS IALLOT ;
+    ; HEADER(ICCOMMA,2,"C,",DOCOLON)
         DW      link
         DB      0FFh       ; not immediate
 .set link = $

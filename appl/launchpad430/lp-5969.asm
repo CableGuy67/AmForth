@@ -1,5 +1,5 @@
 
-
+.include "preamble.inc"
 
 APPUSERSIZE equ 10        ; bytes, see uinit.asm
 RSTACK_SIZE equ 40        ; cells
@@ -11,5 +11,5 @@ F_CPU EQU 8000000
 AMFORTH_START equ 0e000h
 
 ; now include all and everything
-.include "preamble.inc"
+
 .include "amforth.asm"
