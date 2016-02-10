@@ -32,5 +32,4 @@ PFA_APPLTURNKEY:
     .db "kHz "
     .align 16
     .dw XT_ITYPE
-    .dw XT_CR
     .dw XT_EXIT
