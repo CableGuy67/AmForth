@@ -36,7 +36,7 @@ reset_loop:
     MOV     #PSTACK,PSP
     MOV     #UAREA,UP              ; initial user pointer
 
-; now hand over to Forth with COLD (a colon word)
+; now hand over to Forth with WARM (a colon word)
     MOV     #XT_WARM+2,IP
     NEXT
 
