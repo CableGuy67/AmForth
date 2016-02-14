@@ -1,6 +1,8 @@
 
 .msp430
-
+.include "device.asm"
+.include "compat.inc"
+.include "user.inc"
 .include "ram.inc"
 
 .org AMFORTH_START         ; start address of Forth kernel
