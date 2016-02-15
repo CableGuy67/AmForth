@@ -9,8 +9,6 @@
 ; UCAxRXIFG is set if an unread character is in the input buffer
 .set bm_USART_RXRD = UCRXIFG
 
-.include "drivers/usart_common.inc"
-
 .include "words/usart-tx.asm"
 .include "words/usart-txq.asm"
 .include "words/usart-rx.asm"
