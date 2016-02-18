@@ -38,7 +38,6 @@
 .include "words/defer-fetch.asm"
 .include "words/do-defer.asm"
 
-.include "words/d-equal.asm"
 .include "words/u-dot.asm"
 .include "words/u-dot-r.asm"
 
