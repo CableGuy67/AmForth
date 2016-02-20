@@ -38,7 +38,6 @@
 .include "words/lesszero.asm"
 .include "words/greaterzero.asm"
 .include "words/d-greaterzero.asm"
-.include "words/d-lesszero.asm"
 
 .include "words/true.asm"
 .include "words/zero.asm"
