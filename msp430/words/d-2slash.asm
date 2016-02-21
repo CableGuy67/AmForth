@@ -1,7 +1,5 @@
 CODEHEADER(XT_D2SLASH,3,"d2/")
 
-    MOV @PSP,W
     RRA TOS
-    RRC W
-    MOV W,0(PSP)
+    RRC @PSP
     NEXT

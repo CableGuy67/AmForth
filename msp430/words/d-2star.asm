@@ -1,7 +1,5 @@
 CODEHEADER(XT_D2STAR,3,"d2*")
 
-    MOV @PSP,W
-    RLA W
+    RLA @PSP
     RLC TOS
-    MOV W,0(PSP)
     NEXT

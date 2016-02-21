@@ -4,8 +4,7 @@
 
     CODEHEADER(XT_DPLUS,2,"d+")
         MOV     @PSP,W          ; move content of NOS to workregister
-        MOV     4(PSP),X        ; move content of 4th item to scratchregister X
-        ADD     X,W             ; add contents of work- and scratchregister, result is in workregister
+        ADD     4(PSP),W          ; add contents of work- and scratchregister, result is in workregister
         MOV     W,4(PSP)        ; store result in 4th item
         ADDC    2(PSP),TOS      ; add content of TOS to the 3rd item, result is in TOS  
         ADD     #4,PSP          ; adjust parameterstackpointer, i.e. nip nip
