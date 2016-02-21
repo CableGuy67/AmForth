@@ -13,4 +13,3 @@
 
 .include "drivers/flash/words/flaligned.asm"
 .include "drivers/flash/words/save.asm"
-.include "drivers/flash/words/init-ram.asm"
