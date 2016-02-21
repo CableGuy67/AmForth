@@ -3,9 +3,7 @@
 ;  4(PSP)  2(PSP)     @(PSP)   TOS   -- NOS      TOS
 
     CODEHEADER(XT_DPLUS,2,"d+")
-        MOV     @PSP,W          ; move content of NOS to workregister
-        ADD     4(PSP),W          ; add contents of work- and scratchregister, result is in workregister
-        MOV     W,4(PSP)        ; store result in 4th item
+        ADD     0(PSP), 4(PSP)         ; add contents of work- and scratchregister, result is in workregister
         ADDC    2(PSP),TOS      ; add content of TOS to the 3rd item, result is in TOS  
         ADD     #4,PSP          ; adjust parameterstackpointer, i.e. nip nip
         NEXT
