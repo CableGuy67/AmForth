@@ -1,6 +1,6 @@
 ; ( -- a-addr ) 
-; Numeric IO
-; location of the cell containing the number conversion radix
+; Stack
+; get the last saved data stack pointer address
 
 .if cpu_msp430==1
     HEADER(XT_SP,2,"sp",DOUSER)

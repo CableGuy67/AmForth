@@ -1,6 +1,6 @@
 ; ( -- c ) 
-; Character IO
-; fetch key vector and execute it, should leave a single character on TOS
+; Stack
+; get the last saved retuern stack pointer address
 
 .if cpu_msp430==1
     HEADER(XT_RP0,3,"rp0",DOVALUE)
