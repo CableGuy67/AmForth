@@ -17,8 +17,11 @@
 \
 \   Useful implementation factor of `EMPTY`.
 
+\ meta comment for amforth-shell.
+\ #require marker.frt
+
 : possibly  ( "name" -- )
-   parse-name find-name ?dup and if execute  then ;
+   parse-name find-xt if execute  then ;
 
 : anew  ( "name" -- )  >in @  possibly  >in !  marker ;
 
