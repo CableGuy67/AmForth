@@ -2,6 +2,7 @@
         CODEHEADER(XT_UMSTAR,3,"um*")
         ; IROP1 = TOS register
         MOV     @PSP,IROP2L     ; get u1, leave room on stack
+        PUSH IRACL ; possibly used as register B
 ;
 ; T.I. SIGNED MULTIPLY SUBROUTINE: IROP1 x IROP2L -> IRACM|IRACL
 MPYU:   CLR IRACL ; 0 -> LSBs RESULT
@@ -22,5 +23,6 @@ L_01:   RLA IROP2L  ; MULTIPLIER x 2
 ; END T.I. ROUTINE  section 5.1.1 of MSP430 Family Application Reports
         MOV     IRACL,0(PSP)    ; low result on stack
         MOV     IRACM,TOS       ; high result in TOS
+        POP IRACL ; possibly used as register B
         NEXT
 
