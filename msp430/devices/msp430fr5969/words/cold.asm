@@ -1,6 +1,5 @@
 
 CODEHEADER(XT_COLD,4,"cold")
-cold:
 ;
 ; ----------------------------------------------------------------------
 ; POWER ON RESET AND INITIALIZATION
@@ -8,13 +7,10 @@ cold:
 ; ----------------------------------------------------------------------
 
 main:   ; Debugger requires the 'main' symbol.
-reset:
+cold:
    mov #5A80h, &WDTCTL ; Watchdog off
 
    bic   #LOCKLPM5, &PM5CTL0  ; Unlock I/O pins
-   mov.b #64, &0225h ; P4DIR  ; Red LED on
-   mov.b #64, &0223h ; P4OUT
-
 
   mov #0A500h, &MPUCTL0 ; Write password to enable access to MPU
 ;  mov #kernelstartadresse>>4, &MPUSEGB1 ; B1 = Forth core start address ($D400)
@@ -23,7 +19,6 @@ reset:
   bic #32, &MPUSAM ; Write protect segment 2
   mov #0A501h, &MPUCTL0 ; Enable MPU
   mov.b #0, &MPUCTL0+1 ; Disable MPU access
-
 
   ;------------------------------------------------------------------------------
   ; Init Clock
