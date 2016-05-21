@@ -3,6 +3,8 @@
 \  this is not a complete and fool-proof 
 \
 
+\ #requires is.frt
+
 $11 constant XON
 $13 constant XOFF
 

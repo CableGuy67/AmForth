@@ -3,7 +3,7 @@
 ; get the XT from a name token
 VE_NFA2CFA:
     .dw $ff07
-    .db "nfa>cfa",0
+    .db "nfa>cfa"
     .dw VE_HEAD
     .set VE_HEAD = VE_NFA2CFA
 XT_NFA2CFA:

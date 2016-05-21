@@ -1,4 +1,4 @@
-; (addr len recstack -- i*x r:table | r:fail)
+; (addr len -- i*x r:table | r:fail)
 ; System
 ; walk the recognizer stack
 
@@ -18,7 +18,8 @@ PFA_DORECOGNIZER:
 .endif
     .dw XT_DOLITERAL
     .dw XT_DORECOGNIZER_A
-    .dw XT_SWAP
+    .dw XT_DOLITERAL
+    .dw CFG_RECOGNIZERLISTLEN
     .dw XT_MAPSTACK
     .dw XT_ZEROEQUAL
     .dw XT_DOCONDBRANCH
@@ -61,14 +62,14 @@ PFA_DORECOGNIZER_A1:
    .dw XT_TRUE
    .dw XT_EXIT
 
-; : do-recognizer ( addr len stack-id -- i*x r:table|r:fail )
-;   [: ( addr len -- addr len 0 | i*x r:table -1 )
-;      rot rot 2dup 2>r rot execute 2r> rot 
-;      dup r:fail = ( -- addr len r:table f )
-;      if drop 0 else nip nip -1 then
+; : do-recognizer ( addr len -- i*x r:table|r:fail )
+;    \ ( addr len -- addr len 0 | i*x r:table -1 )
+;    [: rot rot 2dup 2>r rot execute 2r> rot 
+;          dup r:fail = ( -- addr len r:table f )
+;          if drop 0 else nip nip -1 then
 ;    ;] 
-;    map-stack ( -- i*x addr len r:table f )
+;    EE_RECOGNIZERLISTLEN map-stack ( -- i*x addr len r:table f )
 ;    0= if \ a recognizer did the job, remove addr/len
 ;     2drop r:fail 
-;    then ;
+;    then
 ;

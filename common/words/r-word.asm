@@ -14,7 +14,7 @@ XT_REC_WORD:
     .dw DO_COLON
 PFA_REC_WORD:
 .endif
-    .DW XT_FINDXT
+    .DW XT_FINDNAME
     .dw XT_DUP
     .dw XT_ZEROEQUAL
     .dw XT_DOCONDBRANCH

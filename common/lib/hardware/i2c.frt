@@ -1,10 +1,10 @@
 \ basic I2C operations, uses 7bit bus addresses
 \ uses the TWI module of the Atmega's.
-
-#require bitnames.frt
+\ #require builds.frt
+\ #require bitnames.frt
 
 \ low level driver words
-#require i2c-twi.frt
+\ #require i2c-twi.frt
 
 \ provides public commands
 

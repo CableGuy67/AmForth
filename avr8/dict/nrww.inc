@@ -37,6 +37,8 @@
 .include "words/equalzero.asm"
 .include "words/lesszero.asm"
 .include "words/greaterzero.asm"
+.include "words/d-greaterzero.asm"
+.include "words/d-lesszero.asm"
 
 .include "words/true.asm"
 .include "words/zero.asm"
@@ -51,11 +53,6 @@
 .include "words/mstar.asm"
 .include "words/umslashmod.asm"
 .include "words/umstar.asm"
-
-.include "words/mplus.asm"
-.include "words/ud-star.asm"
-.include "words/umax.asm"
-.include "words/umin.asm"
 
 .include "words/invert.asm"
 .include "words/2slash.asm"

@@ -45,6 +45,7 @@ cpu_avr8   EQU 0
 
 #define UP    R14 ; User pointer
 #define REG_A R15 ; extended VM register A
+#define REG_B R13 ; extended VM register B
 
 ; Loop parameters in registers
 #define INDEX R8
@@ -60,13 +61,15 @@ cpu_avr8   EQU 0
 #define IROP2L  R10
 #define IROP2M  R11
 #define IRACL   R12
-#define IRACM   R13
+#define IRACM   R13  ; same as reg-B, used in um* only
 #define IRBT    W  
 
 ; INDIRECT-THREADED NEXT
 
 .macro NEXT
-        MOV #DONEXT,PC
+;        MOV #DONEXT,PC
+        MOV @IP+,W      ; fetch word address into W
+        MOV @W+,PC      ; fetch code address into PC, W=PFA
 .endm
 
 ; BRANCH DESTINATION (RELATIVE BRANCH)

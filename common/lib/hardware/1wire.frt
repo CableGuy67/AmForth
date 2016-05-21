@@ -54,6 +54,9 @@
 \     This uses 1W.TOUCH with an input parameter of FF hex to read one
 \     byte from a 1-wire device.
 \ 
+
+\ #include buffer.frt
+
 : 1w.touch ( c1 -- c2 ) 
     1w.slot 1w.slot 1w.slot 1w.slot
     1w.slot 1w.slot 1w.slot 1w.slot ;
@@ -65,10 +68,11 @@
 
 \ SHOWID should be used ONLY if there is a single 1-wire device attached.
 : 1w.showid  
-   1w.reset if
+   1w.reset if base @ hex
     $33 c!1w 
     c@1w . c@1w . c@1w . c@1w .
     c@1w . c@1w . c@1w . c@1w .
+   base !
   then ;
 
 \ Maxim 1-wire ROM Search algorithm 
@@ -151,12 +155,15 @@ rombit 1+ constant discmark     ( used as byte variable )
 \ Demonstrates how to use ROMSEARCH to find all attached devices )
 
 : 1w.scan ( -- )
-   newsearch
-   begin
+  1w.reset if          ( presence signal detected? )
+     base @ hex
+     newsearch
+     begin
       romsearch
-      cr romid 8 + romid do i c@ 3 u.r loop
-   0= until
-   cr
+      romid 8 + romid do i c@ 3 u.r loop cr
+     0= until
+     cr base !
+  then
 ;
 
 \ 1w.current is the device the host is currently
@@ -178,8 +185,7 @@ rombit 1+ constant discmark     ( used as byte variable )
 : 1w.device:
     ( n1 .. n8 -- )
     create
-    c, c, c, c,
-    c, c, c, c,
+      , , , , , , , ,
     does>
       ( -- n1 .. n8 )
       8 bounds do

@@ -11,5 +11,5 @@
     here ,
     [: @i 2@ ;] ,
     [: @i 2! ;] ,
-    here 2! 4 allot
+    here 2! 2 cells allot
 ;

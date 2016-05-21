@@ -44,7 +44,6 @@ XT_OW_RESET:
     .dw PFA_OW_RESET
 PFA_OW_RESET:
     savetos
-    clr tosh
     ; setup to output
     sbi OW_DDR, OW_BIT
     ; Pull output low
@@ -137,8 +136,8 @@ XT_OW_SLOT:
     .dw PFA_OW_SLOT
 PFA_OW_SLOT:
     ; pull low
-    sbi OW_DDR, OW_BIT
     cbi OW_PORT, OW_BIT
+    sbi OW_DDR, OW_BIT
     ; disable interrupts
     in temp1, SREG
     cli
@@ -148,8 +147,8 @@ PFA_OW_SLOT:
     ror tosl
     brcc PFA_OW_SLOT0 ; a 0 keeps the bus low
       ; release bus, a 1 is written
-      cbi OW_DDR, OW_BIT
       sbi OW_PORT, OW_BIT
+      cbi OW_DDR, OW_BIT
 PFA_OW_SLOT0:
     ; sample the input (no action required if zero)
     DELAY 9   ; wait DELAY E to sample
@@ -158,8 +157,8 @@ PFA_OW_SLOT0:
     ori tosl, $80
 
     DELAY   51 ; DELAY B
-    cbi OW_DDR, OW_BIT
     sbi OW_PORT, OW_BIT ; release bus
+    cbi OW_DDR, OW_BIT
     delay 2
     ; re-enable interrupts
     out SREG, temp1

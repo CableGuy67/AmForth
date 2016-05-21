@@ -16,5 +16,5 @@ XT_ENV_FORTHVERSION:
 PFA_EN_FORTHVERSION:
 .endif
     .dw XT_DOLITERAL
-    .dw 62
+    .dw 61
     .dw XT_EXIT

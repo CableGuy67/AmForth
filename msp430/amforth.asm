@@ -1,18 +1,20 @@
 
 .msp430
-.include "device.asm"
-.include "compat.inc"
-.include "user.inc"
-.include "ram.inc"
+
+.include "macros.asm"       ; registers, macros, and header structure
+.include "ram.inc"          ; RAM Leyout
+.include "vecs.asm" ; note: sets .org for vector tables
 
 .org AMFORTH_START         ; start address of Forth kernel
 
-.include "amforth-interpreter.asm"
+.include "init.asm"
+.include "drivers.asm"
 
-.include "drivers.asm"     ; 
+.include "itc430core.asm"   ; code primitives
+.include "itc430hilvl.asm"
 
-.include "dict.inc"        ; The system Dictionary
-.include "dict_appl.inc"   ; The application specific dictionary
+; now include application specific parts
+.include "dict_appl.inc"
 
 ; ----------------------------------------------------------------------
 ; END OF FORTH KERNEL

@@ -1,3 +1,7 @@
+.include "words/mplus.asm"
+.include "words/ud-star.asm"
+.include "words/umax.asm"
+.include "words/umin.asm"
 .include "words/immediate-q.asm"
 .include "words/name2flags.asm"
 

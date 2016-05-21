@@ -11,4 +11,5 @@
 
 .include "drivers/fram/words/flaligned.asm"
 .include "drivers/fram/words/save.asm"
+.include "drivers/fram/words/init-ram.asm"
 

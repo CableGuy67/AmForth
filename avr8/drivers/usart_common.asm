@@ -2,10 +2,12 @@
 .set USART_C_VALUE = bm_ASYNC | bm_NO_PARITY | bm_1STOPBIT | bm_8BIT
 .if WANT_ISR_RX == 1
   .set USART_B_VALUE = bm_ENABLE_TX | bm_ENABLE_RX | bm_ENABLE_INT_RX
+  .include "drivers/usart-rx-buffer.asm"
   .include "drivers/usart-isr-rx.asm"
-  .set XT_RX  = XT_RX_ISR
-  .set XT_RXQ = XT_RXQ_ISR
-  .set XT_USART_INIT_RX = XT_USART_INIT_RX_ISR
+;  .include "drivers/timer-usart-isr.asm"
+  .set XT_RX  = XT_RX_BUFFER
+  .set XT_RXQ = XT_RXQ_BUFFER
+  .set XT_USART_INIT_RX = XT_USART_INIT_RX_BUFFER
 .else
   .set USART_B_VALUE = bm_ENABLE_TX | bm_ENABLE_RX
   .include "words/usart-rx-poll.asm"

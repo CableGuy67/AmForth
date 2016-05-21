@@ -1,6 +1,6 @@
-; ( -- i-addr len ) System
+; ( -- ) System
 ; R( -- )
-; GIT Info as flash string
+; GIT Info
 
 .if cpu_msp430==1
     HEADER(XT_GITINFO,8,"git-info",DOCOLON)
@@ -24,4 +24,5 @@ PFA_GITINFO:
 .if cpu_msp430==1
     .align 16
 .endif
+    .dw XT_ITYPE
     .dw XT_EXIT

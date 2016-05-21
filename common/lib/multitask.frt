@@ -22,25 +22,18 @@
 
 \ marker _multitask_
 \ #require is.frt
+\ #require builds.frt
 
 decimal
 
 0 user status
 2 user follower
 
-:noname ( 'status1 -- 'status2 ) 
-    cell+ @ dup @ 1+ >r
-;  constant pass
-
-:noname  ( 'status1 -- )  
-    up! sp @ sp! rp!
-; constant wake
+:noname ( 'status1 -- 'status2 ) cell+ @ dup @ i-cell+ >r ; constant pass
+:noname ( 'status1 -- )          up! sp @ sp! rp! ;         constant wake
 
 \ switch to the next task in the list
-: multitaskpause   ( -- )     
-    rp@ sp@ sp ! follower @ dup @ 1+ >r
-;
-
+: multitaskpause   ( -- ) rp@ sp@ sp ! follower @ dup @ i-cell+ >r ;
 : stop         ( -- )     pass status ! pause ; \ sleep current task
 : task-sleep   ( tid -- ) pass swap ! ;         \ sleep another task
 : task-awake   ( tid -- ) wake swap ! ;         \ wake another task
@@ -51,7 +44,7 @@ decimal
 : activate ( tid -- )
    dup    6 + @ cell-
    over   4 + @ cell- ( -- tid sp rp )     \ point to RP0 SP0
-   r> over 1+ !       ( save entry at rp ) \ skip all after ACTIVATE
+   r> over i-cell+ !  ( save entry at rp ) \ skip all after ACTIVATE
       over  !         (  save rp at sp )   \ save stack context for WAKE
    over 8 + !         ( save sp in tos )
    task-awake 
@@ -61,43 +54,44 @@ decimal
 \ alsotask  appends the tcb to the (circular, existing) list of TCB
 
 : task: ( C: dstacksize rstacksize add.usersize "name" -- )
-        ( R: -- addr )
-  create
+        ( R: -- task-information-block )
+  <builds
     here ,                      \ store address of TCB
-    \ work around a limitation of environment? in colon defs
     [ s" /user" environment search-wordlist drop execute ] literal
     ( add.usersize ) + allot \ default user area size
                                 \ allocate stacks
-    ( rstacksize ) allot here , \ store sp0
-    ( dstacksize ) allot here , \ store rp0 
+    ( rstacksize ) allot here , \ store rp0
+    ( dstacksize ) allot here , \ store sp0 
 
     1 allot                   \ keep here away, amforth specific
   does>
-                                \ leave flash addr on stack
-;  
-: tcb>tid  ( f -- tid )      @i ;
-: tcb>sp0  ( f -- sp0 )  1+  @i ;
-: tcb>rp0  ( f -- rp0 )  2 + @i ;
-: tcb>size ( f -- size )
-  dup tcb>tid swap tcb>rp0 1+ swap -
+                              \ leave flash addr on stack
 ;
-: task-init ( f -- )
-  dup tcb>tid  over tcb>size  0 fill \ clear RAM for tcb and stacks
-  \ fixme: possibly use init-user?
-  dup tcb>sp0 over tcb>tid &6 + !       \ store sp0    in tid[6]
-  dup tcb>sp0 cell- over tcb>tid &8 + ! \ store sp0--  in tid[8], tos
-  dup tcb>rp0 over tcb>tid &4 + !       \ store rp0    in tid[4]
-      &10  over tcb>tid &12 + !         \ store base   in tid[12]
-      tcb>tid task-sleep                \ store 'pass' in tid[0]
+
+: tib>tcb  ( tib -- tcb )                  @i ;
+: tib>rp0  ( tib -- rp0 )  i-cell+         @i ;
+: tib>sp0  ( tib -- sp0 )  i-cell+ i-cell+ @i ;
+: tib>size ( tib -- size )
+  dup tib>tcb swap tib>sp0 1+ swap -
+;
+: task-init ( tib -- )
+  dup tib>tcb over tib>size  0 fill \ clear RAM for tcb and stacks
+  dup tib>sp0 over tib>tcb &6 + !       \ store sp0    in tcb[6]
+  dup tib>sp0 cell- over tib>tcb &8 + ! \ store sp0--  in tcb[8], tos
+  dup tib>rp0 over tib>tcb &4 + !       \ store rp0    in tcb[4]
+      &10  over tib>tcb &12 + !         \ store base   in tcb[12]
+      tib>tcb task-sleep                \ store 'pass' in tcb[0]
 ;
 
 \ stop multitasking
 : single ( -- ) \ initialize the multitasker with the serial terminal
-    ['] noop is pause ;
+    ['] noop is pause 
+;
 
 \ start multitasking
 : multi ( -- )
-    ['] multitaskpause is pause ;
+    ['] multitaskpause is pause 
+;
 
 
 \ initialize the multitasker with the current task only
@@ -126,9 +120,8 @@ decimal
     begin      ( -- tid1 ctid )
       dup u. ( -- tid1 ctid )
       dup @  ( -- tid1 ctid status )
-      dup 
-      wake = if ."   running" drop else
-      pass = if ."  sleeping" else
+      dup wake = if ."   running" drop else
+          pass = if ."  sleeping" else
           abort"   unknown" then
       then
 \     dup 4 + @ ."   rp0=" dup u. cell- @ ."  TOR=" u.
@@ -136,9 +129,9 @@ decimal
 \     dup 8 + @ ."    sp=" u.
       cr
       cell+ @ ( -- tid1 next-tid )
-      over  over =     ( -- f flag)
+      2dup =     ( -- f flag)
     until
-    drop drop
+    2drop
     ." Multitasker is " 
     ['] pause defer@ ['] noop = if ." not " then
     ." running"

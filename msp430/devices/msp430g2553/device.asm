@@ -11,5 +11,3 @@ FLASHEND   equ 0DFFFh
 MAINSEG    equ 512
 INFOSEG    equ 64
 INFO_SIZE  equ 128    ; bytes
-.org 0FFFEh
-     DC16  cold       ; FFFE - Reset

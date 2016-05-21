@@ -1,11 +1,11 @@
 ; ( flagset -- +/-1 )  
 ; Tools
 ; return +1 if immediate, -1 otherwise, flag from name>flags
-VE_IMMEDIATEQ:
-    .dw $ff0a
-    .db "immediate?"
-    .dw VE_HEAD
-    .set VE_HEAD = VE_IMMEDIATEQ
+;VE_IMMEDIATEQ:
+;    .dw $ff06
+;    .db "immediate?"
+;    .dw VE_HEAD
+;    .set VE_HEAD = VE_IMMEDIATEQ
 XT_IMMEDIATEQ:
     .dw DO_COLON
 PFA_IMMEDIATEQ:
@@ -15,7 +15,8 @@ PFA_IMMEDIATEQ:
     .dw XT_ZEROEQUAL
     .dw XT_DOCONDBRANCH
     DEST(IMMEDIATEQ1)
-     .dw XT_ONE
+     .dw XT_DOLITERAL
+     .dw 1
      .dw XT_EXIT
 IMMEDIATEQ1:
     ; not immediate

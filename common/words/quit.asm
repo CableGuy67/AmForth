@@ -55,8 +55,5 @@ PFA_QUIT3:
     .dw XT_PROMPTOK
     .dw XT_DOBRANCH
     DEST(PFA_QUIT2)
-;    .dw XT_EXIT ; never reached
+    .dw XT_EXIT ; never reached
 
-; *NOTE*
-; the code above is not forth code, it only looks like some
-;

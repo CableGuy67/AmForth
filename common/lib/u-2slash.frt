@@ -1,6 +1,6 @@
 
 \ unsigned division by 2.
-\ -1 u2/ . gives 32767
+\ -1 u2/ . gives 32737
 \ -1 2/ .  gives -1
 \ -1 2 / . gives 0
 

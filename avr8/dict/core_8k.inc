@@ -7,6 +7,7 @@
 .include "words/d-plus.asm"
 .include "words/d-minus.asm"
 .include "words/d-invert.asm"
+.include "words/d-equal.asm"
 .include "words/u-dot.asm"
 .include "words/u-dot-r.asm"
 
@@ -117,7 +118,7 @@
 .include "words/source.asm"
 .include "words/slash-string.asm"
 .include "words/parse-name.asm"
-.include "words/find-xt.asm"
+.include "words/find-name.asm"
 
 .include "words/prompt-ok.asm"
 .include "words/prompt-ready.asm"
@@ -129,11 +130,9 @@
 .include "words/warm.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 .include "words/sp0.asm"
-.include "words/sp.asm"
 .include "words/rp0.asm"
 .include "words/depth.asm"
 .include "words/interpret.asm"
-.include "words/forth-recognizer.asm"
 .include "words/do-recognizer.asm"
 .include "words/r-intnumber.asm"
 .include "words/r-word.asm"

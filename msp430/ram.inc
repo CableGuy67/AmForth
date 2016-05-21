@@ -8,8 +8,7 @@ RAMINFOAREA:                  ; 128 byte copy from INFO flash or uinit defaults
 CFG_RECOGNIZERLISTLEN:        ; RECOGNIZER stack, must be first cell for init-ram.
 	DS16 5                ; room for the count word and 4 slots
 CFG_ORDERLISTLEN:             ; ORDER stack
-	DS16  1               ; the count word 
-	DS16  NUMWORDLISTS    ; number of word lists in the searh order
+	DS16 9                ; room for the count word and 8 slots
 CFG_TURNKEY: DS16 1           ; deferred startup action
 CFG_DP:      DS16 1           ; data space pointer (HERE)
 CFG_IDP:     DS16 1           ; code space pointer (dictionary)
@@ -18,7 +17,6 @@ CFG_CURRENT: DS16 1           ; Place for new words (CREATE)
 CFG_FORTHWID:DS16 1           ; the Forth wordlist
 CFG_ENVWID:  DS16 1           ; wordlist id for environment queries
 CFG_WLSCOPE: DS16 1           ; wordlist scope (wlscope)
-CFG_FORTHRECOGNIZER: DS16 1   ; standard recognizer stack
 ; default USER area comes from info flash or, if invalid from uinit.
 UAREA:   DS8  SYSUSERSIZE     ; standard user area
 APPUSER: DS8  APPUSERSIZE     ; not initalized from uinit.

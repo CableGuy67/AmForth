@@ -9,6 +9,9 @@
 .include "words/wordlist.asm"
 
 .include "words/forth-wordlist.asm"
+.include "words/set-order.asm"
+.include "words/set-recognizer.asm"
+.include "words/get-recognizer.asm"
 .include "words/code.asm"
 .include "words/end-code.asm"
 .include "words/marker.asm"
