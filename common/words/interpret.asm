@@ -20,6 +20,7 @@ PFA_INTERPRET:
     .dw XT_DUP   ; ( -- addr len flag)
     .dw XT_DOCONDBRANCH
     DEST(PFA_INTERPRET2)
+      .dw XT_FORTHRECOGNIZER
       .dw XT_DORECOGNIZER
       .dw XT_STATE
       .dw XT_FETCH

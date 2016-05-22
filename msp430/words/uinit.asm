@@ -15,6 +15,7 @@
 	DW lastword       ; FORTH WID
         DW lastenv        ; environment WID
         DW XT_GET_CURRENT ; wlscope
+	DW CFG_RECOGNIZERLISTLEN ; FORTH-RECOGNIZER
 ; USER Area
 	DW 0,0          ; STATE/FOLLOWER
 	DW 0,0,0        ; RP,SP0, SP

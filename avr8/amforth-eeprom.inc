@@ -4,6 +4,7 @@ CFG_DP:      .dw DPSTART         ; Dictionary Pointer
 EE_HERE:     .dw HERESTART       ; Memory Allocation
 EE_EHERE:    .dw EHERESTART      ; EEProm Memory Allocation
 CFG_WLSCOPE: .dw XT_GET_CURRENT  ; default wordlist scope
+CFG_FORTHRECOGNIZER: .dw CFG_RECOGNIZERLISTLEN ; Recognizer word set
 ; LEAVE stack is between data stack and return stack.
 CFG_LP0:     .dw stackstart+1
 CFG_TURNKEY: .dw XT_APPLTURNKEY    ; TURNKEY

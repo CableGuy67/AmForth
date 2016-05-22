@@ -110,6 +110,7 @@
 .include "words/set-base.asm"
 .include "words/to-number.asm"
 .include "words/number.asm"
+.include "words/forth-recognizer.asm"
 .include "words/interpret.asm"
 .include "words/prompt-ok.asm"
 .include "words/prompt-ready.asm"
