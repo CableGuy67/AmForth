@@ -52,30 +52,8 @@ DOCOLON:
 .include "words/variable.asm"
 .include "words/constant.asm"
 
-; DOCON, code action of CONSTANT,
-; entered with W=Parameter Field Adrs
-; This is also the action of VARIABLE (Harvard model)
-; This is also the action of CREATE (Harvard model)
-docreate: ; -- a-addr   ; ROMable CREATE fetches address from PFA
-DOVAR:  ; -- a-addr     ; ROMable VARIABLE fetches address from PFA
-DOCON:  ; -- x          ; CONSTANT fetches cell from PFA to TOS
-PFA_DOVARIABLE:
-        SUB #2,PSP      ; make room on stack
-        MOV TOS,0(PSP)
-        MOV @W,TOS      ; fetch from parameter field to TOS
-        NEXT
-
-; DOCREATE's action is for a table in RAM.
-; DOROM is the code action for a table in ROM;
-; it returns the address of the parameter field.
-
-DOROM:  ; -- a-addr     ; Table in ROM: get PFA into TOS
-PFA_DOCONSTANT:
-        SUB #2,PSP 
-        MOV TOS,0(PSP)
-        MOV W,TOS
-        NEXT
-
+.include "words/do-variable.asm"
+.include "words/do-constant.asm"
 .include "words/user.asm"
 
 ; DODOES is the code action of a DOES> clause.  For ITC Forth:
