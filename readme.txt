@@ -8,7 +8,7 @@ Major Contributors:
     Ullrich Hoffmann
     Karl Lund
     Enoch
-    Bradford Rodriguez (MSP430 code)
+    Bradford Rodriguez (MSP430 code from Camelforth 0.5)
 
 License: General Public License (GPL) Version 3 from 2007. See the
 file LICENSE.txt or http://www.gnu.org/licenses/gpl.html. This
@@ -29,13 +29,13 @@ ATmega:
 
 MSP430
   
-  The Forth dictionary is in the flash or FRAN memory, new words are
-  compiled to flash. Use SAVE to keep the code accessible across
-  reboots. 
+  The Forth dictionary is in the flash or FRAM memory, new words are
+  compiled to it. Use SAVE to keep the code accessible across
+  reboots.
 
 AmForth is implemented in assembly and forth. The code is stable
-and well tested. The MSP430 variant is less tested however. It
-has less features as well.
+and well tested. The MSP430 variant is newer and may have less
+features.
 
 All words have Forth 2012 (CORE and various extenion word sets)
 stack diagrams, but not necessarily the complete semantics. Some
@@ -44,7 +44,7 @@ words from the standards are left out, ask for them if you need them.
 Development hardware are evaluation boards running various Amega's
 between 2 and 20 MHz with various external hardware: none,
 led, push-buttons, SD-card, ethernet controller, RF module etc.
-The MSP430 code is tested with Launchpads using e.g. the MSP430G2553.
+The MSP430 code is tested with Launchpads.
 
 Documentation can be found in the doc/ subdirectory and
 on the homepage http://amforth.sourceforge.net/.
