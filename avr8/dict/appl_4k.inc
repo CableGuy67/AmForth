@@ -76,6 +76,6 @@
 .include "words/traverse-wordlist.asm"
 .include "words/name2string.asm"
 .include "words/nfa2cfa.asm"
-.include "words/find-name.asm"
+.include "words/find-xt.asm"
 
 .include "dict/compiler1.inc"
