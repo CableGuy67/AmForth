@@ -2,6 +2,7 @@
 \ ----------------------------------------------------------------
 \ #require set-order.frt
 \ #require get-order.frt
+\ #require previous.frt
 
 : module ( <name> -- old-current )
     get-current  wordlist create dup >r , 
@@ -9,12 +10,14 @@
     r> set-current ;
 
 : export ( <name> old-current -- old-currrent ) 
-    >r >in @  '  swap >in !  get-current r@ set-current
+    >r >in @  '  swap >in ! ( -- 'name )
+    get-current r@ set-current ( -- 'name current )
     create swap , set-current r>
-    does> @ execute ;
+    does> @i execute ;
 
 : expose-module ( <name> -- )
-    get-order  ' >body @  swap 1+ set-order ;
+    get-order  ' >body @i  swap 1+ set-order ;
 
 : end-module ( old-current -- )
-    set-current get-order nip 1- set-order ;
+    set-current previous ;
+
