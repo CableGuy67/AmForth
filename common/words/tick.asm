@@ -17,6 +17,7 @@ XT_TICK:
 PFA_TICK:
 .endif
     .dw XT_PARSENAME
+    .dw XT_FORTHRECOGNIZER
     .dw XT_DORECOGNIZER
     .dw XT_R_WORD
     .dw XT_EQUAL
