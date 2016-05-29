@@ -1,5 +1,10 @@
 \ VFX like modules based on Forth-94 wordlists      uho 2016-04-16
 \ ----------------------------------------------------------------
+\ http://theforth.net/package/modules
+\ http://theforth.net/package/modules/current-view/glossary.md
+
+\ modified for amforth (@ -> @i for numbers kept in the dictionary )
+
 \ #require set-order.frt
 \ #require get-order.frt
 \ #require previous.frt
