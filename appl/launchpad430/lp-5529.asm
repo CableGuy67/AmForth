@@ -14,3 +14,4 @@ AMFORTH_START equ 0e000h
 
 .include "amforth.asm"
 .include "drivers/usart_a1.inc"
+.include "epilogue.asm"

@@ -9,9 +9,8 @@ TIB_SIZE  equ 102         ; bytes (must be even)
 F_CPU EQU 8000000
 AMFORTH_START equ 0E000h
 
-
-
 ; now include all and everything
 
 .include "amforth.asm"
 .include "drivers/usart_a0.inc"
+.include "epilogue.asm"
