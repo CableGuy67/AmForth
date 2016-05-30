@@ -14,3 +14,4 @@ AMFORTH_START equ 0E000h
 ; now include all and everything
 
 .include "amforth.asm"
+.include "drivers/usart_a0.inc"

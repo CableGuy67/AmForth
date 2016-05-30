@@ -2,10 +2,13 @@
 ; TERMINAL I/O (TARGET-SPECIFIC)
 
 ;C EMIT     c --    output character to console
-        CODEHEADER(XT_USART_TX,2,"tx")
+        HEADER(XT_USART_TX_POLL,2,"tx",DOCOLON)
+
 EMITLOOP:
-        bit.b   #UCTXIFG, &UCA0IFG
-        JZ      EMITLOOP
-        MOV.B   TOS,&UCA0TXBUF
-        MOV @PSP+,TOS
-        NEXT
+	.dw XT_EMITQ
+	.dw XT_DOCONDBRANCH
+	DEST(EMITLOOP)
+	.dw XT_DOLITERAL
+	.dw USART_TX_DATA
+	.dw XT_CSTORE
+	.dw XT_EXIT

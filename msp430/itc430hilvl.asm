@@ -3,10 +3,6 @@
 ; most highlevel words for the core system.
 
 ; INPUT/OUTPUT ==================================
-.include "words/usart-emit.asm"
-.include "words/usart-key.asm"
-.include "words/usart-keyq.asm"
-.include "words/usart-init.asm"
 .include "words/cr.asm"
 .include "words/space.asm"
 .include "words/spaces.asm"
