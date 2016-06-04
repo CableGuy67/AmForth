@@ -67,7 +67,6 @@ cpu_avr8   EQU 0
 ; INDIRECT-THREADED NEXT
 
 .macro NEXT
-;        MOV #DONEXT,PC
         MOV @IP+,W      ; fetch word address into W
         MOV @W+,PC      ; fetch code address into PC, W=PFA
 .endm
@@ -80,9 +79,6 @@ cpu_avr8   EQU 0
 .endm
 
 ; HEADER CONSTRUCTION MACROS
-
-.set link = 0
-.set envlink = 0
 
 .macro HEADER(asmname,length,litname,action)
         DW      link

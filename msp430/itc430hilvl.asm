@@ -1,5 +1,4 @@
 ; ----------------------------------------------------------------------
-
 ; most highlevel words for the core system.
 
 ; INPUT/OUTPUT ==================================
@@ -126,7 +125,6 @@
 .include "words/create.asm"
 .include "words/do-create.asm"
 .include "words/wlscope.asm"
-.include "words/do-does.asm"
 .include "words/does.asm"
 .include "words/recurse.asm"
 .include "words/left-bracket.asm"

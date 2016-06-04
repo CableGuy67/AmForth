@@ -9,7 +9,7 @@
 
 .include "init.asm"
 .include "drivers.asm"
-
+.include "amforth-interpreter.asm"
 .include "itc430core.asm"   ; code primitives
 .include "itc430hilvl.asm"
 
