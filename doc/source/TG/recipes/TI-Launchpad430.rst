@@ -35,6 +35,7 @@ the forth code above)
 
 .. code-blocK:: forth
 
+   code red:init  $D3D2 , $0022 , end-code
    code red:on  $D3D2 , $0021 , end-code
    code red:off $C3D2 , $0021 , end-code
 

@@ -32,10 +32,11 @@ Here you'll find things that are not yet released but will be part of the next r
 See the code section at Sourceforge to get the
 `most recent sources <http://sourceforge.net/p/amforth/code/HEAD/tree/trunk/>`__
 
-* core(ALL): smarter :command:`'` (tick).
-* core(ALL): renamed :command:`find-name` to :command:`find-xt` (addr/len -- xt +/-1|0)
-  re-introduced :command:`find-name` (addr len -- nt|0) returning the name token if addr/len
-  was found in the search order. New word :command:`search-name` ( addr len wid -- nt|0).
+* core+lib(MSP430): New optional assembly (compile-time) words :command:`d2*` and :command:`d2/`.
+* core(ALL): renamed :command:`find-name ( addr len -- xt +/-1 | 0)` to :command:`find-xt`, compare to
+  :command:`find-name ( addr len --  nt|0)` to deal with name tokens.
+* core(MSP430): add :command:`pause` to the usart IO words.
+* core(ALL): complete recognizer `Rev. 3 </pr/Recognizer-rfc-C.pdf>`__ adaption.
 
 17.10.2015: release 6.1
 .......................
