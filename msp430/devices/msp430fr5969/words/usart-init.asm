@@ -22,5 +22,4 @@
   bic #UCSWRST, &UCA0CTLW0          ; **Initialize USCI state machine**
   ;------------------------------------------------------------------------------
 
-  mov.b #0, &0223h ; P4OUT   ; Red LED off
   NEXT
