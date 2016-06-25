@@ -13,7 +13,7 @@
 : [: ( -- quotation-sys )
      postpone ahead 
      latest @ newest 2@ \ save definition state
-     :noname  
+     :noname  \ defines quotation-sys as ( -- latest newest XT ) ( 4 cells)
 ; immediate
 
 : ;] ( compile-time: quotation-sys -- ; run-time: -- xt )
