@@ -29,13 +29,24 @@ called inside the new turnkey command.
 
 .. code-block:: forth
 
-    variable oldturnkey
-    ' turnkey defer@ oldturnkey !
-    : myturnkey 
-       oldturnkey @ execute 
-       my_own_turnkey_actions 
+   \ some dependency files
+   \ #include avr-values.frt
+   \ #include is.frt
+   \ #include ms.frt
+   \ #include defers.frt
+
+   \ keep the previous turnkey action.
+   ' turnkey defer@ Evalue tk.amforth
+
+   : tk.custom
+    \ call the previous turnkey action
+    tk.amforth execute
+
+    \ now something specific e.g.
+    1000 ms
     ;
-    ' myturnkey is turnkey
+
+    ' tk.custom is turnkey
 
 Be aware that the initialization sequence must not
 be repeated, this will create an endless loop by
