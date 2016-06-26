@@ -6,7 +6,7 @@ SPHINXOPTS    =
 SPHINXBUILD   = sphinx-build
 PAPER         = a4
 BUILDDIR      = build
-VERSION       = '5.8'
+VERSION       = '6.2'
 SOURCEDIR     = source
 
 # Internal variables.
@@ -33,7 +33,7 @@ htdocs:
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) source $(BUILDDIR)/htdocs
 
 sitemap:
-	./rst2sitemap > build/htdocs/TG/sitemap.xml
+	./rst2sitemap | gzip -9 > build/htdocs/TG/sitemap-TG.xml.gz
 
 books:
 	$(SPHINXBUILD) -b epub $(ALLSPHINXOPTS) \
@@ -77,5 +77,5 @@ PDFs := $(foreach dir, $(IMAGEDIRS), $(patsubst %.dia,%.pdf,$(wildcard $(SOURCED
 EPSs := $(foreach dir, $(IMAGEDIRS), $(patsubst %.dia,%.eps,$(wildcard $(SOURCEDIR)/TG/$(dir)/*.dia)))
 SVGs := $(foreach dir, $(IMAGEDIRS), $(patsubst %.dia,%.svg,$(wildcard $(SOURCEDIR)/TG/$(dir)/*.dia)))
 # Make a rule to build the PDFs
-images: $(EPSs) $(SVGs)
+images: $(EPSs) $(SVGs) $(PDFs)
 

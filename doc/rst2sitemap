@@ -24,8 +24,7 @@ def get_filepaths(directory):
 # Run the above function and store its results in a variable.   
 full_file_paths = get_filepaths("source/TG")
 
-print """
-<?xml version="1.0" encoding="UTF-8"?>
+print """<?xml version="1.0" encoding="UTF-8"?>
 <urlset
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -40,8 +39,14 @@ for filename in full_file_paths:
 #  <lastmod>2014-07-05T09:36:21Z</lastmod>
 #  <priority>0.5000</priority>
 # </url>
-
-  print "<url><loc>http://amforth.sourceforge.net/TG/%s</loc><lastmod>%s</lastmod><priority>0.6000</priority</url>" % (filename, time.ctime(t))
+  f = filename.replace("source/TG/","")
+  f = f.replace(".rst",".html")
+  print """
+<url>
+  <loc>http://amforth.sourceforge.net/TG/%s</loc>
+  <lastmod>%s</lastmod>
+  <priority>0.6000</priority>
+</url>""" % (f, time.ctime(t))
 
 
 print """
