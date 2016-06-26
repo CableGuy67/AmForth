@@ -31,7 +31,8 @@ MSP430
   
   The Forth dictionary is in the flash or FRAM memory, new words are
   compiled to it. Use SAVE to keep the code accessible across
-  reboots.
+  reboots. The flash devices cannot rewrite the flash cell once a 
+  word is written.
 
 AmForth is implemented in assembly and forth. The code is stable
 and well tested. The MSP430 variant is newer and may have less
@@ -41,7 +42,7 @@ All words have Forth 2012 (CORE and various extenion word sets)
 stack diagrams, but not necessarily the complete semantics. Some
 words from the standards are left out, ask for them if you need them.
 
-Development hardware are evaluation boards running various Amega's
+Development hardware are evaluation boards running various Atmega's
 between 2 and 20 MHz with various external hardware: none,
 led, push-buttons, SD-card, ethernet controller, RF module etc.
 The MSP430 code is tested with Launchpads.
