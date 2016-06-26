@@ -13,4 +13,4 @@ INFO_SIZE  equ 128    ; bytes
 
 .org 0FFFEh
 
-    DC16  reset       ; FFFE - Reset
+        DC16  reset       ; FFFE - Reset

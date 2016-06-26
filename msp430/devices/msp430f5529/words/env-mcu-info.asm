@@ -8,7 +8,3 @@ mcuinfo:
     .dw 0 ; EEPROM Size
     .dw AMFORTH_START-1 ; max-dp
     .dw 1 ; number of interrupts
-    ; last Element with variable length
-mcu_name:
-    .db 12,"MSP430FR5969"
-    .align 16

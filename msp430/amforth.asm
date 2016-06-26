@@ -5,7 +5,7 @@
 .include "ram.inc"          ; RAM Leyout
 
 .org AMFORTH_START         ; start address of Forth kernel
-
+.include "init.asm"
 .include "drivers.asm"
 .include "amforth-interpreter.asm"
 .include "itc430core.asm"   ; code primitives

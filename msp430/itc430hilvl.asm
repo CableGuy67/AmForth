@@ -188,6 +188,7 @@
 .include "words/warm.asm"
 .include "words/applturnkey.asm"  ; from application!
 .include "words/environment.asm"
+.include "words/env-mcu-info.asm"
 .include "words/env-cpu.asm"
 .include "words/env-forthname.asm"
 .include "words/env-forthversion.asm"
