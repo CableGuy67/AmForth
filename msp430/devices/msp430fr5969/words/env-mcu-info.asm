@@ -8,3 +8,4 @@ mcuinfo:
     .dw 0 ; EEPROM Size
     .dw AMFORTH_START-1 ; max-dp
     .dw 1 ; number of interrupts
+
