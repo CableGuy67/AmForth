@@ -32,6 +32,9 @@ Here you'll find things that are not yet released but will be part of the next r
 See the code section at Sourceforge to get the
 `most recent sources <http://sourceforge.net/p/amforth/code/HEAD/tree/trunk/>`__
 
+4.7.2016: release 6.2
+.....................
+
 * core+lib(MSP430): New optional assembly (compile-time) words :command:`d2*` and :command:`d2/`.
 * core(ALL): renamed :command:`find-name ( addr len -- xt +/-1 | 0)` to :command:`find-xt`, compare to
   :command:`find-name ( addr len --  nt|0)` to deal with name tokens.

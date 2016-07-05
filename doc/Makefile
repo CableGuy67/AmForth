@@ -6,7 +6,7 @@ SPHINXOPTS    =
 SPHINXBUILD   = sphinx-build
 PAPER         = a4
 BUILDDIR      = build
-VERSION       = '6.2'
+VERSION       = '6.3'
 SOURCEDIR     = source
 
 # Internal variables.
