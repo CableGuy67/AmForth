@@ -1,5 +1,14 @@
 ;C UM*     u1 u2 -- ud   unsigned 16x16->32 mult.
-        CODEHEADER(XT_UMSTAR,3,"um*")
+    CODEHEADER(XT_UMSTAR,3,"um*")
+.ifdef MPY
+ 	dint
+	mov 0(PSP), &MPY
+	mov TOS, &OP2
+	nop ; 1 cycle for calculation
+	mov &RESLO, 0(PSP)
+	mov &RESHI, TOS
+       eint
+.else
         ; IROP1 = TOS register
         MOV     @PSP,IROP2L     ; get u1, leave room on stack
         PUSH IRACL ; possibly used as register B
@@ -24,5 +33,6 @@ L_01:   RLA IROP2L  ; MULTIPLIER x 2
         MOV     IRACL,0(PSP)    ; low result on stack
         MOV     IRACM,TOS       ; high result in TOS
         POP IRACL ; possibly used as register B
-        NEXT
 
+.endif
+    NEXT
