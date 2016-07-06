@@ -15,8 +15,7 @@ PFA_IMMEDIATEQ:
     .dw XT_ZEROEQUAL
     .dw XT_DOCONDBRANCH
     DEST(IMMEDIATEQ1)
-     .dw XT_DOLITERAL
-     .dw 1
+     .dw XT_ONE
      .dw XT_EXIT
 IMMEDIATEQ1:
     ; not immediate

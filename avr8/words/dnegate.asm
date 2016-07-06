@@ -10,8 +10,7 @@ XT_DNEGATE:
     .dw DO_COLON
 PFA_DNEGATE:
     .dw XT_DINVERT
-    .dw XT_DOLITERAL
-    .dw 1
+    .dw XT_ONE
     .dw XT_ZERO
     .dw XT_DPLUS
     .dw XT_EXIT
