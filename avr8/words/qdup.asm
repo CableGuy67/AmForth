@@ -9,8 +9,7 @@ VE_QDUP:
 XT_QDUP:
     .dw PFA_QDUP
 PFA_QDUP:
-    mov temp0, tosl
-    or temp0, tosh
+    or tosl, tosh
     breq PFA_QDUP1
     savetos
 PFA_QDUP1:
