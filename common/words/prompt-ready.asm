@@ -3,7 +3,7 @@
 ; process the error prompt
 
 .if cpu_msp430==1
-   HEADLESS(XT_PROMPTREADY,DOCOLON)
+   HEADLESS(XT_DEFAULT_PROMPTREADY,DOCOLON)
     DW XT_DOSLITERAL
     DB 2,"> " 
     .align 16
@@ -15,9 +15,9 @@
 ;    .db "p_er"
 ;    .dw VE_HEAD
 ;    .set VE_HEAD = VE_PROMPTRDY
-XT_PROMPTREADY:
+XT_DEFAULT_PROMPTREADY:
     .dw DO_COLON
-PFA_PROMPTREADY:
+PFA_DEFAULT_PROMPTREADY:
     .dw XT_DOSLITERAL
     .dw 2
     .db "> "
@@ -25,3 +25,23 @@ PFA_PROMPTREADY:
     .dw XT_CR
     .dw XT_ITYPE
     .dw XT_EXIT
+
+; ------------------------
+
+.if cpu_msp430==1
+    DEFER(XT_PROMPTREADY,7,"(ready)")
+.endif
+
+.if cpu_avr8==1
+VE_PROMPTREADY:
+    .dw $FF07
+    .db "(ready)"
+    .dw VE_HEAD
+    .set VE_HEAD = VE_PROMPTREADY
+XT_PROMPTREADY:
+    .dw PFA_DODEFER1
+PFA_PROMPTREADY:
+.endif
+    .dw USER_P_RDY
+    .dw XT_UDEFERFETCH
+    .dw XT_UDEFERSTORE

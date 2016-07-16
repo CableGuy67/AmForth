@@ -48,6 +48,9 @@ EE_INITUSER:
     .dw XT_SOURCETIB ; USER_SKEY
     .dw 0            ; USER_G_IN
     .dw XT_REFILLTIB ; USER_REFILL  
+    .dw XT_DEFAULT_PROMPTOK
+    .dw XT_DEFAULT_PROMPTERROR
+    .dw XT_DEFAULT_PROMPTREADY
 
 ; calculate baud rate error
 .equ UBRR_VAL   = ((F_CPU+BAUD*8)/(BAUD*16)-1)  ; smart round

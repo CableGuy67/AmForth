@@ -26,5 +26,9 @@
 .set USER_TO_IN   = 24
 .set USER_REFILL  = 26
 
-.set SYSUSERSIZE = 28
+.set USER_P_OK    = 28
+.set USER_P_ERR   = 30
+.set USER_P_RDY   = 32
+
+.set SYSUSERSIZE = 34
 ; 

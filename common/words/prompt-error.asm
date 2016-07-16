@@ -3,7 +3,7 @@
 ; process the error prompt
 
 .if cpu_msp430==1
-    HEADLESS(XT_PROMPTERROR,DOCOLON)
+    HEADLESS(XT_DEFAULT_PROMPTERROR,DOCOLON)
     DW XT_DOSLITERAL
     DB 4," ?? " 
     .align 16
@@ -15,9 +15,9 @@
 ;    .db "p_er"
 ;    .dw VE_HEAD
 ;    .set VE_HEAD = VE_PROMPTERROR
-XT_PROMPTERROR:
+XT_DEFAULT_PROMPTERROR:
     .dw DO_COLON
-PFA_PROMPTERROR:
+PFA_DEFAULT_PROMPTERROR:
 	.dw XT_DOSLITERAL
     .dw 4
     .db " ?? "
@@ -35,3 +35,23 @@ PFA_PROMPTERROR:
     .dw XT_BASE
     .dw XT_STORE
     .dw XT_EXIT
+
+; ------------------------
+
+.if cpu_msp430==1
+    DEFER(XT_PROMPTERROR,7,"(error)")
+.endif
+
+.if cpu_avr8==1
+VE_PROMPTERROR:
+    .dw $FF07
+    .db "(error)"
+    .dw VE_HEAD
+    .set VE_HEAD = VE_PROMPTERROR
+XT_PROMPTERROR:
+    .dw PFA_DODEFER1
+PFA_PROMPTERROR:
+.endif
+    .dw USER_P_ERR
+    .dw XT_UDEFERFETCH
+    .dw XT_UDEFERSTORE
