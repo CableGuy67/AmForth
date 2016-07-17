@@ -39,13 +39,20 @@ PFA_DEFAULT_PROMPTERROR:
 ; ------------------------
 
 .if cpu_msp430==1
-    DEFER(XT_PROMPTERROR,7,"(error)")
+;    DEFER(XT_PROMPTERROR,6,".error")
+        DW      link
+        DB      0FFh
+.set link = $
+        DB      6,".","error"
+        .align 16
+XT_PROMPTERROR:
+        DW      DODEFER
 .endif
 
 .if cpu_avr8==1
 VE_PROMPTERROR:
-    .dw $FF07
-    .db "(error)"
+    .dw $FF06
+    .db ".error"
     .dw VE_HEAD
     .set VE_HEAD = VE_PROMPTERROR
 XT_PROMPTERROR:

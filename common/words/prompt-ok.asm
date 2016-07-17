@@ -27,13 +27,20 @@ PFA_DEFAULT_PROMPTOK:
 ; ------------------------
 
 .if cpu_msp430==1
-    DEFER(XT_PROMPTOK,4,"(ok)")
+;    DEFER(XT_PROMPTOK,2,"ok")
+        DW      link
+        DB      0FFh
+.set link = $
+        DB      3,".","ok"
+        .align 16
+XT_PROMPTOK:
+        DW      DODEFER
 .endif
 
 .if cpu_avr8==1
 VE_PROMPTOK:
-    .dw $FF04
-    .db "(ok)"
+    .dw $FF03
+    .db ".ok"
     .dw VE_HEAD
     .set VE_HEAD = VE_PROMPTOK
 XT_PROMPTOK:

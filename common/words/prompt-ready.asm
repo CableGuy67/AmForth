@@ -29,13 +29,20 @@ PFA_DEFAULT_PROMPTREADY:
 ; ------------------------
 
 .if cpu_msp430==1
-    DEFER(XT_PROMPTREADY,7,"(ready)")
+;    DEFER(XT_PROMPTREADY,6,".ready")
+        DW      link
+        DB      0FFh
+.set link = $
+        DB      6,".","ready"
+        .align 16
+XT_PROMPTREADY:
+        DW      DODEFER
 .endif
 
 .if cpu_avr8==1
 VE_PROMPTREADY:
-    .dw $FF07
-    .db "(ready)"
+    .dw $FF06
+    .db ".ready"
     .dw VE_HEAD
     .set VE_HEAD = VE_PROMPTREADY
 XT_PROMPTREADY:
