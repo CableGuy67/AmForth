@@ -28,14 +28,12 @@ Block
 Amforth has almost complete block support to work
 with the flash memory and I2C eeprom devices.
 
-Since version 5.4.
-
-To work with different back end systems, a layered
-structure is used. The low level hardware access words
+To work with different backends, a layered design
+is used. The low level hardware access words
 ``load-buffer`` and ``save-buffer`` are deferred words
 that are called with a RAM buffer location (addr/len pair)
 and the block number. All thay have to do is to transfer 
-the buffer content from/to the back end storage. The
+the buffer content from/to the backend storage. The
 highlevel words from the BLOCK wordset do the buffer
 management and provide the user visible API.
 
@@ -101,8 +99,6 @@ The locals support offers a single local value
 with the name X. It can easily expanded to
 support more by the user.
 
-From version 5.4.
-
 Memory Allocation
 .................
 
@@ -154,12 +150,12 @@ time in the application definition file.
 Internally the word list identifier is the address where the word list start
 address is stored in the EEPROM. Creating a new word list means to allocate
 a new EEPROM cell. Since the ANS standard does not give named word list
-there is library code available that uses the old fashioned vocabulary.
+there is library code available that implements the old fashioned vocabulary.
 
 Strings
 .......
 
-All words from the strings word set are supported since version 5.4.
+All words from the strings word set are supported.
 
 Forth 2012
 ----------
@@ -197,7 +193,7 @@ forth 2012 standard
   Fully supported
 
 `Traverse-wordlist <http://www.forth200x.org/traverse-wordlist.html>`_
-  Iterating over a wordlist works. The name>xy words are not supported.
+  Iterating over a wordlist works. The name>xy words are supported.
 
 `Values <http://www.forth200x.org/2value.html>`_
   The additional value definitions are supported. A way to implement
@@ -211,7 +207,7 @@ COLD
 ....
 
 The startup code is in the file :file:`cold.asm`.
-It gets called directly from the address 0 vector.
+It gets called directly from the MCU reset vector.
 
 This assembly part of the startup code creates the basic runtime environment
 to start the virtual forth machine. It sets up the stack pointers and

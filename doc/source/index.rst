@@ -32,6 +32,12 @@ Here you'll find things that are not yet released but will be part of the next r
 See the code section at Sourceforge to get the
 `most recent sources <http://sourceforge.net/p/amforth/code/HEAD/tree/trunk/>`__
 
+* core(MSP430): Use the hardware multiplier if available. Add :command:`n>r` and :command:`nr>`.
+* lib(ALL): Chains: Lists of execution tokens. 
+* core(ALL): The three prompt words are now system USER based defers: :command:`.ready` for the >,
+  :command:`.error` if an error occured and :command:`.ok` if everything was fine. See :ref:`prompts`
+  for more.
+
 4.7.2016: release 6.2
 .....................
 

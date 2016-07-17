@@ -48,8 +48,6 @@ Standard Use
 +------------------------------+--------------------+
 | Q: temporary register        | R12                |
 +------------------------------+--------------------+
-| R: temporary register        | R13                |
-+------------------------------+--------------------+
 
 The remaining registers are used by the CPU itself (R0-R3).
 
@@ -61,8 +59,8 @@ Extended Forth VM Register Mapping
 +------------------------------+--------------------+
 | A: Index and Scratch Register| R15                |
 +------------------------------+--------------------+
-
-The B register is not yet available.
+| B: Index and Scratch Register| R13                |
++------------------------------+--------------------+
 
 Core System
 -----------
@@ -224,13 +222,13 @@ command :command:`SAVE` writes the configuration settings back to the info flash
 RAM
 ...
 
-RAM is used for the info flash copy, data like the USER area, buffers like the terminal
+RAM is used for the info flash copy, data like the USER area, buffers such as the terminal
 input buffer and the acutal user data. Technically it would be possible to place the 
-dictionary here too since nothing in the MSP430 architecture prevents this. Only the
-very limited RAM size (512 bytes for the G2553).
+dictionary here too since nothing in the MSP430 architecture prevents this. 
 
 FRAM
 .....
 
 Some devices use FRAM instead of flash memory. While not strictly necessary, they too
 require the :command:`save` command to make all changes to the dictionary permanent.
+This memory supports the :command:`create` command.

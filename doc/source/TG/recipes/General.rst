@@ -13,6 +13,7 @@ General Code Examples
    Macros
    Multitasking
    Pitfalls
+   Prompts
    Redirect-IO
    Simple-Strings
    Structures
