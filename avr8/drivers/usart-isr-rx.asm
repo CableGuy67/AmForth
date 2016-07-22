@@ -9,25 +9,13 @@
 ; ;
 ; setup with
 ; ' rx-isr URXCaddr int!
+
+XT_ISR_RX:
+    .dw usart_rx_isr
 usart_rx_isr:
   push xl
-  in xl, SREG
-  push xl
   push xh
-  push zl
-  push zh
-
   call_ usart_rx_buffer
-
-  pop zh
-  pop zl
   pop xh
   pop xl
-  out SREG, xl
-  pop xl
-  reti
-
-.set usartpc = pc
-.org URXCaddr
-  jmp_ usart_rx_isr
-.org usartpc
+  jmp_ DO_NEXT
