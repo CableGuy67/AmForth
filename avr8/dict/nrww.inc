@@ -63,6 +63,7 @@
 
 .include "words/1plus.asm"
 .include "words/1minus.asm"
+.include "words/q-negate.asm"
 .include "words/lshift.asm"
 .include "words/rshift.asm"
 .include "words/plusstore.asm"
