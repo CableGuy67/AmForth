@@ -7,7 +7,6 @@
 .include "words/d-plus.asm"
 .include "words/d-minus.asm"
 .include "words/d-invert.asm"
-.include "words/d-equal.asm"
 .include "words/u-dot.asm"
 .include "words/u-dot-r.asm"
 
