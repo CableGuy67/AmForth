@@ -10,10 +10,6 @@ XT_USART:
   .dw DO_COLON
 PFA_USART:          ; ( -- )
 
-  .dw XT_DOLITERAL, XT_ISR_RX
-  .dw XT_DOLITERAL, URXCaddr
-  .dw XT_INTSTORE
-
   .dw XT_DOLITERAL
   .dw USART_B_VALUE
   .dw XT_DOLITERAL

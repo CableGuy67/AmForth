@@ -56,6 +56,10 @@ usart_rx_finish:
 XT_USART_INIT_RX_BUFFER:
   .dw DO_COLON
 PFA_USART_INIT_RX_BUFFER:          ; ( -- )
+  .dw XT_DOLITERAL, XT_ISR_RX
+  .dw XT_DOLITERAL, URXCaddr
+  .dw XT_INTSTORE
+
   .dw XT_DOLITERAL
   .dw usart_rx_data
   .dw XT_DOLITERAL
