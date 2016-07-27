@@ -203,11 +203,10 @@ things were implemented.
 
    :command:`stationID` is an eeprom backed value with a cache place in RAM.
 
-   The prompt itself is produced by :command:`p_rd`. Currently this is not
-   a deferred word and therefore cannot be overridden easily by another
-   function. So we make it a deferred word (assembly change 1) and then
-   implement a new function :command:`p_id_rd` which will then be
-   registered into the deferred function :command:`p_rd`.
+   The prompt itself is produced by :command:`.ready`. This is a deferred
+   word and therefore can be overridden easily by another
+   function. So we implement a new function :command:`p_id_rd` which will 
+   then be registered into the deferred function :command:`.ready`.
 
 2. :command:`-emit` / :command:`+emit`
 
@@ -340,103 +339,26 @@ serial interface using a terminal program, e.g. minicom:
   amforth 5.5 ATmega644P
   > 
 
+6.2 changing the prompts
+~~~~~~~~~~~~~~~~~~~~~~~~
 
-
-6.2 making ``prompt_ready`` a deferred word
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-So the next iteration will make :command:`p_rd` a deferred word --- currently
-it is not. So in the current working directory we make local copies of
-
-.. code-block:: none
-
-   amforth-eeprom.inc
-   words/prompt.asm
-
-to prepare the change. In the include order prepared for the call of the
-assembler, files in the local directory are preferred over those of the
-current AMFORTH directory, pointing to ``...path/to/amforth/release/5.5/core`` in
-this case.
-
-So first we add space in eeprom to keep the current execution token (XT) of
-:command:`p_rd` right at the end of file ``amforth-eeprom.inc``. Its
-initial value points to the original function.
-
-.. code-block:: diff
-
-  diff --git a/02_doc_rs485/amforth-eeprom.inc b/02_doc_rs485/amforth-eeprom.inc
-  index 8403522..62aece3 100644
-  --- a/02_doc_rs485/amforth-eeprom.inc
-  +++ b/02_doc_rs485/amforth-eeprom.inc
-  @@ -67,3 +67,5 @@ EE_INITUSER:
-   .endif
-   EE_UBRRVAL:
-       .dw UBRR_VAL     ; BAUDRATE
-  +EE_PROMPT_RDY:
-  +	.dw XT_PROMPTRDY_INT
-
-
-Then we change :command:`p_rd` to a deferred word, and the original code to
-:command:`(p_rd)`.
-
-
-.. code-block:: diff
-
-  diff --git a/02_doc_rs485/words/prompts.asm b/02_doc_rs485/words/prompts.asm
-  index 8f0e945..c5a9472 100644
-  --- a/02_doc_rs485/words/prompts.asm
-  +++ b/02_doc_rs485/words/prompts.asm
-  @@ -1,14 +1,28 @@
-  +; make prompt_ready a deferred word
-  +	
-  +VE_PROMPTRDY:
-  +    .dw $ff04
-  +    .db "p_rd"
-  +    .dw VE_HEAD
-  +    .set VE_HEAD = VE_PROMPTRDY
-  +XT_PROMPTRDY:
-  +    .dw PFA_DODEFER1
-  +PFA_PROMPTRDY:
-  +    .dw EE_PROMPT_RDY
-  +    .dw XT_EDEFERFETCH
-  +    .dw XT_EDEFERSTORE
-  +
-   ; ( -- )
-   ; System
-   ; send the READY prompt to the command line
-  -;VE_PROMPTRDY:
-  -;    .dw $ff04
-  -;    .db "p_rd"
-  -;    .dw VE_HEAD
-  -;    .set VE_HEAD = VE_PROMPTRDY
-  -XT_PROMPTRDY:
-  +VE_PROMPTRDY_INT:
-  +    .dw $ff06
-  +    .db "(p_rd)"
-  +    .dw VE_HEAD
-  +    .set VE_HEAD = VE_PROMPTRDY_INT
-  +XT_PROMPTRDY_INT:
-       .dw DO_COLON
-  -PFA_PROMPTRDY:
-  +PFA_PROMPTRDY_INT:
-       .dw XT_CR
-       .dw XT_DOSLITERAL
-       .dw 2
-
-
-With that in place the appearance of the prompt can be changed if we
+With the release 6.3 and newer the appearance of the prompt can be changed if we
 so desire:
 
 .. code-block:: forth
 
-   amforth 5.5 ATmega644P
+   amforth 6.3 ATmega644P
+   > variable (p_rd)
+   ok
+   > ' .ready defer@ (p_rd) !
+   ok
    > : new_p_rd  cr ." --new> " ; 
     ok
-   > ' new_p_rd is p_rd
+   > ' new_p_rd is .ready
     ok
    --new> 1 3 + .
    4  ok
-   --new> ' (p_rd) is p_rd
+   --new> (p_rd) @ is .ready
     ok
    > 
 
@@ -453,7 +375,7 @@ word :command:`Evalue`:
 
 .. code-block:: forth
 
-  include lib/ans94/core/value.frt
+  include lib/forth2012/core/value.frt
 
 
 After that we are able to create a value, the content of which is
@@ -474,8 +396,7 @@ is assembly syntax):
 
   .include "words/uzerodotr.asm"
 
-
-reassemble and reflash amForth. The define the new word :command:`p_id_rd`
+reassemble and reflash amForth. Then define the new word :command:`p_id_rd`
 
 .. code-block:: forth
 
@@ -498,13 +419,13 @@ this:
 
 .. code-block:: none
 
-  amforth 5.5 ATmega644P ok
+  amforth 6.3 ATmega644P ok
   > stationID decimal .
   127  ok
   > p_id_rd
   
   ~7F>  ok
-  > ' p_id_rd is p_rd
+  > ' p_id_rd is .ready
    ok
   ~7F> $42 to stationID
    ok
@@ -544,9 +465,9 @@ just to make sure. This requires two fairly simple words
 
 After loading the code we can test this:
 
-.. code-block:: none
+.. code-block:: forth
 
-  amforth 5.5 ATmega644P ok
+  amforth 6.3 ATmega644P ok
   ~42> 
   ~42> : hi ." howdy, mate!" cr ;
    ok
@@ -672,73 +593,6 @@ your own ISR is a matter of one line:
   ' your-own-isr  Interrupt-Vector-Addr  int!
 
 
-However, it turned out that the interrupt service routine for receiving
-bytes from the serial interface was **not** constructed in this way but
-registered directly as a low level ISR, bypassing the process outlined
-above. It took me some head scratching to find out, of course, but it
-provides an opportunity to better understand the inner workings of amForth
-as well. Therefore I decided to reimplement the default
-:command:`usart_rx_isr` as a Forth function, which is then registered to
-the receive complete interrupt (``URXC0``) in :command:`applturnkey`. With
-this change in place, we can easily register an mpc-specific ISR to handle
-incoming traffic.
-
-The affected code is found in file ``drivers/usart-isr-rx.asm``.
-
-The original assembly function
-
-.. code-block:: asm
-
-    usart_rx_isr:
-      push xl
-      in xl, SREG
-      push xl
-      push xh
-      push zl
-      push zh
-
-      lds xh, USART_DATA
-
-    usart_rx_store:
-      lds xl, usart_rx_in
-      ldi zl, low(usart_rx_data)
-      ldi zh, high(usart_rx_data)
-      add zl, xl
-      adc zh, zeroh
-      st Z, xh
-
-      inc xl
-      andi xl,usart_rx_mask
-
-      sts usart_rx_in, xl
-
-    usart_rx_isr_finish:
-      pop zh
-      pop zl
-      pop xh
-      pop xl
-      out SREG, xl
-      pop xl
-      reti
-
-is registered as interrupt service routine for ``URXCaddr``
-
-.. code-block:: asm
-
-    .set usartpc = pc
-    .org URXCaddr
-      jmp_ usart_rx_isr
-    .org usartpc
-
-So we need three parts to implement the desired change:
-
-1. replace :command:`usart_tx_isr` with a Forth word
-
-2. remove the registration of the original asm function
-
-3. register the new function as ISR
-
-
 6.6.1 replace `usart_tx_isr` with a Forth word
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -757,66 +611,11 @@ is found already as a comment in the asm file.
    ; ' rx-isr URXCaddr int!
 
 
-So all we need to do is to shape this into a Forth word:
-
-.. code-block:: asm
-
-    ; --- make usart_rx_isr a forth function, needs to be registered in applturnkey
-    ; --- could be calling the original asm code instead ... 
-    VE_USART_RX_ISR:
-            .dw $ff0c
-            .db "usart_rx_isr"
-            .dw VE_HEAD
-            .set VE_HEAD = VE_USART_RX_ISR
-    XT_USART_RX_ISR:
-            .dw DO_COLON
-    PFA_USART_RX_ISR:
-            .dw XT_DOLITERAL        ; UDR0 c@
-            .dw USART_DATA
-            .dw XT_CFETCH
-                                    ;    usart_rx_data usart_rx_in c@ dup >r
-            .dw XT_DOLITERAL
-            .dw usart_rx_data
-            .dw XT_DOLITERAL
-            .dw usart_rx_in
-            .dw XT_CFETCH
-            .dw XT_DUP
-            .dw XT_TO_R
-                                    ;    + ! \ ? c!
-            .dw XT_PLUS
-            .dw XT_CSTORE
-                                    ;    r> 1+ usart_rx_mask and usart_rx_in c!
-            .dw XT_R_FROM
-            .dw XT_1PLUS
-            .dw XT_DOLITERAL
-            .dw usart_rx_mask
-            .dw XT_AND
-            .dw XT_DOLITERAL
-            .dw usart_rx_in
-            .dw XT_CSTORE
-
-            .dw XT_EXIT
-
 I kept the name, but please note that it does not refer to the asm label
 any more --- :command:`usart_rx_isr` is now a proper Forth word.
 
 
-6.6.2 remove the registration of the original asm function
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-This part is very easy, we just remove the 4 lines doing the
-registration by commenting them out:
-
-.. code-block:: asm
-
-    ; --- do NOT register "usart_rx_isr:" as low level isr!
-    ; .set usartpc = pc
-    ; .org URXCaddr
-    ;   jmp_ usart_rx_isr
-    ; .org usartpc  
-
-
-6.6.3 register the new function as ISR
+6.6.2 register the new function as ISR
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The new function must be registered somewhere in the startup of amForth,
