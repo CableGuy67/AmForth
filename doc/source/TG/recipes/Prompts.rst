@@ -3,20 +3,42 @@
 Prompts
 =======
 
-Since release 6.3 amforth has three redefinable prompt words. The
-first one is called whenever the system signals ready for input.
-It's default displays the > character. The definition is 
+Since release 6.3 amforth has three redefinable prompt words. They
+are called in the outer interpreter :command:`quit`:
 
 .. code-block:: forth
 
+   : quit ( -- )
+      lp0 lp ! sp0 sp! rp0 rp! \ setup the stacks      
+      [ \ switch to interpret mode
+      begin \ an endless loop begins
+        state @ 0= if .ready then
+        refill if
+          ['] interpret catch
+          ?dup if 
+            dup -2 < if .error then recurse 
+          then
+        else 
+         .ok 
+        then again ;
+
+The :command:`.ready` is called whenever the system signals its readyness 
+for input. It's default starts a new line and displays the > character. 
+The definition is 
+
+.. code-block:: forth
+
+   USER_P_RDY Udefer .ready
    :noname ( -- ) cr ."> " ; is .ready
 
-After this prompt, the :command:`refill` action is called. 
-The second prompt word is called if the input line has been
-processed successfully. It's default displays the "ok" string
+After this prompt, the :command:`refill` action is called when
+the command line has been processed. The :command:`.ok` prompt word 
+is used when the input line has been processed successfully. 
+It's default displays the "ok" string
 
 .. code-block:: forth
 
+   USER_P_OK Udefer .ok
    :noname ( -- ) ." ok " ; is .ok
 
 The third prompt word is called whenever the systems detects an error
@@ -25,6 +47,7 @@ the position in the input buffer where the error has been detected
 
 .. code-block:: forth
 
+   USER_P_ERR Udefer .error
    :noname ( n -- ) ." ?? " 
       \ print the exception number in decimal
       base @ >r decimal .
