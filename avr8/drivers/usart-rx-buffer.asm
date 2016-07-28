@@ -14,33 +14,32 @@ usart_rx_out: .byte 1
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; forth code:
-; : rx-buffer USART_DATA c@
+; : usart-rx-buffer USART_DATA c@
+;    dup 3 = if cold then
 ;    usart_rx_data usart_rx_in c@ dup >r
 ;    + !
 ;    r> 1+ usart_rx_mask and usart_rx_in c!
 ; ;
-; setup with
-; ' rx-isr URXCaddr int!
 usart_rx_buffer:
-  lds xh, USART_DATA
+  lds temp0, USART_DATA
   ; optional: check for certain character(s) (e.g. CTRL-C)
   ; and trigger a soft interrupt instead of storing the
   ; charater into the input queue.
-  cpi xh, 3
+  cpi temp0, 3
   brne usart_rx_store
   jmp 0
 usart_rx_store:
-  lds xl, usart_rx_in
+  lds temp1, usart_rx_in
   ldi zl, low(usart_rx_data)
   ldi zh, high(usart_rx_data)
-  add zl, xl
+  add zl, temp1
   adc zh, zeroh
-  st Z, xh
+  st Z, temp0
 
-  inc xl
-  andi xl,usart_rx_mask
+  inc temp1
+  andi temp1,usart_rx_mask
 
-  sts usart_rx_in, xl
+  sts usart_rx_in, temp1
 
 usart_rx_finish:
   ret
