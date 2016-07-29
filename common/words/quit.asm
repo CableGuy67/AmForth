@@ -14,9 +14,8 @@ VE_QUIT:
     .set VE_HEAD = VE_QUIT
 XT_QUIT:
     .dw DO_COLON
-PFA_QUIT:
 .endif
-PFA_QUIT1:
+PFA_QUIT:
     .dw XT_LP0,XT_LP,XT_STORE
     .dw XT_SP0
     .dw XT_SP_STORE
@@ -34,7 +33,7 @@ PFA_QUIT2:
 PFA_QUIT4:
     .dw XT_REFILL
     .dw XT_DOCONDBRANCH
-    DEST(PFA_QUIT2)
+    DEST(PFA_QUIT3)
     .dw XT_DOLITERAL
     .dw XT_INTERPRET
     .dw XT_CATCH
@@ -50,10 +49,10 @@ PFA_QUIT4:
 	.dw XT_PROMPTERROR
 PFA_QUIT5:
 	.dw XT_DOBRANCH
-	DEST(PFA_QUIT1)
+	DEST(PFA_QUIT)
 PFA_QUIT3:
     .dw XT_PROMPTOK
     .dw XT_DOBRANCH
     DEST(PFA_QUIT2)
-    .dw XT_EXIT ; never reached
+;    .dw XT_EXIT ; never reached
 
