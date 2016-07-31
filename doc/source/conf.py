@@ -42,7 +42,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'AmForth'
-copyright = u'2015, Matthias Trute'
+copyright = u'2006-2016, Matthias Trute'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -92,6 +92,7 @@ pygments_style = 'sphinx'
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
+#html_theme = 'amforth'
 html_theme = 'amforth'
 
 # Theme options are theme-specific and customize the look and feel of a theme

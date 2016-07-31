@@ -9,18 +9,20 @@ are called in the outer interpreter :command:`quit`:
 .. code-block:: forth
 
    : quit ( -- )
-      lp0 lp ! sp0 sp! rp0 rp! \ setup the stacks      
+      lp0 lp ! sp0 sp! rp0 rp! \ setup the stacks
       [ \ switch to interpret mode
       begin \ an endless loop begins
         state @ 0= if .ready then
         refill if
           ['] interpret catch
           ?dup if 
-            dup -2 < if .error then recurse 
+            dup -2 < if .error then
+            recurse \ restarts without turnkey
           then
         else 
          .ok 
-        then again ;
+        then 
+      again ;
 
 The :command:`.ready` is called whenever the system signals its readyness 
 for input. It's default starts a new line and displays the > character. 

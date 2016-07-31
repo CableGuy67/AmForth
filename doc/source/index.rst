@@ -32,6 +32,9 @@ Here you'll find things that are not yet released but will be part of the next r
 See the code section at Sourceforge to get the
 `most recent sources <http://sourceforge.net/p/amforth/code/HEAD/tree/trunk/>`__
 
+* core(AVR8): Use the standard Interrupt Service Routine for terminal input too. Makes
+  re-definable with :command:`int!`. Thanks to Erich for his longanimity on this and the
+  prompt defers.
 * core(MSP430): Use the hardware multiplier if available. Add :command:`n>r` and :command:`nr>`.
 * lib(ALL): Chains: Lists of execution tokens. 
 * core(ALL): The three prompt words are now system USER based defers: :command:`.ready` for the >,
