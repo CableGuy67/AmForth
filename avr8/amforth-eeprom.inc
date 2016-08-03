@@ -45,7 +45,7 @@ EE_INITUSER:
     .dw XT_TXQ ; USER_EMITQ
     .dw XT_RX  ; USER_KEY
     .dw XT_RXQ ; USER_KEYQ
-    .dw XT_SOURCETIB ; USER_SKEY
+    .dw XT_SOURCETIB ; USER_SOURCE
     .dw 0            ; USER_G_IN
     .dw XT_REFILLTIB ; USER_REFILL  
     .dw XT_DEFAULT_PROMPTOK
