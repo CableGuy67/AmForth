@@ -951,22 +951,21 @@ inserted or removed, such that repeated calls to "+rec:quiet" or
 
   : +rec:quiet
     ['] rec:quiet         \ -- r0
-    get-recognizers       \ -- r0 r1 r2 2
+    forth-recognizer get-recognizers       \ -- r0 r1 r2 2
     dup pick              \ -- r0 r1 r2 2 r1
     ['] rec:quiet <> if   \ -- r0 r1 r2 2
       1+
-      set-recognizers
+      forth-recognizer set-recognizers
     else
-      set-recognizers \ 0 ?do drop loop \ rather? no change?
       drop
     then
   ;
+
   : -rec:quiet
-    get-recognizers       \ -- r0 r1 r2 3
-  
+    forth-recognizer get-recognizers       \ -- r0 r1 r2 3
     dup pick 
     ['] rec:quiet = if
-      1- set-recognizers drop
+      1- forth-recognizer set-recognizers drop
     else
       0 ?do drop loop
     then
@@ -1022,7 +1021,7 @@ producing the well known output
 
 .. code-block:: none
 
-  amforth 5.5 ATmega644P ok
+  amforth 6.3 ATmega644P ok
 
 or similar. But we do **not** want to write anything on the bus unless
 explicitly asked to do so.
