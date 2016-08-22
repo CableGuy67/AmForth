@@ -2,7 +2,7 @@
 \ uses the TWI module of the Atmega's.
 
 #require bitnames.frt
-#require value.frt
+#require avr-values.frt
 
 \ provides public commands
 \  i2c.ping?         -- checks if addr is active
@@ -91,9 +91,12 @@ TWCR 5 portpin: i2c.sta
     \ no wait for completion.
 ;
 
+\ send the restart condition (AVR simply sends start again)
+: i2c.restart ( -- )
+  i2c.start
+;
 
-
-\ process the data
+\ process the data, waits for completion
 : i2c.action
     %10000100 or TWCR c! \ _BV(i2cNT)|_BV(TWEN)
     i2c.wait
