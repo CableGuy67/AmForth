@@ -27,7 +27,7 @@ $30 constant i2c.compass
 ;
 
 : i2c.compass.fetchdata ( -- status x y )
-  5 0 i2c.compass i2c.1>n
+  5 0 i2c.compass i2c.>n
   ( -- status msb-x lsb-x msb-y lsb-y)
   swap >< or $fff and >r \ Y
   swap >< or $fff and r> \ X

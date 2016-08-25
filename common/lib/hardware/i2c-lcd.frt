@@ -1,5 +1,5 @@
 
-$27 Evalue i2c.pe.hwid
+$27 Evalue i2c.lcd.hwid
 
 %00010000  Evalue lcd.En \ enable bit
 %00100000  Evalue lcd.Rw \ read/write bit
