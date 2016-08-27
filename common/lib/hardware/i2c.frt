@@ -21,10 +21,18 @@
 : i2c.rd 2* 1+ ;
 
 \ aquire the bus and select a device
+\ start a write transaction
 : i2c.begin ( hwid -- )
   dup i2c.current !
   i2c.start i2c.wr i2c.tx
 ;
+
+\ start a read transaction
+: i2c.begin-read ( hwid -- )
+  dup i2c.current !
+  i2c.start i2c.rd i2c.tx
+;
+
 \ release the bus and deselect the device
 : i2c.end ( -- )
   i2c.stop
@@ -42,18 +50,19 @@
   i2c.end
 ;
 
-\ complex and flexible transaction word
-\ send m bytes x1..xm and fetch n bytes y1..yn afterwards
-: i2c.m>n ( n xm .. x1 m addr -- x1 .. xn )
-  dup i2c.begin >r
-    0 ?do i2c.tx loop \ sends m bytes
-    i2c.start         \ repeated start
-    r> i2c.rd i2c.tx  \ re-send addr, now with read bit set
-    1- 0 ?do i2c.rx loop i2c.rxn \ read x1 .. xn
+: i2c.>n ( n addr -- x1 .. xn )
+  i2c.begin-read
+    1- 0 max 0 ?do i2c.rx loop i2c.rxn
   i2c.end
 ;
 
-\ fetch n bytes
-: i2c.>n ( N addr -- x1 .. xn )
-  2>r 0 2r> i2c.m>n
+\ complex and flexible transaction word
+\ send m bytes x1..xm and fetch n bytes y1..yn afterwards
+: i2c.m>n ( n xm .. x1 m addr -- x1 .. xn )
+  dup >r i2c.begin
+    0 ?do i2c.tx loop \ send m bytes
+    i2c.restart       \ repeated start
+    r> i2c.rd i2c.tx  \ re-send addr, switch to read mode
+    1- 0 max 0 ?do i2c.rx loop i2c.rxn \ read x1 .. xn
+  i2c.end
 ;
