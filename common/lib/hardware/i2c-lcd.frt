@@ -1,23 +1,19 @@
 
+\ #require i2c-pe.frt
+
 $27 Evalue i2c.lcd.hwid
 
 %00010000  Evalue lcd.En \ enable bit
 %00100000  Evalue lcd.Rw \ read/write bit
 %01000000  Evalue lcd.Rs \ register select bit
 
-: i2c.c!pe ( v -- )
-  i2c.lcd.hwid i2c.begin
-  i2c.tx
-  i2c.end
-;
-
 : i2c.lcd.pulse ( n -- )
-  dup lcd.En or i2c.c!pe
-      lcd.En invert an i2c.c!pe
+  dup lcd.En or i2c.pe.c!
+      lcd.En invert and i2c.pe.c!
 ;
 
 : i2c.lcd.!4bit ( n -- )
-  dup i2c.c!pe
+  dup i2c.pe.c!
       i2c.lcd.pulse
 ;
 

@@ -41,8 +41,23 @@
 
 \ tranfser data from/to data stack
 
-\ send n bytes to addr
-: i2c.n> ( xn .. x1 N addr -- )
+\ fetch a byte from the device
+: i2c.c@ ( hwid -- c )
+   i2c.begin-read
+     i2x.rxn
+   i2c.end
+;
+
+\ store a byte to a device
+: i2c.c! ( c hwid -- )
+   i2c.begin
+     i2x.tx
+   i2c.end
+;
+
+
+\ send n bytes to device
+: i2c.n> ( xn .. x1 N hwid -- )
   i2c.begin
     0 ?do     \ uses N
       i2c.tx  \ send x1 ... xn
@@ -50,7 +65,8 @@
   i2c.end
 ;
 
-: i2c.>n ( n addr -- x1 .. xn )
+\ get n bytes from device
+: i2c.>n ( n hwid -- x1 .. xn )
   i2c.begin-read
     1- 0 max 0 ?do i2c.rx loop i2c.rxn
   i2c.end
@@ -58,7 +74,7 @@
 
 \ complex and flexible transaction word
 \ send m bytes x1..xm and fetch n bytes y1..yn afterwards
-: i2c.m>n ( n xm .. x1 m addr -- x1 .. xn )
+: i2c.m>n ( n xm .. x1 m hwid -- x1 .. xn )
   dup >r i2c.begin
     0 ?do i2c.tx loop \ send m bytes
     i2c.restart       \ repeated start
