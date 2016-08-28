@@ -30,7 +30,7 @@ variable i2c.ee.pages/block
 : i2c.ee.read-page ( addr len page hwid -- )
   dup i2c.begin
     swap i2c.ee.pagesize @ * i2c.ee.send-addr
-    i2c.start \ repeated start
+    i2c.restart \ repeated start
     i2c.rd i2c.tx 
     1- bounds over >r ?do i2c.rx i c! loop
     i2c.rxn r> c! \ last byte
