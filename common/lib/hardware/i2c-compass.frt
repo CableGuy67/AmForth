@@ -7,7 +7,12 @@
 \        X and Y are around 2000 (raw data)
 \        status is 0 if no error occured
 
-\ TODO: dechiffer the raw data
+\ dechiffer of the raw data:
+\ according to http://www.aurob.com/?p=467
+\ interpolate linearly
+\  x=map(1900,2188,-180,180)
+\  y=map(1910,2193,-180,180)
+\  grad=atan2(x,y)*180/pi
 
 #require i2c.frt
 #require ms.frt
