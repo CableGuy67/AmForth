@@ -32,6 +32,10 @@ Here you'll find things that are not yet released but will be part of the next r
 See the code section at Sourceforge to get the
 `most recent sources <http://sourceforge.net/p/amforth/code/HEAD/tree/trunk/>`__
 
+24.8.2016: release 6.3
+......................
+
+
 * core(AVR8): Use the standard Interrupt Service Routine for terminal input too. Makes
   re-definable with :command:`int!`. Thanks to Erich for his longanimity on this and the
   prompt defers.
