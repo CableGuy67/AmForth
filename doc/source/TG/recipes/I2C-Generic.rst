@@ -15,6 +15,10 @@ factors.
   In addition, the variable i2c.current gets the addr information to
   be available for user applications.
 
+``i2c.begin-read`` ( addr -- )
+  start a I2C *read* communication with the device at addr. This means
+  that the device address is used with the read bit *set*.
+
 ``i2c.end`` ( -- )
   The communication ends with sending the I2C stop condition and the 
   bus is released. The variable ``i2c.current`` is cleared.
@@ -42,7 +46,7 @@ to work within the begin/end scope described above.
 
 ``i2c.n>`` ( n addr -- x_n .. x_1 )
   Create the I2C transaction scope and receive n bytes from the
-  device. To acomplish that, a repeated start is triggered with
+  device. To acomplish that, a start is triggered with
   the read bit of the addr set. Afterwards the STOP condition is
   sent and the bus is released.
 
@@ -53,50 +57,27 @@ to work within the begin/end scope described above.
   and n bytes are read from the device. Finally the STOP condition is
   sent and the bus is released.
 
-Example - Compass
-------------------
+Example - Port Expander
+------------------------
 
-This example communicates with an I2C compass sensor 
-mmc2120 (memsic). The I2C address is fixed at $30.
+This example communicates with an I2C port expander
+PCF8574(a). The I2C address is usually between $30 and $3f.
 
-A measurement is triggered by putting the sensor in a
-stable state and triggering the measurement. Finally 5
-bytes are read back that contain the actual sensor data
-and a status information.
 
 .. code-block:: forth
-   :linenos:
 
    #require i2c.frt
-   #require ms.frt
 
-   $30 constant i2c.compass
- 
-   \ internal commands
-   : i2c.compass.setcoil
-     %00000010 0 2 i2c.compass i2c.n>
-   ;
-   : i2c.compass.resetcoil
-     %00000100 0 2 i2c.compass i2c.n>
+   \ write one byte to the PE
+   : i2c.pe.c! ( n hwid -- )
+      1 swap i2c.n> ( --  )
    ;
 
-   : i2c.compass.measure
-     %00000001 0 2 i2c.compass i2c.n>
+   \ get one byte from the PE
+   : i2c.pe.c@ ( hwid -- )
+      1 swap i2c.>n
    ;
 
-   : i2c.compass.fetchdata ( -- status x y )
-     5 0 0 i2c.compass i2c.m>n
-     ( -- status msb-x lsb-x msb-y lsb-y)
-     swap >< or $fff and >r \ Y
-     swap >< or $fff and r> \ X
-   ;
-
-   : i2c.compass.get ( -- status x y )
-     i2c.compass.resetcoil 1ms
-     i2c.compass.setcoil   5 ms
-     i2c.compass.measure   5 ms
-     i2c.compass.fetchdata
-   ;
 
 Communication is not time critical, so the slow speed standard
 initialization is sufficient. To chack whether the device is
@@ -111,7 +92,7 @@ present and works properly, an I2C bus scan is made first
     0:                       -- -- -- -- -- -- -- -- --
    10:  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
    20:  -- -- -- -- -- -- -- 27 -- -- -- -- -- -- -- --
-   30:  30 -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+   30:  30 -- -- -- -- -- -- -- -- -- -- -- -- 3D -- --
    40:  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
    50:  50 51 -- -- -- -- -- -- -- -- -- -- -- -- -- --
    60:  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
@@ -119,16 +100,35 @@ present and works properly, an I2C bus scan is made first
     ok
    (ATmega1280)>
 
-Now it is time to read the data. Between the two get's
-the sensor was rotated by approx 90 degrees.
+A modification uses the value design pattern. With that,
+a new value is created that automatically fetches the
+data from the device when called and stores the new bit
+pattern with ``TO``:
 
-.. code-block:: console
+.. code-block:: forth
 
-   (ATmega1280)> i2c.compass.get u. u. u.
-    2006 1805 0  ok
-   (ATmega1280)> i2c.compass.get u. u. u.
-    2172 1900 0  ok
-   (ATmega1280)>
+   #require value.frt
+   #require quotations.frt
+   #require i2c-pe.frt
+
+   : i2c.cvalue ( n addr hwid -- )
+     (value)
+     dup , \ store the hwid
+     [: dup @i ( hwid) i2c.pe.c@ ;] ,
+     [: dup @i ( hwid) i2c.pe.c! ;] ,
+     i2c.pe.c!  \ store inital data
+   ;
+
+Use it as follows
+
+.. code-block:: forth
+
+   > $ff $3d i2c.cvalue keys ( sets all bits to HIGH)
+   ok
+   > $00 to keys ( set all bits to LOW )
+   ok
+   > keys $01 and ( if key 1 is pressed )
+
 
 Big Data
 --------
@@ -141,4 +141,4 @@ block driver. It transfers 512 bytes in one transaction and uses
 a RAM buffer to actually hold the data.
 
 .. seealso:: :ref:`I2C EEPROM`, :ref:`I2C Detect`,
-   and :ref:`I2C EEPROM Blocks`
+   and :ref:`I2C EEPROM Blocks`. :ref:`Values`
