@@ -107,7 +107,7 @@ The following example creates two tasks:
  $20 $20 0 task: task_demo
  \ create task, allot tcb + stack space
  : start-demo
-   task_demo tcb>tid activate
+   task_demo tib>tcb activate
    \ words after this line are run in new task
    run-demo
  ;
@@ -137,7 +137,7 @@ as well and commands will be handled.
 ::
 
  > run-turnkey
- amforth 4.7 ATmega32
+ amforth 6.3 ATmega32
  ok
  > tasks
  149
