@@ -1,364 +1,404 @@
-# Partname:  AT90PWM1
-# generated automatically, do not edit
+# Generated Automatically
+
+# Partname AT90PWM1
+
 MCUREGS = {
-	'PORTB': '&37',
-	'DDRB': '&36',
-	'PINB': '&35',
-	'PORTD': '&43',
-	'DDRD': '&42',
-	'PIND': '&41',
-	'SPMCSR': '&87',
-	  'SPMCSR_SPMIE': '$80',
-	  'SPMCSR_RWWSB': '$40',
-	  'SPMCSR_RWWSRE': '$10',
-	  'SPMCSR_BLBSET': '$08',
-	  'SPMCSR_PGWRT': '$04',
-	  'SPMCSR_PGERS': '$02',
-	  'SPMCSR_SPMEN': '$01',
-	'PICR0': '&222',
-	'PFRC0B': '&221',
-	  'PFRC0B_PCAE0B': '$80',
-	  'PFRC0B_PISEL0B': '$40',
-	  'PFRC0B_PELEV0B': '$20',
-	  'PFRC0B_PFLTE0B': '$10',
-	  'PFRC0B_PRFM0B': '$0F',
-	'PFRC0A': '&220',
-	  'PFRC0A_PCAE0A': '$80',
-	  'PFRC0A_PISEL0A': '$40',
-	  'PFRC0A_PELEV0A': '$20',
-	  'PFRC0A_PFLTE0A': '$10',
-	  'PFRC0A_PRFM0A': '$0F',
-	'PCTL0': '&219',
-	  'PCTL0_PPRE0': '$C0',
-	  'PCTL0_PBFM0': '$20',
-	  'PCTL0_PAOC0B': '$10',
-	  'PCTL0_PAOC0A': '$08',
-	  'PCTL0_PARUN0': '$04',
-	  'PCTL0_PCCYC0': '$02',
-	  'PCTL0_PRUN0': '$01',
-	'PCNF0': '&218',
-	  'PCNF0_PFIFTY0': '$80',
-	  'PCNF0_PALOCK0': '$40',
-	  'PCNF0_PLOCK0': '$20',
-	  'PCNF0_PMODE0': '$18',
-	  'PCNF0_POP0': '$04',
-	  'PCNF0_PCLKSEL0': '$02',
-	'OCR0RB': '&216',
-	'OCR0SB': '&214',
-	'OCR0RA': '&212',
-	'OCR0SA': '&210',
-	'PSOC0': '&208',
-	  'PSOC0_PSYNC0': '$30',
-	  'PSOC0_POEN0B': '$04',
-	  'PSOC0_POEN0A': '$01',
-	'PIM0': '&161',
-	  'PIM0_PSEIE0': '$20',
-	  'PIM0_PEVE0B': '$10',
-	  'PIM0_PEVE0A': '$08',
-	  'PIM0_PEOPE0': '$01',
-	'PIFR0': '&160',
-	  'PIFR0_PSEI0': '$20',
-	  'PIFR0_PEV0B': '$10',
-	  'PIFR0_PEV0A': '$08',
-	  'PIFR0_PRN0': '$06',
-	  'PIFR0_PEOP0': '$01',
-	'PICR2': '&254',
-	'PFRC2B': '&253',
-	  'PFRC2B_PCAE2B': '$80',
-	  'PFRC2B_PISEL2B': '$40',
-	  'PFRC2B_PELEV2B': '$20',
-	  'PFRC2B_PFLTE2B': '$10',
-	  'PFRC2B_PRFM2B': '$0F',
-	'PFRC2A': '&252',
-	  'PFRC2A_PCAE2A': '$80',
-	  'PFRC2A_PISEL2A': '$40',
-	  'PFRC2A_PELEV2A': '$20',
-	  'PFRC2A_PFLTE2A': '$10',
-	  'PFRC2A_PRFM2A': '$0F',
-	'PCTL2': '&251',
-	  'PCTL2_PPRE2': '$C0',
-	  'PCTL2_PBFM2': '$20',
-	  'PCTL2_PAOC2B': '$10',
-	  'PCTL2_PAOC2A': '$08',
-	  'PCTL2_PARUN2': '$04',
-	  'PCTL2_PCCYC2': '$02',
-	  'PCTL2_PRUN2': '$01',
-	'PCNF2': '&250',
-	  'PCNF2_PFIFTY2': '$80',
-	  'PCNF2_PALOCK2': '$40',
-	  'PCNF2_PLOCK2': '$20',
-	  'PCNF2_PMODE2': '$18',
-	  'PCNF2_POP2': '$04',
-	  'PCNF2_PCLKSEL2': '$02',
-	  'PCNF2_POME2': '$01',
-	'OCR2RB': '&248',
-	'OCR2SB': '&246',
-	'OCR2RA': '&244',
-	'OCR2SA': '&242',
-	'POM2': '&241',
-	  'POM2_POMV2B': '$F0',
-	  'POM2_POMV2A': '$0F',
-	'PSOC2': '&240',
-	  'PSOC2_POS2': '$C0',
-	  'PSOC2_PSYNC2_': '$30',
-	  'PSOC2_POEN2D': '$08',
-	  'PSOC2_POEN2B': '$04',
-	  'PSOC2_POEN2C': '$02',
-	  'PSOC2_POEN2A': '$01',
-	'PIM2': '&165',
-	  'PIM2_PSEIE2': '$20',
-	  'PIM2_PEVE2B': '$10',
-	  'PIM2_PEVE2A': '$08',
-	  'PIM2_PEOPE2': '$01',
-	'PIFR2': '&164',
-	  'PIFR2_PSEI2': '$20',
-	  'PIFR2_PEV2B': '$10',
-	  'PIFR2_PEV2A': '$08',
-	  'PIFR2_PRN2': '$06',
-	  'PIFR2_PEOP2': '$01',
-	'SREG': '&95',
-	  'SREG_I': '$80',
-	  'SREG_T': '$40',
-	  'SREG_H': '$20',
-	  'SREG_S': '$10',
-	  'SREG_V': '$08',
-	  'SREG_N': '$04',
-	  'SREG_Z': '$02',
-	  'SREG_C': '$01',
-	'SP': '&93',
-	'MCUCR': '&85',
-	  'MCUCR_SPIPS': '$80',
-	  'MCUCR_PUD': '$10',
-	  'MCUCR_IVSEL': '$02',
-	  'MCUCR_IVCE': '$01',
-	'MCUSR': '&84',
-	  'MCUSR_WDRF': '$08',
-	  'MCUSR_BORF': '$04',
-	  'MCUSR_EXTRF': '$02',
-	  'MCUSR_PORF': '$01',
-	'OSCCAL': '&102',
-	'CLKPR': '&97',
-	  'CLKPR_CLKPCE': '$80',
-	  'CLKPR_CLKPS': '$0F',
-	'SMCR': '&83',
-	  'SMCR_SM': '$0E',
-	  'SMCR_SE': '$01',
-	'GPIOR3': '&59',
-	  'GPIOR3_GPIOR': '$FF',
-	'GPIOR2': '&58',
-	  'GPIOR2_GPIOR': '$FF',
-	'GPIOR1': '&57',
-	  'GPIOR1_GPIOR': '$FF',
-	'GPIOR0': '&62',
-	  'GPIOR0_GPIOR07': '$80',
-	  'GPIOR0_GPIOR06': '$40',
-	  'GPIOR0_GPIOR05': '$20',
-	  'GPIOR0_GPIOR04': '$10',
-	  'GPIOR0_GPIOR03': '$08',
-	  'GPIOR0_GPIOR02': '$04',
-	  'GPIOR0_GPIOR01': '$02',
-	  'GPIOR0_GPIOR00': '$01',
-	'PLLCSR': '&73',
-	  'PLLCSR_PLLF': '$04',
-	  'PLLCSR_PLLE': '$02',
-	  'PLLCSR_PLOCK': '$01',
-	'PRR': '&100',
-	  'PRR_PRPSC': '$E0',
-	  'PRR_PRTIM1': '$10',
-	  'PRR_PRTIM0': '$08',
-	  'PRR_PRSPI': '$04',
-	  'PRR_PRUSART0': '$02',
-	  'PRR_PRADC': '$01',
-	'PORTE': '&46',
-	'DDRE': '&45',
-	'PINE': '&44',
-	'TIMSK0': '&110',
-	  'TIMSK0_OCIE0B': '$04',
-	  'TIMSK0_OCIE0A': '$02',
-	  'TIMSK0_TOIE0': '$01',
-	'TIFR0': '&53',
-	  'TIFR0_OCF0B': '$04',
-	  'TIFR0_OCF0A': '$02',
-	  'TIFR0_TOV0': '$01',
-	'TCCR0A': '&68',
-	  'TCCR0A_COM0A': '$C0',
-	  'TCCR0A_COM0B': '$30',
-	  'TCCR0A_WGM0': '$03',
-	'TCCR0B': '&69',
-	  'TCCR0B_FOC0A': '$80',
-	  'TCCR0B_FOC0B': '$40',
-	  'TCCR0B_WGM02': '$08',
-	  'TCCR0B_CS0': '$07',
-	'TCNT0': '&70',
-	'OCR0A': '&71',
-	'OCR0B': '&72',
-	'GTCCR': '&67',
-	  'GTCCR_TSM': '$80',
-	  'GTCCR_ICPSEL1': '$40',
-	  'GTCCR_PSR10': '$01',
-	'TIMSK1': '&111',
-	  'TIMSK1_ICIE1': '$20',
-	  'TIMSK1_OCIE1B': '$04',
-	  'TIMSK1_OCIE1A': '$02',
-	  'TIMSK1_TOIE1': '$01',
-	'TIFR1': '&54',
-	  'TIFR1_ICF1': '$20',
-	  'TIFR1_OCF1B': '$04',
-	  'TIFR1_OCF1A': '$02',
-	  'TIFR1_TOV1': '$01',
-	'TCCR1A': '&128',
-	  'TCCR1A_COM1A': '$C0',
-	  'TCCR1A_COM1B': '$30',
-	  'TCCR1A_WGM1': '$03',
-	'TCCR1B': '&129',
-	  'TCCR1B_ICNC1': '$80',
-	  'TCCR1B_ICES1': '$40',
-	  'TCCR1B_WGM1': '$18',
-	  'TCCR1B_CS1': '$07',
-	'TCCR1C': '&130',
-	  'TCCR1C_FOC1A': '$80',
-	  'TCCR1C_FOC1B': '$40',
-	'TCNT1': '&132',
-	'OCR1A': '&136',
-	'OCR1B': '&138',
-	'ICR1': '&134',
-	'ADMUX': '&124',
-	  'ADMUX_REFS': '$C0',
-	  'ADMUX_ADLAR': '$20',
-	  'ADMUX_MUX': '$0F',
-	'ADCSRA': '&122',
-	  'ADCSRA_ADEN': '$80',
-	  'ADCSRA_ADSC': '$40',
-	  'ADCSRA_ADATE': '$20',
-	  'ADCSRA_ADIF': '$10',
-	  'ADCSRA_ADIE': '$08',
-	  'ADCSRA_ADPS': '$07',
-	'ADC': '&120',
-	'ADCSRB': '&123',
-	'DIDR0': '&126',
-	'DIDR1': '&127',
-	  'DIDR1_ACMP0D': '$20',
-	  'DIDR1_AMP0PD': '$10',
-	  'DIDR1_AMP0ND': '$08',
-	  'DIDR1_ADC10D': '$04',
-	  'DIDR1_ADC9D': '$02',
-	  'DIDR1_ADC8D': '$01',
-	'AMP0CSR': '&118',
-	  'AMP0CSR_AMP0EN': '$80',
-	  'AMP0CSR_AMP0IS': '$40',
-	  'AMP0CSR_AMP0G': '$30',
-	  'AMP0CSR_AMP0TS': '$03',
-	'AMP1CSR': '&119',
-	  'AMP1CSR_AMP1EN': '$80',
-	  'AMP1CSR_AMP1IS': '$40',
-	  'AMP1CSR_AMP1G': '$30',
-	  'AMP1CSR_AMP1TS': '$03',
-	'SPCR': '&76',
-	  'SPCR_SPIE': '$80',
-	  'SPCR_SPE': '$40',
-	  'SPCR_DORD': '$20',
-	  'SPCR_MSTR': '$10',
-	  'SPCR_CPOL': '$08',
-	  'SPCR_CPHA': '$04',
-	  'SPCR_SPR': '$03',
-	'SPSR': '&77',
-	  'SPSR_SPIF': '$80',
-	  'SPSR_WCOL': '$40',
-	  'SPSR_SPI2X': '$01',
-	'SPDR': '&78',
-	'WDTCSR': '&96',
-	  'WDTCSR_WDIF': '$80',
-	  'WDTCSR_WDIE': '$40',
-	  'WDTCSR_WDP': '$27',
-	  'WDTCSR_WDCE': '$10',
-	  'WDTCSR_WDE': '$08',
-	'EICRA': '&105',
-	  'EICRA_ISC2': '$30',
-	  'EICRA_ISC1': '$0C',
-	  'EICRA_ISC0': '$03',
-	'EIMSK': '&61',
-	  'EIMSK_INT': '$07',
-	'EIFR': '&60',
-	  'EIFR_INTF': '$07',
-	'EEAR': '&65',
-	'EEDR': '&64',
-	'EECR': '&63',
-	  'EECR_EERIE': '$08',
-	  'EECR_EEMWE': '$04',
-	  'EECR_EEWE': '$02',
-	  'EECR_EERE': '$01',
-	'AC0CON': '&173',
-	  'AC0CON_AC0EN': '$80',
-	  'AC0CON_AC0IE': '$40',
-	  'AC0CON_AC0IS': '$30',
-	  'AC0CON_AC0M': '$07',
-	'AC2CON': '&175',
-	  'AC2CON_AC2EN': '$80',
-	  'AC2CON_AC2IE': '$40',
-	  'AC2CON_AC2IS': '$30',
-	  'AC2CON_AC2M': '$07',
-	'ACSR': '&80',
-	  'ACSR_ACCKDIV': '$80',
-	  'ACSR_AC2IF': '$40',
-	  'ACSR_AC1IF': '$20',
-	  'ACSR_AC0IF': '$10',
-	  'ACSR_AC2O': '$04',
-	  'ACSR_AC1O': '$02',
-	  'ACSR_AC0O': '$01',
-	'PICR1': '&238',
-	'PFRC1B': '&237',
-	  'PFRC1B_PCAE1B': '$80',
-	  'PFRC1B_PISEL1B': '$40',
-	  'PFRC1B_PELEV1B': '$20',
-	  'PFRC1B_PFLTE1B': '$10',
-	  'PFRC1B_PRFM1B': '$0F',
-	'PFRC1A': '&236',
-	  'PFRC1A_PCAE1A': '$80',
-	  'PFRC1A_PISEL1A': '$40',
-	  'PFRC1A_PELEV1A': '$20',
-	  'PFRC1A_PFLTE1A': '$10',
-	  'PFRC1A_PRFM1A': '$0F',
-	'PCTL1': '&235',
-	  'PCTL1_PPRE1': '$C0',
-	  'PCTL1_PBFM1': '$20',
-	  'PCTL1_PAOC1B': '$10',
-	  'PCTL1_PAOC1A': '$08',
-	  'PCTL1_PARUN1': '$04',
-	  'PCTL1_PCCYC1': '$02',
-	  'PCTL1_PRUN1': '$01',
-	'PSOC1': '&224',
-	  'PSOC1_PSYNC1_': '$30',
-	  'PSOC1_POEN1B': '$04',
-	  'PSOC1_POEN1A': '$01',
-	'PSC2_CAPTAddr': '1',
-	'PSC2_ECAddr': '2',
-	'PSC1_CAPTAddr': '3',
-	'PSC1_ECAddr': '4',
-	'PSC0_CAPTAddr': '5',
-	'PSC0_ECAddr': '6',
-	'ANALOG_COMP_0Addr': '7',
-	'ANALOG_COMP_1Addr': '8',
-	'ANALOG_COMP_2Addr': '9',
-	'INT0Addr': '10',
-	'TIMER1_CAPTAddr': '11',
-	'TIMER1_COMPAAddr': '12',
-	'TIMER1_COMPBAddr': '13',
-	'RESERVED15Addr': '14',
-	'TIMER1_OVFAddr': '15',
-	'TIMER0_COMP_AAddr': '16',
-	'TIMER0_OVFAddr': '17',
-	'ADCAddr': '18',
-	'INT1Addr': '19',
-	'SPI__STCAddr': '20',
-	'USART__RXAddr': '21',
-	'USART__UDREAddr': '22',
-	'USART__TXAddr': '23',
-	'INT2Addr': '24',
-	'WDTAddr': '25',
-	'EE_READYAddr': '26',
-	'TIMER0_COMPBAddr': '27',
-	'INT3Addr': '28',
-	'RESERVED30Addr': '29',
-	'RESERVED31Addr': '30',
-	'SPM_READYAddr': '31'
+# Interrupt Vectors
+	'PSC2_CAPTAddr' : '#2', # PSC2 Capture Event
+	'PSC2_ECAddr' : '#4', # PSC2 End Cycle
+	'PSC1_CAPTAddr' : '#6', # PSC1 Capture Event
+	'PSC1_ECAddr' : '#8', # PSC1 End Cycle
+	'PSC0_CAPTAddr' : '#10', # PSC0 Capture Event
+	'PSC0_ECAddr' : '#12', # PSC0 End Cycle
+	'ANALOG_COMP_0Addr' : '#14', # Analog Comparator 0
+	'ANALOG_COMP_1Addr' : '#16', # Analog Comparator 1
+	'ANALOG_COMP_2Addr' : '#18', # Analog Comparator 2
+	'INT0Addr' : '#20', # External Interrupt Request 0
+	'TIMER1_CAPTAddr' : '#22', # Timer/Counter1 Capture Event
+	'TIMER1_COMPAAddr' : '#24', # Timer/Counter1 Compare Match A
+	'TIMER1_COMPBAddr' : '#26', # Timer/Counter Compare Match B
+	'RESERVED15Addr' : '#28', # 
+	'TIMER1_OVFAddr' : '#30', # Timer/Counter1 Overflow
+	'TIMER0_COMP_AAddr' : '#32', # Timer/Counter0 Compare Match A
+	'TIMER0_OVFAddr' : '#34', # Timer/Counter0 Overflow
+	'ADCAddr' : '#36', # ADC Conversion Complete
+	'INT1Addr' : '#38', # External Interrupt Request 1
+	'SPI_STCAddr' : '#40', # SPI Serial Transfer Complete
+	'USART_RXAddr' : '#42', # USART, Rx Complete
+	'USART_UDREAddr' : '#44', # USART Data Register Empty
+	'USART_TXAddr' : '#46', # USART, Tx Complete
+	'INT2Addr' : '#48', # External Interrupt Request 2
+	'WDTAddr' : '#50', # Watchdog Timeout Interrupt
+	'EE_READYAddr' : '#52', # EEPROM Ready
+	'TIMER0_COMPBAddr' : '#54', # Timer Counter 0 Compare Match B
+	'INT3Addr' : '#56', # External Interrupt Request 3
+	'RESERVED30Addr' : '#58', # 
+	'RESERVED31Addr' : '#60', # 
+	'SPM_READYAddr' : '#62', # Store Program Memory Read
+
+# Module PORTB
+	'PORTB' : '$25', # Port B Data Register
+	'DDRB' : '$24', # Port B Data Direction Register
+	'PINB' : '$23', # Port B Input Pins
+
+# Module PORTD
+	'PORTD' : '$2b', # Port D Data Register
+	'DDRD' : '$2a', # Port D Data Direction Register
+	'PIND' : '$29', # Port D Input Pins
+
+# Module BOOT_LOAD
+	'SPMCSR' : '$57', # Store Program Memory Control R
+	  'SPMCSR_SPMIE': '$80', # SPM Interrupt Enable
+	  'SPMCSR_RWWSB': '$40', # Read While Write Section Busy
+	  'SPMCSR_RWWSRE': '$10', # Read While Write section read 
+	  'SPMCSR_BLBSET': '$8', # Boot Lock Bit Set
+	  'SPMCSR_PGWRT': '$4', # Page Write
+	  'SPMCSR_PGERS': '$2', # Page Erase
+	  'SPMCSR_SPMEN': '$1', # Store Program Memory Enable
+
+# Module PSC0
+	'PICR0' : '$de', # PSC 0 Input Capture Register 
+	'PFRC0B' : '$dd', # PSC 0 Input B Control
+	  'PFRC0B_PCAE0B': '$80', # PSC 0 Capture Enable Input Par
+	  'PFRC0B_PISEL0B': '$40', # PSC 0 Input Select for Part B
+	  'PFRC0B_PELEV0B': '$20', # PSC 0 Edge Level Selector on I
+	  'PFRC0B_PFLTE0B': '$10', # PSC 0 Filter Enable on Input P
+	  'PFRC0B_PRFM0B': '$f', # PSC 0 Retrigger and Fault Mode
+	'PFRC0A' : '$dc', # PSC 0 Input A Control
+	  'PFRC0A_PCAE0A': '$80', # PSC 0 Capture Enable Input Par
+	  'PFRC0A_PISEL0A': '$40', # PSC 0 Input Select for Part A
+	  'PFRC0A_PELEV0A': '$20', # PSC 0 Edge Level Selector on I
+	  'PFRC0A_PFLTE0A': '$10', # PSC 0 Filter Enable on Input P
+	  'PFRC0A_PRFM0A': '$f', # PSC 0 Retrigger and Fault Mode
+	'PCTL0' : '$db', # PSC 0 Control Register
+	  'PCTL0_PPRE0': '$c0', # PSC 0 Prescaler Selects
+	  'PCTL0_PBFM0': '$20', # PSC 0 Balance Flank Width Modu
+	  'PCTL0_PAOC0B': '$10', # PSC 0 Asynchronous Output Cont
+	  'PCTL0_PAOC0A': '$8', # PSC 0 Asynchronous Output Cont
+	  'PCTL0_PARUN0': '$4', # PSC0 Auto Run
+	  'PCTL0_PCCYC0': '$2', # PSC0 Complete Cycle
+	  'PCTL0_PRUN0': '$1', # PSC 0 Run
+	'PCNF0' : '$da', # PSC 0 Configuration Register
+	  'PCNF0_PFIFTY0': '$80', # PSC 0 Fifty
+	  'PCNF0_PALOCK0': '$40', # PSC 0 Autolock
+	  'PCNF0_PLOCK0': '$20', # PSC 0 Lock
+	  'PCNF0_PMODE0': '$18', # PSC 0 Mode
+	  'PCNF0_POP0': '$4', # PSC 0 Output Polarity
+	  'PCNF0_PCLKSEL0': '$2', # PSC 0 Input Clock Select
+	'OCR0RB' : '$d8', # Output Compare RB Register 
+	'OCR0SB' : '$d6', # Output Compare SB Register 
+	'OCR0RA' : '$d4', # Output Compare RA Register 
+	'OCR0SA' : '$d2', # Output Compare SA Register 
+	'PSOC0' : '$d0', # PSC0 Synchro and Output Config
+	  'PSOC0_PSYNC0': '$30', # Synchronization Out for ADC Se
+	  'PSOC0_POEN0B': '$4', # PSCOUT01 Output Enable
+	  'PSOC0_POEN0A': '$1', # PSCOUT00 Output Enable
+	'PIM0' : '$a1', # PSC0 Interrupt Mask Register
+	  'PIM0_PSEIE0': '$20', # PSC 0 Synchro Error Interrupt 
+	  'PIM0_PEVE0B': '$10', # External Event B Interrupt Ena
+	  'PIM0_PEVE0A': '$8', # External Event A Interrupt Ena
+	  'PIM0_PEOPE0': '$1', # End of Cycle Interrupt Enable
+	'PIFR0' : '$a0', # PSC0 Interrupt Flag Register
+	  'PIFR0_PSEI0': '$20', # PSC 0 Synchro Error Interrupt
+	  'PIFR0_PEV0B': '$10', # External Event B Interrupt
+	  'PIFR0_PEV0A': '$8', # External Event A Interrupt
+	  'PIFR0_PRN0': '$6', # Ramp Number
+	  'PIFR0_PEOP0': '$1', # End of PSC0 Interrupt
+
+# Module PSC2
+	'PICR2' : '$fe', # PSC 2 Input Capture Register 
+	'PFRC2B' : '$fd', # PSC 2 Input B Control
+	  'PFRC2B_PCAE2B': '$80', # PSC 2 Capture Enable Input Par
+	  'PFRC2B_PISEL2B': '$40', # PSC 2 Input Select for Part B
+	  'PFRC2B_PELEV2B': '$20', # PSC 2 Edge Level Selector on I
+	  'PFRC2B_PFLTE2B': '$10', # PSC 2 Filter Enable on Input P
+	  'PFRC2B_PRFM2B': '$f', # PSC 2 Retrigger and Fault Mode
+	'PFRC2A' : '$fc', # PSC 2 Input B Control
+	  'PFRC2A_PCAE2A': '$80', # PSC 2 Capture Enable Input Par
+	  'PFRC2A_PISEL2A': '$40', # PSC 2 Input Select for Part A
+	  'PFRC2A_PELEV2A': '$20', # PSC 2 Edge Level Selector on I
+	  'PFRC2A_PFLTE2A': '$10', # PSC 2 Filter Enable on Input P
+	  'PFRC2A_PRFM2A': '$f', # PSC 2 Retrigger and Fault Mode
+	'PCTL2' : '$fb', # PSC 2 Control Register
+	  'PCTL2_PPRE2': '$c0', # PSC 2 Prescaler Selects
+	  'PCTL2_PBFM2': '$20', # Balance Flank Width Modulation
+	  'PCTL2_PAOC2B': '$10', # PSC 2 Asynchronous Output Cont
+	  'PCTL2_PAOC2A': '$8', # PSC 2 Asynchronous Output Cont
+	  'PCTL2_PARUN2': '$4', # PSC2 Auto Run
+	  'PCTL2_PCCYC2': '$2', # PSC2 Complete Cycle
+	  'PCTL2_PRUN2': '$1', # PSC 2 Run
+	'PCNF2' : '$fa', # PSC 2 Configuration Register
+	  'PCNF2_PFIFTY2': '$80', # PSC 2 Fifty
+	  'PCNF2_PALOCK2': '$40', # PSC 2 Autolock
+	  'PCNF2_PLOCK2': '$20', # PSC 2 Lock
+	  'PCNF2_PMODE2': '$18', # PSC 2 Mode
+	  'PCNF2_POP2': '$4', # PSC 2 Output Polarity
+	  'PCNF2_PCLKSEL2': '$2', # PSC 2 Input Clock Select
+	  'PCNF2_POME2': '$1', # PSC 2 Output Matrix Enable
+	'OCR2RB' : '$f8', # Output Compare RB Register 
+	'OCR2SB' : '$f6', # Output Compare SB Register 
+	'OCR2RA' : '$f4', # Output Compare RA Register 
+	'OCR2SA' : '$f2', # Output Compare SA Register 
+	'POM2' : '$f1', # PSC 2 Output Matrix
+	  'POM2_POMV2B': '$f0', # Output Matrix Output B Ramps
+	  'POM2_POMV2A': '$f', # Output Matrix Output A Ramps
+	'PSOC2' : '$f0', # PSC2 Synchro and Output Config
+	  'PSOC2_POS2': '$c0', # PSC 2 Output 23 Select
+	  'PSOC2_PSYNC2_': '$30', # Synchronization Out for ADC Se
+	  'PSOC2_POEN2D': '$8', # PSCOUT23 Output Enable
+	  'PSOC2_POEN2B': '$4', # PSCOUT21 Output Enable
+	  'PSOC2_POEN2C': '$2', # PSCOUT22 Output Enable
+	  'PSOC2_POEN2A': '$1', # PSCOUT20 Output Enable
+	'PIM2' : '$a5', # PSC2 Interrupt Mask Register
+	  'PIM2_PSEIE2': '$20', # PSC 2 Synchro Error Interrupt 
+	  'PIM2_PEVE2B': '$10', # External Event B Interrupt Ena
+	  'PIM2_PEVE2A': '$8', # External Event A Interrupt Ena
+	  'PIM2_PEOPE2': '$1', # End of Cycle Interrupt Enable
+	'PIFR2' : '$a4', # PSC2 Interrupt Flag Register
+	  'PIFR2_PSEI2': '$20', # PSC 2 Synchro Error Interrupt
+	  'PIFR2_PEV2B': '$10', # External Event B Interrupt
+	  'PIFR2_PEV2A': '$8', # External Event A Interrupt
+	  'PIFR2_PRN2': '$6', # Ramp Number
+	  'PIFR2_PEOP2': '$1', # End of PSC2 Interrupt
+
+# Module CPU
+	'SREG' : '$5f', # Status Register
+	  'SREG_I': '$80', # Global Interrupt Enable
+	  'SREG_T': '$40', # Bit Copy Storage
+	  'SREG_H': '$20', # Half Carry Flag
+	  'SREG_S': '$10', # Sign Bit
+	  'SREG_V': '$8', # Two's Complement Overflow Flag
+	  'SREG_N': '$4', # Negative Flag
+	  'SREG_Z': '$2', # Zero Flag
+	  'SREG_C': '$1', # Carry Flag
+	'SP' : '$5d', # Stack Pointer 
+	'MCUCR' : '$55', # MCU Control Register
+	  'MCUCR_SPIPS': '$80', # SPI Pin Select
+	  'MCUCR_PUD': '$10', # Pull-up disable
+	  'MCUCR_IVSEL': '$2', # Interrupt Vector Select
+	  'MCUCR_IVCE': '$1', # Interrupt Vector Change Enable
+	'MCUSR' : '$54', # MCU Status Register
+	  'MCUSR_WDRF': '$8', # Watchdog Reset Flag
+	  'MCUSR_BORF': '$4', # Brown-out Reset Flag
+	  'MCUSR_EXTRF': '$2', # External Reset Flag
+	  'MCUSR_PORF': '$1', # Power-on reset flag
+	'OSCCAL' : '$66', # Oscillator Calibration Value
+	'CLKPR' : '$61', # 
+	  'CLKPR_CLKPCE': '$80', # 
+	  'CLKPR_CLKPS': '$f', # 
+	'SMCR' : '$53', # Sleep Mode Control Register
+	  'SMCR_SM': '$e', # Sleep Mode Select bits
+	  'SMCR_SE': '$1', # Sleep Enable
+	'GPIOR3' : '$3b', # General Purpose IO Register 3
+	  'GPIOR3_GPIOR': '$ff', # General Purpose IO Register 3 
+	'GPIOR2' : '$3a', # General Purpose IO Register 2
+	  'GPIOR2_GPIOR': '$ff', # General Purpose IO Register 2 
+	'GPIOR1' : '$39', # General Purpose IO Register 1
+	  'GPIOR1_GPIOR': '$ff', # General Purpose IO Register 1 
+	'GPIOR0' : '$3e', # General Purpose IO Register 0
+	  'GPIOR0_GPIOR07': '$80', # General Purpose IO Register 0 
+	  'GPIOR0_GPIOR06': '$40', # General Purpose IO Register 0 
+	  'GPIOR0_GPIOR05': '$20', # General Purpose IO Register 0 
+	  'GPIOR0_GPIOR04': '$10', # General Purpose IO Register 0 
+	  'GPIOR0_GPIOR03': '$8', # General Purpose IO Register 0 
+	  'GPIOR0_GPIOR02': '$4', # General Purpose IO Register 0 
+	  'GPIOR0_GPIOR01': '$2', # General Purpose IO Register 0 
+	  'GPIOR0_GPIOR00': '$1', # General Purpose IO Register 0 
+	'PLLCSR' : '$49', # PLL Control And Status Registe
+	  'PLLCSR_PLLF': '$4', # PLL Factor
+	  'PLLCSR_PLLE': '$2', # PLL Enable
+	  'PLLCSR_PLOCK': '$1', # PLL Lock Detector
+	'PRR' : '$64', # Power Reduction Register
+	  'PRR_PRPSC': '$e0', # Power Reduction PSC2
+	  'PRR_PRTIM1': '$10', # Power Reduction Timer/Counter1
+	  'PRR_PRTIM0': '$8', # Power Reduction Timer/Counter0
+	  'PRR_PRSPI': '$4', # Power Reduction Serial Periphe
+	  'PRR_PRUSART0': '$2', # Power Reduction USART
+	  'PRR_PRADC': '$1', # Power Reduction ADC
+
+# Module PORTE
+	'PORTE' : '$2e', # Port E Data Register
+	'DDRE' : '$2d', # Port E Data Direction Register
+	'PINE' : '$2c', # Port E Input Pins
+
+# Module TIMER_COUNTER_0
+	'TIMSK0' : '$6e', # Timer/Counter0 Interrupt Mask 
+	  'TIMSK0_OCIE0B': '$4', # Timer/Counter0 Output Compare 
+	  'TIMSK0_OCIE0A': '$2', # Timer/Counter0 Output Compare 
+	  'TIMSK0_TOIE0': '$1', # Timer/Counter0 Overflow Interr
+	'TIFR0' : '$35', # Timer/Counter0 Interrupt Flag 
+	  'TIFR0_OCF0B': '$4', # Timer/Counter0 Output Compare 
+	  'TIFR0_OCF0A': '$2', # Timer/Counter0 Output Compare 
+	  'TIFR0_TOV0': '$1', # Timer/Counter0 Overflow Flag
+	'TCCR0A' : '$44', # Timer/Counter  Control Registe
+	  'TCCR0A_COM0A': '$c0', # Compare Output Mode, Phase Cor
+	  'TCCR0A_COM0B': '$30', # Compare Output Mode, Fast PWm
+	  'TCCR0A_WGM0': '$3', # Waveform Generation Mode
+	'TCCR0B' : '$45', # Timer/Counter Control Register
+	  'TCCR0B_FOC0A': '$80', # Force Output Compare A
+	  'TCCR0B_FOC0B': '$40', # Force Output Compare B
+	  'TCCR0B_WGM02': '$8', # 
+	  'TCCR0B_CS0': '$7', # Clock Select
+	'TCNT0' : '$46', # Timer/Counter0
+	'OCR0A' : '$47', # Timer/Counter0 Output Compare 
+	'OCR0B' : '$48', # Timer/Counter0 Output Compare 
+	'GTCCR' : '$43', # General Timer/Counter Control 
+	  'GTCCR_TSM': '$80', # Timer/Counter Synchronization 
+	  'GTCCR_ICPSEL1': '$40', # Timer1 Input Capture Selection
+	  'GTCCR_PSR10': '$1', # Prescaler Reset Timer/Counter1
+
+# Module TIMER_COUNTER_1
+	'TIMSK1' : '$6f', # Timer/Counter Interrupt Mask R
+	  'TIMSK1_ICIE1': '$20', # Timer/Counter1 Input Capture I
+	  'TIMSK1_OCIE1B': '$4', # Timer/Counter1 Output CompareB
+	  'TIMSK1_OCIE1A': '$2', # Timer/Counter1 Output CompareA
+	  'TIMSK1_TOIE1': '$1', # Timer/Counter1 Overflow Interr
+	'TIFR1' : '$36', # Timer/Counter Interrupt Flag r
+	  'TIFR1_ICF1': '$20', # Input Capture Flag 1
+	  'TIFR1_OCF1B': '$4', # Output Compare Flag 1B
+	  'TIFR1_OCF1A': '$2', # Output Compare Flag 1A
+	  'TIFR1_TOV1': '$1', # Timer/Counter1 Overflow Flag
+	'TCCR1A' : '$80', # Timer/Counter1 Control Registe
+	  'TCCR1A_COM1A': '$c0', # Compare Output Mode 1A, bits
+	  'TCCR1A_COM1B': '$30', # Compare Output Mode 1B, bits
+	  'TCCR1A_WGM1': '$3', # Waveform Generation Mode
+	'TCCR1B' : '$81', # Timer/Counter1 Control Registe
+	  'TCCR1B_ICNC1': '$80', # Input Capture 1 Noise Canceler
+	  'TCCR1B_ICES1': '$40', # Input Capture 1 Edge Select
+	  'TCCR1B_WGM1': '$18', # Waveform Generation Mode
+	  'TCCR1B_CS1': '$7', # Prescaler source of Timer/Coun
+	'TCCR1C' : '$82', # Timer/Counter1 Control Registe
+	  'TCCR1C_FOC1A': '$80', # 
+	  'TCCR1C_FOC1B': '$40', # 
+	'TCNT1' : '$84', # Timer/Counter1  Bytes
+	'OCR1A' : '$88', # Timer/Counter1 Output Compare 
+	'OCR1B' : '$8a', # Timer/Counter1 Output Compare 
+	'ICR1' : '$86', # Timer/Counter1 Input Capture R
+	'GTCCR' : '$43', # General Timer/Counter Control 
+	  'GTCCR_TSM': '$80', # Timer/Counter Synchronization 
+	  'GTCCR_PSRSYNC': '$1', # Prescaler Reset Timer/Counter1
+
+# Module AD_CONVERTER
+	'ADMUX' : '$7c', # The ADC multiplexer Selection 
+	  'ADMUX_REFS': '$c0', # Reference Selection Bits
+	  'ADMUX_ADLAR': '$20', # Left Adjust Result
+	  'ADMUX_MUX': '$f', # Analog Channel and Gain Select
+	'ADCSRA' : '$7a', # The ADC Control and Status reg
+	  'ADCSRA_ADEN': '$80', # ADC Enable
+	  'ADCSRA_ADSC': '$40', # ADC Start Conversion
+	  'ADCSRA_ADATE': '$20', # ADC Auto Trigger Enable
+	  'ADCSRA_ADIF': '$10', # ADC Interrupt Flag
+	  'ADCSRA_ADIE': '$8', # ADC Interrupt Enable
+	  'ADCSRA_ADPS': '$7', # ADC  Prescaler Select Bits
+	'ADC' : '$78', # ADC Data Register  Bytes
+	'ADCSRB' : '$7b', # ADC Control and Status Registe
+	'DIDR0' : '$7e', # Digital Input Disable Register
+	'DIDR1' : '$7f', # Digital Input Disable Register
+	  'DIDR1_ACMP0D': '$20', # 
+	  'DIDR1_AMP0PD': '$10', # 
+	  'DIDR1_AMP0ND': '$8', # 
+	  'DIDR1_ADC10D': '$4', # 
+	  'DIDR1_ADC9D': '$2', # 
+	  'DIDR1_ADC8D': '$1', # 
+	'AMP0CSR' : '$76', # 
+	  'AMP0CSR_AMP0EN': '$80', # 
+	  'AMP0CSR_AMP0IS': '$40', # 
+	  'AMP0CSR_AMP0G': '$30', # 
+	  'AMP0CSR_AMP0TS': '$3', # 
+	'AMP1CSR' : '$77', # 
+	  'AMP1CSR_AMP1EN': '$80', # 
+	  'AMP1CSR_AMP1IS': '$40', # 
+	  'AMP1CSR_AMP1G': '$30', # 
+	  'AMP1CSR_AMP1TS': '$3', # 
+
+# Module SPI
+	'SPCR' : '$4c', # SPI Control Register
+	  'SPCR_SPIE': '$80', # SPI Interrupt Enable
+	  'SPCR_SPE': '$40', # SPI Enable
+	  'SPCR_DORD': '$20', # Data Order
+	  'SPCR_MSTR': '$10', # Master/Slave Select
+	  'SPCR_CPOL': '$8', # Clock polarity
+	  'SPCR_CPHA': '$4', # Clock Phase
+	  'SPCR_SPR': '$3', # SPI Clock Rate Selects
+	'SPSR' : '$4d', # SPI Status Register
+	  'SPSR_SPIF': '$80', # SPI Interrupt Flag
+	  'SPSR_WCOL': '$40', # Write Collision Flag
+	  'SPSR_SPI2X': '$1', # Double SPI Speed Bit
+	'SPDR' : '$4e', # SPI Data Register
+
+# Module WATCHDOG
+	'WDTCSR' : '$60', # Watchdog Timer Control Registe
+	  'WDTCSR_WDIF': '$80', # Watchdog Timeout Interrupt Fla
+	  'WDTCSR_WDIE': '$40', # Watchdog Timeout Interrupt Ena
+	  'WDTCSR_WDP': '$27', # Watchdog Timer Prescaler Bits
+	  'WDTCSR_WDCE': '$10', # Watchdog Change Enable
+	  'WDTCSR_WDE': '$8', # Watch Dog Enable
+
+# Module EXTERNAL_INTERRUPT
+	'EICRA' : '$69', # External Interrupt Control Reg
+	  'EICRA_ISC2': '$30', # External Interrupt Sense Contr
+	  'EICRA_ISC1': '$c', # External Interrupt Sense Contr
+	  'EICRA_ISC0': '$3', # External Interrupt Sense Contr
+	'EIMSK' : '$3d', # External Interrupt Mask Regist
+	  'EIMSK_INT': '$7', # External Interrupt Request 2 E
+	'EIFR' : '$3c', # External Interrupt Flag Regist
+	  'EIFR_INTF': '$7', # External Interrupt Flags
+
+# Module EEPROM
+	'EEAR' : '$41', # EEPROM Read/Write Access  Byte
+	'EEDR' : '$40', # EEPROM Data Register
+	'EECR' : '$3f', # EEPROM Control Register
+	  'EECR_EERIE': '$8', # EEPROM Ready Interrupt Enable
+	  'EECR_EEMWE': '$4', # EEPROM Master Write Enable
+	  'EECR_EEWE': '$2', # EEPROM Write Enable
+	  'EECR_EERE': '$1', # EEPROM Read Enable
+
+# Module ANALOG_COMPARATOR
+	'AC0CON' : '$ad', # Analog Comparator 0 Control Re
+	  'AC0CON_AC0EN': '$80', # Analog Comparator 0 Enable Bit
+	  'AC0CON_AC0IE': '$40', # Analog Comparator 0 Interrupt 
+	  'AC0CON_AC0IS': '$30', # Analog Comparator 0  Interrupt
+	  'AC0CON_AC0M': '$7', # Analog Comparator 0 Multiplexe
+	'AC2CON' : '$af', # Analog Comparator 2 Control Re
+	  'AC2CON_AC2EN': '$80', # Analog Comparator 2 Enable Bit
+	  'AC2CON_AC2IE': '$40', # Analog Comparator 2 Interrupt 
+	  'AC2CON_AC2IS': '$30', # Analog Comparator 2  Interrupt
+	  'AC2CON_AC2M': '$7', # Analog Comparator 2 Multiplexe
+	'ACSR' : '$50', # Analog Comparator Status Regis
+	  'ACSR_ACCKDIV': '$80', # Analog Comparator Clock Divide
+	  'ACSR_AC2IF': '$40', # Analog Comparator 2 Interrupt 
+	  'ACSR_AC1IF': '$20', # Analog Comparator 1  Interrupt
+	  'ACSR_AC0IF': '$10', # Analog Comparator 0 Interrupt 
+	  'ACSR_AC2O': '$4', # Analog Comparator 2 Output Bit
+	  'ACSR_AC1O': '$2', # Analog Comparator 1 Output Bit
+	  'ACSR_AC0O': '$1', # Analog Comparator 0 Output Bit
+
+# Module PSC1
+	'PICR1' : '$ee', # PSC 1 Input Capture Register 
+	'PFRC1B' : '$ed', # PSC 1 Input B Control
+	  'PFRC1B_PCAE1B': '$80', # PSC 1 Capture Enable Input Par
+	  'PFRC1B_PISEL1B': '$40', # PSC 1 Input Select for Part B
+	  'PFRC1B_PELEV1B': '$20', # PSC 1 Edge Level Selector on I
+	  'PFRC1B_PFLTE1B': '$10', # PSC 1 Filter Enable on Input P
+	  'PFRC1B_PRFM1B': '$f', # PSC 1 Retrigger and Fault Mode
+	'PFRC1A' : '$ec', # PSC 1 Input B Control
+	  'PFRC1A_PCAE1A': '$80', # PSC 1 Capture Enable Input Par
+	  'PFRC1A_PISEL1A': '$40', # PSC 1 Input Select for Part A
+	  'PFRC1A_PELEV1A': '$20', # PSC 1 Edge Level Selector on I
+	  'PFRC1A_PFLTE1A': '$10', # PSC 1 Filter Enable on Input P
+	  'PFRC1A_PRFM1A': '$f', # PSC 1 Retrigger and Fault Mode
+	'PCTL1' : '$eb', # PSC 1 Control Register
+	  'PCTL1_PPRE1': '$c0', # PSC 1 Prescaler Selects
+	  'PCTL1_PBFM1': '$20', # Balance Flank Width Modulation
+	  'PCTL1_PAOC1B': '$10', # PSC 1 Asynchronous Output Cont
+	  'PCTL1_PAOC1A': '$8', # PSC 1 Asynchronous Output Cont
+	  'PCTL1_PARUN1': '$4', # PSC1 Auto Run
+	  'PCTL1_PCCYC1': '$2', # PSC1 Complete Cycle
+	  'PCTL1_PRUN1': '$1', # PSC 1 Run
+	'PSOC1' : '$e0', # PSC1 Synchro and Output Config
+	  'PSOC1_PSYNC1_': '$30', # Synchronization Out for ADC Se
+	  'PSOC1_POEN1B': '$4', # PSCOUT11 Output Enable
+	  'PSOC1_POEN1A': '$1', # PSCOUT10 Output Enable
+
+	  '__amforth_dummy':'0'
 }
