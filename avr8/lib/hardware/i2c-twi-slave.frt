@@ -2,6 +2,8 @@
 \ debug output and other oddities are possible
 \
 
+
+
 TWCR_TWEN TWCR_TWIE TWCR_TWINT or or constant TWCR_TWENALL
 
 \ set the hw address and start the receiver
@@ -28,14 +30,24 @@ TWCR_TWEN TWCR_TWIE TWCR_TWINT or or constant TWCR_TWENALL
   i2c.slave.twcr.ack
 ; 
 
+\ #require buffer.frt
+
+$10 buffer: i2c-buffer
+variable i2c-in
+
+: >i2c-buffer ( c -- )
+    i2c-buffer i2c-in @ dup >r + c!
+    r> 1+ $0f and i2c-in !
+;
+
 \ data received with NACK, probably the last one
 : i2c.data.nack ( -- ) 
-  TWDR c@ drop
+  TWDR c@ >i2c-buffer
   i2c.slave.twcr.nack
 ;
 \ data received with ACK, more to follow
 : i2c.data.ack ( -- ) 
-  TWDR c@ drop
+  TWDR c@ >i2c-buffer
   i2c.slave.twcr.ack
 ;
 
@@ -45,7 +57,7 @@ variable debug2
 : i2c.slave.isr ( -- )
     1 debug +!
     TWSR c@
-    dup debug2 !
+    $f8 and dup debug2 !
     \ receiving data
     dup $60 = if drop i2c.addr.ack exit then
     dup $80 = if drop i2c.data.ack exit then
