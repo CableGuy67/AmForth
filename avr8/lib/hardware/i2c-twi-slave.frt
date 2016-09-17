@@ -51,13 +51,13 @@ variable i2c-in
   i2c.slave.twcr.ack
 ;
 
-variable debug
-variable debug2
+\ variable debug
+\ variable debug2
 
 : i2c.slave.isr ( -- )
-    1 debug +!
+\    1 debug +!
     TWSR c@
-    $f8 and dup debug2 !
+\    $f8 and dup debug2 !
     \ receiving data
     dup $60 = if drop i2c.addr.ack exit then
     dup $80 = if drop i2c.data.ack exit then
