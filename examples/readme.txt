@@ -31,3 +31,7 @@ sierpinski.frt: simple fractal generator. Illustrates the use of
 
 co.frt: co routines aka subroutines for nonpreemtive multitasking.
    Examples on how to use them are included.
+
+many.frt: Repeat the input line until a key is hit. Use it with care
+   since it can cause a lot of trouble. Since the input line is re-parsed
+   every time, it is much slower than a compiled word.
