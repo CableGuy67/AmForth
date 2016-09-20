@@ -1,6 +1,6 @@
 \ Rick VanNorman, clf 15. Apr 1997
 
-: many key? if key exit then 0 >in ! ;
+: many key? if key drop exit then 0 >in ! ;
 
 \ use it like
 \ > 0
