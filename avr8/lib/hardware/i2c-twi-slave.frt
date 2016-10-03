@@ -1,6 +1,35 @@
 \ the following code is work in progress.
 \ debug output and other oddities are possible
+
+\ The slave provides a circular buffer of
+\ $10 bytes size. The variables i2c-in 
+\ and i2c-out are pointers to the next
+\ byte in this buffer.
 \
+
+\ #require buffer.frt
+
+$10 constant i2c-bufsize
+
+i2c-bufsize buffer: i2c-buffer
+variable i2c-in
+variable i2c-out
+
+: ++wrap ( addr -- n )
+  dup @ ( -- addr n )
+  dup 0 [ i2c-bufsize 1- ] literal within 
+  if 1+ else drop 0 then
+  dup rot !
+;
+
+: >i2c-buffer ( c -- )
+  i2c-buffer i2c-in ++wrap + c!
+;
+
+: i2c-buffer> ( -- c )
+  i2c-buffer i2c-out ++wrap + c@
+;
+
 
 TWCR_TWEN TWCR_TWIE TWCR_TWINT or or constant TWCR_TWENALL
 
@@ -28,26 +57,6 @@ TWCR_TWEN TWCR_TWIE TWCR_TWINT or or constant TWCR_TWENALL
   i2c.slave.twcr.ack
 ; 
 
-\ #require buffer.frt
-
-$10 buffer: i2c-buffer \ must not change $10
-variable i2c-in
-variable i2c-out
-
-: _wrap ( addr -- n )
-  dup c@ ( -- addr n )
-  dup 0 $0f within if 1+ else drop 0 then
-  dup rot c!
-;
-
-: >i2c-buffer ( c -- )
-    i2c-buffer i2c-in _wrap + c!
-;
-
-: i2c-buffer> ( -- c )
-    i2c-buffer i2c-out _wrap + c@
-;
-
 \ data received with NACK, probably the last one
 : i2c.data.nack ( -- ) 
   TWDR c@ >i2c-buffer
@@ -65,7 +74,7 @@ variable i2c-out
 ;
 
 : i2c.slave.isr ( -- )
-    TWSR c@
+    TWSR c@ $f8 and
     \ receiving data
     dup $60 = if drop i2c.addr.ack exit then \ TW_SR_SLA_ACK
     dup $80 = if drop i2c.data.ack exit then \ TW_SR_SLA_ACK
