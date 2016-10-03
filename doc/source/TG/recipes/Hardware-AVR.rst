@@ -12,6 +12,7 @@ Hardware Modules (AVR)
    I2C-Detect
    I2C-EEPROM
    I2C-Generic
+   I2C-Slave
    I2C-Values
    Interrupt-ISR
    Interrupt-Critical-Section

@@ -28,9 +28,20 @@ has been published on september, 20 2015. It improves the proposed standard
 section and adds a long chapter discussing the recognizer design based on 
 feedback from version 1. The 3rd version has been started immediately after
 v2 due to a suggestion changing the `POSTPONE` action.
-`Version 3 </pr/Recognizer-rfc-C.html>`__
-`(pdf) </pr/Recognizer-rfc-C.pdf>`__, 
-`(txt) </pr/Recognizer-rfc-C.text>`__  `Sourccode </pr/Recognizer.frt>`__ 
+`Version 3 </pr/Recognizer-rfc-C.html>`__ `(pdf) </pr/Recognizer-rfc-C.pdf>`__, 
+`(txt) </pr/Recognizer-rfc-C.text>`__.
+
+The `Sourcecode </pr/Recognizer-C.frt>`__ requires `Stack.frt </pr/Stack.frt>`__. 
+In the `Recognizer-Test </pr/Recognizer-C-test.frt>`__ are many tests and
+example implementation for gforth 0.7.x and MPE's vfxlin (older versions).
+
+`Version 4 </pr/Recognizer-rfc-D.html>`__ `(pdf) </pr/Recognizer-rfc-D.pdf>`__, 
+`(txt) </pr/Recognizer-rfc-D.text>`__  together with some Forth 
+`sourccode </pr/Recognizer-D.frt>`__ is started to reflect feedback
+expected from the EuroForth 2016 meeting. So far only word smitting
+and more test cases.
+
+Another yet inofficial `Namespace RFD </pr/RFD-Namespace.pdf>`__.
 
 The papers linked below give some historical background information.
 

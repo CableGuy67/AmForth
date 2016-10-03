@@ -32,6 +32,8 @@ Here you'll find things that are not yet released but will be part of the next r
 See the code section at Sourceforge to get the
 `most recent sources <http://sourceforge.net/p/amforth/code/HEAD/tree/trunk/>`__
 
+* lib(AVR8): Implement :ref:`I2C Slave`.
+
 24.8.2016: release 6.3
 ......................
 

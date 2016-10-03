@@ -2,12 +2,12 @@
 Standard Wordlists
 ==================
 
-ANS94 Words
+Forth 2012
 -----------
 
-amforth implements most or all words from the ANS94 word
+amforth implements most or all words from many Forth 2012 word
 sets. Most words are already included in the standard
-setup, others are loadable from files in the :file:`lib/ans94`
+setup, others are loadable from files in the :file:`lib/forth2012`
 directory. A floating point library is available from the
 community repository. Words from the word set FILE-ACCESS
 are dropped completely. The others are at least partially 
@@ -21,6 +21,24 @@ the (deprecated) words :command:`C"`, :command:`CONVERT`,
 :command:`EXPECT`, :command:`SPAN` and  :command:`ROLL`.
 
 Loop counters are checked on signed compares.
+
+`Number Prefixes <http://www.forth200x.org/number-prefixes.html>`_
+  The number base can be specified by prepending the $, # or % signs.
+  Single characters as 'a' are not supported.
+
+
+`Defer and IS <http://www.forth200x.org/deferred.html>`_
+  :command:`defer` gives the possibility of vectored execution. Amforth
+  has 3 different kind of such vectors, varying in how they are stored: EEPROM, RAM
+  or the USER area. The EEPROM makes it possible to save the settings permanently,
+  the RAM enables frequent changes. Finally the user area is for multitasking.
+
+`Buffer: <http://www.forth200x.org/buffer.html>`_
+  The buffer allocates a named memory (RAM) region. It is superior to
+  the usual create foo xx allot since amforth has a non-unified
+  memory model and the code snippet does not the same as an unified memory
+  model forth (with the dictionary being at the same memory as the allot
+  command works).
 
 Block
 .....
@@ -138,6 +156,12 @@ An EDITOR is not implemented.
 :command:`[IF]`, :command:`[ELSE]`
 and :command:`[THEN]` are not implemented.
 
+`n>r and nr> <http://www.forth200x.org/n-to-r.html>`_
+  Fully supported
+
+`Traverse-wordlist <http://www.forth200x.org/traverse-wordlist.html>`_
+  Iterating over a wordlist works. The name>xy words are supported.
+
 Word Lists and Search Order
 ...........................
 
@@ -156,49 +180,6 @@ Strings
 .......
 
 All words from the strings word set are supported.
-
-Forth 2012
-----------
-
-amforth provides the following extensions from the
-forth 2012 standard
-
-`Defer and IS <http://www.forth200x.org/deferred.html>`_
-  :command:`defer` gives the possibility of vectored execution. Amforth
-  has 3 different kind of such vectors, varying in how they are stored: EEPROM, RAM
-  or the USER area. The EEPROM makes it possible to save the settings permanently,
-  the RAM enables frequent changes. Finally the user area is for multitasking.
-
-`Buffer: <http://www.forth200x.org/buffer.html>`_
-  The buffer allocates a named memory (RAM) region. It is superior to
-  the usual create foo xx allot since amforth has a non-unified
-  memory model and the code snippet does not the same as an unified memory
-  model forth (with the dictionary being at the same memory as the allot
-  command works).
-
-`Parse-Name <http://www.forth200x.org/parse-name.html>`_
-  Fully supported
-
-`n>r and nr> <http://www.forth200x.org/n-to-r.html>`_
-  Fully supported
-
-`Number Prefixes <http://www.forth200x.org/number-prefixes.html>`_
-  The number base can be specified by prepending the $, # or % signs.
-  Single characters as 'a' are not supported.
-
-`Structures <http://www.forth200x.org/structures.html>`_
-  Fully supported
-
-`Synonyms <http://www.forth200x.org/synonym.htmlSynynom>`_
-  Fully supported
-
-`Traverse-wordlist <http://www.forth200x.org/traverse-wordlist.html>`_
-  Iterating over a wordlist works. The name>xy words are supported.
-
-`Values <http://www.forth200x.org/2value.html>`_
-  The additional value definitions are supported. A way to implement
-  own value data items is provided.
-
 
 Amforth
 -------
@@ -262,7 +243,7 @@ these words.
 Assembler
 .........
 
-Lubos Pekny has written an assembler for amforth. To support it, amforth
+Lubos Pekny has written an AVR8 assembler for amforth. To support it, amforth
 provides the two words :command:`CODE` and :command:`END-CODE`. The first
 creates a dictionary entry and sets the code field to the data filed address. The
 interpreter will thus jump directly into the data field assuming some machine

@@ -141,4 +141,4 @@ block driver. It transfers 512 bytes in one transaction and uses
 a RAM buffer to actually hold the data.
 
 .. seealso:: :ref:`I2C EEPROM`, :ref:`I2C Detect`,
-   and :ref:`I2C EEPROM Blocks`. :ref:`Values`
+   and :ref:`I2C EEPROM Blocks`. :ref:`Values` :ref:`I2C Slave`
