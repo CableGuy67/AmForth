@@ -32,8 +32,8 @@
 \
 \
 
--4000 constant i2c.timeout  \ exception number for timeout
-10000 Evalue   i2c.maxticks \ # of checks until timeout is reached
+-#4000 constant i2c.timeout  \ exception number for timeout
+#10000 Evalue   i2c.maxticks \ # of checks until timeout is reached
 variable i2c.loop           \ timeout counter
 variable i2c.current        \ current hwid if <> 0
 
@@ -47,15 +47,15 @@ variable i2c.current        \ current hwid if <> 0
     0 i2c.current !
 ;
 
-0 constant i2c.prescaler/1
-1 constant i2c.prescaler/4
-2 constant i2c.prescaler/16
-3 constant i2c.prescaler/64
+#0 constant i2c.prescaler/1
+#1 constant i2c.prescaler/4
+#2 constant i2c.prescaler/16
+#3 constant i2c.prescaler/64
 TWSR $3 bitmask: i2c.conf.prescaler
 
-TWCR 7 portpin: i2c.int
-TWCR 6 portpin: i2c.ea
-TWCR 5 portpin: i2c.sta
+TWCR #7 portpin: i2c.int
+TWCR #6 portpin: i2c.ea
+TWCR #5 portpin: i2c.sta
 
 \ enable i2c
 : i2c.init ( prescaler bitrate  -- )
@@ -66,7 +66,7 @@ TWCR 5 portpin: i2c.sta
 
 \ a very low speed initialization.
 : i2c.init.default
-    i2c.prescaler/64 3 i2c.init 
+    i2c.prescaler/64 #3 i2c.init 
 ;
 
 \ wait for i2c finish
