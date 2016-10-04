@@ -21,18 +21,18 @@ $30 constant i2c.compass
 
 \ internal commands
 : i2c.compass.setcoil
-  %00000010 0 2 i2c.compass i2c.n>
+  %00000010 0 2 i2c.compass i2c.n!
 ;
 : i2c.compass.resetcoil
-  %00000100 0 2 i2c.compass i2c.n>
+  %00000100 0 2 i2c.compass i2c.n!
 ;
 
 : i2c.compass.measure
-  %00000001 0 2 i2c.compass i2c.n>
+  %00000001 0 2 i2c.compass i2c.n!
 ;
 
 : i2c.compass.fetchdata ( -- status x y )
-  5 0 i2c.compass i2c.>n
+  5 0 i2c.compass i2c.n@
   ( -- status msb-x lsb-x msb-y lsb-y)
   swap >< or $fff and >r \ Y
   swap >< or $fff and r> \ X

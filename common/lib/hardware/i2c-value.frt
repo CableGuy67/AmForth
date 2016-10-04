@@ -2,7 +2,7 @@
 \ an I2C value
 \
 
-#require value.frt
+#require values.frt
 #require quotations.frt
 #require i2c.frt
 
