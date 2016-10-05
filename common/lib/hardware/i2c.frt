@@ -4,7 +4,7 @@
 \ #require bitnames.frt
 
 \ low level driver words
-\ #require i2c-twi.frt
+\ #require i2c-twi-master.frt
 
 \ provides public commands
 
