@@ -24,10 +24,8 @@
 \ #require is.frt
 \ #require builds.frt
 
-decimal
-
-0 user status
-2 user follower
+#0 user status
+#2 user follower
 
 :noname ( 'status1 -- 'status2 ) cell+ @ dup @ i-cell+ >r ; constant pass
 :noname ( 'status1 -- )          up! sp @ sp! rp! ;         constant wake
@@ -42,11 +40,11 @@ decimal
 
 \ continue the code as a task in a predefined tcb
 : activate ( tid -- )
-   dup    6 + @ cell-
-   over   4 + @ cell- ( -- tid sp rp )     \ point to RP0 SP0
-   r> over i-cell+ !  ( save entry at rp ) \ skip all after ACTIVATE
-      over  !         (  save rp at sp )   \ save stack context for WAKE
-   over 8 + !         ( save sp in tos )
+   dup    #6 + @ cell-
+   over   #4 + @ cell- ( -- tid sp rp )     \ point to RP0 SP0
+   r> over i-cell+ !   ( save entry at rp ) \ skip all after ACTIVATE
+      over  !          (  save rp at sp )   \ save stack context for WAKE
+   over #8 + !         ( save sp in tos )
    task-awake 
 ;
 
@@ -76,10 +74,10 @@ decimal
 ;
 : task-init ( tib -- )
   dup tib>tcb over tib>size  0 fill \ clear RAM for tcb and stacks
-  dup tib>sp0 over tib>tcb &6 + !       \ store sp0    in tcb[6]
-  dup tib>sp0 cell- over tib>tcb &8 + ! \ store sp0--  in tcb[8], tos
-  dup tib>rp0 over tib>tcb &4 + !       \ store rp0    in tcb[4]
-      &10  over tib>tcb &12 + !         \ store base   in tcb[12]
+  dup tib>sp0 over tib>tcb #6 + !       \ store sp0    in tcb[6]
+  dup tib>sp0 cell- over tib>tcb #8 + ! \ store sp0--  in tcb[8], tos
+  dup tib>rp0 over tib>tcb #4 + !       \ store rp0    in tcb[4]
+      #10  over tib>tcb #12 + !         \ store base   in tcb[12]
       tib>tcb task-sleep                \ store 'pass' in tcb[0]
 ;
 
@@ -124,9 +122,9 @@ decimal
           pass = if ."  sleeping" else
           abort"   unknown" then
       then
-\     dup 4 + @ ."   rp0=" dup u. cell- @ ."  TOR=" u.
-\     dup 6 + @ ."   sp0=" dup u. cell- @ ."  TOS=" u.
-\     dup 8 + @ ."    sp=" u.
+\     dup #4 + @ ."   rp0=" dup u. cell- @ ."  TOR=" u.
+\     dup #6 + @ ."   sp0=" dup u. cell- @ ."  TOS=" u.
+\     dup #8 + @ ."    sp=" u.
       cr
       cell+ @ ( -- tid1 next-tid )
       2dup =     ( -- f flag)
