@@ -1,9 +1,9 @@
 \ just like +loop but counts
 \ downward for positive numbers.
 
-: -loop (runtime: x -- ) 
+: -loop ( runtime: x -- ) 
    postpone negate postpone +loop 
-;
+; immediate
 
 \ use case
 \  : test 0  ?do i . 1 -loop ;
