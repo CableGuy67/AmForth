@@ -16,7 +16,7 @@
 \ #require recognizer.frt
 
 ' noop 
-' sliteral
+:noname postpone sliteral ;
 :noname -48 throw ; recognizer: r:string
 
 : rec:string ( addr len -- addr' len' r:string | r:fail )
@@ -26,5 +26,3 @@
   -1 /string
   r:string
 ;
-
-' rec:string get-recognizers 1+ set-recognizers
