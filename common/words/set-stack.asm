@@ -15,6 +15,14 @@ XT_SET_STACK:
     .dw DO_COLON
 PFA_SET_STACK:
 .endif
+    .dw XT_OVER
+    .dw XT_ZEROLESS
+    .dw XT_DOCONDBRANCH
+    DEST(PFA_SET_STACK0)
+    .dw XT_DOLITERAL
+    .dw -4
+    .dw XT_THROW
+PFA_SET_STACK0:
     .dw XT_2DUP
     .dw XT_STOREE ; ( -- i_n .. i_0 n e-addr )
     .dw XT_SWAP    
