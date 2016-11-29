@@ -21,7 +21,7 @@ PFA_RX_POLL:
 
 ; ( -- f)
 ; MCU
-; check if a character can be appended to output queue using register poll
+; check if a unread character in the input device is available
 VE_RXQ_POLL:
     .dw $ff08
     .db "rx?-poll"
