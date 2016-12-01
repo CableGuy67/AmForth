@@ -30,6 +30,7 @@ usart_rx_buffer:
   jmp 0
 usart_rx_store:
   lds temp1, usart_rx_in
+usart_rx_store1:
   ldi zl, low(usart_rx_data)
   ldi zh, high(usart_rx_data)
   add zl, temp1
@@ -43,6 +44,19 @@ usart_rx_store:
 
 usart_rx_finish:
   ret
+
+VE_TO_RXBUF:
+    .dw $ff07
+    .db ">rx-buf",0
+    .dw VE_HEAD
+    .set VE_HEAD = VE_TO_RXBUF
+XT_TO_RXBUF:
+    .dw PFA_rx_tobuf
+PFA_rx_tobuf:
+    mov temp1, tosl
+    rcall usart_rx_store1
+    loadtos
+    jmp_ DO_NEXT
 
 ; ( -- ) Hardware Access
 ; R( --)
