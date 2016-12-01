@@ -53,7 +53,7 @@ XT_TO_RXBUF:
     .dw PFA_rx_tobuf
 PFA_rx_tobuf:
     mov temp0, tosl
-    rcall usart_rx_store0
+    rcall usart_rx_store
     loadtos
     jmp_ DO_NEXT
 
