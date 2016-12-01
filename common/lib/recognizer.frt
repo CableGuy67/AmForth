@@ -9,7 +9,7 @@
 ;
 
 \ get and set the stack content
-: set-recognizers set-stack ;
-: get-recognizers get-stack ;
+: set-recognizers forth-recognizer set-stack ;
+: get-recognizers forth-recognizer get-stack ;
 
 \ usage see Recognizer Recipes
