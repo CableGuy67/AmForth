@@ -30,7 +30,6 @@ usart_rx_buffer:
   jmp 0
 usart_rx_store:
   lds temp1, usart_rx_in
-usart_rx_store1:
   ldi zl, low(usart_rx_data)
   ldi zh, high(usart_rx_data)
   add zl, temp1
@@ -53,8 +52,8 @@ VE_TO_RXBUF:
 XT_TO_RXBUF:
     .dw PFA_rx_tobuf
 PFA_rx_tobuf:
-    mov temp1, tosl
-    rcall usart_rx_store1
+    mov temp0, tosl
+    rcall usart_rx_store0
     loadtos
     jmp_ DO_NEXT
 
