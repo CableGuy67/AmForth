@@ -3,7 +3,6 @@
 .if WANT_ISR_RX == 1
   .set USART_B_VALUE = bm_ENABLE_TX | bm_ENABLE_RX | bm_ENABLE_INT_RX
   .include "drivers/usart-rx-buffer.asm"
-  .include "drivers/usart-isr-rx.asm"
 ;  .include "drivers/timer-usart-isr.asm"
   .set XT_RX  = XT_RX_BUFFER
   .set XT_RXQ = XT_RXQ_BUFFER

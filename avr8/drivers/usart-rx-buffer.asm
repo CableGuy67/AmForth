@@ -12,38 +12,6 @@ usart_rx_out: .byte 1
 
 .cseg
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; forth code:
-; : usart-rx-buffer USART_DATA c@
-;    dup 3 = if cold then
-;    usart_rx_data usart_rx_in c@ dup >r
-;    + !
-;    r> 1+ usart_rx_mask and usart_rx_in c!
-; ;
-usart_rx_buffer:
-  lds temp0, USART_DATA
-  ; optional: check for certain character(s) (e.g. CTRL-C)
-  ; and trigger a soft interrupt instead of storing the
-  ; charater into the input queue.
-  cpi temp0, 3
-  brne usart_rx_store
-  jmp 0
-usart_rx_store:
-  lds temp1, usart_rx_in
-  ldi zl, low(usart_rx_data)
-  ldi zh, high(usart_rx_data)
-  add zl, temp1
-  adc zh, zeroh
-  st Z, temp0
-
-  inc temp1
-  andi temp1,usart_rx_mask
-
-  sts usart_rx_in, temp1
-
-usart_rx_finish:
-  ret
-
 VE_TO_RXBUF:
     .dw $ff07
     .db ">rx-buf",0
@@ -53,9 +21,38 @@ XT_TO_RXBUF:
     .dw PFA_rx_tobuf
 PFA_rx_tobuf:
     mov temp0, tosl
-    rcall usart_rx_store
+    lds temp1, usart_rx_in
+    ldi zl, low(usart_rx_data)
+    ldi zh, high(usart_rx_data)
+    add zl, temp1
+    adc zh, zeroh
+    st Z, temp0
+    inc temp1
+    andi temp1,usart_rx_mask
+    sts usart_rx_in, temp1
     loadtos
     jmp_ DO_NEXT
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; setup with
+; ' rx-isr URXCaddr int!
+
+XT_ISR_RX:
+    .dw DO_COLON
+usart_rx_isr:
+  .dw XT_DOLITERAL
+  .dw usart_data
+  .dw XT_CFETCH
+  .dw XT_DUP
+  .dw XT_DOLITERAL
+  .dw 3
+  .dw XT_EQUAL
+  .dw XT_DOCONDBRANCH
+  .dw usart_rx_isr1
+  .dw XT_COLD
+usart_rx_isr1:
+  .dw XT_TO_RXBUF
+  .dw XT_EXIT
 
 ; ( -- ) Hardware Access
 ; R( --)
