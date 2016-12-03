@@ -32,8 +32,12 @@ PFA_rx_tobuf:
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; setup with
-; ' rx-isr URXCaddr int!
-
+; ' isr-rx URXCaddr int!
+VE_ISR_RX:
+    .dw $ff06
+    .db "isr-rx"
+    .dw VE_HEAD
+    .set VE_HEAD = VE_ISR_RX
 XT_ISR_RX:
     .dw DO_COLON
 usart_rx_isr:
