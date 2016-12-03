@@ -4,12 +4,9 @@
 .equ usart_rx_size = $10
 .equ usart_rx_mask = usart_rx_size - 1
 .dseg
-usart_rx_data: .byte usart_rx_size+2
-usart_rx_in: .byte 1
-             .byte 1
-usart_rx_out: .byte 1
-              .byte 1
-
+ usart_rx_data: .byte usart_rx_size
+ usart_rx_in:   .byte 1
+ usart_rx_out:  .byte 1
 .cseg
 
 VE_TO_RXBUF:
@@ -111,7 +108,7 @@ PFA_RX_BUFFER:
 
 ; ( -- f)  
 ; MCU
-; check if unread characters are in the input queue using interrupt driver
+; check if unread characters are in the input queue
 VE_RXQ_BUFFER:
     .dw $ff07
     .db "rx?-buf",0
