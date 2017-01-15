@@ -18,19 +18,21 @@ variable timer0.tick
   1 timer0.tick +!
 ;
 
-\ some settings for 8bit timer to
-\ get 1ms ticks
-\ f_cpu  prescaler preload
-\  16MHz   64       6
-\   8MHz   64     131
-: timer0.init ( preload -- )
-    TCNT0 c!
+\ preload for overflow interrupt every 1ms
+\ preload = 256 - (f_cpu / (prescaler * 1000))
+
+: timer0.preload
+   f_cpu #1000 um/mod nip 64 / 256 - negate 
+;
+
+: timer0.init ( -- )
+    timer0.preload TCNT0 c!
     0 timer0.tick !
     ['] timer0.isr TIMER0_OVFAddr int!
 ;
 
 : timer0.start
-    0 timer0.tick !
+    timer0.init
     %00000011 TCCR0B c! \ prescaler 64
     %00000001 TIMSK0 c! \ enable overflow interrupt
 ;
