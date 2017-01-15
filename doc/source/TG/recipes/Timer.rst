@@ -9,8 +9,11 @@ generic module that depends on one of the access modules.
 The access module (in :file:`timer0.frt` and :file:`timer1.frt`)
 encapsulate the access to the selected timer. It uses interrupts to
 create a millisecond counter for common usage. This millsecond counter
-is a single cell variable that gets continuesly incremented and
-wraps around every 65,5 seconds.
+is a single cell variable :command:`timer0.tick` that increments freely 
+and wraps around every 65,5 seconds.
+
+The counter is started with the command :command:`timer0.start`.
+It automatically adapts to the actual controller clock rate.
 
 The generic routines rely on this counter. A timer is simply a single
 cell number that is either the starting value of the millisecond counter
