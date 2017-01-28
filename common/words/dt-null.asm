@@ -3,18 +3,18 @@
 ; there is no parser for this recognizer, this is the default and failsafe part
 
 .if cpu_msp430==1
-    HEADER(XT_R_FAIL,6,"r:fail",DOROM)
+    HEADER(XT_DT_NULL,7,"dt:null",DOROM)
 .endif
 
 .if cpu_avr8==1
-VE_R_FAIL:
-    .dw $ff06
-    .db "r:fail"
+VE_DT_NULL:
+    .dw $ff07
+    .db "dt:null"
     .dw VE_HEAD
-    .set VE_HEAD = VE_R_FAIL
-XT_R_FAIL:
+    .set VE_HEAD = VE_DT_NULL
+XT_DT_NULL:
     .dw PFA_DOCONSTANT
-PFA_R_FAIL:
+PFA_DT_NULL:
 .endif
     .dw XT_FAIL  ; interpret
     .dw XT_FAIL  ; compile

@@ -19,7 +19,7 @@ CFG_ORDERLIST: ; list of wordlist id, exactly numwordlist entries
 CFG_RECOGNIZERLISTLEN:
     .dw 2
 CFG_RECOGNIZERLIST:
-    .dw XT_REC_WORD
+    .dw XT_REC_FIND
     .dw XT_REC_NUM
     .byte  (NUMRECOGNIZERS-2)*CELLSIZE ; two slots are already used
 

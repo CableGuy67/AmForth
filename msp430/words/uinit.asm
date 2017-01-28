@@ -5,7 +5,7 @@
 ; variables, followed by 30 cells for interrupt vectors.
     HEADER(XT_UINIT,5,"uinit",DOROM)
 ; CFG Area
-	DW 2,XT_REC_WORD,XT_REC_NUM,0,0
+	DW 2,XT_REC_FIND,XT_REC_NUM,0,0
 	DW 1,CFG_FORTHWID,0,0,0,0,0,0,0
 	DW XT_APPLTURNKEY ; TURNKEY vector
 	DW RAMDICT        ; HERE / DP

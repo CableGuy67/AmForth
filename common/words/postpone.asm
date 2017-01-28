@@ -18,7 +18,7 @@ PFA_POSTPONE:
 .endif
     .dw XT_PARSENAME
     .dw XT_FORTHRECOGNIZER
-    .dw XT_DORECOGNIZER
+    .dw XT_RECOGNIZE
     .dw XT_DUP
     .dw XT_TO_R
     .dw XT_ICELLPLUS

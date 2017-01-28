@@ -1,18 +1,18 @@
-; ( addr len -- xt flags r:word | r:fail )
+; ( addr len -- xt flags dt:xt | dt:null )
 ; Interpreter
 ; search for a word
 .if cpu_msp430==1
-    HEADER(XT_REC_WORD,8,"rec:word",DOCOLON)
+    HEADER(XT_REC_FIND,8,"rec:find",DOCOLON)
 .endif
 .if cpu_avr8==1
-VE_REC_WORD:
+VE_REC_FIND:
     .dw $ff08
-    .db "rec:word"
+    .db "rec:find"
     .dw VE_HEAD
-    .set VE_HEAD = VE_REC_WORD
-XT_REC_WORD:
+    .set VE_HEAD = VE_REC_FIND
+XT_REC_FIND:
     .dw DO_COLON
-PFA_REC_WORD:
+PFA_REC_FIND:
 .endif
     .DW XT_FINDXT
     .dw XT_DUP
@@ -20,10 +20,10 @@ PFA_REC_WORD:
     .dw XT_DOCONDBRANCH
     DEST(PFA_REC_WORD_FOUND)
         .dw XT_DROP
-	.dw XT_R_FAIL
+	.dw XT_DT_NULL
 	.dw XT_EXIT
 PFA_REC_WORD_FOUND:
-    .dw XT_R_WORD
+    .dw XT_DT_XT
 
     .dw XT_EXIT
 
@@ -31,18 +31,18 @@ PFA_REC_WORD_FOUND:
 ; Interpreter
 ; actions to handle execution tokens and their flags
 .if cpu_msp430==1
-    HEADER(XT_R_WORD,6,"r:word",DOROM)
+    HEADER(XT_DT_XT,6,"dt:xt",DOROM)
 .endif
 
 .if cpu_avr8==1
-VE_R_WORD:
-    .dw $ff06
-    .db "r:word"
+VE_DT_XT:
+    .dw $ff05
+    .db "dt:xt",0
     .dw VE_HEAD
-    .set VE_HEAD = VE_R_WORD
-XT_R_WORD:
+    .set VE_HEAD = VE_DT_XT
+XT_DT_XT:
     .dw PFA_DOCONSTANT
-PFA_R_WORD:
+PFA_DT_XT:
 .endif
     .dw XT_R_WORD_INTERPRET
     .dw XT_R_WORD_COMPILE
