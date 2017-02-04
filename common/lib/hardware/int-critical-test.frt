@@ -1,14 +1,5 @@
 
-: int? SREG c@ SREG_I and 0> ;
-
-: critical[
-    r> int? >r >r \ keep the current state
-    -int 
-;
-
-: ]critical
-    r> r> if +int then >r \ will crash if not matched
-;
+\ #require int-critical.frt
 
 : bar ." bar" int? . ;
 : baz ." baz" int? . ;
