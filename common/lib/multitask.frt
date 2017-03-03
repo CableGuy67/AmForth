@@ -21,7 +21,6 @@
 \ than r@ due to hardware characteristics.
 
 \ marker _multitask_
-\ #require is.frt
 \ #require builds.frt
 
 #0 user status
@@ -83,12 +82,12 @@
 
 \ stop multitasking
 : single ( -- ) \ initialize the multitasker with the serial terminal
-    ['] noop is pause 
+    ['] noop ['] pause defer!
 ;
 
 \ start multitasking
 : multi ( -- )
-    ['] multitaskpause is pause 
+    ['] multitaskpause ['] pause defer!
 ;
 
 
@@ -108,7 +107,7 @@
    follower !   ( -- tid f )
    swap cell+   ( -- f tid-f )
    !
-   r> is pause  \ restore multitasking
+   r> ['] pause defer! \ restore multitasking
 ;
 
 \ print all tasks with their id and status
