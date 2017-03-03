@@ -3,11 +3,14 @@
 Interrupt Service Routines
 ..........................
 
-The interrupt forth word is simply a  colon word. It is
-executed within the context of the current user area
-and stack frame. It must not have any stack effect outside
-the word. Using ``throw`` is not recommended since it
-will affect the user area of the interrupted task.
+An interrupt can occure any time. Interrupts are
+handled with standard forth words. They must not
+have any stack effect. 
+
+The interrupt forth word is executed within the context 
+of the current user area and stack frame. Using ``throw`` 
+is not recommended since it will affect the user area of 
+the interrupted task.
 
 .. code-block:: forth
 
@@ -49,9 +52,7 @@ will affect the user area of the interrupted task.
    %00000000 TIMSK0 c! \ stop interrupt
  ;
 
-All interrupts are available for forth interrupts. Versions earlier
-than 4.4 have the limitation that hardware interrupt conditions could
-not be cleared.
+All interrupts are available for forth interrupts. 
 
 ``int!`` (and friends) uses the interrupt address from
 the data sheet as an index, but points to a different address in EEPROM.

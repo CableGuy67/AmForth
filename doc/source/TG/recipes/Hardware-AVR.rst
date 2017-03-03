@@ -5,6 +5,7 @@ Hardware Modules (AVR)
    :maxdepth: 1
 
    1wire
+   Command-IO
    Digital-Ports
    EEPROM
    Efficient-Bitmanipulation

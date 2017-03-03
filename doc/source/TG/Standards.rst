@@ -24,8 +24,7 @@ Loop counters are checked on signed compares.
 
 `Number Prefixes <http://www.forth200x.org/number-prefixes.html>`_
   The number base can be specified by prepending the $, # or % signs.
-  Single characters as 'a' are not supported.
-
+  Single characters such as 'a' are supported via a loadable module.
 
 `Defer and IS <http://www.forth200x.org/deferred.html>`_
   :command:`defer` gives the possibility of vectored execution. Amforth
@@ -207,7 +206,8 @@ forth VM initialization. When called from
 within forth it is the equivalent to a RESET.
 :command:`WARM` initializes the :command:`PAUSE`
 deferred word to do nothing, calls the application defined
-TURNKEY action and finally hands over to :command:`QUIT`.
+:command:`TURNKEY` action and finally hands over to 
+:command:`QUIT`.
 
 TURNKEY
 .......

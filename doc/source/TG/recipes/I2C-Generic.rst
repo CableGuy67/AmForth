@@ -40,17 +40,25 @@ data on the data stack instead of providing a RAM buffer.
 For these tasks the following words are provided. They
 to work within the begin/end scope described above.
 
-``i2c.>n`` ( x_n .. x_1 n addr -- )
-  Creates the i2C scope and send n bytes to the device. Afterwards
+``i2c.c@`` ( addr -- c )
+  Start a bus cycle and read one byte from the device.
+  Afterwards release the bus.
+
+``i2c.c!`` ( c addr -- )
+  Start a bus cycle and write one byte to the device.
+  Afterwards release the bus.
+
+``i2c.n!`` ( x_n .. x_1 n addr -- )
+  Start a bus cycle and send n bytes to the device. Afterwards
   the STOP condition is sent and the bus is released.
 
-``i2c.n>`` ( n addr -- x_n .. x_1 )
-  Create the I2C transaction scope and receive n bytes from the
+``i2c.n@`` ( n addr -- x_n .. x_1 )
+  Start a bus cycle and receive n bytes from the
   device. To acomplish that, a start is triggered with
   the read bit of the addr set. Afterwards the STOP condition is
   sent and the bus is released.
 
-``i2c.m>n`` ( n xm .. x1 m addr -- x1 .. xn )
+``i2c.m!n@`` ( n xm .. x1 m addr -- x1 .. xn )
   A combination of the two above. It creates the I2C transaction
   scope and sends m bytes to the device. Afterwards the data
   transfer direction is switched by sending a repeated start
@@ -62,22 +70,6 @@ Example - Port Expander
 
 This example communicates with an I2C port expander
 PCF8574(a). The I2C address is usually between $30 and $3f.
-
-
-.. code-block:: forth
-
-   #require i2c.frt
-
-   \ write one byte to the PE
-   : i2c.pe.c! ( n hwid -- )
-      1 swap i2c.n> ( --  )
-   ;
-
-   \ get one byte from the PE
-   : i2c.pe.c@ ( hwid -- )
-      1 swap i2c.>n
-   ;
-
 
 Communication is not time critical, so the slow speed standard
 initialization is sufficient. To chack whether the device is
@@ -109,13 +101,12 @@ pattern with ``TO``:
 
    #require value.frt
    #require quotations.frt
-   #require i2c-pe.frt
 
    : i2c.cvalue ( n addr hwid -- )
      (value)
      dup , \ store the hwid
-     [: dup @i ( hwid) i2c.pe.c@ ;] ,
-     [: dup @i ( hwid) i2c.pe.c! ;] ,
+     [: dup @i ( hwid) i2c.c@ ;] ,
+     [: dup @i ( hwid) i2c.c! ;] ,
      i2c.pe.c!  \ store inital data
    ;
 
