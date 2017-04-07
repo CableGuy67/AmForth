@@ -3,6 +3,8 @@
 intcur: .byte 1
 .eseg
 intvec: .byte INTVECTORS * CELLSIZE
+.dseg
+intcnt: .byte INTVECTORS
 .cseg
 
 ; interrupt routine gets called (again) by rcall! This gives the
@@ -21,6 +23,18 @@ isr:
     lsl r0
 .endif
     sts intcur, r0
+    push zh
+    push zl
+    ldi zl, low(intcnt)
+    ldi zh, high(intcnt)
+    add zl, r0
+    adc zh, zeroh
+    ld r0, Z
+    inc r0
+    st Z, r0
+    pop zl
+    pop zh
+
     ld r0, Y+
     out SREG, r0
     ld r0, Y+
