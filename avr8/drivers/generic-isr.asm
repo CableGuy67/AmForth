@@ -27,6 +27,7 @@ isr:
     push zl
     ldi zl, low(intcnt)
     ldi zh, high(intcnt)
+    lsr r0 ; we use byte addresses in the counter array, not words
     add zl, r0
     adc zh, zeroh
     ld r0, Z
