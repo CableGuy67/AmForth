@@ -16,8 +16,8 @@
   .def bh  = r9
 
 ; internal
-  .def mcu_boot      = r10
-  .def erase_counter = r11
+  .def mcu_boot = r10
+  .def isrflag  = r11
 
   .def temp4 = r14
   .def temp5 = r15

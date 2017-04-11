@@ -48,7 +48,6 @@ DO_STOREI_atmega:
   and tosh, temp5
   or tosh, tosl
   breq DO_STOREI_writepage 
-    inc erase_counter
     movw zl, temp2
     ldi temp0,(1<<PGERS)
     rcall dospm

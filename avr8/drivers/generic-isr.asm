@@ -23,6 +23,7 @@ isr:
     lsl r0
 .endif
     sts intcur, r0
+    mov isrflag, r0
     push zh
     push zl
     ldi zl, low(intcnt)
