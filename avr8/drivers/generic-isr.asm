@@ -1,6 +1,4 @@
 ; ISR routines
-.dseg
-intcur: .byte 1
 .eseg
 intvec: .byte INTVECTORS * CELLSIZE
 .dseg
@@ -22,7 +20,6 @@ isr:
 .if intvecsize == 1 ;
     lsl r0
 .endif
-    sts intcur, r0
     mov isrflag, r0
     push zh
     push zl

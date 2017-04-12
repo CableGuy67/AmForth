@@ -1,4 +1,4 @@
-; ( xt -- ) 
+; ( n -- ) 
 ; Interrupt
 ; executes an interrupt service routine
 ;VE_ISREXEC:
@@ -9,9 +9,6 @@
 XT_ISREXEC:
     .dw DO_COLON
 PFA_ISREXEC:
-    .dw XT_DOLITERAL
-    .dw intcur
-    .dw XT_CFETCH
     .dw XT_DOLITERAL
     .dw intvec
     .dw XT_PLUS
