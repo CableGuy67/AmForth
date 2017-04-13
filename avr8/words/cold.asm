@@ -12,6 +12,7 @@ PFA_COLD:
     in_ mcu_boot, MCUSR
     clr zerol
     clr zeroh
+    clr isrflag
     out_ MCUSR, zerol
     ; clear RAM
     ldi zl, low(ramstart)
