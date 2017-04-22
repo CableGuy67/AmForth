@@ -105,5 +105,20 @@
 ;.equ OW_BIT=4
 ;.include "drivers/1wire.asm"
 
+; Interrupts.
+; globally enable (or disable) the interrupt support. It is
+; enabled by default and some other settings (usart receive)
+; depend on it. disabling it makes the inner interpreter
+; slightly faster and frees some code space.
+; .set WANT_INTERRUPTS = 1
+
+; reserve a RAM region to count each interrupt individually.
+; each interrupt of the given controller type gets a byte
+; that is incremented for each interrupt. Needs a lot of 
+; RAM but may be useful for debugging interrupts or get rid
+; of random effects. disabled by default.
+; .set WANT_INTERRUPT_COUNTERS = 0
+
+
 ; include the whole source tree.
 .include "amforth.asm"

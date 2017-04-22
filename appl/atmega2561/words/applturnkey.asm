@@ -11,7 +11,10 @@ XT_APPLTURNKEY:
 PFA_APPLTURNKEY:
     .dw XT_USART
 
+.if WANT_INTERRUPTS == 1
     .dw XT_INTON
+.endif
+
     .dw XT_DOT_VER
     .dw XT_SPACE
     .dw XT_F_CPU

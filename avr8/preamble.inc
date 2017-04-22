@@ -8,9 +8,16 @@
 ; some defaults, change them in your application master file
 ; see template.asm for an example
 
-.set AMFORTH_RO_SEG = NRWW_START_ADDR
+; enabling Interrupts, disabling them affects
+; other settings as well. 
+.set WANT_INTERRUPTS = 1
 
-; receiving is asynchron, so an interrupt queue is useful.
+; count the number of interrupts individually.
+; requires a lot of RAM (one byte per interrupt)
+; disabled by default.
+.set WANT_INTERRUPT_COUNTERS = 0
+
+; receiving is asynchronously, so an interrupt queue is useful.
 .set WANT_ISR_RX = 1
 
 ; case insensitve dictionary lookup.
@@ -40,4 +47,4 @@
 ; Dictionary setup
 .set VE_HEAD = $0000
 .set VE_ENVHEAD = $0000
-
+.set AMFORTH_RO_SEG = NRWW_START_ADDR
