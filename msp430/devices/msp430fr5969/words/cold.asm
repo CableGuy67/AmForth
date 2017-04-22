@@ -24,6 +24,7 @@ reset:
   MOV     #PSTACK,PSP
   MOV     #UAREA,UP              ; initial user pointer
 
+  CLR R15
   ; now hand over to Forth with WARM (a colon word)
   MOV     #XT_WARM+2,IP
   NEXT
