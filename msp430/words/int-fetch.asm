@@ -1,2 +1,4 @@
         CODEHEADER(XT_INT_FETCH,4,"int@")
+	ADD #CFG_ISRVECS,TOS
+	MOV @TOS,TOS
         NEXT

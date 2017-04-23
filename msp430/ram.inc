@@ -18,6 +18,7 @@ CFG_FORTHWID:DS16 1           ; the Forth wordlist
 CFG_ENVWID:  DS16 1           ; wordlist id for environment queries
 CFG_WLSCOPE: DS16 1           ; wordlist scope (wlscope)
 CFG_FORTHRECOGNIZER: DS16 1   ; standard recognizer stack
+CFG_ISRVECS: DS16 10          ; 10 ISR addresses
 ; default USER area comes from info flash or, if invalid from uinit.
 UAREA:   DS8  SYSUSERSIZE     ; standard user area
 APPUSER: DS8  APPUSERSIZE     ; not initalized from uinit.

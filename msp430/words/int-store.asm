@@ -1,2 +1,6 @@
         CODEHEADER(XT_INT_STORE,4,"int!")
+	ADD #CFG_ISRVECS,TOS
+	MOV @PSP+,W
+	MOV W,0(TOS)
+	MOV @PSP+,TOS
         NEXT
