@@ -12,6 +12,7 @@ MAINSEG    equ 512
 INFOSEG    equ 64
 INFO_SIZE  equ 128    ; bytes
 
+.if WANT_INTERRUPTS == 1
 .org 0FFE0h
 
   DC16   null_handler         ; 01: 0FFE0  Unused
@@ -29,6 +30,7 @@ INFO_SIZE  equ 128    ; bytes
   DC16   irq9_handler         ; 13: 0FFF8  Timer B
   DC16   irq10_handler         ; 14: 0FFFA  Timer B
   DC16   null_handler         ; 15: 0FFFC  NMI. Unused.
+.endif
 
 .org 0FFFEh
         DC16  reset       ; FFFE - Reset
