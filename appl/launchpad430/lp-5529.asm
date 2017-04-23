@@ -10,6 +10,7 @@ TIB_SIZE  equ 92          ; bytes (must be even)
 F_CPU EQU 8000000
 AMFORTH_START equ 0e000h
 
+.set WANT_INTERRUPTS = 0
 ; now include all and everything
 
 .include "amforth.asm"

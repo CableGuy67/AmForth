@@ -15,7 +15,9 @@ VE_APPLTURNKEY:
 XT_APPLTURNKEY:
     .dw DO_COLON
 PFA_APPLTURNKEY:
+.if WANT_INTERRUPTS==1
     .dw XT_INTON
+.endif
 .endif
     .dw XT_USART
     .dw XT_DOT_VER

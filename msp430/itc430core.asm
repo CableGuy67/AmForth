@@ -115,3 +115,15 @@
 .include "words/cells.asm"
 .include "words/to-body.asm"
 .include "words/up.asm"
+
+; --------------------------------------------
+; Interrupt routines
+;
+.if WANT_INTERRUPTS==1
+.include "words/int-on.asm"
+.include "words/int-off.asm"
+.include "words/int-trap.asm"
+.include "words/int-fetch.asm"
+.include "words/int-store.asm"
+
+.endif

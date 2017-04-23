@@ -8,6 +8,7 @@ TIB_SIZE  equ 102         ; bytes (must be even)
 
 F_CPU EQU 8000000
 AMFORTH_START equ 0E000h
+.set WANT_INTERRUPTS = 0
 
 ; now include all and everything
 
