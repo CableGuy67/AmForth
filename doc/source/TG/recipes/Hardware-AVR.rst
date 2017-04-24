@@ -15,7 +15,7 @@ Hardware Modules (AVR)
    I2C-Generic
    I2C-Slave
    I2C-Values
-   Interrupt-ISR
+   Interrupt-ISR-AVR8
    Interrupt-Critical-Section
    Power-Save
    NRWW

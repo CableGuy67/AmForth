@@ -32,11 +32,25 @@ Here you'll find things that are not yet released but will be part of the next r
 See the code section at Sourceforge to get the
 `most recent sources <http://sourceforge.net/p/amforth/code/HEAD/tree/trunk/>`__
 
-* lib(AVR8): Implement :ref:`I2C Slave`.
+* core(AVR8): redesigned interrupt handling to improve reliability. Thanks to Erich.
+* core(MSP430): highly experimental support for interrupt service routines in Forth
+  for MSP430 2553. Manually enable it if your're brave the same way the AVR's work.
+  :ref:`Interrupt Service Routine MSP430` and :ref:`Interrupt Service Routine`.
+
+31.3.2017: release 6.4
+.......................
+
+* lib(ALL): :command:`((` for multiline comments. Comments end with :command:`))`.
+  Uses recognizers for that from ``rec-double-paren.frt``.
+* lib(AVR8): Implement :ref:`I2C Slave`. Renamed :command:`i2c.>n` to 
+  :command:`i2c.n@` and :command:`i2c.n>` to :command:`i2c.n!`. :ref:`I2C Generic`
+* lib(ALL): Recognizer for the Forth 2012 ``'c'`` Syntax to replace ``char c`` 
+  and ``[char] c``. Just load the ``rec-char.frt`` file.
+* core(AVR8): add :command:`>rx-buf (c -- )` that appends a character to the
+  ring buffer that uses the usart receive interrupt.
 
 24.8.2016: release 6.3
 ......................
-
 
 * core(AVR8): Use the standard Interrupt Service Routine for terminal input too. Makes
   re-definable with :command:`int!`. Thanks to Erich for his longanimity on this and the

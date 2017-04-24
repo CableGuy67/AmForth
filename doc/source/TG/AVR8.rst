@@ -236,20 +236,18 @@ The first one is the low level part.
 It is called whenever an interrupt occurs. The code
 is the same for all interrupts. It takes the number
 of the interrupt from its vector address and stores
-this in a RAM cell. Then the low level ISR sets the
-:command:`T` flag in the status register of the controller
-and returns with :command:`RET`.
+this in a CPU register. Then  returns with :command:`RET`.
 
 The second step does the inner interpreter.
-It checks the T-flag every time it is entered and,
-if it is set, it switches to interrupt
-handling at forth level. This approach has a penalty
-of 1 CPU cycle for checking and skipping the branch
-instruction to the isr forth code if no interrupt
-occurred.
+It checks whether the CPU register dedicated for
+interrupt handling has a non-NULL content. If so it 
+switches to interrupt handling at forth level. This 
+approach has a penalty of 2 CPU cycles for checking 
+and skipping the branch instruction to the isr forth 
+code if no interrupt occurred.
 
 If an interrupt is detected, the forth VM clears the
-T-flag and continues with the word :command:`ISR-EXEC`.
+register and continues with the word :command:`ISR-EXEC`. 
 This word reads the currently active interrupt number and calls
 the associated execution token.  When this word is finished,
 the word :command:`ISR-END` is called. This word clears
