@@ -5,16 +5,20 @@ DOCOLON:
 .if WANT_INTERRUPTS==1
 DO_NEXT:
 	TST ISR
-        JNZ DO_INT
-DO_REALLY_NEXT:
+        JNZ DO_INTERRUPT
         MOV @IP+,W      ; fetch word address into W
+DO_REALLY_NEXT:
         MOV @W+,PC      ; fetch code address into PC, W=PFA
-DO_INT:
-	MOV CFG_ISRVECS, Q
-	ADD ISR,Q
-	MOV @Q, IP
+
+DO_INTERRUPT:
+	SUB    #2,PSP          ; 1  push old TOS..
+        MOV    TOS,0(PSP)
+	MOV    ISR,TOS
+	DEC    TOS
 	CLR ISR
+        MOV XT_ISREXEC, W
 	JMP DO_REALLY_NEXT
+
 irq1_handler:
 	MOV #1, R15
 	RETI
