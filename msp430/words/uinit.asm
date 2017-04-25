@@ -16,8 +16,12 @@
         DW lastenv        ; environment WID
         DW XT_GET_CURRENT ; wlscope
 	DW CFG_RECOGNIZERLISTLEN ; FORTH-RECOGNIZER
+
+.if WANT_INTERRUPTS==1
 	DW XT_NOOP,XT_NOOP,XT_NOOP,XT_NOOP,XT_NOOP
 	DW XT_NOOP,XT_NOOP,XT_NOOP,XT_NOOP,XT_NOOP
+.endif
+
 ; USER Area
 	DW 0,0          ; STATE/FOLLOWER
 	DW 0,0,0        ; RP,SP0, SP
