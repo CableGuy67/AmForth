@@ -11,12 +11,12 @@ DO_REALLY_NEXT:
         MOV @W+,PC      ; fetch code address into PC, W=PFA
 
 DO_INTERRUPT:
-	SUB    #2,PSP          ; 1  push old TOS..
+	SUB    #2,PSP          ; save tos
         MOV    TOS,0(PSP)
-	MOV    ISR,TOS
+	MOV    ISR,TOS         ; move to tos
 	DEC    TOS
-	CLR ISR
-        MOV XT_ISREXEC, W
+	CLR ISR                ; clear flag register
+        MOV #XT_ISREXEC, W
 	JMP DO_REALLY_NEXT
 
 irq1_handler:
