@@ -4,7 +4,7 @@ Interrupt Critical Section
 ..........................
 
 There are situations where no interrupts should be allowed. These
-code segments are usually named critical sections.
+code segments are usually called *critical sections*.
 
 .. code-block:: forth
 
@@ -35,10 +35,12 @@ have data that crashes the system.
 
 .. code-block:: forth
 
- \ global interrupt enable state as forth flag
+ \ global interrupt enable state as forth flag, AVR8
  : int? ( -- f )
     SREG c@ SREG_I and 0> \ use the amforth-shell for the constants
  ;
+ \ the MSP 430 works similar
+ \ : int? sr@ 8 and 8 = ; \ sr@ : status register fetch
 
  : critical[ \ ( -- ) R( XT -- f XT )
     r> int? >r >r \ keep the current state
@@ -55,11 +57,9 @@ turn off the cooperative multitasker during the critical section.
 .. code-block:: forth
 
  : critical[ \ ( -- ) R( XT -- n*f XT )
-    r>
-       int? >r  \ get the global interrupt flag
-       ['] pause defer@ >r \ get current multitasker
-     >r \ restore the returnstack
-    -int single
+    r> int? >r  \ save current state of interrupt and multitasker
+    ['] pause defer@ >r >r 
+    -int single \ no interrupts, no task switches
  ;
 
  : ]critical \ ( -- ) R( n*f XT -- XT )

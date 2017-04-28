@@ -41,15 +41,15 @@ used to minimize the code space usage.
 +------------+---------------+
 |   5        | UCSI Receive  |
 +------------+---------------+
-|   6        | Timer A       |
+|   6        | Timer A CC1   |
 +------------+---------------+
-|   7        | Timer A       |
+|   7        | Timer A CC0   |
 +------------+---------------+
-|   8        | Comparator    |
+|   8        | Comparator A  |
 +------------+---------------+
-|   9        | Timer B       |
+|   9        | Timer B CC1   |
 +------------+---------------+
-|   10       | Timer B       |
+|   10       | Timer B CC0   |
 +------------+---------------+
 
 The XT table is stored in the Info Flash. To keep it

@@ -1,6 +1,0 @@
-# Allow everthing for everybody
-
-User-Agent: *
-
-# Sitemap: http://amforth.sourceforge.net/sitemap-main.xml.gz
-# Sitemap: http://amforth.sourceforge.net/TG/sitemap-TG.xml.gz
