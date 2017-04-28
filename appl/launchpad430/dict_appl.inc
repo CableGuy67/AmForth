@@ -43,12 +43,6 @@
 ;; compiler
 ;.include "words/bracketcompile.asm"
 
-;; text interpreter
-;.include "words/get-recognizer.asm"
-;.include "words/set-recognizer.asm"
-;.include "words/name2interpret.asm"
-;.include "words/name2compile.asm"
-
 ;; legacy words
 ;.include "words/word.asm"
 ;.include "words/count.asm"
