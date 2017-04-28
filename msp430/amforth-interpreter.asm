@@ -14,7 +14,6 @@ DO_INTERRUPT:
 	SUB    #2,PSP          ; save tos
         MOV    TOS,0(PSP)
 	MOV    ISR,TOS         ; move to tos
-	DEC    TOS
 	CLR ISR                ; clear flag register
         MOV #XT_ISREXEC, W
 	JMP DO_REALLY_NEXT
