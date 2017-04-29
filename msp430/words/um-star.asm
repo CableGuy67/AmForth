@@ -2,7 +2,7 @@
     CODEHEADER(XT_UMSTAR,3,"um*")
 .ifdef MPY
  	dint
-	mov 0(PSP), &MPY
+	mov @PSP, &MPY
 	mov TOS, &OP2
 	nop ; 1 cycle for calculation
 	mov &RESLO, 0(PSP)

@@ -69,7 +69,7 @@ cpu_avr8   EQU 0
 
 .macro NEXT
 .if WANT_INTERRUPTS==1
-    MOV #DO_NEXT, PC
+   MOV #DO_NEXT, PC
 .else
     MOV @IP+,W      ; fetch word address into W
     MOV @W+,PC      ; fetch code address into PC, W=PFA

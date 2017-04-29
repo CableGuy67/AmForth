@@ -7,8 +7,16 @@
 ;   are not necessary for the core system (e.g. D+)
 ;
 
+; various tools
+.include "words/dot-s.asm"
+;.include "words/dump.asm"
+; bleeding edge
+;.include "words/build-info.asm"
+
+.include "words/mcu-sr-fetch.asm"
+
 ; additional environment queries
-.include "words/env-usersize.asm"
+;.include "words/env-usersize.asm"
 
 ; next some words that may be useful in certain
 ; applications only. Including them by default
@@ -21,6 +29,8 @@
 ;.include "words/cfg-recognizer.asm"
 
 ;; generic tools
+;.include "words/n_to_r.asm"
+;.include "words/n_r_from.asm"
 ;.include "words/get-stack.asm"
 ;.include "words/set-stack.asm"
 
@@ -35,6 +45,8 @@
 ;; double cell arithmetics
 ;.include "words/d-plus.asm"
 ;.include "words/d-minus.asm"
+;.include "words/d-2slash.asm"
+;.include "words/d-2star.asm"
 
 ;; some (external) assembly required
 ;.include "words/code.asm"
