@@ -32,6 +32,9 @@ Here you'll find things that are not yet released but will be part of the next r
 See the code section at Sourceforge to get the
 `most recent sources <http://sourceforge.net/p/amforth/code/HEAD/tree/trunk/>`__
 
+30.4.2017: release 6.5
+.......................
+
 * core(AVR8): redesigned interrupt handling to improve reliability. Thanks to Erich.
 * core(MSP430): highly experimental support for interrupt service routines in Forth
   for MSP430 2553. Manually enable it if your're brave the same way the AVR's work.
