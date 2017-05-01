@@ -31,7 +31,7 @@ PFA_REC_WORD_FOUND:
 ; Interpreter
 ; actions to handle execution tokens and their flags
 .if cpu_msp430==1
-    HEADER(XT_DT_XT,6,"dt:xt",DOROM)
+    HEADER(XT_DT_XT,5,"dt:xt",DOROM)
 .endif
 
 .if cpu_avr8==1
