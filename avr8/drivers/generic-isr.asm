@@ -21,6 +21,7 @@ isr:
     lsl r0
 .endif
     mov isrflag, r0
+.if WANT_INTERRUPT_COUNTERS==1
     push zh
     push zl
     ldi zl, low(intcnt)
@@ -33,7 +34,7 @@ isr:
     st Z, r0
     pop zl
     pop zh
-
+.endif
     ld r0, Y+
     out SREG, r0
     ld r0, Y+
