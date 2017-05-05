@@ -1,8 +1,10 @@
 ; ISR routines
 .eseg
 intvec: .byte INTVECTORS * CELLSIZE
+.if WANT_INTERRUPT_COUNTERS==1
 .dseg
 intcnt: .byte INTVECTORS
+.endif
 .cseg
 
 ; interrupt routine gets called (again) by rcall! This gives the
