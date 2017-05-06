@@ -22,6 +22,13 @@ isr:
 .if intvecsize == 1 ;
     lsl r0
 .endif
+    ; check whether isrflag is zero. if not,
+    ; there is an still unhandled interrupt pending.
+    tst isrflag
+    jz isr_clean
+    ; there is a collision. the previous interrupt is not yet
+    ; handled by the forth inner interpreter
+isr_clean:
     mov isrflag, r0
 .if WANT_INTERRUPT_COUNTERS==1
     push zh
