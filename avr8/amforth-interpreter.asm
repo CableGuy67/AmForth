@@ -25,8 +25,8 @@ DO_INTERRUPT:
     ; here we deal with interrupts the forth way
     savetos
     mov tosl, isrflag
-    clr tosh
     clr isrflag
+    clr tosh
     ldi wl, LOW(XT_ISREXEC)
     ldi wh, HIGH(XT_ISREXEC)
     rjmp DO_EXECUTE
