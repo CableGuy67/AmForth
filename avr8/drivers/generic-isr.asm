@@ -25,7 +25,7 @@ isr:
     ; check whether isrflag is zero. if not,
     ; there is an still unhandled interrupt pending.
     tst isrflag
-    jz isr_clean
+    breq isr_clean
     ; there is a collision. the previous interrupt is not yet
     ; handled by the forth inner interpreter
 isr_clean:
