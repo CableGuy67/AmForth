@@ -3,6 +3,7 @@
 
 .if WANT_INTERRUPT_COUNTERS == 1
   .include "words/irqcnt.asm"
+  .include "words/int-num.asm"
 .endif
 
 .include "words/int-on.asm"
