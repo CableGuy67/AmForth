@@ -17,7 +17,7 @@
 .include "words/prompt-ok.asm"
 .include "words/prompt-ready.asm"
 .include "words/prompt-error.asm"
-
+.include "words/prompt-input.asm"
 .include "words/quit.asm"
 .include "words/pause.asm"
 .include "words/cold.asm"

@@ -15,7 +15,7 @@
 ; count the number of interrupts individually.
 ; requires a lot of RAM (one byte per interrupt)
 ; disabled by default.
-.set WANT_INTERRUPT_COUNTERS = 0
+.set WANT_INTERRUPT_COUNTERS = 1
 
 ; receiving is asynchronously, so an interrupt queue is useful.
 .set WANT_ISR_RX = 1

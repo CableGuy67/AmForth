@@ -29,6 +29,7 @@
 .set USER_P_OK    = 28
 .set USER_P_ERR   = 30
 .set USER_P_RDY   = 32
+.set USER_P_INPUT = 34
 
-.set SYSUSERSIZE = 34
+.set SYSUSERSIZE = 36
 ; 
