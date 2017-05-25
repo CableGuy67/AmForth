@@ -12,7 +12,7 @@
 
 .include "words/show-wordlist.asm"
 .include "words/words.asm"
-.include "dict/interrupt.inc"
+
 
 .include "words/pick.asm"
 .include "words/dot-quote.asm"
@@ -174,7 +174,10 @@
 .include "words/tib.asm"
 
 .include "words/init-ram.asm"
-.include "dict/compiler2.inc"
+
 .include "words/bounds.asm"
 .include "words/s-to-d.asm"
 .include "words/to-body.asm"
+
+.include "dict/compiler2.inc"
+.include "dict/interrupt.inc"

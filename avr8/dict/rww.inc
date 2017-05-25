@@ -4,6 +4,7 @@
 .include "words/umin.asm"
 .include "words/immediate-q.asm"
 .include "words/name2flags.asm"
+.include "words/1ms.asm"
 
 .if AMFORTH_NRWW_SIZE > 8000
 .include "dict/appl_8k.inc"

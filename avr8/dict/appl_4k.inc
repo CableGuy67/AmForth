@@ -1,7 +1,7 @@
 .include "words/ver.asm"
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-.include "words/noop.asm"
+
 .include "words/unused.asm"
 .include "words/to.asm"
 .include "words/i-cellplus.asm"
@@ -79,3 +79,4 @@
 .include "words/find-xt.asm"
 
 .include "dict/compiler1.inc"
+.include "dict/interrupt.inc"

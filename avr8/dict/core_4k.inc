@@ -11,7 +11,6 @@
 .include "words/abs.asm"
 .include "words/pick.asm"
 .include "words/cellplus.asm"
-.include "dict/interrupt.inc"
 
 ; now the relocatable colon words
 .include "words/prompt-ok.asm"
@@ -96,3 +95,4 @@
 .include "words/spaces.asm"
 .include "words/s-to-d.asm"
 .include "words/to-body.asm"
+.include "words/noop.asm"
