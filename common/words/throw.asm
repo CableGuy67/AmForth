@@ -16,24 +16,21 @@ XT_THROW:
     .dw DO_COLON
 PFA_THROW:
 .endif
-    .dw XT_DUP
-    .dw XT_ZEROEQUAL
+    .dw XT_QDUP
     .dw XT_DOCONDBRANCH
     DEST(PFA_THROW1)
-	.dw XT_DROP
-	.dw XT_EXIT
+      .dw XT_HANDLER
+      .dw XT_FETCH
+      .dw XT_RP_STORE
+      .dw XT_R_FROM
+      .dw XT_HANDLER
+      .dw XT_STORE
+      .dw XT_R_FROM
+      .dw XT_SWAP
+      .dw XT_TO_R
+      .dw XT_SP_STORE
+      .dw XT_DROP
+      .dw XT_R_FROM    
 PFA_THROW1:
-    .dw XT_HANDLER
-    .dw XT_FETCH
-    .dw XT_RP_STORE
-    .dw XT_R_FROM
-    .dw XT_HANDLER
-    .dw XT_STORE
-    .dw XT_R_FROM
-    .dw XT_SWAP
-    .dw XT_TO_R
-    .dw XT_SP_STORE
-    .dw XT_DROP
-    .dw XT_R_FROM    
     .dw XT_EXIT
 
