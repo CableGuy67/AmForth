@@ -19,10 +19,10 @@ PFA_TICK:
     .dw XT_PARSENAME
     .dw XT_FORTHRECOGNIZER
     .dw XT_RECOGNIZE
-    ; a word is tickable unless DT:TOKEN is DT:NULL or 
+    ; a word is tickable unless RECTYPE-TOKEN is RECTYPE-NULL or 
     ; the interpret action is a NOOP
     .dw XT_DUP
-    .dw XT_DT_NULL
+    .dw XT_RECTYPE_NULL
     .dw XT_EQUAL
     .dw XT_SWAP
     .dw XT_FETCHI

@@ -2,18 +2,18 @@
 ; Interpreter
 ; Method table for single cell integers
 .if cpu_msp430==1
-    HEADER(XT_DT_NUM,6,"dt:num",DOROM)
+    HEADER(XT_RECTYPE_NUM,11,"rectype-num",DOROM)
 .endif
 
 .if cpu_avr8==1
-VE_DT_NUM:
-    .dw $ff06
-    .db "dt:num"
+VE_RECTYPE_NUM:
+    .dw $ff0b
+    .db "rectype-num",0
     .dw VE_HEAD
-    .set VE_HEAD = VE_DT_NUM
-XT_DT_NUM:
+    .set VE_HEAD = VE_RECTYPE_NUM
+XT_RECTYPE_NUM:
     .dw PFA_DOCONSTANT
-PFA_DT_NUM:
+PFA_RECTYPE_NUM:
 .endif
     .dw XT_NOOP    ; interpret
     .dw XT_LITERAL ; compile
@@ -23,18 +23,18 @@ PFA_DT_NUM:
 ; Interpreter
 ; Method table for double cell integers
 .if cpu_msp430==1
-    HEADER(XT_DT_DNUM,7,"dt:dnum",DOROM)
+    HEADER(XT_RECTYPE_DNUM,12,"rectype-dnum",DOROM)
 .endif
 
 .if cpu_avr8==1
-VE_DT_DNUM:
-    .dw $ff07
-    .db "dt:dnum",0
+VE_RECTYPE_DNUM:
+    .dw $ff0c
+    .db "rectype-dnum"
     .dw VE_HEAD
-    .set VE_HEAD = VE_DT_DNUM
-XT_DT_DNUM:
+    .set VE_HEAD = VE_RECTYPE_DNUM
+XT_RECTYPE_DNUM:
     .dw PFA_DOCONSTANT
-PFA_DT_DNUM:
+PFA_RECTYPE_DNUM:
 .endif
     .dw XT_NOOP     ; interpret
     .dw XT_2LITERAL ; compile
@@ -44,14 +44,14 @@ PFA_DT_DNUM:
 ; Interpreter
 ; recognizer for integer numbers
 .if cpu_msp430==1
-    HEADER(XT_REC_NUM,7,"rec:num",DOCOLON)
+    HEADER(XT_REC_NUM,7,"rec-num",DOCOLON)
 .endif
 
 .if cpu_avr8==1
 
 VE_REC_NUM:
     .dw $ff07
-    .db "rec:num",0
+    .db "rec-num",0
     .dw VE_HEAD
     .set VE_HEAD = VE_REC_NUM
 XT_REC_NUM:
@@ -66,11 +66,11 @@ PFA_REC_NUM:
     .dw XT_EQUAL
     .dw XT_DOCONDBRANCH
     DEST(PFA_REC_INTNUM2)
-      .dw XT_DT_NUM
+      .dw XT_RECTYPE_NUM
       .dw XT_EXIT
 PFA_REC_INTNUM2:
-      .dw XT_DT_DNUM
+      .dw XT_RECTYPE_DNUM
       .dw XT_EXIT
 PFA_REC_NONUMBER:
-    .dw XT_DT_NULL
+    .dw XT_RECTYPE_NULL
     .dw XT_EXIT

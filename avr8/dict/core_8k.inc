@@ -136,7 +136,7 @@
 .include "words/recognize.asm"
 .include "words/rec-intnum.asm"
 .include "words/rec-find.asm"
-.include "words/dt-null.asm"
+.include "words/rec-null.asm"
 
 .include "words/q-stack.asm"
 .include "words/ver.asm"

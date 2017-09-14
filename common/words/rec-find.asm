@@ -2,12 +2,12 @@
 ; Interpreter
 ; search for a word
 .if cpu_msp430==1
-    HEADER(XT_REC_FIND,8,"rec:find",DOCOLON)
+    HEADER(XT_REC_FIND,8,"rec-find",DOCOLON)
 .endif
 .if cpu_avr8==1
 VE_REC_FIND:
     .dw $ff08
-    .db "rec:find"
+    .db "rec-find"
     .dw VE_HEAD
     .set VE_HEAD = VE_REC_FIND
 XT_REC_FIND:
@@ -20,10 +20,10 @@ PFA_REC_FIND:
     .dw XT_DOCONDBRANCH
     DEST(PFA_REC_WORD_FOUND)
         .dw XT_DROP
-	.dw XT_DT_NULL
+	.dw XT_RECTYPE_NULL
 	.dw XT_EXIT
 PFA_REC_WORD_FOUND:
-    .dw XT_DT_XT
+    .dw XT_RECTYPE_XT
 
     .dw XT_EXIT
 
@@ -31,18 +31,18 @@ PFA_REC_WORD_FOUND:
 ; Interpreter
 ; actions to handle execution tokens and their flags
 .if cpu_msp430==1
-    HEADER(XT_DT_XT,5,"dt:xt",DOROM)
+    HEADER(XT_RECTYPE_XT,10,"rectype-xt",DOROM)
 .endif
 
 .if cpu_avr8==1
-VE_DT_XT:
-    .dw $ff05
-    .db "dt:xt",0
+VE_RECTYPE_XT:
+    .dw $ff0a
+    .db "rectype-xt"
     .dw VE_HEAD
-    .set VE_HEAD = VE_DT_XT
-XT_DT_XT:
+    .set VE_HEAD = VE_RECTYPE_XT
+XT_RECTYPE_XT:
     .dw PFA_DOCONSTANT
-PFA_DT_XT:
+PFA_RECTYPE_XT:
 .endif
     .dw XT_R_WORD_INTERPRET
     .dw XT_R_WORD_COMPILE
