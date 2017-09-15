@@ -17,12 +17,12 @@
 
 ' noop 
 :noname postpone sliteral ;
-:noname -48 throw ; recognizer: r:string
+:noname -48 throw ; rectype: rectype-string
 
-: rec:string ( addr len -- addr' len' r:string | r:fail )
-  over c@ [char] " <> if 2drop r:fail exit then
+: rec:string ( addr len -- addr' len' rectype-string | rectype-null )
+  over c@ [char] " <> if 2drop rectype-null exit then
   negate 1+ >in +! drop \ reset parse area to SOURCE
   [char] " parse  \ get trailing delimiter
   -1 /string
-  r:string
+  rectype-string
 ;

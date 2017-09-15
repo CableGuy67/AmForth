@@ -9,14 +9,14 @@
 :noname defer! ;
 :noname postpone literal postpone defer! ;
 :noname postpone 2literal ;
-recognizer: r:parsed-to
+rectype: rectype-parsed-to
 
-: rec-parsed-to ( addr len -- addr r:parsed-to | r:fail )
-   over @ $3e2d = ( -> ) 0= if 2drop r:fail exit then
+: rec-parsed-to ( addr len -- xt rectype-parsed-to | rectype-null )
+   over @ $3e2d = ( -> ) 0= if 2drop rectype-null exit then
    \ something left?
-   2 /string dup 0= if 2drop r:fail exit then
+   2 /string dup 0= if 2drop rectype-null exit then
    \ search for the name
-   find-name 0= if r:fail exit then
+   find-name 0= if rectype-null exit then
    ( -- xt )
-   r:parsed-to
+   rectype-parsed-to
 ;

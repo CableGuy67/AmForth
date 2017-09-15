@@ -39,34 +39,34 @@ set-current
 
 \ every word found is fine. Even the ones that are not found
 \ in the dictionary
-' noop dup dup recognizer: r:skip
-: rec:skip ( addr len -- r:skip ) 2drop r:skip ;
+' noop dup dup rectype: rectype-skip
+: rec-skip ( addr len -- dt:skip ) 2drop rectype-skip ;
 
 \ search only in the comment-actions wordlist
-: rec:comment-actions ( addr len -- xt +/-1 r:word | r:fail )
+: rec-comment-actions ( addr len -- xt +/-1 rectype-xt | rectype-null )
   comment-actions search-wordlist ( xt +/-1 | 0 )
-  ?dup if r:word else r:fail then 
+  ?dup if rectype-xt else rectype-null then 
 ;
 
 \ a simple two-element recognizer stack
-2 recognizer constant rs:comment
-' rec:skip ' rec:comment-actions 2 rs:comment set-recognizers
+2 stack constant rs-comment
+' rec-skip ' rec-comment-actions 2 rs-comment set-stack
 
 \ save the current recognizer stack and
 \ switch over to the limited one
 : (( ( -- )
   forth-recognizer old-f-rs !
-  rs:comment to forth-recognizer
+  rs-comment to forth-recognizer
 ; immediate
 
 \ ------------- Test Cases ----------------
 \
-\ : rec:comment rs:comment do-recognizer ;
-\ T{ S" DUP"  rec:comment -> r:skip }T
-\ T{ S" 1234" rec:comment -> r:skip }T
+\ : rec-comment rs-comment recognize ;
+\ T{ S" DUP"  rec-comment -> rectype-skip }T
+\ T{ S" 1234" rec-comment -> rectype-skip }T
 
 \ the XT of )) is not important
-\ T{ S" ))"   rec:comment rot drop -> 1 r:word }T
+\ T{ S" ))"   rec-comment rot drop -> 1 rectype-xt }T
 \
 \ ------------------------------------------
 \ with nesting the [IF] [ELSE] [THEN] can be

@@ -16,14 +16,15 @@
 
 \ This is the entire contents of literate.fs:
 
-  ' noop ' noop ' noop recognizer: r:noop
-  : literacy-recognizer ( c-addr u -- r:noop | r:fail )
-    2drop source s"  " string-prefix? if r:fail else 0 parse 2drop r:noop then ;
+  ' noop ' noop ' noop rectype: rectype-noop
+  : literacy-recognizer ( c-addr u -- rectype-noop | rectype-null )
+    2drop source s"  " string-prefix? 
+    if rectype-null else 0 parse 2drop rectype-noop then ;
 
   \ place it at the top of the recognizer stack
-  forth-recognizers get-recognizers 
+  forth-recognizers get-stack
   1+ ' literacy-recognizer swap 
-  forth-recognizers set-recognizers
+  forth-recognizers set-stack
 
 And the entire rest of my post will be the contents of a file
 named hello.fs, which makes use of it:

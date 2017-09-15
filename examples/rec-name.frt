@@ -6,12 +6,12 @@
 :noname name>interpret execute ;
 :noname name>compile execute ;
 :noname postpone literal ;
-recognizer: r:name
+rectype: rectype-nt
 
 \ the parsing word
-: rec:name ( addr len -- nt r:name | r:fail)
+: rec-nt ( addr len -- nt rectype-nt | rectype-null )
     find-name ?dup
-    if r:name else r:fail then
+    if rectype-nt else rectype-null then
 ;
 
 \ replace rec:word with rec:name

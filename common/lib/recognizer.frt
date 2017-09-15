@@ -4,7 +4,7 @@
 \ #include recognizer-arch.frt
 \
 \ build the methods table for a recognizer
-: dt:token: ( interpret-xt compile-xt postpone-xt "name" -- )
+: rectype: ( interpret-xt compile-xt postpone-xt "name" -- )
    create swap rot , , , 
 ;
 
