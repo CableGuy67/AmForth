@@ -1,4 +1,4 @@
-; (addr len recstack -- i*x dt:token | dt:null )
+; (addr len recstack -- i*x rectype-sometype | rectype-null )
 ; System
 ; walk the recognizer stack
 
@@ -33,7 +33,7 @@ PFA_RECOGNIZE1:
 .endif
 
 .if cpu_avr8==1
-; ( addr len XT -- addr len [ dt:xt -1 | 0 ] )
+; ( addr len XT -- addr len [ rectype-* -1 | 0 ] )
 XT_RECOGNIZE_A:
    .dw DO_COLON
 PFA_RECOGNIZE_A:
@@ -43,7 +43,7 @@ PFA_RECOGNIZE_A:
    .dw XT_2DUP 
    .dw XT_2TO_R
    .dw XT_ROT  ; -- addr len xt
-   .dw XT_EXECUTE ; -- i*x dt:* | dt:null
+   .dw XT_EXECUTE ; -- i*x rectype-* | rectype-null
    .dw XT_2R_FROM
    .dw XT_ROT
    .dw XT_DUP
@@ -60,14 +60,14 @@ PFA_RECOGNIZE_A1:
    .dw XT_TRUE
    .dw XT_EXIT
 
-; : recognize ( addr len stack-id -- i*x dt:* | dt:null )
-;   [: ( addr len -- addr len 0 | i*x dt:* -1 )
+; : recognize ( addr len stack-id -- i*x rectype-* | rectype-null )
+;   [: ( addr len -- addr len 0 | i*x rectype-* -1 )
 ;      rot rot 2dup 2>r rot execute 2r> rot 
-;      dup dt:null = ( -- addr len dt:* f )
+;      dup rectype-null = ( -- addr len rectype-* f )
 ;      if drop 0 else nip nip -1 then
 ;    ;] 
-;    map-stack ( -- i*x addr len dt:* f )
+;    map-stack ( -- i*x addr len rectype-* f )
 ;    0= if \ a recognizer did the job, remove addr/len
-;     2drop dt:null
+;     2drop rectype-null
 ;    then ;
 ;

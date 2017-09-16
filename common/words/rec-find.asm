@@ -1,4 +1,4 @@
-; ( addr len -- xt flags dt:xt | dt:null )
+; ( addr len -- xt flags rectype-xt | rectype-null )
 ; Interpreter
 ; search for a word
 .if cpu_msp430==1
