@@ -193,6 +193,7 @@
 .include "words/env-cpu.asm"
 .include "words/env-forthname.asm"
 .include "words/env-forthversion.asm"
+.include "words/env-usersize.asm"
 .include "words/ver.asm"
 .include "words/f_cpu.asm"
 .include "words/q-stack.asm"
