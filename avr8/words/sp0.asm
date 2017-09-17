@@ -12,16 +12,3 @@ PFA_SP0:
     .dw USER_SP0
     .dw XT_UDEFERFETCH
     .dw XT_UDEFERSTORE
-
-; ( -- addr) 
-; Stack
-; address of user variable to store top-of-stack for inactive tasks
-VE_SP:
-    .dw $ff02
-    .db "sp"
-    .dw VE_HEAD
-    .set VE_HEAD = VE_SP
-XT_SP:
-    .dw PFA_DOUSER
-PFA_SP:
-    .dw USER_SP
