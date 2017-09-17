@@ -17,6 +17,15 @@
 \  10  | handler  | catch/throw handler                     |
 \ ... more user variables (mostly IO related)
 
+\ The TIB (task information block) is a flash (dictionary)
+\ area that holds the vital task definitions. The task-init
+\ uses data from it to initialize the runtime environment.
+\ Offs_| __Description___________________ |
+\  0   | address of the TCB area          | <-- UP
+\  2   | rp0 address inside the TCB area  |
+\  4   | sp0 address inside the TCB area  |
+\
+\
 \ please note that with amforth rp@ @ accesses another location 
 \ than r@ due to hardware characteristics.
 
@@ -25,6 +34,7 @@
 
 #0 user status
 #2 user follower
+#8 user sp
 
 :noname ( 'status1 -- 'status2 ) cell+ @ dup @ i-cell+ >r ; constant pass
 :noname ( 'status1 -- )          up! sp @ sp! rp! ;         constant wake
@@ -32,17 +42,17 @@
 \ switch to the next task in the list
 : multitaskpause   ( -- ) rp@ sp@ sp ! follower @ dup @ i-cell+ >r ;
 : stop         ( -- )     pass status ! pause ; \ sleep current task
-: task-sleep   ( tid -- ) pass swap ! ;         \ sleep another task
-: task-awake   ( tid -- ) wake swap ! ;         \ wake another task
+: task-sleep   ( tcb -- ) pass swap ! ;         \ sleep another task
+: task-awake   ( tcb -- ) wake swap ! ;         \ wake another task
 
 : cell- negate cell+ negate ;
 
 \ continue the code as a task in a predefined tcb
-: activate ( tid -- )
+: activate ( tcb -- )
    dup    #6 + @ cell-
-   over   #4 + @ cell- ( -- tid sp rp )     \ point to RP0 SP0
-   r> over i-cell+ !   ( save entry at rp ) \ skip all after ACTIVATE
-      over  !          (  save rp at sp )   \ save stack context for WAKE
+   over   #4 + @ cell- ( -- tcb sp rp )     \ point to RP0 SP0
+   r> over i-cell+ !   ( save entry at rp of the stack and EXIT activate. )
+      over  !          (  save rp at sp )
    over #8 + !         ( save sp in tos )
    task-awake 
 ;
@@ -76,7 +86,6 @@
   dup tib>sp0 over tib>tcb #6 + !       \ store sp0    in tcb[6]
   dup tib>sp0 cell- over tib>tcb #8 + ! \ store sp0--  in tcb[8], tos
   dup tib>rp0 over tib>tcb #4 + !       \ store rp0    in tcb[4]
-      #10  over tib>tcb #12 + !         \ store base   in tcb[12]
       tib>tcb task-sleep                \ store 'pass' in tcb[0]
 ;
 
@@ -99,24 +108,24 @@
 
 
 \ insert new task structure into task list
-: alsotask      ( tid -- )
+: alsotask      ( tcb -- )
    ['] pause defer@ >r \ stop multitasking
    single
-   follower @   ( -- tid f) 
-   over         ( -- tid f tid )
-   follower !   ( -- tid f )
-   swap cell+   ( -- f tid-f )
+   follower @   ( -- tcb f) 
+   over         ( -- tcb f tcb )
+   follower !   ( -- tcb f )
+   swap cell+   ( -- f tcb-f )
    !
    r> ['] pause defer! \ restore multitasking
 ;
 
 \ print all tasks with their id and status
 : tasks ( -- )
-    status ( -- tid ) \ starting value
+    status ( -- tcb ) \ starting value
     dup
-    begin      ( -- tid1 ctid )
-      dup u. ( -- tid1 ctid )
-      dup @  ( -- tid1 ctid status )
+    begin    ( -- tcb1 ctcb )
+      dup u. ( -- tcb1 ctcb )
+      dup @  ( -- tcb1 ctcb status )
       dup wake = if ."   running" drop else
           pass = if ."  sleeping" else
           -1 abort"   unknown" then
@@ -125,7 +134,7 @@
 \     dup #6 + @ ."   sp0=" dup u. cell- @ ."  TOS=" u.
 \     dup #8 + @ ."    sp=" u.
       cr
-      cell+ @ ( -- tid1 next-tid )
+      cell+ @ ( -- tcb1 next-tcb )
       2dup =     ( -- f flag)
     until
     2drop
