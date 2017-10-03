@@ -69,5 +69,3 @@ set-current
 \ T{ S" ))"   rec-comment rot drop -> 1 rectype-xt }T
 \
 \ ------------------------------------------
-\ with nesting the [IF] [ELSE] [THEN] can be
-\ implemented likewise.

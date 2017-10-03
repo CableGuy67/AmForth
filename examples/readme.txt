@@ -23,8 +23,8 @@ life.frt: Conveys game of life. Its very memory intensive, the example
    code works on an Atmega16, but a bigger one would allow larger
    worlds.
 
-string-rec.frt: converts a " delimited string into a printable,
-   compilable and postponable text object. It replaces the s" command.
+rec-*.frt: Collection of various recognizers. They enable new native
+   data types and modify the behaviour of the interpreter.
 
 sierpinski.frt: simple fractal generator. Illustrates the use of
    the amforth-shell to include library files.
@@ -35,3 +35,6 @@ co.frt: co routines aka subroutines for nonpreemtive multitasking.
 many.frt: Repeat the input line until a key is hit. Use it with care
    since it can cause a lot of trouble. Since the input line is re-parsed
    every time, it is much slower than a compiled word.
+
+stack.frt: Generic stack operations. Implements a independent stack, 
+   see ../tests/stack-test.frt for a Hayes test suite.

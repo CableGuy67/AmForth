@@ -19,7 +19,7 @@
 :noname postpone sliteral ;
 :noname -48 throw ; rectype: rectype-string
 
-: rec:string ( addr len -- addr' len' rectype-string | rectype-null )
+: rec-string ( addr len -- addr' len' rectype-string | rectype-null )
   over c@ [char] " <> if 2drop rectype-null exit then
   negate 1+ >in +! drop \ reset parse area to SOURCE
   [char] " parse  \ get trailing delimiter

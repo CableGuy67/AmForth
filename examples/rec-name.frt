@@ -14,5 +14,5 @@ rectype: rectype-nt
     if rectype-nt else rectype-null then
 ;
 
-\ replace rec:word with rec:name
+\ replace rec-word with rec-name
 \ everthing else should work as before
