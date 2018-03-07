@@ -1,15 +1,16 @@
 .. _Interrupt Service Routine MSP430:
 
-ISR on the MSP430
-.................
+Interrupts on the MSP430
+........................
 
-currently only the MSP430 G2553 has some
-preliminary support for interrupt service
+Currently (version 6.5 and up) only the MSP430 G2553 
+has some preliminary support for interrupt service
 routines written in high level Forth. Most
 of the words from the AVR world work exactly
 the same way: 
 
-.. seealso:: :ref:`Interrupt Service Routine`
+.. seealso:: :ref:`Interrupt Service Routine`,
+             :ref:`Interrupt Critical Section`
 
 The ISR support is disabled by default. To enable
 it, edit the application master file and add the

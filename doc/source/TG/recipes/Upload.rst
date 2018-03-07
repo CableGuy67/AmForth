@@ -1,8 +1,11 @@
 .. _Upload:
 
-===================================
-Use of the amforth-shell.py utility
-===================================
+==================
+Shells And Upload 
+==================
+
+amforth-shell.py
+----------------
 
 The amforth-shell.py from Keith Amidon may simplify the interaction with amforth
 and the forth code management while uploading projects.
@@ -75,3 +78,14 @@ a long time due to the directory tree scanning.
  AMFORTH_LIB=$AMFORTH/lib:$AMFORTH/examples
  export AMFORTH_LIB
  mt@ayla:~/amforth$
+
+e4thcom - A Terminal For Embedded Forth Systems
+-----------------------------------------------
+
+Manfred Mahlow has a nice tool for working with
+various Forth's. It works primarily on Linux
+systems and supports among other things 
+uploading of source code to remote systems.
+
+More information and downloads are available at
+http://wiki.forth-ev.de/doku.php/en:projects:e4thcom 

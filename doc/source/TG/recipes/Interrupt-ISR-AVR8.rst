@@ -48,18 +48,8 @@ Interrupt Service Routines AVR8
 All interrupts are available for forth interrupts. 
 
 ``int!`` (and friends) uses the interrupt address from
-the data sheet as an index, but points to a different address in EEPROM.
-
-Interrupts are processed in two stages. First stage
-is a simple low-level processing routine. The low-level 
-generic interrupt routine stores the index of the
-interrupt in a CPU register.
-
-The inner interpreter checks *every* time it is entered the
-register for a non-Null value. If it is set the interrupt processing
-routine is activated. It uses the interrupt number and calculates
-the index into the EEPROM based interrupt vector table. This table is 
-identical to the atmega interrupt table in the flash except that it holds
-the XT of the forth words that will be started for the interrupt.
+the data sheet as an index, but points to a different 
+address in EEPROM. The index number is always identical
+to the interrupt number found in the data sheets.
 
 .. seealso:: :ref:`Upload` to deal with the register names.

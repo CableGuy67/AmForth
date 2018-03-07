@@ -28,3 +28,14 @@ the interrupted task.
 
 :command:`int-trap` ( n -- )
   simulate interrupt n
+
+Interrupts are processed in two stages. First stage
+is a simple low-level processing routine. The low-level 
+generic interrupt routine stores the index of the
+interrupt in a CPU register.
+
+The inner interpreter checks *every* time it is entered the
+register for a non-Null value. If it is set the interrupt processing
+routine is activated. It uses the interrupt number and calculates
+the index into an platform specific table (AVR uses the EEPROM, the
+MSP430 the index flash).

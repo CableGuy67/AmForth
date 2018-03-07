@@ -118,14 +118,14 @@ another iteration abort condition.
 
 .. code-block:: forth
 
-   : do-recognizer ( addr len -- i*x r:table|r:fail )
-     [: ( addr len rec:XT -- i*x r:table -1 | addr len 0 )
+   : recognize ( addr len -- i*x rectype-sometype | rectype-null )
+     [: ( addr len XT -- i*x rectype-sometype -1 | addr len 0 )
         rot rot 2dup 2>r rot 
         execute 
-        2r> rot dup r:fail =
+        2r> rot dup rectype-null =
         if drop 0 else nip nip -1 then
      ;] 
-     EE_RECOGNIZERLISTLEN map-stack ( -- i*x addr len r:table f )
+     EE_RECOGNIZERLISTLEN map-stack ( -- i*x addr len rectype-sometype f )
      0= if \ no recognizer did the job, cleanup and add r:fail as default result
-      2drop r:fail 
+      2drop rectype-null 
      then ;

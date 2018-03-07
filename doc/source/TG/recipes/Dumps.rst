@@ -116,3 +116,15 @@ region has its own dump utility
   0DD0 - 02FF 0430 381A FF05 342E 6568 0078 0DC6   ..0..8...4hex...
   0DD8 - 3800 3B23 02D5 02DD 02DD 02DD 02DD 02FF   .8#;............
    ok
+
+Note that the dump commands use the current BASE value to display
+the numeric values. A simple solution is to use :command:`base-execute`
+to temporarily change BASE
+
+.. code-block:: forth
+
+   > : hex-idump ['] idump $10 base-execute ;
+   > $dc0 $20 hex-idump
+
+displays the Flash memory as above always in HEX but leaves the
+BASE value unchanged.
