@@ -1,5 +1,5 @@
 
-Instructions for Building amforth-5-1 using Atmel Studio 6.1 Components
+Instructions for Building amforth-6-6 using Atmel Studio 6.1 Components
 =======================================================================
 
 Author: Craig Lindley
@@ -34,19 +34,19 @@ Process
 #. Create a project directory into which we are going to copy a bunch of
    files. I chose :file:`c:\\amforth` for my project directory.
 
-#. Uncompress and un tar the amforth-5.1 distribution file
-   (:file:`amforth-5.3.tar.gz`) into the project directory
+#. Uncompress and un tar the amforth-6.6 distribution file
+   (:file:`amforth-6.6.tar.gz`) into the project directory
 
 #. If you installed the Atmel Studio locate and copy the avrasm2.exe and the 
    complete include directory from e.g. :file:`c:\\Program Files\\Atmel\\Atmel
    Toolchain\\AVR Assembler\\Native\\2.1.39.1005\\avrassembler` into the project 
    directory
 
-#. Go into the :file:`amforth-5.1\\appl\\arduino` directory of the distribution and
+#. Go into the :file:`amforth-6.6\\appl\\arduino` directory of the distribution and
    copy :file:`uno.asm`, :file:`dict_appl_code.inc`, :file:`dict_appl.inc` and the 
    :file:`words` directory into the project directory.
 
-#. Go into the :file:`amforth-5.1\\avr8\\devices` directory and find the directory
+#. Go into the :file:`amforth-6.6\\avr8\\devices` directory and find the directory
    named with the processor you are going to use (in my case atmega328p) and 
    from that directory copy :file:`device.asm` and :file:`device.inc` into the
    project directory.
@@ -56,7 +56,7 @@ Process
 .. code-block:: bat
 
    REM batch file for assembling amforth on windows
-   avrasm2.exe -fI -o uno.hex -e uno.eep -l uno.lst -I .\ -I amforth-5.1\common -I amforth-5.1\avr8 -I include -v0 uno.asm
+   avrasm2.exe -fI -o uno.hex -e uno.eep -l uno.lst -I .\ -I amforth-6.6\common -I amforth-6.6\avr8 -I include -v0 uno.asm
 
 I named my bat file make.bat.
 
@@ -66,7 +66,7 @@ as follows:
 .. code-block:: none
 
   c:\amforth          - your project directory
-    amforth-5.3       - the uncompressed and untarred amforth-5.1 distribution
+    amforth-6.6       - the uncompressed and untarred amforth-6.6 distribution
       appl
       avr8
       common

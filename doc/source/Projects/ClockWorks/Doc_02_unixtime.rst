@@ -1,3 +1,5 @@
+.. _epoch_seconds:
+
 Date/Time to unix time and back
 ===============================
 
@@ -132,16 +134,16 @@ for leap years, the loop starts with the first year of the epoch, 1970.
 
    : years/mod ( T/day -- years T/day' )
       dup #365 u< 0= if         \ -- T
-	__Epoch swap        \ -- year T
-	begin
-	    over 365+1
-	    -
-	    swap 1+ swap    \ -- T-365 year+1
-	    over 365+1      \ -- year' T' 365
-	    over swap       \ -- year' T' T' 365
-	u< until
+        __Epoch swap        \ -- year T
+        begin
+            over 365+1
+            -
+            swap 1+ swap    \ -- T-365 year+1
+            over 365+1      \ -- year' T' 365
+            over swap       \ -- year' T' T' 365
+        u< until
       else
-	__Epoch swap
+        __Epoch swap
       then
     ;
 
@@ -196,24 +198,24 @@ remaining days given as argument.
 
    : months/mod ( year T/day -- year month T/day' )
      dup 0= if
- 	drop 1 1
+        drop 1 1
      else
-	&12 swap            \ -- year month T
-	begin
-	    over __acc_days + @i       \ AmForth
+        &12 swap            \ -- year month T
+        begin
+            over __acc_days + @i       \ AmForth
      \  over cells __acc_days + @  \ gForth
-	                    \ -- year month T acc_days[month]
-	    \ correct acc_days for leap year and months > 1 (January)
-	    3 pick leapyear? 3 pick 1 > and if 1+ then
-	    over over swap  \ -- year month T acc_days[month] acc_days[month] T
-	    u>
-	while               \ -- year month T acc_days[month]
-	    drop swap 1- swap
-		            \ -- year month-1 T
-	repeat              \ -- year month' T acc_days[month']
-	-                   \ -- year month' T-acc_days[month']
-	swap 1+
-	swap 1+
+                            \ -- year month T acc_days[month]
+            \ correct acc_days for leap year and months > 1 (January)
+            3 pick leapyear? 3 pick 1 > and if 1+ then
+            over over swap  \ -- year month T acc_days[month] acc_days[month] T
+            u>
+        while               \ -- year month T acc_days[month]
+            drop swap 1- swap
+                            \ -- year month-1 T
+        repeat              \ -- year month' T acc_days[month']
+        -                   \ -- year month' T-acc_days[month']
+        swap 1+
+        swap 1+
       then
    ;
 
@@ -352,7 +354,7 @@ smaller units, adding up the appropriate values as needed.
      0 over               \ -- sec min hour day month year T=0 year
      __Epoch              \ -- sec min hour day month year T year Epoch
      ?do
- 	i 365+1 +
+        i 365+1 +
      loop                 \ -- sec min hour day month year T/days
      2 pick 1-            \ -- sec min hour day month year T/days month-1
      __acc_days + @i      \ -- sec min hour day month year T/days acc_days[month] \ amForth

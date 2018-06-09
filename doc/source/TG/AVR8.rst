@@ -230,7 +230,6 @@ handlers are completely normal forth colon words
 without any stack effect. They do not get interrupted
 themselves.
 
-
 The processing of interrupts takes place in two steps:
 The first one is the low level part.
 It is called whenever an interrupt occurs. The code
@@ -268,16 +267,16 @@ The downside is a relatively long latency since the the
 forth VM has to be synchronized with the interrupt handling
 code in order to use normal colon words as ISR. This penalty
 is usually small since only words in assembly can cause the
-delay.
+delay, most notably the word :command:`1ms`.
 
 .. digraph:: InnerInterpreter
 
    "COLD" -> "Execute Word"
-   "Execute Word" -> "T Flag Set?";
-   "T Flag Set?" -> "Clear T Flag" [label="Yes"];
-   "T Flag Set?" -> "Get Next XT" [label="No"];
+   "Execute Word" -> "ISR Register Empty?";
+   "ISR Register Empty?" -> "Clear ISR Register" [label="Yes"];
+   "ISR Register Empty?" -> "Get Next XT" [label="No"];
    "Get Next XT" -> "Execute Word";
-   "Clear T Flag" -> "Next XT is ISR_EXEC";
+   "Clear ISR Register" -> "Next XT is ISR_EXEC";
    "Next XT is ISR_EXEC" -> "Execute Word";
 
 .. seealso:: :ref:`Interrupt Service Routine`

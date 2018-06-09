@@ -1,0 +1,211 @@
+.. _clockworks_rtc_pcf8583:
+
+Adding a RTC: PCF8583
+=====================
+
+:Date: 2017-08-19
+
+.. contents::
+   :local:
+   :depth: 1
+
+
+
+Intro
+-----
+
+ - the clock provides these counters
+   
+   - second/100 (0 .. 99)
+   - second (0 .. 59)
+   - minute (0 .. 59)
+   - hour (0 .. 23)
+   - 24h / am/pm flags
+   - day of month (1 .. 28,29,30,31)
+   - day of week (0 .. 6 ?)
+   - month (1 .. 12)
+   - year % 4 ( 0 .. 3)
+
+ - some of them are merged into one byte!
+ - these merged counters  could be read masked, to ignore the year and
+   day-of-week bits. I decided to mask out the unused bits
+ - the counters are in bcd notation
+ - since the year is limited to ``year 4 /mod``, I decided to keep a
+   copy of the complete value in 2 bytes of the availabe static CMOS
+   RAM, at address $10,$11. Obviously, this is not a counter and must
+   be updated manually.
+ - Nonetheless the 2 bit ``year #4 /mod`` bits need to be set
+   correctly, otherwise leap days at the end of February might be
+   wrong. 
+ - The 7 bit address is ``$50`` (or ``$51``, if Pin ``A0`` is set).
+
+
+.. figure:: i_rtc_pcf8583.jpg
+   :width: 450 px
+
+
+Code Details
+------------
+
+There are no surprises in the code below. The i2c transfers use
+AmForths builtin capabilities, Bytes are read or written, masking of
+unneccessary bits and conversion from and to bcd (binary coded
+decimal) is used. There are shortcomings, too. I do ignore the
+day-of-week bits, which could be useful in some situations, though.
+
+.. code-block:: forth
+
+   $50 constant i2c_addr_rtc
+   #include i2c_rtc_pcf8583.fs
+
+
+The included file provides these functions:
+
+ - ``rtc.get ( -- S/100 S M H d m Y )`` --- read the RTC counters
+ - ``rtc.set ( Y m d H M S S/100 -- )`` --- set the RTC counters. This
+   includes the remaining 2 bits of the year, even though these bits
+   are not used when reading. If we ignore them, the leap year is not
+   calculated correctly on the change from February to March.
+ - ``rtc.dot ( S/100 S M H d m Y -- )`` --- print the counters found
+   on the stack
+ - ``rtc.show ( -- )`` --- get and print the RTC counters
+ - ``rtc.set.year ( Y -- )`` --- set the year in CMOS RAM
+
+They are sufficient to read and write the RTCs counters. In order to
+copy the RTC counters to the clock counters of the controller or vice
+versa, two more words are needed in the main program. **Note** that
+the counters ``day`` and ``month`` of the controller are used with an
+offset of 1 (month 0 .. 11, day 0 .. 30).
+
+.. code-block:: forth
+
+   : hwclock>clock ( -- )
+     rtc.get                               \ --  S/100 S M H d m Y
+        year  !
+     1- month !
+     1- day   !
+        hour  !
+        min   !
+        sec   !
+     drop \ 1/100 secs
+     year @   month @ 1+  tu.upd.limits
+   ;
+   : clock>hwclock ( -- )
+     year @   month @ 1+  day @ 1+
+     hour @   min   @     sec @
+     tick @ #100 ticks/sec m*/             \ -- Y m d H M S S/100
+     rtc.set
+   ;
+
+
+The startup of the system will then have some code to copy the time
+from the RTC to the system (or master) clock.
+
+.. code-block:: forth
+
+   : init
+     ...
+     +i2c
+     i2c_addr_rtc i2c.ping? if
+       hwclock>clock
+     else
+       #2017 1 1 0 0 0 clock.set  
+     then
+     ...
+   ;
+
+
+
+
+The Code (PCF8583)
+------------------
+
+.. code-block:: forth
+   :linenos:
+
+   \ 2017-09-11 ew
+   \
+   \ Written in 2017 by Erich Wälde <erich.waelde@forth-ev.de>
+   \
+   \ To the extent possible under law, the author(s) have dedicated
+   \ all copyright and related and neighboring rights to this software
+   \ to the public domain worldwide. This software is distributed
+   \ without any warranty.
+   \
+   \ You should have received a copy of the CC0 Public Domain
+   \ Dedication along with this software. If not, see
+   \ <http://creativecommons.org/publicdomain/zero/1.0/>.
+   \
+   \ constant
+   \     i2c_addr_rtc: $50
+   \ words:
+   \     rtc.get ( -- S/100 S M H d m Y )
+   \     rtc.set ( Y m d H M S S/100 -- )
+   \     rtc.show ( -- )
+   
+   \ pcf8583:
+   \ addr
+   \ 0x00    control register 3: mask_flag
+   \ 0x01    sec/100.bcd
+   \ 0x02    sec.bcd
+   \ 0x03    min.bcd
+   \ 0x04    7: 0=24h clock, 6: am/pm flag
+   \         5-0: hour.bcd
+   \ 0x05    7-6: year%4 5-0: day.bcd
+   \ 0x06    7-5: weekdays unless maskbit,
+   \         4-0: month.bcd
+   \ eeprom:
+   \ 0x10,0x11 full year, not BCD
+   
+   \ $50 constant i2c_addr_rtc
+   
+   
+   : rtc.get ( -- S/100 S M H d m Y )
+       #6  #1 #1 i2c_addr_rtc i2c.m!n@     \ read 6 bytes start at addr 1
+       #2 #16 #1 i2c_addr_rtc i2c.m!n@     \ read 2 bytes start at addr 16
+       #8 lshift +                         \ convert to word YYYY
+   
+       (  year.dec )                 >r    \ from extra flash location
+       ( month.bcd ) $1f and bcd>dec >r    \ dropped weekday?
+       (   day.bcd ) $3f and bcd>dec >r    \ dropped year%4 ?
+       (  hour.bcd ) $3f and bcd>dec >r    \ dropped 24 am/pm flags 
+       (   min.bcd )         bcd>dec >r    \ 
+       (   sec.bcd )         bcd>dec >r    \ 
+       ( s/100.bcd )         bcd>dec       \ 
+       r> r> r>  r> r> r>
+   ;
+   : rtc.dot ( S/100 S M H d m Y -- )
+       #4 u0.r [char] - emit               \ year
+       #2 u0.r [char] - emit               \ month
+       #2 u0.r [char] _ emit               \ day-of-month
+       #2 u0.r [char] : emit               \ hour
+       #2 u0.r [char] : emit               \ minute 
+       #2 u0.r                             \ second
+       drop                                \ s/100
+   ;
+   : rtc.show ( -- )  rtc.get rtc.dot ;
+   
+   : rtc.set.year ( year -- )
+     dup >< swap                           \ -- y.h y.l
+     $10 3 i2c_addr_rtc  i2c.n!            \ store at addr $10
+   ;
+   
+   : 2pick ( x2 x1 x0 -- x2 x1 x0 x2 )
+       \ 2 pick
+       >r over r> swap
+   ;
+   : rtc.set ( Y m d H M S S/100 -- )
+     ( s/100.dec ) dec>bcd >r
+     (   sec.dec ) dec>bcd >r
+     (   min.dec ) dec>bcd >r
+     (  hour.dec ) dec>bcd >r              \ -- Y m d
+     2pick #6 lshift +                     \ -- Y m Y%4|d 
+     (   day.dec ) dec>bcd >r              \ -- Y m 
+     ( month.dec ) dec>bcd
+     r> r> r> r> r>                        \ -- Y m d H M S S/100
+     $80 0 #8 i2c_addr_rtc i2c.n!          \ stop rtc send data
+     $08 0 #2 i2c_addr_rtc i2c.n!          \ start rtc
+     (  year.dec ) rtc.set.year            \ set year
+   ;
+
+  

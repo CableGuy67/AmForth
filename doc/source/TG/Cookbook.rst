@@ -15,6 +15,6 @@ changes at any time.
    recipes/Boards
    recipes/General
    recipes/Programming
+   recipes/Hardware
    recipes/Hardware-AVR
    recipes/Hardware-MSP430
-

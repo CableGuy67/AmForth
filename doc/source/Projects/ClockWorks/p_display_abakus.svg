@@ -1,0 +1,603 @@
+<?xml version="1.0" standalone="no"?>
+<!-- Creator: fig2dev Version 3.2.6a -->
+<!-- CreationDate: 2017-08-20 18:37:34 -->
+<!-- Magnification: 1.05 -->
+<svg	xmlns="http://www.w3.org/2000/svg"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	width="254pt" height="368pt"
+	viewBox="3585 -2715 4032 5842">
+<g fill="none">
+<!-- Line -->
+<polyline points=" 7605,1215"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 4635,-2610 6975,-2610"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 4635,-2610 4590,-2610"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 4590,-2070 6930,-2070"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 6210,-135 6795,-135 6795,-2340 6975,-2340"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 4590,-2340 4590,-1080 4950,-1080"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 4590,270 6930,270"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 6930,540 4590,540"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 4590,810 6930,810"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 6210,-270 6255,-270 6255,1170 6030,1170"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 6030,1440 6300,1440 6300,-405 6210,-405"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 6210,-540 6345,-540 6345,1710 6030,1710"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 6030,1980 6390,1980 6390,-675 6210,-675"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 6210,-810 6435,-810 6435,2250 6030,2250"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 6030,2520 6480,2520 6480,-945 6210,-945"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 6210,-1080 6525,-1080 6525,2790 6030,2790"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 6030,3060 6570,3060 6570,-1215 6210,-1215"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 4950,810 4950,3060 5220,3060"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5220,2790 4950,2790"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5220,2520 4950,2520"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5220,2250 4950,2250"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5220,1980 4950,1980"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5220,1710 4950,1710"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5265,1440 4950,1440"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5220,1170 4950,1170"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 6210,90 6210,540"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 4680,-2070 4680,-1305 4950,-1305"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 4950,-1575 4770,-1575 4770,-2610"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 4950,-1440 4770,-1440 4770,270"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 4950,90 4770,90"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 4950,-1710 4860,-1710 4860,540"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Text -->
+<text xml:space="preserve" x="3600" y="-2565" fill="#000000" font-family="Times" font-style="normal" font-weight="normal" font-size="144" text-anchor="start">Latch</text>
+<!-- Text -->
+<text xml:space="preserve" x="3600" y="-2295" fill="#000000" font-family="Times" font-style="normal" font-weight="normal" font-size="144" text-anchor="start">Data</text>
+<!-- Text -->
+<text xml:space="preserve" x="3600" y="-2025" fill="#000000" font-family="Times" font-style="normal" font-weight="normal" font-size="144" text-anchor="start">Clock</text>
+<!-- Text -->
+<text xml:space="preserve" x="3600" y="315" fill="#000000" font-family="Times" font-style="normal" font-weight="normal" font-size="144" text-anchor="start">+5V</text>
+<!-- Text -->
+<text xml:space="preserve" x="3600" y="585" fill="#000000" font-family="Times" font-style="normal" font-weight="normal" font-size="144" text-anchor="start">GND</text>
+<!-- Text -->
+<text xml:space="preserve" x="3600" y="900" fill="#000000" font-family="Times" font-style="normal" font-weight="normal" font-size="144" text-anchor="start">PWM5V</text>
+<!-- Text -->
+<text xml:space="preserve" x="5940" y="2205" fill="#000000" font-family="Times" font-style="normal" font-weight="normal" font-size="144" text-anchor="start">R</text>
+<!-- Text -->
+<text xml:space="preserve" x="5940" y="1935" fill="#000000" font-family="Times" font-style="normal" font-weight="normal" font-size="144" text-anchor="start">G</text>
+<!-- Text -->
+<text xml:space="preserve" x="5940" y="1665" fill="#000000" font-family="Times" font-style="normal" font-weight="normal" font-size="144" text-anchor="start">G</text>
+<!-- Text -->
+<text xml:space="preserve" x="5940" y="1395" fill="#000000" font-family="Times" font-style="normal" font-weight="normal" font-size="144" text-anchor="start">G</text>
+<!-- Text -->
+<text xml:space="preserve" x="5940" y="1125" fill="#000000" font-family="Times" font-style="normal" font-weight="normal" font-size="144" text-anchor="start">G</text>
+<!-- Line -->
+<polyline points=" 5451,-1495 5310,-1495"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5438,-1765 5301,-1765"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Text -->
+<text xml:space="preserve" x="5301" y="-1403" fill="#000000" font-family="Helvetica" font-style="normal" font-weight="normal" font-size="72" text-anchor="start">MR</text>
+<!-- Text -->
+<text xml:space="preserve" x="5286" y="-1041" fill="#000000" font-family="Helvetica" font-style="normal" font-weight="normal" font-size="72" text-anchor="start">DS</text>
+<!-- Text -->
+<text xml:space="preserve" x="5706" y="-1044" fill="#000000" font-family="Helvetica" font-style="normal" font-weight="normal" font-size="72" text-anchor="start">Q1</text>
+<!-- Text -->
+<text xml:space="preserve" x="5706" y="-908" fill="#000000" font-family="Helvetica" font-style="normal" font-weight="normal" font-size="72" text-anchor="start">Q2</text>
+<!-- Text -->
+<text xml:space="preserve" x="5706" y="-771" fill="#000000" font-family="Helvetica" font-style="normal" font-weight="normal" font-size="72" text-anchor="start">Q3</text>
+<!-- Text -->
+<text xml:space="preserve" x="5713" y="-639" fill="#000000" font-family="Helvetica" font-style="normal" font-weight="normal" font-size="72" text-anchor="start">Q4</text>
+<!-- Text -->
+<text xml:space="preserve" x="5717" y="-500" fill="#000000" font-family="Helvetica" font-style="normal" font-weight="normal" font-size="72" text-anchor="start">Q5</text>
+<!-- Text -->
+<text xml:space="preserve" x="5706" y="-369" fill="#000000" font-family="Helvetica" font-style="normal" font-weight="normal" font-size="72" text-anchor="start">Q6</text>
+<!-- Text -->
+<text xml:space="preserve" x="5702" y="-230" fill="#000000" font-family="Helvetica" font-style="normal" font-weight="normal" font-size="72" text-anchor="start">Q7</text>
+<!-- Text -->
+<text xml:space="preserve" x="5688" y="-99" fill="#000000" font-family="Helvetica" font-style="normal" font-weight="normal" font-size="72" text-anchor="start">Q7'</text>
+<!-- Text -->
+<text xml:space="preserve" x="5301" y="-1677" fill="#000000" font-family="Helvetica" font-style="normal" font-weight="normal" font-size="72" text-anchor="start">OE</text>
+<!-- Text -->
+<text xml:space="preserve" x="5421" y="-1547" fill="#000000" font-family="Helvetica" font-style="normal" font-weight="normal" font-size="72" text-anchor="start">ST_CP</text>
+<!-- Text -->
+<text xml:space="preserve" x="5402" y="-1269" fill="#000000" font-family="Helvetica" font-style="normal" font-weight="normal" font-size="72" text-anchor="start">SH_CP</text>
+<!-- Text -->
+<text xml:space="preserve" x="5710" y="-1186" fill="#000000" font-family="Helvetica" font-style="normal" font-weight="normal" font-size="72" text-anchor="start">Q0</text>
+<!-- Text -->
+<text xml:space="preserve" x="5355" y="-1935" fill="#000000" font-family="Helvetica" font-style="normal" font-weight="normal" font-size="96" text-anchor="start">74HC595</text>
+<!-- Line -->
+<polyline points=" 6210,90 5895,90"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Text -->
+<text xml:space="preserve" x="5670" y="90" fill="#000000" font-family="Helvetica" font-style="normal" font-weight="normal" font-size="72" text-anchor="start">GND</text>
+<!-- Text -->
+<text xml:space="preserve" x="6021" y="58" fill="#000000" font-family="Helvetica" font-style="normal" font-weight="normal" font-size="72" text-anchor="start">8</text>
+<!-- Line -->
+<polyline points=" 4950,90 5265,90"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Text -->
+<text xml:space="preserve" x="5310" y="90" fill="#000000" font-family="Helvetica" font-style="normal" font-weight="normal" font-size="72" text-anchor="start">VCC</text>
+<!-- Text -->
+<text xml:space="preserve" x="5030" y="58" fill="#000000" font-family="Helvetica" font-style="normal" font-weight="normal" font-size="72" text-anchor="start">16</text>
+<!-- Circle -->
+<circle cx="4365" cy="-2340" r="45"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 4410,-2340 4590,-2340"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Circle -->
+<circle cx="4365" cy="-2610" r="45"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 4410,-2610 4590,-2610"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Circle -->
+<circle cx="4365" cy="-2070" r="45"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 4410,-2070 4590,-2070"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Circle -->
+<circle cx="7155" cy="-2610" r="45"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 7110,-2610 6930,-2610"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Circle -->
+<circle cx="7155" cy="-2340" r="45"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 7110,-2340 6930,-2340"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Circle -->
+<circle cx="7155" cy="-2070" r="45"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 7110,-2070 6930,-2070"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Circle -->
+<circle cx="5220" cy="-1710" r="45"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Circle -->
+<circle cx="5220" cy="-1440" r="45"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 4950,-1710 5175,-1710"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 4950,-1575 5265,-1575"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 4950,-1440 5175,-1440"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 4950,-1305 5265,-1305"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 4950,-1080 5265,-1080"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 6210,-1215 5895,-1215"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 6210,-1080 5895,-1080"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 6210,-945 5895,-945"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 6210,-810 5895,-810"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 6210,-675 5895,-675"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 6210,-540 5895,-540"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 6210,-405 5895,-405"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 6210,-270 5895,-270"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 6210,-135 5895,-135"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5895,-45 5895,-1845 5265,-1845 5265,-45 5895,-45"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5377,-1580 5269,-1616"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5269,-1544 5377,-1580"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5377,-1302 5269,-1338"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5269,-1266 5377,-1302"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Circle -->
+<circle cx="7155" cy="810" r="45"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 7110,810 6930,810"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Circle -->
+<circle cx="7155" cy="540" r="45"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 7110,540 6930,540"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Circle -->
+<circle cx="7155" cy="270" r="45"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 7110,270 6930,270"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5580,2520 5670,2520"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<rect x="5310" y="2475" width="270" height="90"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5220,2520 5310,2520"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5895,2520 5805,2475 5805,2565 5895,2520" fill="#000000"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5895,2520 6030,2520"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5895,2575 5895,2465"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5850,2385 5895,2430"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5895,2385 5850,2385 5850,2430"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5805,2385 5760,2385 5760,2430"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5760,2385 5805,2430"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5670,2520 5805,2520"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5580,2250 5670,2250"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<rect x="5310" y="2205" width="270" height="90"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5220,2250 5310,2250"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5895,2250 5805,2205 5805,2295 5895,2250" fill="#000000"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5895,2250 6030,2250"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5895,2305 5895,2195"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5850,2115 5895,2160"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5895,2115 5850,2115 5850,2160"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5805,2115 5760,2115 5760,2160"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5760,2115 5805,2160"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5670,2250 5805,2250"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5580,1980 5670,1980"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<rect x="5310" y="1935" width="270" height="90"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5220,1980 5310,1980"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5895,1980 5805,1935 5805,2025 5895,1980" fill="#000000"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5895,1980 6030,1980"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5895,2035 5895,1925"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5850,1845 5895,1890"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5895,1845 5850,1845 5850,1890"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5805,1845 5760,1845 5760,1890"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5760,1845 5805,1890"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5670,1980 5805,1980"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5580,2790 5670,2790"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<rect x="5310" y="2745" width="270" height="90"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5220,2790 5310,2790"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5895,2790 5805,2745 5805,2835 5895,2790" fill="#000000"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5895,2790 6030,2790"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5895,2845 5895,2735"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5850,2655 5895,2700"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5895,2655 5850,2655 5850,2700"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5805,2655 5760,2655 5760,2700"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5760,2655 5805,2700"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5670,2790 5805,2790"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5580,1440 5670,1440"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<rect x="5310" y="1395" width="270" height="90"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5220,1440 5310,1440"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5895,1440 5805,1395 5805,1485 5895,1440" fill="#000000"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5895,1440 6030,1440"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5895,1495 5895,1385"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5850,1305 5895,1350"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5895,1305 5850,1305 5850,1350"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5805,1305 5760,1305 5760,1350"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5760,1305 5805,1350"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5670,1440 5805,1440"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5580,1710 5670,1710"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<rect x="5310" y="1665" width="270" height="90"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5220,1710 5310,1710"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5895,1710 5805,1665 5805,1755 5895,1710" fill="#000000"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5895,1710 6030,1710"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5895,1765 5895,1655"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5850,1575 5895,1620"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5895,1575 5850,1575 5850,1620"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5805,1575 5760,1575 5760,1620"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5760,1575 5805,1620"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5670,1710 5805,1710"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5580,1170 5670,1170"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<rect x="5310" y="1125" width="270" height="90"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5220,1170 5310,1170"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5895,1170 5805,1125 5805,1215 5895,1170" fill="#000000"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5895,1170 6030,1170"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5895,1225 5895,1115"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5850,1035 5895,1080"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5895,1035 5850,1035 5850,1080"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5805,1035 5760,1035 5760,1080"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5760,1035 5805,1080"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5670,1170 5805,1170"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5580,3060 5670,3060"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<rect x="5310" y="3015" width="270" height="90"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5220,3060 5310,3060"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5895,3060 5805,3015 5805,3105 5895,3060" fill="#000000"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5895,3060 6030,3060"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5895,3115 5895,3005"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5850,2925 5895,2970"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5895,2925 5850,2925 5850,2970"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5805,2925 5760,2925 5760,2970"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5760,2925 5805,2970"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 5670,3060 5805,3060"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Circle -->
+<circle cx="4365" cy="270" r="45"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 4410,270 4590,270"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Circle -->
+<circle cx="4365" cy="540" r="45"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 4410,540 4590,540"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Circle -->
+<circle cx="4365" cy="810" r="45"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Line -->
+<polyline points=" 4410,810 4590,810"
+	stroke="#000000" stroke-width="8px"/>
+<!-- Text -->
+<text xml:space="preserve" x="4997" y="-1326" fill="#000000" font-family="Helvetica" font-style="normal" font-weight="normal" font-size="72" text-anchor="start">11</text>
+<!-- Text -->
+<text xml:space="preserve" x="4997" y="-1731" fill="#000000" font-family="Helvetica" font-style="normal" font-weight="normal" font-size="72" text-anchor="start">13</text>
+<!-- Text -->
+<text xml:space="preserve" x="4997" y="-1596" fill="#000000" font-family="Helvetica" font-style="normal" font-weight="normal" font-size="72" text-anchor="start">12</text>
+<!-- Text -->
+<text xml:space="preserve" x="4997" y="-1468" fill="#000000" font-family="Helvetica" font-style="normal" font-weight="normal" font-size="72" text-anchor="start">10</text>
+<!-- Text -->
+<text xml:space="preserve" x="4997" y="-1109" fill="#000000" font-family="Helvetica" font-style="normal" font-weight="normal" font-size="72" text-anchor="start">14</text>
+<!-- Text -->
+<text xml:space="preserve" x="6021" y="-1108" fill="#000000" font-family="Helvetica" font-style="normal" font-weight="normal" font-size="72" text-anchor="start">1</text>
+<!-- Text -->
+<text xml:space="preserve" x="6021" y="-977" fill="#000000" font-family="Helvetica" font-style="normal" font-weight="normal" font-size="72" text-anchor="start">2</text>
+<!-- Text -->
+<text xml:space="preserve" x="6021" y="-831" fill="#000000" font-family="Helvetica" font-style="normal" font-weight="normal" font-size="72" text-anchor="start">3</text>
+<!-- Text -->
+<text xml:space="preserve" x="6021" y="-700" fill="#000000" font-family="Helvetica" font-style="normal" font-weight="normal" font-size="72" text-anchor="start">4</text>
+<!-- Text -->
+<text xml:space="preserve" x="6021" y="-565" fill="#000000" font-family="Helvetica" font-style="normal" font-weight="normal" font-size="72" text-anchor="start">5</text>
+<!-- Text -->
+<text xml:space="preserve" x="6021" y="-434" fill="#000000" font-family="Helvetica" font-style="normal" font-weight="normal" font-size="72" text-anchor="start">6</text>
+<!-- Text -->
+<text xml:space="preserve" x="6021" y="-294" fill="#000000" font-family="Helvetica" font-style="normal" font-weight="normal" font-size="72" text-anchor="start">7</text>
+<!-- Text -->
+<text xml:space="preserve" x="6021" y="-156" fill="#000000" font-family="Helvetica" font-style="normal" font-weight="normal" font-size="72" text-anchor="start">9</text>
+<!-- Text -->
+<text xml:space="preserve" x="5999" y="-1243" fill="#000000" font-family="Helvetica" font-style="normal" font-weight="normal" font-size="72" text-anchor="start">15</text>
+</g>
+</svg>

@@ -9,7 +9,7 @@ A collection of projects using amforth.
    :maxdepth: 1
 
    RS485//RS485Bus
-   ClockWorks/Doc_02_unixtime.rst
+   ClockWorks/index.rst
 
 `Coinforth <https://github.com/DRuffer/coinForth>`__ including an
 `ARD101 Tutorial <https://github.com/DRuffer/coinForth/blob/master/doc/ARD101/ARD101.pdf>`__

@@ -14,6 +14,6 @@ types lack the minimum flash capacity. The
 ATtiny's lack some machine instructions as well. 
 
 .. toctree::
-   
+
    AVR8
    MSP430
