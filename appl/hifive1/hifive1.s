@@ -1,0 +1,2 @@
+
+.include "amforth.s"
