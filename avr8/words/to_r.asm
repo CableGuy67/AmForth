@@ -11,5 +11,4 @@ XT_TO_R:
 PFA_TO_R:
     push tosh
     push tosl
-    loadtos
-    jmp_ DO_NEXT
+    jmp_ PFA_DROP
