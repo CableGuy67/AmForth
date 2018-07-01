@@ -1,6 +1,5 @@
 
 PROGRAM_DIR=.
-AMFORTH ?= ../..
 PROGRAM ?= hifive1.hex
 BOARD ?= freedom-e300-hifive1
 
@@ -36,12 +35,15 @@ GDB_UPLOAD_CMDS += -ex "quit"
 
 all : hifive1.bin
 
+buildinfo: words/build-info.tmpl
+	cat words/build-info.tmpl | sed "s/%d/ `date`/" > words/build-info.s
+
 upload:
 	$(RISCV_OPENOCD) $(OPENOCDARGS) & \
 	$(RISCV_GDB) $(PROGRAM_DIR)/$(PROGRAM) $(GDB_UPLOAD_ARGS) $(GDB_UPLOAD_CMDS) && \
 	echo "Successfully uploaded '$(PROGRAM)' to $(BOARD)."
 
-hifive1.o:
+hifive1.o: buildinfo
 	$(RISCV_TOOLS)-as -I $(AMFORTH)/risc-v hifive1.s -o hifive1.o -march=rv32im
 
 hifive1.bin : memmap hifive1.o
@@ -56,3 +58,4 @@ clean:
 	rm -f *.o
 	rm -f *.elf
 	rm -f *.list
+	rm -f words/build-info.s
