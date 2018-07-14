@@ -3,16 +3,22 @@
 #   x2/SP RSP Return Stack Pointer
 #   x3 TOS Top Of Stack
 #   x4 DSP Data Stack Pointer
-#   x5 W   Forth VM W register
-#   x6 IP  Forth VM IP register (ITC Instruction Pointer)
+#   x17 W   Forth VM W register
+#   x16 IP  Forth VM IP register (ITC Instruction Pointer)
 
 .macro NEXT
-   ret
+#   ret
+    j DO_NEXT
 .endm
 
-.macro PUSHTOS
+.macro savetos
   addi x4, x4, -4
   sw x3, 0(x4)
+.endm
+
+.macro loadtos
+  lw x3, 0(x4)
+  addi x4,x4,4
 .endm
 
 .macro push register
@@ -63,5 +69,5 @@
 8:  .p2align 2        # Realign
 
    XT_\Label: .word DOCOLON
-   PFA\Label:
+   PFA_\Label:
 .endm

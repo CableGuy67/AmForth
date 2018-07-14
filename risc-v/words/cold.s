@@ -49,21 +49,7 @@ CODEWORD Flag_visible, "cold", COLD
   li x5, Eingabepuffer
   sw x5, 4(x6)
 
-
-#   # Suche nach der init-Definition:
-#   # Search for current init definition in dictionary:#
-
-#   pushdaaddr init_name
-#   pushdaconst 4
-#   call find
-#   drop # No need for flags
-#   beq x3, zero, 1f
-
-#     # Gefunden ! Found !
-#     call execute
-#     j quit_intern
-#1:
-#   drop   # Die 0-Adresse von find. Wird hier heruntergeworfen, damit der Startwert AFFEBEEF erhalten bleibt !
-   j quit # Drop 0-address of find to keep magic TOS value intact.
-
-init_name: .byte 105, 110, 105, 116 # "init"
+#  j PFA_QUIT
+  lui x16, %hi(XT_WARM)
+  addi x16,x16,%lo(XT_WARM)
+  j DO_NEXT
