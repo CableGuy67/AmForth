@@ -7,7 +7,6 @@
 #   x16 IP  Forth VM IP register (ITC Instruction Pointer)
 
 .macro NEXT
-#   ret
     j DO_NEXT
 .endm
 
@@ -46,7 +45,7 @@
 
 .macro CODEWORD Flags, Name, Label
     .p2align 2
-
+VE_\Label:
 9:  .word 9f          # Insert Link
     .word \Flags      # Flag field
 
@@ -60,7 +59,7 @@
 
 .macro COLON Flags, Name, Label
     .p2align 2
-
+VE_\Label:
 9:  .word 9f          # Insert Link
     .word \Flags      # Flag field
 

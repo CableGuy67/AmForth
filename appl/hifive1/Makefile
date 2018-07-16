@@ -1,5 +1,7 @@
 
 PROGRAM_DIR=.
+# PROGRAM ?= demo_gpio
+# PROGRAM ?= led_fade
 PROGRAM ?= hifive1.hex
 BOARD ?= freedom-e300-hifive1
 
@@ -8,9 +10,9 @@ LINK_TARGET ?= flash
 #########################
 # location of binaries 
 #########################
-RISCV_GDB     = $(AMFORTH)/tools/riscv64-unknown-elf-gdb
-RISCV_OPENOCD = $(AMFORTH)/tools/openocd
-RISCV_TOOLS   = $(AMFORTH)/tools/riscv64-unknown-elf
+RISCV_GDB     = riscv64-unknown-elf-gdb
+RISCV_OPENOCD = openocd
+RISCV_TOOLS   = riscv64-unknown-elf
 
 COPS = -Wall  -Os -nostdlib -nostartfiles -ffreestanding -save-temps
 AOPS = --warn --fatal-warnings

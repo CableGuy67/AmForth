@@ -1,6 +1,14 @@
 #------------------------------------------------------------------------------
-  CODEWORD Flag_inline, "r@", R_FETCH # Kopiert das oberste Element des Returnstacks auf den Datenstack
+  CODEWORD Flag_foldable_2, "d2/", D2SLASH
 #------------------------------------------------------------------------------
-  savetos
-  lw x3, 0(sp)
+  lw x5, 0(x4) # Low
+  
+  slli x6, x3, 31
+  srai x3, x3, 1
+
+  srli x5, x5, 1
+  or x5, x5, x6
+
+  sw x5, 0(x4)
   NEXT
+

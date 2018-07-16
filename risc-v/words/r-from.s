@@ -1,5 +1,5 @@
 CODEWORD Flag_visible, "r>", R_FROM
 
-  PUSHTOS
+  savetos
   pop x3
   NEXT

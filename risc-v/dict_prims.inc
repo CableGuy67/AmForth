@@ -6,7 +6,6 @@
 
 .include "common/forth-core.s"
 
-.include "words/cold.s"
 
 .include "words/exit.s"
 
@@ -31,3 +30,58 @@
 
 .include "words/fetch.s"
 .include "words/store.s"
+
+.include "words/multiplydivide.s"
+.include "words/stack.s"
+.include "words/logic.s"
+.include "words/memory.s"
+.include "words/comparisions.s"
+
+.include "words/2swap.s"
+.include "words/2nip.s"
+.include "words/2drop.s"
+.include "words/2over.s"
+.include "words/2r-fetch.s"
+.include "words/2to-r.s"
+.include "words/2r-from.s"
+.include "words/d-2star.s"
+.include "words/d-2slash.s"
+.include "words/dabs.s"
+.include "words/dnegate.s"
+.include "words/d-plus.s"
+.include "words/d-minus.s"
+.include "words/double.s"
+.include "words/base.s"
+.include "words/plus.s"
+.include "words/minus.s"
+.include "words/1-plus.s"
+.include "words/1-minus.s"
+.include "words/2-plus.s"
+.include "words/2-minus.s"
+.include "words/cell-plus.s"
+.include "words/cells.s"
+
+.include "words/state.s"
+.include "words/tib.s"
+.include "words/cold.s"
+.include "words/quit.s"
+
+#.include "common/query.s"
+#.include "common/strings.s"
+#.include "common/compiler.s"
+
+#.include "common/deepinsight.s"
+#.include "common/compiler-flash.s"
+#.include "common/controlstructures.s"
+#.include "common/doloop.s"
+#.include "common/numberstrings.s"
+#.include "common/numberoutput.s"
+#.include "common/interpreter.s"
+#.include "common/token.s"
+
+.include "words/build-info.s"
+.include "words/1ms.s"
+.include "words/dobranch.s"
+.include "words/docondbranch.s"
+.include "words/doliteral.s"
+.include "words/leds.s"

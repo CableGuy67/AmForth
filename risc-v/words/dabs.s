@@ -1,6 +1,6 @@
 #------------------------------------------------------------------------------
-  CODEWORD Flag_inline, "r@", R_FETCH # Kopiert das oberste Element des Returnstacks auf den Datenstack
+  CODEWORD Flag_foldable_2, "dabs", DABS
 #------------------------------------------------------------------------------
-  savetos
-  lw x3, 0(sp)
-  NEXT
+dabs:
+  blt x3, zero, dnegate # Check sign in high-part
+  NEXT                  # Not negative ? Nothing to do !
