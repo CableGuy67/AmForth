@@ -38,7 +38,10 @@ move:  # ( Quelladdr Zieladdr Byteanzahl -- ) ( Source Destination Count -- )
   addi x10, x10, -1
   bne x10, zero, 2b
 
-3:drop
+3:
+  lw x3, 0(x4)
+  addi x4, x4, 4
+
   pop_x1_x10_x11
   NEXT
 
@@ -63,7 +66,10 @@ move:  # ( Quelladdr Zieladdr Byteanzahl -- ) ( Source Destination Count -- )
   sb x10, 0(x5)
   bne x11, zero, 1b
 
-2:drop
+2:
+  lw x3, 0(x4)
+  addi x4, x4, 4
+
   pop_x10_x11
   NEXT
 

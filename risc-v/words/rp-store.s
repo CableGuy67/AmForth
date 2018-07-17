@@ -2,5 +2,7 @@
   CODEWORD Flag_inline, "rp!", RP_STORE # ( a-addr -- )
 # -----------------------------------------------------------------------------
   mv sp, x3
-  drop
+  lw x3, 0(x4)
+  addi x4, x4, 4
+
   NEXT

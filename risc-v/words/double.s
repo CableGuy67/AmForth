@@ -37,7 +37,8 @@ ud_star:
 #------------------------------------------------------------------------------
   push x1
   call udm_star
-  ddrop
+  lw x3, 4(x4)
+  addi x4, x4, 8
   pop x1
   NEXT
 
@@ -152,7 +153,7 @@ udm_star: # Unsigned multiply 64*64 = 128
   call m_star
   r_from
   call m_slash_mod
-  nip
+  addi x4, x4, 4
   pop x1
   NEXT
 
@@ -178,8 +179,7 @@ um_slash_mod: # ( ud u -- u u ) Dividend Divisor -- Rest Ergebnis
   call ud_slash_mod
   lw x3, 0(x4)
   addi x4, x4, 4
-
-  nip
+  addi x4, x4, 4
   pop x1
   NEXT
 
@@ -194,8 +194,7 @@ m_slash_mod:  # ( d n -- n n )
   call d_slash_mod
   lw x3, 0(x4)
   addi x4, x4, 4
-
-  nip
+  addi x4, x4, 4
   pop x1
   NEXT
 
@@ -360,7 +359,8 @@ d_slash_mod:  # ( 1L 1H 2L tos: 2H -- Rem-L Rem-H Quot-L tos: Quot-H )
 #------------------------------------------------------------------------------
   push x1
   call d_slash_mod
-  call dnip
+  addi x4, x4, 4
+  addi x4, x4, 4
   pop x1
   NEXT
 
