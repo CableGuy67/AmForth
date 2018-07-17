@@ -94,13 +94,15 @@ udm_star: # Unsigned multiply 64*64 = 128
   li x5, 0
   addc x12, x12, x3    # a*c-Low + a*d-High
   addc x13, x13, zero  # Carry
-  drop
+  lw x3, 0(x4)
+  addi x4, x4, 4
 
   li x5, 0
   addc x11, x11, x3 # a*d-Low + b*d-High
   addc x12, x12, zero # Carry
   addc x13, x13, zero # Carry
-  drop
+  lw x3, 0(x4)
+  addi x4, x4, 4
 
   # ( d c b a )
 
@@ -115,13 +117,15 @@ udm_star: # Unsigned multiply 64*64 = 128
   li x5, 0
   addc x12, x12, x3 # a*c-Low + b*c-High + a*d-High
   addc x13, x13, zero # Carry
-  drop
+  lw x3, 0(x4)
+  addi x4, x4, 4
 
   li x5, 0
   addc x11, x11, x3 # b*c-Low + a*d-Low + b*d-High
   addc x12, x12, zero  # Carry
   addc x13, x13, zero  # Carry
-  drop
+  lw x3, 0(x4)
+  addi x4, x4, 4
 
   # ( d c b tos: a )
   mv x3, x13
@@ -172,7 +176,9 @@ um_slash_mod: # ( ud u -- u u ) Dividend Divisor -- Rest Ergebnis
   push x1
   pushdaconst 0
   call ud_slash_mod
-  drop
+  lw x3, 0(x4)
+  addi x4, x4, 4
+
   nip
   pop x1
   NEXT
@@ -186,7 +192,9 @@ m_slash_mod:  # ( d n -- n n )
   pushdatos                 # s>d
   srai x3, x3, 31           # Turn MSB into 0xffffffff or 0x00000000
   call d_slash_mod
-  drop
+  lw x3, 0(x4)
+  addi x4, x4, 4
+
   nip
   pop x1
   NEXT
@@ -362,7 +370,9 @@ CODEWORD Flag_foldable_4, "du<", DULESS
 du_less: 
   push x1
   call dminus
-  drop
+  lw x3, 0(x4)
+  addi x4, x4, 4
+
   addi x3, x5, -1
   xori x3, x3, -1
   pop x1
@@ -434,7 +444,9 @@ CODEWORD Flag_foldable_4, "d>", DGREATER  # Just swapped the order of registers
            # TOS: 1H
 
   xor x5, x5, x3
-  drop
+  lw x3, 0(x4)
+  addi x4, x4, 4
+
   xor x6, x6, x3
 
   or x3, x5, x6
@@ -453,7 +465,9 @@ CODEWORD Flag_foldable_4, "d>", DGREATER  # Just swapped the order of registers
            # TOS: 1H
 
   xor x5, x5, x3
-  drop
+  lw x3, 0(x4)
+  addi x4, x4, 4
+
   xor x6, x6, x3
 
   or x3, x5, x6
