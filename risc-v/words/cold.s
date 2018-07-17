@@ -49,9 +49,5 @@ CODEWORD Flag_visible, "cold", COLD
   li x5, Eingabepuffer
   sw x5, 4(x6)
 
-  li x20, red|green|blue
-  li x21, GPIO_OUTPUT_EN
-  sw x20, 0(x21)
-
   la x17, XT_WARM
   j DO_EXECUTE

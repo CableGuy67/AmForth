@@ -4,3 +4,4 @@
 #
 
 .include "words/warm.s"
+.include "words/ms.s"
