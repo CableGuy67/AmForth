@@ -50,6 +50,7 @@
 .include "words/dnegate.s"
 .include "words/d-plus.s"
 .include "words/d-minus.s"
+.include "words/2dup.s"
 .include "words/double.s"
 .include "words/base.s"
 .include "words/plus.s"
@@ -73,6 +74,17 @@
 .include "words/emitq.s"
 .include "words/pause.s"
 .include "words/nop.s"
+.include "words/bounds.s"
+
+.include "words/do-do.s"
+.include "words/do-loop.s"
+.include "words/i.s"
+.include "words/j.s"
+
+.include "words/aligned.s"
+.include "words/do-sliteral.s"
+.include "words/count.s"
+.include "words/type.s"
 
 .include "words/build-info.s"
 .include "words/1ms.s"

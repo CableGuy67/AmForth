@@ -41,7 +41,7 @@ CODEWORD Flag_visible, "blue", BLUE
 NEXT
 
 CODEWORD Flag_visible, "yellow", YELLOW
-    li x20, blue
+    li x20, green
     li x21, GPIO_PORT
     sw x20, 0(x21)
 NEXT

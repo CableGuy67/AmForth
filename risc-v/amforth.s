@@ -14,6 +14,7 @@ DO_EXECUTE:
 
 .include "dict_prims.inc"
 .include "dict_secs.inc"
+.include "dict_env.inc"
 .include "dict_drivers.inc"
 
 # Finalize the dictionary structure and put a pointer into changeable Flash-Dictionary

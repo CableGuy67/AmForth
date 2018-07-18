@@ -10,3 +10,5 @@
 .include "words/space.s"
 .include "words/spaces.s"
 .include "words/zero.s"
+
+.include "words/ver.s"
