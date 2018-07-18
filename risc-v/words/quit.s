@@ -1,5 +1,13 @@
-CODEWORD Flag_visible, "quit", QUIT
+COLON Flag_visible, "quit", QUIT
 
-1: j 1b
+PFA_QUIT_LOOP:
+  .word XT_DOT_VER, XT_CR
+  .word XT_BUILD_INFO,XT_TYPE
 
-NEXT
+  .word XT_DOLITERAL, 42
+  .word XT_SERIAL_EMIT
+  .word XT_DOLITERAL,2,XT_SPACES
+  .word XT_CR
+  .word XT_DOLITERAL,1000,XT_MS
+  .word XT_DOBRANCH
+  .word PFA_QUIT_LOOP

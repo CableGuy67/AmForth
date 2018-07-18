@@ -1,6 +1,8 @@
 
 .include "macros.s"
 
+.include "preamble.inc"
+
 DOCOLON: 
         push x16   # IP
         mv x16,x17  # W->IP

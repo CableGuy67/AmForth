@@ -70,3 +70,23 @@ VE_\Label:
    XT_\Label: .word DOCOLON
    PFA_\Label:
 .endm
+
+.macro ramallot Name, Length 
+  .equ \Name, rampointer     
+  .set rampointer, rampointer + \Length
+.endm
+
+.macro VARIABLE Name, Label
+    .p2align 2
+VE_\Label:
+9:  .word 9f          # Insert Link
+    .word Flag_visible|Flag_variable      # Flag field
+
+    .byte 8f - 7f     # Calculate length of name field
+7:  .ascii "\Name"    # Insert name string
+8:  .p2align 2        # Realign
+
+   XT_\Label: .word PFA_DOVARIABLE
+   PFA_\Label: .word rampointer
+   .set rampointer, rampointer+4
+.endm

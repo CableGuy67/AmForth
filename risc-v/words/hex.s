@@ -1,0 +1,3 @@
+
+COLON Flag_visible, "hex", HEX
+.word XT_DOLITERAL,16,XT_BASE,XT_STORE,XT_EXIT

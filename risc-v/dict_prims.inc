@@ -83,6 +83,7 @@
 
 .include "words/aligned.s"
 .include "words/do-sliteral.s"
+.include "words/do-variable.s"
 .include "words/count.s"
 .include "words/type.s"
 

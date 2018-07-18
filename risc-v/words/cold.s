@@ -27,27 +27,5 @@ CODEWORD Flag_visible, "cold", COLD
   call initflash
   .endif
 
-  li x6, base
-  li x5, 10      # Base decimal
-  sw x5, 0(x6)
-
-  li x6, state
-  li x5, 0       # Execute mode
-  sw x5, 0(x6)
-
-  li x6, konstantenfaltungszeiger
-  li x5, 0       # Clear constant folding pointer
-  sw x5, 0(x6)
-
-  li x6, Pufferstand
-  li x5, 0       # Set >IN to 0
-  sw x5, 0(x6)
-
-  li x6, current_source
-  li x5, 0       # Empty TIB is source
-  sw x5, 0(x6)
-  li x5, Eingabepuffer
-  sw x5, 4(x6)
-
   la x17, XT_WARM
   j DO_EXECUTE
