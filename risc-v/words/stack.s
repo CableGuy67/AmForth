@@ -7,7 +7,7 @@
   # Berechne den Stackfüllstand
   li x5, datenstackanfang # Anfang laden  Calculate stack fill gauge
   sub x5, x5, x4          # und aktuellen Stackpointer abziehen
-  pushdatos
+  savetos
   srl x3, x5, 2 # Durch 4 teilen  Divide through 4 Bytes/element.
   NEXT
 
@@ -17,7 +17,7 @@
   # Berechne den Stackfüllstand
   li x5, returnstackanfang # Anfang laden  Calculate stack fill gauge
   sub x5, x5, sp          # und aktuellen Stackpointer abziehen
-  pushdatos
+  savetos
   srl x3, x5, 2 # Durch 4 teilen  Divide through 4 Bytes/element.
   NEXT
 

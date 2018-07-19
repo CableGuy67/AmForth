@@ -1,0 +1,2 @@
+
+VARIABLE "here", HERE

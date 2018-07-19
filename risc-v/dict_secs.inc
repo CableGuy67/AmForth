@@ -15,6 +15,7 @@
 .include "words/hex.s"
 
 .include "words/pad.s"
+.include "words/here.s"
 .include "words/hold.s"
 .include "words/sharp.s"
 

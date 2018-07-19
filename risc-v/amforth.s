@@ -19,12 +19,6 @@ DO_EXECUTE:
 .include "dict_env.inc"
 .include "dict_drivers.inc"
 
-# Finalize the dictionary structure and put a pointer into changeable Flash-Dictionary
-# -----------------------------------------------------------------------------
+Definition_EndOfCore Flag_invisible, "--- Flash Dictionary ---"
 
-  Definition_EndOfCore Flag_invisible, "--- Flash Dictionary ---"
-
-# -----------------------------------------------------------------------------
-#  End of Dictionary
-# -----------------------------------------------------------------------------
 

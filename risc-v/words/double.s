@@ -21,7 +21,7 @@
 #------------------------------------------------------------------------------
   CODEWORD Flag_foldable_1, "s>d", S2D # ( n - dl dh ) Single --> Double conversion
 #------------------------------------------------------------------------------
-  pushdatos
+  savetos
   srai x3, x3, 31    # Turn MSB into 0xffffffff or 0x00000000
   NEXT
 
@@ -62,9 +62,9 @@ udm_star: # Unsigned multiply 64*64 = 128
   push_x10_x13
 
   # ( d c b a )
-  pushdatos
+  savetos
   lw x3, 4(x4)    # b
-  pushdatos
+  savetos
   lw x3, 16(x4)   # d
   call um_star
   # ( d c b a  b*d-Low b*d-High )
@@ -73,9 +73,9 @@ udm_star: # Unsigned multiply 64*64 = 128
 
   # ( d c b a )
 
-  pushdatos
+  savetos
   lw x3, 0(x4)   # a
-  pushdatos
+  savetos
   lw x3, 12(x4)  # c
   call um_star
   # ( d c b a  a*c-Low a*c-High )
@@ -84,9 +84,9 @@ udm_star: # Unsigned multiply 64*64 = 128
 
   # ( d c b a )
 
-  pushdatos
+  savetos
   lw x3, 0(x4)    # a
-  pushdatos
+  savetos
   lw x3, 16(x4)   # d
 
   call um_star
@@ -107,9 +107,9 @@ udm_star: # Unsigned multiply 64*64 = 128
 
   # ( d c b a )
 
-  pushdatos
+  savetos
   lw x3, 4(x4)    # b
-  pushdatos
+  savetos
   lw x3, 12(x4)   # c
 
   call um_star
@@ -149,9 +149,12 @@ udm_star: # Unsigned multiply 64*64 = 128
   # ( u1 u2 u3 -- u1*u2/u3 ) With double length intermediate result
 #------------------------------------------------------------------------------
   push x1
-  to_r
+  push x3
+  lw x3, 0(x4)
+  addi x4, x4, 4
   call m_star
-  r_from
+  savetos
+  pop x3
   call m_slash_mod
   addi x4, x4, 4
   pop x1
@@ -162,9 +165,13 @@ udm_star: # Unsigned multiply 64*64 = 128
   # ( u1 u2 u3 -- u1*u2/u3 ) With double length intermediate result
 #------------------------------------------------------------------------------
   push x1
-  to_r
+  push x3
+  lw x3, 0(x4)
+  addi x4, x4, 4
+
   call m_star
-  r_from
+  savetos
+  pop x3
   call m_slash_mod
   pop x1
   NEXT
@@ -189,7 +196,7 @@ um_slash_mod: # ( ud u -- u u ) Dividend Divisor -- Rest Ergebnis
 m_slash_mod:  # ( d n -- n n )
 #------------------------------------------------------------------------------
   push x1
-  pushdatos                 # s>d
+  savetos                 # s>d
   srai x3, x3, 31           # Turn MSB into 0xffffffff or 0x00000000
   call d_slash_mod
   lw x3, 0(x4)

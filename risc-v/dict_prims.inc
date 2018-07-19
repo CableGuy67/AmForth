@@ -4,9 +4,6 @@
 # maximize cache usage
 #
 
-.include "common/forth-core.s"
-
-
 .include "words/exit.s"
 
 .include "words/drop.s"

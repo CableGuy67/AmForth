@@ -12,7 +12,7 @@
 # -----------------------------------------------------------------------------
   CODEWORD Flag_visible, "serial-emit?", SERIAL_EMITQ
 # -----------------------------------------------------------------------------
-  pushdatos
+  savetos
   li x5, UART0_TXDATA
   lw x5, 0(x5)
   srai x5, x5, 31  # Sign extend the "transmit FIFO full" bit

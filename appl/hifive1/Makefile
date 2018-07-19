@@ -21,7 +21,7 @@ GDB_PORT ?= 3333
 #############################################################
 # This Section is for uploading a program to SPI Flash
 #############################################################
-OPENOCDCFG = $(AMFORTH)/risc-v/board/$(BOARD)/openocd.cfg
+OPENOCDCFG = ../../risc-v/board/$(BOARD)/openocd.cfg
 OPENOCDARGS += -f $(OPENOCDCFG)
 
 GDB_UPLOAD_ARGS = --batch
@@ -46,7 +46,7 @@ upload:
 	echo "Successfully uploaded '$(PROGRAM)' to $(BOARD)."
 
 hifive1.o: buildinfo
-	$(RISCV_TOOLS)-as -I $(AMFORTH)/risc-v hifive1.s -o hifive1.o -march=rv32im
+	$(RISCV_TOOLS)-as -I ../../risc-v hifive1.s -o hifive1.o -march=rv32im
 
 hifive1.bin : memmap hifive1.o
 	$(RISCV_TOOLS)-ld -o hifive1.elf -T memmap  hifive1.o -m elf32lriscv
