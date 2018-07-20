@@ -28,6 +28,18 @@
 .include "words/fetch.s"
 .include "words/store.s"
 
+DOCOLON: 
+        push x16   # IP
+        mv x16,x17  # W->IP
+DO_NEXT:
+        lw x17, 0(x16) # @IP -> W 
+        addi x16,x16,4 # INC IP
+DO_EXECUTE:
+        lw x18, 0(x17) # @W, address of some executable code
+        addi x17,x17,4 # INC W, points now to PFA
+        jalr zero,x18,0 # jump to code
+
+
 .include "words/multiplydivide.s"
 .include "words/stack.s"
 .include "words/logic.s"

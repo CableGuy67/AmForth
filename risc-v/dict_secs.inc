@@ -18,5 +18,6 @@
 .include "words/here.s"
 .include "words/hold.s"
 .include "words/sharp.s"
-
+.include "words/dot.s"
+.include "words/init-ram.s"
 .include "words/ver.s"
