@@ -46,7 +46,7 @@ upload:
 	echo "Successfully uploaded '$(PROGRAM)' to $(BOARD)."
 
 hifive1.o: buildinfo
-	$(RISCV_TOOLS)-as -I ../../risc-v hifive1.s -o hifive1.o -march=rv32im
+	$(RISCV_TOOLS)-as -alms=hifive.lst -I ../../risc-v hifive1.s -o hifive1.o -march=rv32im
 
 hifive1.bin : memmap hifive1.o
 	$(RISCV_TOOLS)-ld -o hifive1.elf -T memmap  hifive1.o -m elf32lriscv
@@ -60,4 +60,5 @@ clean:
 	rm -f *.o
 	rm -f *.elf
 	rm -f *.list
+	rm -f *.lst
 	rm -f words/build-info.s
