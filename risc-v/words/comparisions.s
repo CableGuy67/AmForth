@@ -17,7 +17,7 @@
   NEXT
 
 # -----------------------------------------------------------------------------
-  CODEWORD Flag_foldable_1|Flag_inline, "0<", LESSZERO # ( n -- ? )
+  CODEWORD Flag_foldable_1|Flag_inline, "0<", ZEROLESS # ( n -- ? )
 # -----------------------------------------------------------------------------
   srai x3, x3, 31
   NEXT

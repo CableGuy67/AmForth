@@ -1,0 +1,5 @@
+
+COLON Flag_visible, "ud.r", UDDOTR
+.word  XT_TO_R, XT_L_SHARP, XT_SHARP_S
+.word  XT_SHARP_G, XT_R_FROM,  XT_OVER
+.word  XT_MINUS, XT_SPACES, XT_TYPE, XT_EXIT

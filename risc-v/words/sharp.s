@@ -21,7 +21,7 @@ COLON Flag_visible, "#s", SHARP_S
     .word XT_ZEROEQUAL, XT_DOCONDBRANCH, PFA_SHARP_S
     .word XT_EXIT
 
-COLON Flag_visible, "#>", SHARP_GREATER
+COLON Flag_visible, "#>", SHARP_G
     .word XT_2DROP, XT_HLD, XT_FETCH
     .word XT_PAD, XT_OVER, XT_MINUS
     .word XT_EXIT

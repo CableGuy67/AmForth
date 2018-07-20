@@ -1,7 +1,7 @@
 
 COLON Flag_visible, "spaces", SPACES
 
-#.word XT_ZERO, XT_MAX
+.word XT_ZERO, XT_MAX
 SPCS1:
   .word XT_DUP,XT_DOCONDBRANCH,SPCS2
   .word XT_SPACE,XT_1MINUS,XT_DOBRANCH,SPCS1

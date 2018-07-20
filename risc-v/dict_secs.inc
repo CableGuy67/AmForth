@@ -18,6 +18,13 @@
 .include "words/here.s"
 .include "words/hold.s"
 .include "words/sharp.s"
+.include "words/sign.s"
 .include "words/dot.s"
+.include "words/d-dot-r.s"
+.include "words/d-dot.s"
+.include "words/u-dot.s"
+.include "words/ud-dot.s"
+.include "words/ud-dot-r.s"
+
 .include "words/init-ram.s"
 .include "words/ver.s"
