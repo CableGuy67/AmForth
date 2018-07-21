@@ -3,6 +3,8 @@
 
 .include "preamble.inc"
 
+STARTDICT
+
 .include "dict_prims.inc"
 .include "dict_drivers.inc"
 .include "dict_secs.inc"
@@ -10,7 +12,5 @@
 
 
 .equ HERESTART, rampointer
-
-Definition_EndOfCore Flag_invisible, "--- Flash Dictionary ---"
-
-
+# .equ DPSTART, dppointer
+ENDDICT

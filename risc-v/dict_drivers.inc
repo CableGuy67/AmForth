@@ -14,11 +14,6 @@
 .equ GPIO_IOF_SEL      , GPIOBASE + 0x3C
 .equ GPIO_OUT_XOR      , GPIOBASE + 0x40
 
-  # Common Anode tied to Vcc. LEDs shine on low.
-.equ green, 1<<19 # GPIO 19: Green LED
-.equ blue,  1<<21 # GPIO 21: Blue LED
-.equ red,   1<<22 # GPIO 22: Red LED
-
 .equ UART0BASE, 0x10013000
 
 .equ UART0_TXDATA    , UART0BASE + 0x00

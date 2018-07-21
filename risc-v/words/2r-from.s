@@ -1,6 +1,9 @@
 # -----------------------------------------------------------------------------
-  CODEWORD Flag_inline, "2r>", 2RFROM # ( -- 2 1 R: 2 1 -- )
+  CODEWORD Flag_inline, "2r>", 2R_FROM # ( -- 2 1 R: 2 1 -- )
 # -----------------------------------------------------------------------------
-  popdouble x5, x6
-  pushdadouble x6, x5
+  pop x5
+  savetos
+  pop x3
+  savetos
+  mv x3,x5
   NEXT

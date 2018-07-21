@@ -26,6 +26,8 @@
 .include "words/ud-dot.s"
 .include "words/ud-dot-r.s"
 
+.include "words/dot-s.s"
+
 .include "words/refill.s"
 .include "words/accept.s"
 .include "words/prompt-error.s"
@@ -35,7 +37,30 @@
 
 .include "words/catch.s"
 .include "words/throw.s"
+.include "words/source.s"
+.include "words/q-stack.s"
+.include "words/cscan.s"
+.include "words/cskip.s"
+.include "words/parse-name.s"
+.include "words/slash-string.s"
+
+.include "words/2literal.s"
+.include "words/literal.s"
+.include "words/compile.s"
+.include "words/comma.s"
+.include "words/find-xt.s"
+.include "words/nfa2lfa.s"
+.include "words/traverse-wordlist.s"
+.include "words/show-wordlist.s"
+.include "words/name2string.s"
+
+.include "words/rec-null.s"
+.include "words/rec-find.s"
+.include "words/recognize.s"
+
 .include "words/interpret.s"
+
+.include "words/qdo.s"
 
 .include "words/init-ram.s"
 .include "words/ver.s"

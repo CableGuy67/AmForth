@@ -30,23 +30,27 @@
   addi sp, sp, 4
 .endm
 
+.macro STARTDICT
+  .word 0
+9:
+.endm
 
-.macro HEADER Flags, Name, Label
-    .p2align 2
+.macro ENDDICT
+CONSTANT "dp", DP
+.word 9b
+.endm
 
-9:  .word 9f          # Insert Link
-    .word \Flags      # Flag field
-
-    .byte 8f - 7f     # Calculate length of name field
-7:  .ascii "\Name"    # Insert name string
-8:  .p2align 2        # Realign
-
+.macro ramallot Name, Length 
+  .equ RAM_lower_\Name, rampointer     # \Name at
+  .set rampointer, rampointer + \Length
+  .equ RAM_upper_\Name, rampointer     # \Name at
 .endm
 
 .macro CODEWORD Flags, Name, Label
     .p2align 2
 VE_\Label:
-9:  .word 9f          # Insert Link
+    .word 9b          # Insert Link
+9:
     .word \Flags      # Flag field
 
     .byte 8f - 7f     # Calculate length of name field
@@ -60,7 +64,8 @@ VE_\Label:
 .macro COLON Flags, Name, Label
     .p2align 2
 VE_\Label:
-9:  .word 9f          # Insert Link
+    .word 9b          # Insert Link
+9:
     .word \Flags      # Flag field
 
     .byte 8f - 7f     # Calculate length of name field
@@ -71,16 +76,12 @@ VE_\Label:
    PFA_\Label:
 .endm
 
-.macro ramallot Name, Length 
-  .equ RAM_lower_\Name, rampointer     # \Name at
-  .set rampointer, rampointer + \Length
-  .equ RAM_upper_\Name, rampointer     # \Name at
-.endm
 
 .macro VARIABLE Name, Label
     .p2align 2
 VE_\Label:
-9:  .word 9f          # Insert Link
+    .word 9b          # Insert Link
+9:
     .word Flag_visible|Flag_variable      # Flag field
 
     .byte 8f - 7f     # Calculate length of name field
@@ -92,20 +93,25 @@ VE_\Label:
    .set rampointer, rampointer+4
 .endm
 
-.macro Definition_EndOfCore Flags, Name
+.macro CONSTANT Name, Label
     .p2align 2
-    #.equ Dictionary_\@, .  # Labels for a more readable assembler listing only
-
-9:  .word FlashDictionaryAnfang # Insert Link: FlashDictionaryAnfang
-    .word \Flags      # Flag field
+VE_\Label:
+    .word 9b          # Insert Link
+9:
+    .word Flag_visible|Flag_variable      # Flag field
 
     .byte 8f - 7f     # Calculate length of name field
 7:  .ascii "\Name"    # Insert name string
 8:  .p2align 2        # Realign
 
-    #.equ Code_\@, .        # Labels for a more readable assembler listing only
-.endm    
+   XT_\Label: .word PFA_DOVARIABLE
+   PFA_\Label: 
+.endm
 
+.macro HEADLESS Label
+   XT_\Label: .word DOCOLON
+   PFA_\Label: 
+.endm
 
   .equ Flag_invisible,  0xFFFFFFFF
   .equ Flag_visible,    0x00000000
