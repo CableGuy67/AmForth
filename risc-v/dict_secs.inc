@@ -34,6 +34,7 @@
 .include "words/prompt-ready.s"
 
 .include "words/catch.s"
+.include "words/throw.s"
 .include "words/interpret.s"
 
 .include "words/init-ram.s"
@@ -42,4 +43,4 @@
 .include "words/count.s"
 .include "words/type.s"
 
-.include "words/build-info.s"
+.include "dict_appl.inc"
