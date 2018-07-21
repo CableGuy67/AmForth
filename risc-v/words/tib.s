@@ -1,12 +1,9 @@
 # -----------------------------------------------------------------------------
-  CODEWORD Flag_foldable_0, "tib", TIB # ( -- addr )
+  CODEWORD Flag_visible, "tib", TIB # ( -- addr )
 # -----------------------------------------------------------------------------
+  savetos
+  li x3, RAM_lower_refill_buf
   NEXT
 
-
-#------------------------------------------------------------------------------
-  CODEWORD Flag_visible|Flag_2variable, "current-source", CURRENT_SOURCE # ( -- addr )
-#------------------------------------------------------------------------------
-  NEXT
-
-  VARIABLE ">in", TO_IN # ( -- addr )
+VARIABLE "#tib", NUMBERTIB
+VARIABLE ">in", TO_IN 

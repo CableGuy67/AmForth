@@ -20,8 +20,8 @@ CODEWORD Flag_visible, "cold", COLD
 
   # This is the same as in quit, in order to prepare for whatever the user might want to do within "init".
 
-  li sp, returnstackanfang
-  li x4, datenstackanfang
+  li sp, RAM_upper_returnstack
+  li x4, RAM_upper_datastack
 
   .ifdef initflash
   call initflash

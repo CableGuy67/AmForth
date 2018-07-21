@@ -72,8 +72,9 @@ VE_\Label:
 .endm
 
 .macro ramallot Name, Length 
-  .equ \Name, rampointer     
+  .equ RAM_lower_\Name, rampointer     # \Name at
   .set rampointer, rampointer + \Length
+  .equ RAM_upper_\Name, rampointer     # \Name at
 .endm
 
 .macro VARIABLE Name, Label

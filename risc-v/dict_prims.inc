@@ -28,6 +28,12 @@
 .include "words/fetch.s"
 .include "words/store.s"
 
+
+.include "words/multiplydivide.s"
+.include "words/stack.s"
+.include "words/logic.s"
+.include "words/memory.s"
+
 DOCOLON: 
         push x16   # IP
         mv x16,x17  # W->IP
@@ -40,10 +46,6 @@ DO_EXECUTE:
         jalr zero,x18,0 # jump to code
 
 
-.include "words/multiplydivide.s"
-.include "words/stack.s"
-.include "words/logic.s"
-.include "words/memory.s"
 .include "words/comparisions.s"
 
 .include "words/2swap.s"
@@ -93,10 +95,6 @@ DO_EXECUTE:
 .include "words/aligned.s"
 .include "words/do-sliteral.s"
 .include "words/do-variable.s"
-.include "words/count.s"
-.include "words/type.s"
-
-.include "words/build-info.s"
 .include "words/1ms.s"
 .include "words/dobranch.s"
 .include "words/docondbranch.s"

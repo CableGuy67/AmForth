@@ -26,5 +26,20 @@
 .include "words/ud-dot.s"
 .include "words/ud-dot-r.s"
 
+.include "words/refill.s"
+.include "words/accept.s"
+.include "words/prompt-error.s"
+.include "words/prompt-input.s"
+.include "words/prompt-ok.s"
+.include "words/prompt-ready.s"
+
+.include "words/catch.s"
+.include "words/interpret.s"
+
 .include "words/init-ram.s"
 .include "words/ver.s"
+
+.include "words/count.s"
+.include "words/type.s"
+
+.include "words/build-info.s"

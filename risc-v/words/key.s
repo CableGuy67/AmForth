@@ -1,8 +1,8 @@
 #------------------------------------------------------------------------------
-  CODEWORD Flag_visible, "key",KEY # ( -- c )
-key:
+  COLON Flag_visible, "key",KEY # ( -- c )
 #------------------------------------------------------------------------------
-#  li x5, hook_key
-#  lw x5, 0(x5)
-#  jalr zero, x5, 0
-   j PFA_SERIAL_KEY
+
+    .word XT_RED,XT_SERIAL_KEYQ, XT_RED,XT_DOCONDBRANCH, PFA_KEY
+    .word XT_GREEN
+    .word XT_SERIAL_KEY
+    .word XT_EXIT
