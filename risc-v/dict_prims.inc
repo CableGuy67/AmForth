@@ -89,6 +89,7 @@ DO_EXECUTE:
 
 .include "words/do-do.s"
 .include "words/do-loop.s"
+.include "words/unloop.s"
 .include "words/i.s"
 .include "words/j.s"
 
@@ -99,3 +100,4 @@ DO_EXECUTE:
 .include "words/dobranch.s"
 .include "words/docondbranch.s"
 .include "words/doliteral.s"
+.include "words/compare.s"

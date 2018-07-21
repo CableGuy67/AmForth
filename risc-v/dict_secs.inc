@@ -48,18 +48,22 @@
 .include "words/literal.s"
 .include "words/compile.s"
 .include "words/comma.s"
+.include "words/immediate-q.s"
 .include "words/find-xt.s"
 .include "words/nfa2lfa.s"
+.include "words/nfa2cfa.s"
 .include "words/traverse-wordlist.s"
 .include "words/show-wordlist.s"
+.include "words/search-wordlist.s"
 .include "words/name2string.s"
+.include "words/name2flags.s"
 
 .include "words/rec-null.s"
 .include "words/rec-find.s"
 .include "words/recognize.s"
 
 .include "words/interpret.s"
-
+.include "words/map-stack.s"
 .include "words/qdo.s"
 
 .include "words/init-ram.s"

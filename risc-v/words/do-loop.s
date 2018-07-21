@@ -1,6 +1,13 @@
 
 CODEWORD Flag_visible, "(loop)", DOLOOP
-  addi x8,x8,1
+  li x5, 1
+  j DOPLUSLOOP
+
+CODEWORD Flag_visible, "(+loop)", DOPLUSLOOP
+  mv x5, x3
+  loadtos
+DOPLUSLOOP:
+  add x8,x8,x5
   beq  x8,x9,DOLOOP_LEAVE
   lw x16,0(x16)
   NEXT
