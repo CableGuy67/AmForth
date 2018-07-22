@@ -96,6 +96,7 @@ DO_EXECUTE:
 .include "words/aligned.s"
 .include "words/do-sliteral.s"
 .include "words/do-variable.s"
+.include "words/do-data.s"
 .include "words/1ms.s"
 .include "words/dobranch.s"
 .include "words/docondbranch.s"

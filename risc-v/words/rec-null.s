@@ -1,5 +1,5 @@
 
-CONSTANT "rectype-null", RECTYPE_NULL
+DATA "rectype-null", RECTYPE_NULL
     .word XT_FAIL  # interpret
     .word XT_FAIL  # compile
     .word XT_FAIL  # postpone

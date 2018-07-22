@@ -108,6 +108,22 @@ VE_\Label:
    PFA_\Label: 
 .endm
 
+.macro DATA Name, Label
+    .p2align 2
+VE_\Label:
+    .word 9b          # Insert Link
+9:
+    .word Flag_visible|Flag_variable      # Flag field
+
+    .byte 8f - 7f     # Calculate length of name field
+7:  .ascii "\Name"    # Insert name string
+8:  .p2align 2        # Realign
+
+   XT_\Label: .word PFA_DODATA
+   PFA_\Label: 
+
+.endm
+
 .macro HEADLESS Label
    XT_\Label: .word DOCOLON
    PFA_\Label: 

@@ -8,7 +8,7 @@ COLON Flag_visible, "map-stack", MAPSTACK
     .word XT_BOUNDS
     .word XT_QDOCHECK
     .word XT_DOCONDBRANCH,PFA_MAPSTACK3
-    .word XT_DODO
+    .word XT_DODO,PFA_MAPSTACK3
 PFA_MAPSTACK1:
       .word XT_I
       .word XT_FETCH

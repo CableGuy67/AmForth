@@ -60,6 +60,7 @@
 
 .include "words/rec-null.s"
 .include "words/rec-find.s"
+.include "words/forth-recognizer.s"
 .include "words/recognize.s"
 
 .include "words/interpret.s"

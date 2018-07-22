@@ -1,6 +1,6 @@
 
 COLON Flag_visible, "find-xt", FINDXT
-
+    .word XT_DP
     .word XT_TO_R
     .word XT_2DUP
     .word XT_R_FROM
@@ -11,6 +11,5 @@ COLON Flag_visible, "find-xt", FINDXT
       .word XT_NIP
       .word XT_NIP
       .word XT_R_FROM
-      .word XT_TRUE
 PFA_FINDXTA1:
     .word XT_EXIT

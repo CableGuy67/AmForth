@@ -11,7 +11,7 @@ PFA_REC_WORD_FOUND:
 
     .word XT_EXIT
 
-CONSTANT "rectype-xt", RECTYPE_XT
+DATA "rectype-xt", RECTYPE_XT
     .word XT_R_WORD_INTERPRET
     .word XT_R_WORD_COMPILE
     .word XT_2LITERAL

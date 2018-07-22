@@ -28,7 +28,7 @@ HEADLESS ISWORD
     .word XT_2DUP
     .word XT_R_FETCH
     .word XT_NAME2STRING
-    .word XT_COMPARE    
+    .word XT_COMPARE
     .word XT_DOCONDBRANCH,PFA_ISWORD3
       .word XT_R_FROM
       .word XT_DROP

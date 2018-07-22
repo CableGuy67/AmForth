@@ -10,7 +10,7 @@
 
   beq x10, x12, 2f
     # Lengths not equal.
-1:  mv x3, zero
+1:  li x3, -1
     j 4f
 
   # Lengths are equal. Compare characters.
@@ -28,7 +28,7 @@
   addi x3,  x3,  1
   j 2b
   
-3:li x3, -1
+3: mv x3, zero
 
 4:
   NEXT

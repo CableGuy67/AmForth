@@ -4,7 +4,7 @@ COLON Flag_visible, "recognize", RECOGNIZE
     .word XT_DOLITERAL
     .word XT_RECOGNIZE_A
     .word XT_SWAP
-#    .word XT_MAPSTACK
+    .word XT_MAPSTACK
     .word XT_ZEROEQUAL
     .word XT_DOCONDBRANCH, PFA_RECOGNIZE1
       .word XT_2DROP
