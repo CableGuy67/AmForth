@@ -33,7 +33,7 @@
     swap i2c.ee.send-addr 
     i2c.start     \ repeated start
     i2c.rd i2c.tx \ hwid for reading
-    i2c.rx
+    i2c.rxn
   i2c.end
 ;
 
