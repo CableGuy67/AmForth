@@ -4,5 +4,6 @@
   mv x5,x3
   loadtos
   push x3
+  loadtos
   push x5
-  j PFA_DROP
+  NEXT

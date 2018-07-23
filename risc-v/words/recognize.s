@@ -17,8 +17,8 @@ HEADLESS RECOGNIZE_A
    .word XT_ROT
    .word XT_2DUP 
    .word XT_2TO_R
-   .word XT_ROT
-   .word XT_EXECUTE
+   .word XT_ROT     # -- addr len xt
+   .word XT_EXECUTE # -- i*x rectype|rectype-null
    .word XT_2R_FROM
    .word XT_ROT
    .word XT_DUP
@@ -33,3 +33,15 @@ PFA_RECOGNIZE_A1:
    .word XT_NIP
    .word XT_TRUE
    .word XT_EXIT
+
+# : recognize ( addr len stack-id -- i*x rectype-* | rectype-null )
+#   [: ( addr len -- addr len 0 | i*x rectype-* -1 )
+#      rot rot 2dup 2>r rot execute 2r> rot 
+#      dup rectype-null = ( -- addr len rectype-* f )
+#      if drop 0 else nip nip -1 then
+#    ;] 
+#    map-stack ( -- i*x addr len rectype-* f )
+#    0= if \ a recognizer did the job, remove addr/len
+#     2drop rectype-null
+#    then ;
+#
