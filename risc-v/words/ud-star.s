@@ -1,0 +1,5 @@
+
+COLON Flag_visible, "ud*", UDSTAR
+
+    .word XT_DUP,XT_TO_R,XT_UMSTAR,XT_DROP
+    .word XT_SWAP,XT_R_FROM,XT_UMSTAR,XT_ROT,XT_PLUS,XT_EXIT

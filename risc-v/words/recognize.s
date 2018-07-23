@@ -33,4 +33,3 @@ PFA_RECOGNIZE_A1:
    .word XT_NIP
    .word XT_TRUE
    .word XT_EXIT
-
