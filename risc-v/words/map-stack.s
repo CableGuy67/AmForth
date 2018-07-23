@@ -24,7 +24,7 @@ PFA_MAPSTACK1:
          .word XT_EXIT
 PFA_MAPSTACK2:
       .word XT_R_FROM
-      .word XT_DOLITERAL,2
+      .word XT_DOLITERAL,4
       .word XT_DOPLUSLOOP,PFA_MAPSTACK1
 PFA_MAPSTACK3:
     .word XT_DROP

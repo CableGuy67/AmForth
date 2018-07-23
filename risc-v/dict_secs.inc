@@ -60,6 +60,7 @@
 
 .include "words/rec-null.s"
 .include "words/rec-find.s"
+.include "words/rec-split.s"
 .include "words/forth-recognizer.s"
 .include "words/recognize.s"
 
@@ -73,4 +74,5 @@
 .include "words/count.s"
 .include "words/type.s"
 
+.include "words/words.s"
 .include "dict_appl.inc"
