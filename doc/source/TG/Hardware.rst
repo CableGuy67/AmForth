@@ -17,3 +17,4 @@ ATtiny's lack some machine instructions as well.
 
    AVR8
    MSP430
+   RISC-V

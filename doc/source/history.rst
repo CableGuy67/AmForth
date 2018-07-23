@@ -2,6 +2,54 @@
 History
 =======
 
+24.8.2016: release 6.3
+......................
+
+* core(AVR8): Use the standard Interrupt Service Routine for terminal input too. Makes
+  re-definable with :command:`int!`. Thanks to Erich for his longanimity on this and the
+  prompt defers.
+* core(MSP430): Use the hardware multiplier if available. Add :command:`n>r` and :command:`nr>`.
+* lib(ALL): Chains: Lists of execution tokens. 
+* core(ALL): The three prompt words are now system USER based defers: :command:`.ready` for the >,
+  :command:`.error` if an error occured and :command:`.ok` if everything was fine. See :ref:`prompts`
+  for more.
+
+4.7.2016: release 6.2
+.....................
+
+* core+lib(MSP430): New optional assembly (compile-time) words :command:`d2*` and :command:`d2/`.
+* core(ALL): renamed :command:`find-name ( addr len -- xt +/-1 | 0)` to :command:`find-xt`, compare to
+  :command:`find-name ( addr len --  nt|0)` to deal with name tokens.
+* core(MSP430): add :command:`pause` to the usart IO words.
+* core(ALL): complete recognizer `Rev. 3 </pr/Recognizer-rfc-C.pdf>`__ adaption.
+
+17.10.2015: release 6.1
+.......................
+
+* core(ALL): Adapt :command:`postpone` action of the recognizers to comply with
+  `Rev. 3 </pr/Recognizer-rfc-C.pdf>`__. Change your recognizers accordingly.
+* core(MSP430): New devices MSP430 F5529 (Flash) and FR5969 (FRAM). See :ref:`TI_Launchpad_430`.
+* core(MSP430): Extended VM Register A. See :ref:`Extended-VM`
+* lib(ALL): Fix regressions in :command:`Rdefer` and :command:`does>`. 
+  Make quotations more robust in corner cases.
+
+6.9.2015: release 6.0
+......................
+
+* core(ALL): Fix a few regressions like the TAB handling in :command:`accept`.
+* core(AVR8): Fix :command:`forth-wordlist` to return a valid wordlist id.
+* core(MSP430): many small changes to bring it closer to the AVR8. Still fits into 8KB flash.
+
+  * global variables like :command:`DP` (:command:`HERE`), :command:`STATE`, :command:`HLD` 
+    etc instead of USER variables-
+  * Same USER area layout. Including deferred words for terminal IO.
+  * complete wordlist support including search order and current.
+  * Emulate AVR EEPROM configuration with a info flash segment. Needs :command:`save` to
+    store the data permantly.
+  * Lots of common code, optimized versions of standard words if applicable.
+  * preparing for more MSP430 device types.
+
+
 9.7.2015: release 5.9
 ......................
 

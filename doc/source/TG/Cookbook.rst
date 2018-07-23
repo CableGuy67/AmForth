@@ -18,3 +18,4 @@ changes at any time.
    recipes/Hardware
    recipes/Hardware-AVR
    recipes/Hardware-MSP430
+   recipes/Hardware-RISC-V

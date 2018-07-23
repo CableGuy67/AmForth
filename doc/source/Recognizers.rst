@@ -28,31 +28,30 @@ More recognizer examples are available at `The Forth Net <http://theforth.net>`_
 Version 4
 ---------
 
+The Euroforth 2017 suggested some small wording changes and 
+initiated a spin off stack RFD resulting in a much smaller 
+recognizer RFD.
+
 `Version 4 </pr/Recognizer-rfc-D.html>`__ `(pdf) </pr/Recognizer-rfc-D.pdf>`__, 
 `(txt) </pr/Recognizer-rfc-D.text>`__  
 
 Forth `source code </pr/Recognizer-D.frt>`__ and `test code </pr/Recognizer-D-test.frt>`__
 require `Stack.frt </pr/Stack.frt>`__ and `tester.fs </pr/tester.fs>`__.
 
-Most changes are only wording changes. Most importandly 
-many of the key words are renamed to better ones. They now 
-describe what they do in a less confusing way 
-(I hope). No changes were made to the stack 
-effect so all existing code continues to work 
-with a simple search and replace.
+Most changes are only wording changes. More important is that
+the stack managing words are omitted. They are expected to
+re-appaear in a separate stack RFD.
 
 +---------------+---------------+
 |    v3         |    v4         |
 +---------------+---------------+
-| recognizer    | rec-stack     |
-+---------------+---------------+
-| recognizer:   | dt-token:     |
+| recognizer:   | rectype:      |
 +---------------+---------------+
 | do-recognizer | recognize     |
 +---------------+---------------+
-| r>*           | dt>*          |
+| r>*           | rectype>*     |
 +---------------+---------------+
-| r:fail        | dt:null       |
+| r:fail        | rectype-null  |
 +---------------+---------------+
 
 non-normative wording changes
@@ -60,47 +59,32 @@ non-normative wording changes
 +---------------+---------------+
 |    v3         |    v4         |
 +---------------+---------------+
-| rec:word      | rec:find      |
+| rec:word      | rec-find      |
 +---------------+---------------+
-| r:word        | dt:xt         |
+| r:word        | rectype-xt    |
 +---------------+---------------+
-| r:num         | dt:num        |
+| r:num         | rectype-num   |
 +---------------+---------------+
-| r:dnum        | dt:dnum       |
+| r:dnum        | rectype-dnum  |
 +---------------+---------------+
-| r:float       | dt:float      |
+| r:float       | rectype-float |
 +---------------+---------------+
-| r:name        | dt:nt         |
+| r:name        | rectype-nt    |
 +---------------+---------------+
 
-The data type token DT is not new actually. It
-got only a more prominent role since it is 
-one result of the parsing process but is not 
-related to recognizers themselves. It provides
-information about the data type and how to handle 
-a certain data type (hence the name) inside the 
-interpreter. It is not relevant where it comes
-from.
+The following words are removed from this RFD. The
+replacement words are subject to further discussion
+and probably will change in the future.
 
-The gforth team suggests that the ``DT>x`` words should have 
-a different stack effect. ``DT>COMP ( i*x DT:TOKEN -- j*y XT )``
-
-The input is what comes from the recognizer parsing words, the
-result should be feedable directly to ``EXECUTE`` to achieve the
-desired semantics. The words may change the result set too.
-In the reference implementation this is not used however. 
-
-The primary purpose of this seems to be an optimization and
-an unification of the name token and the data type token for 
-named words), so that DT>COMP becomes identical to NAME>COMPILE 
-for name tokens.
-
-
-.. A less radical rename of the keywords and concepts is a modified 
-   `version 4 </pr/Recognizer-rfc-D1.html>`__ (`(pdf) </pr/Recognizer-rfc-D1.pdf>`__. 
-   There is no real change however, every version 4 recognizer works with this
-   one too, only search-and-replace the word names. `Sourccode </pr/Recognizer-D1.frt>`__ 
-   and `test code </pr/Recognizer-D1-test.frt>`__.
++---------------+---------------+
+|    v3         |    v4         |
++---------------+---------------+
+| recognizer    | stack (*)     |
++---------------+---------------+
+| set-recognizer| set-stack (*) |
++---------------+---------------+
+| get-recognizer| get-stack (*) |
++---------------+---------------+
 
 Outdated
 --------
