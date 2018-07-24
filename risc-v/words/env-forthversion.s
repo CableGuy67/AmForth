@@ -1,3 +1,3 @@
 
 ENVIRONMENT Flag_visible, "version", FORTHVERSION
-    .word XT_DOLITERAL, 67, XT_EXIT
+    .word XT_DOLITERAL, 68, XT_EXIT

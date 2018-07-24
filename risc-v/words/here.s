@@ -1,2 +1,2 @@
 
-VARIABLE "here", HERE
+VALUE "here", HERE

@@ -16,6 +16,8 @@
 
 .include "words/pad.s"
 .include "words/here.s"
+.include "words/allot.s"
+
 .include "words/hold.s"
 .include "words/sharp.s"
 .include "words/sign.s"
@@ -56,6 +58,8 @@
 .include "words/nfa2cfa.s"
 .include "words/traverse-wordlist.s"
 .include "words/show-wordlist.s"
+.include "words/current.s"
+.include "words/forth-wordlist.s"
 .include "words/search-wordlist.s"
 .include "words/name2string.s"
 .include "words/name2flags.s"
@@ -90,4 +94,18 @@
 .include "words/scomma.s"
 .include "words/sliteral.s"
 .include "words/words.s"
+
+.include "words/l-mark.s"
+.include "words/l-resolve.s"
+.include "words/g-mark.s"
+.include "words/g-resolve.s"
+.include "words/ahead.s"
+.include "words/begin.s"
+.include "words/then.s"
+.include "words/until.s"
+.include "words/while.s"
+.include "words/if.s"
+.include "words/else.s"
+.include "words/again.s"
+
 .include "dict_appl.inc"

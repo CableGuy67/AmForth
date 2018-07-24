@@ -8,7 +8,9 @@ dnegate:
   xori x3, x3, -1
   sw x5, 0(x4)
 
-  pushdaconst 1
-  pushdaconst 0
+  savetos
+  li x3, 1
+  savetos
+  li x3, 0
 
   j dplus

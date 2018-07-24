@@ -4,7 +4,7 @@ COLON Flag_visible, "find-xt", FINDXT
     .word XT_DOLITERAL
     .word XT_FINDXTA
     .word XT_DOLITERAL
-    .word PFA_ORDER
+    .word PFA_CFG_ORDER
     .word XT_MAPSTACK
     .word XT_ZEROEQUAL
     .word XT_DOCONDBRANCH,PFA_FINDXT1

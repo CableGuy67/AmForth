@@ -43,6 +43,13 @@ CONSTANT "edp", EDP
 .word 6b
 .endm
 
+.macro STRING string
+    .word XT_DOSLITERAL
+    .byte 8f - 7f
+7:  .ascii "\string"
+8:  .p2align 2
+.endm
+
 .macro ramallot Name, Length 
   .equ RAM_lower_\Name, rampointer     # \Name at
   .set rampointer, rampointer + \Length
@@ -106,6 +113,22 @@ VE_\Label:
 8:  .p2align 2        # Realign
 
    XT_\Label: .word PFA_DOVARIABLE
+   PFA_\Label: .word rampointer
+   .set rampointer, rampointer+4
+.endm
+
+.macro VALUE Name, Label
+    .p2align 2
+VE_\Label:
+    .word 9b          # Insert Link
+9:
+    .word Flag_visible|Flag_variable      # Flag field
+
+    .byte 8f - 7f     # Calculate length of name field
+7:  .ascii "\Name"    # Insert name string
+8:  .p2align 2        # Realign
+
+   XT_\Label: .word PFA_DOVALUE
    PFA_\Label: .word rampointer
    .set rampointer, rampointer+4
 .endm
@@ -212,11 +235,6 @@ VE_\Label:
   mv \register, x3
   lw x3, 0(x4)
   addi x4, x4, 4
-.endm
-
-.macro pushdaconst constant # Push constant on Datastack
-  savetos
-  li x3, \constant
 .endm
 
 .macro pushdadouble register1 register2 # Push register on Datastack

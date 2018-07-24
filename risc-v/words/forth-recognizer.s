@@ -1,5 +1,7 @@
 
-DATA "forth-recognizer", FORTHRECOGNIZER
+VALUE "forth-recognizer", FORTHRECOGNIZER
+
+DATA "cfg-forth-recognizer", CFG_FORTHRECOGNIZER
 
 .word 2
 .word XT_REC_FIND
