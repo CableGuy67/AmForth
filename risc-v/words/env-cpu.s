@@ -1,4 +1,5 @@
-COLON Flag_visible, "cpu", ENV_CPU
+
+ENVIRONMENT Flag_visible, "cpu", CPU
 
 .word XT_DOSLITERAL
 .byte 2f-1f

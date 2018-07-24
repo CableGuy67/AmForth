@@ -33,11 +33,14 @@
 .macro STARTDICT
   .word 0
 9:
+6:
 .endm
 
 .macro ENDDICT
 CONSTANT "dp", DP
 .word 9b
+CONSTANT "edp", EDP
+.word 6b
 .endm
 
 .macro ramallot Name, Length 
@@ -76,6 +79,20 @@ VE_\Label:
    PFA_\Label:
 .endm
 
+.macro ENVIRONMENT Flags, Name, Label
+    .p2align 2
+VE_ENV_\Label:
+    .word 6b          # Insert Link
+6:
+    .word \Flags      # Flag field
+
+    .byte 8f - 7f     # Calculate length of name field
+7:  .ascii "\Name"    # Insert name string
+8:  .p2align 2        # Realign
+
+   XT_ENV_\Label: .word DOCOLON
+   PFA_ENV_\Label:
+.endm
 
 .macro VARIABLE Name, Label
     .p2align 2

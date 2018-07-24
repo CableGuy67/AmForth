@@ -1,6 +1,6 @@
 
 COLON Flag_visible,"environment", ENVIRONMENT
-    .word XT_DP
+    .word XT_EDP
     .word XT_EXIT
 
 COLON Flag_visible, "itype", ITYPE

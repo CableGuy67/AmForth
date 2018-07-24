@@ -1,5 +1,5 @@
 
-COLON Flag_visible, "name", ENV_FORTHNAME
+ENVIRONMENT Flag_visible, "name", FORTHNAME
     .word XT_DOSLITERAL
     .byte 7
     .ascii "amforth"
