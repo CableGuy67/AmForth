@@ -4,7 +4,7 @@ COLON Flag_visible, "parse-name", PARSENAME
     .word XT_SKIPSCANCHAR
     .word XT_EXIT 
 
-HEADLESS SKIPSCANCHAR
+NONAME SKIPSCANCHAR
     .word XT_TO_R
     .word XT_SOURCE 
     .word XT_TO_IN 

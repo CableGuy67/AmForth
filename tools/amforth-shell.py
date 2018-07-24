@@ -492,7 +492,7 @@ class AMForth(object):
     ]
     def __init__(self, serial_port="/dev/amforth", rtscts=False, speed=38400):
         self.debug = False
-        self.max_line_length = 90
+        self.max_line_length = 100
         self.progress_callback = self.print_progress
         self.editor = None
         self._serial_port = serial_port
@@ -592,7 +592,7 @@ class AMForth(object):
         except AMForthException:
             return 1
         except KeyboardInterrupt:
-            print "\nAborted with keyboard interrupt"
+            print "\nBye bye"
         except Exception, e:
             print "\n---- Unexpected exception ----"
             traceback.print_exc()
@@ -1251,7 +1251,10 @@ additional definitions (e.g. register names)
 	if mcudef.startswith("msp"):
 	    flavor="msp430"
 	else:
-	    flavor="avr8"
+	    if mcudef.startswith("rv"):
+		flavor="risc-v"
+	    else:
+		flavor="avr8"
         self._search_list.insert(0,os.path.abspath(os.path.join(os.path.dirname(sys.argv[0]),"..", flavor, "lib")))
         self._search_list.insert(0,os.path.abspath(os.path.join(os.path.dirname(sys.argv[0]),"..", flavor, "devices",mcudef)))
 	sys.path.insert(1,os.path.join(os.path.dirname(sys.argv[0]),"..", flavor, "devices",mcudef))
@@ -1261,7 +1264,7 @@ additional definitions (e.g. register names)
           self._amforth_cpu = words[:-3]
           self.progress_callback("Information", None, "successfully loaded register definitions for " + mcudef)
         except:
-          self.progress_callback("Warning", None, "failed loading register definitions for " + mcudef + " .. continuing")
+          self.progress_callback("Warning", None, "failed loading register definitions for " + mcudef + " (" + flavor + ")  .. continuing")
 
     def _update_files(self):
       self.progress_callback("Information", None, "getting filenames on the host")

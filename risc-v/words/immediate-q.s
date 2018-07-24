@@ -1,5 +1,5 @@
 
-HEADLESS IMMEDIATEQ
+NONAME IMMEDIATEQ
     .word  XT_DOLITERAL
     .word  0x0010
     .word  XT_AND

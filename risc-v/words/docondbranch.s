@@ -1,5 +1,5 @@
 
-CODEWORD Flag_visible, "(?branch)", DOCONDBRANCH
+HEADLESS DOCONDBRANCH
     addi x5,x3,0
     loadtos
     beq zero,x5,PFA_DOBRANCH

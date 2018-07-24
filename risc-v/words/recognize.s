@@ -12,7 +12,7 @@ COLON Flag_visible, "recognize", RECOGNIZE
 PFA_RECOGNIZE1:
     .word XT_EXIT
 
-HEADLESS RECOGNIZE_A
+NONAME RECOGNIZE_A
    .word XT_ROT
    .word XT_ROT
    .word XT_2DUP 

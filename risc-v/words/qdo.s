@@ -9,7 +9,7 @@ COLON Flag_visible, "?do", QDO
 #    .dw XT_EXIT
 
 
-HEADLESS QDOCHECK
+NONAME QDOCHECK
     .word XT_2DUP
     .word XT_EQUAL
     .word XT_DUP

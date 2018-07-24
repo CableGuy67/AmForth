@@ -1,5 +1,5 @@
 
-HEADLESS QSIGN
+NONAME QSIGN
 
     .word XT_OVER 
     .word XT_CFETCH

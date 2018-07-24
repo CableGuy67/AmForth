@@ -42,6 +42,7 @@
 .include "words/cscan.s"
 .include "words/cskip.s"
 .include "words/parse-name.s"
+.include "words/parse.s"
 .include "words/slash-string.s"
 
 .include "words/2literal.s"
@@ -84,6 +85,9 @@
 
 .include "words/count.s"
 .include "words/type.s"
-
+.include "words/environment.s"
+.include "words/squote.s"
+.include "words/scomma.s"
+.include "words/sliteral.s"
 .include "words/words.s"
 .include "dict_appl.inc"

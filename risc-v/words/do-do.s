@@ -1,6 +1,6 @@
 
 
-CODEWORD Flag_visible,"(do)", DODO
+HEADLESS DODO
     # save loop sys
     addi sp, sp, -12
     sw x8, 8(sp)

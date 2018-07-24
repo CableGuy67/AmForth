@@ -6,7 +6,7 @@ COLON Flag_visible, "show-wordlist", SHOWWORDLIST
     .word XT_TRAVERSEWORDLIST
     .word XT_EXIT
 
-    HEADLESS SHOWWORD
+NONAME SHOWWORD
     .word XT_NAME2STRING
     .word XT_TYPE
     .word XT_SPACE

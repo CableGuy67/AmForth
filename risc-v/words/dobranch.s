@@ -1,4 +1,4 @@
 
-CODEWORD Flag_visible, "(branch)", DOBRANCH
+HEADLESS DOBRANCH
    lw x16,0(x16)
    NEXT

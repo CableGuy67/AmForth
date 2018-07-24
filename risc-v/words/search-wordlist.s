@@ -22,7 +22,7 @@ PFA_SEARCH_WORDLIST1:
       .word XT_IMMEDIATEQ
     .word XT_EXIT
 
-HEADLESS ISWORD
+NONAME ISWORD
     .word XT_TO_R
     .word XT_DROP
     .word XT_2DUP

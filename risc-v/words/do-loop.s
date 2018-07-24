@@ -1,9 +1,9 @@
 
-CODEWORD Flag_visible, "(loop)", DOLOOP
+HEADLESS DOLOOP
   li x5, 1
   j DOPLUSLOOP
 
-CODEWORD Flag_visible, "(+loop)", DOPLUSLOOP
+HEADLESS DOPLUSLOOP
   mv x5, x3
   loadtos
 DOPLUSLOOP:

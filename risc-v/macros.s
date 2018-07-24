@@ -124,8 +124,13 @@ VE_\Label:
 
 .endm
 
-.macro HEADLESS Label
+.macro NONAME Label
    XT_\Label: .word DOCOLON
+   PFA_\Label: 
+.endm
+
+.macro HEADLESS Label
+   XT_\Label: .word PFA_\Label
    PFA_\Label: 
 .endm
 

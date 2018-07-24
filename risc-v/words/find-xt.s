@@ -13,7 +13,7 @@ COLON Flag_visible, "find-xt", FINDXT
 PFA_FINDXT1:
     .word XT_EXIT
 
-HEADLESS FINDXTA
+NONAME FINDXTA
     .word XT_TO_R
     .word XT_2DUP
     .word XT_R_FROM, XT_EXECUTE
