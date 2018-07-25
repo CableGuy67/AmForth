@@ -1,7 +1,7 @@
 # Logic.
 
 # -----------------------------------------------------------------------------
-  CODEWORD Flag_foldable_2, "and", AND # ( x1 x2 -- x1&x2 )
+  CODEWORD Flag_visible, "and", AND # ( x1 x2 -- x1&x2 )
                         # Combines the top two stack elements using bitwise AND.
 # -----------------------------------------------------------------------------
   lw x5, 0(x4)
@@ -10,7 +10,7 @@
   NEXT
 
 # -----------------------------------------------------------------------------
-  CODEWORD Flag_foldable_2, "or", OR # ( x1 x2 -- x1|x2 )
+  CODEWORD Flag_visible, "or", OR # ( x1 x2 -- x1|x2 )
                        # Combines the top two stack elements using bitwise OR.
 # -----------------------------------------------------------------------------
   lw x5, 0(x4)
@@ -19,7 +19,7 @@
   NEXT
 
 # -----------------------------------------------------------------------------
-  CODEWORD Flag_foldable_2, "xor", XOR # ( x1 x2 -- x1|x2 )
+  CODEWORD Flag_visible, "xor", XOR # ( x1 x2 -- x1|x2 )
                         # Combines the top two stack elements using bitwise exclusive-OR.
 # -----------------------------------------------------------------------------
   lw x5, 0(x4)
@@ -28,13 +28,13 @@
   NEXT
 
 # -----------------------------------------------------------------------------
-  CODEWORD Flag_foldable_1|Flag_inline, "not", NOT # ( x -- ~x )
+  CODEWORD Flag_visible, "not", NOT # ( x -- ~x )
 # -----------------------------------------------------------------------------
   xori x3, x3, -1
   NEXT
 
 # -----------------------------------------------------------------------------
-  CODEWORD Flag_foldable_1|Flag_inline, "invert", INVERT # ( x -- ~x )
+  CODEWORD Flag_visible, "invert", INVERT # ( x -- ~x )
 # -----------------------------------------------------------------------------
   xori x3, x3, -1
   NEXT

@@ -8,7 +8,7 @@
   li x5, RAM_upper_datastack # Anfang laden  Calculate stack fill gauge
   sub x5, x5, x4            # und aktuellen Stackpointer abziehen
   savetos
-  srl x3, x5, 2 # Durch 4 teilen  Divide through 4 Bytes/element.
+  srai x3, x5, 2 # Durch 4 teilen  Divide through 4 Bytes/element.
   NEXT
 
 # -----------------------------------------------------------------------------
@@ -18,12 +18,12 @@
   li x5, RAM_upper_returnstack # Anfang laden  Calculate stack fill gauge
   sub x5, x5, sp          # und aktuellen Stackpointer abziehen
   savetos
-  srl x3, x5, 2 # Durch 4 teilen  Divide through 4 Bytes/element.
+  srai x3, x5, 2 # Durch 4 teilen  Divide through 4 Bytes/element.
   NEXT
 
 
 #------------------------------------------------------------------------------
-  CODEWORD Flag_inline, "rdrop", RDROP # Entfernt das oberste Element des Returnstacks
+  CODEWORD Flag_visible, "rdrop", RDROP # Entfernt das oberste Element des Returnstacks
 #------------------------------------------------------------------------------
   addi sp, sp, 4
   NEXT

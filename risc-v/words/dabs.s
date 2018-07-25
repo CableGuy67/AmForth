@@ -1,6 +1,6 @@
 #------------------------------------------------------------------------------
-  CODEWORD Flag_foldable_2, "dabs", DABS
+  CODEWORD Flag_visible, "dabs", DABS
 #------------------------------------------------------------------------------
 dabs:
-  blt x3, zero, dnegate # Check sign in high-part
+  blt x3, zero, PFA_DNEGATE # Check sign in high-part
   NEXT                  # Not negative ? Nothing to do !

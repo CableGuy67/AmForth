@@ -1,7 +1,7 @@
 # Comparision operators
 
 # -----------------------------------------------------------------------------
-  CODEWORD Flag_foldable_1,"0=",ZEROEQUAL 
+  CODEWORD Flag_visible,"0=",ZEROEQUAL 
 # ( x -- ? )
 # -----------------------------------------------------------------------------
   sltiu x3, x3, 1
@@ -10,34 +10,34 @@
   NEXT
 
 # -----------------------------------------------------------------------------
-  CODEWORD Flag_foldable_1|Flag_inline, "0<>", NOTZEROEQUAL # ( x -- ? )
+  CODEWORD Flag_visible, "0<>", NOTZEROEQUAL # ( x -- ? )
 # -----------------------------------------------------------------------------
   sltiu x3, x3, 1
   addi x3, x3, -1
   NEXT
 
 # -----------------------------------------------------------------------------
-  CODEWORD Flag_foldable_1|Flag_inline, "0<", ZEROLESS # ( n -- ? )
+  CODEWORD Flag_visible, "0<", ZEROLESS # ( n -- ? )
 # -----------------------------------------------------------------------------
   srai x3, x3, 31
   NEXT
 
 # -----------------------------------------------------------------------------
-  CODEWORD Flag_foldable_0, "true", TRUE # ( -- -1 )
+  CODEWORD Flag_visible, "true", TRUE # ( -- -1 )
 # -----------------------------------------------------------------------------
   savetos
   li x3, -1
   NEXT
 
 # -----------------------------------------------------------------------------
-  CODEWORD Flag_foldable_0, "false", FALSE # ( x -- 0 )
+  CODEWORD Flag_visible, "false", FALSE # ( x -- 0 )
 # -----------------------------------------------------------------------------
   savetos
   li x3, 0
   NEXT
 
 # -----------------------------------------------------------------------------
-  CODEWORD Flag_foldable_2, ">=", GREATEREQUAL # ( x1 x2 -- ? )
+  CODEWORD Flag_visible, ">=", GREATEREQUAL # ( x1 x2 -- ? )
 # -----------------------------------------------------------------------------
   lw x5, 0(x4)
   addi x4, x4, 4
@@ -46,7 +46,7 @@
   NEXT
 
 # -----------------------------------------------------------------------------
-  CODEWORD Flag_foldable_2, "<=", LESSEQUAL # ( x1 x2 -- ? )          
+  CODEWORD Flag_visible, "<=", LESSEQUAL # ( x1 x2 -- ? )          
 # -----------------------------------------------------------------------------
   lw x5, 0(x4)
   addi x4, x4, 4
@@ -55,7 +55,7 @@
   NEXT
 
 # -----------------------------------------------------------------------------
-  CODEWORD Flag_foldable_2, "<", LESS # ( x1 x2 -- ? )
+  CODEWORD Flag_visible, "<", LESS # ( x1 x2 -- ? )
                       # Checks if x2 is less than x1.
 # -----------------------------------------------------------------------------
   lw x5, 0(x4)
@@ -66,7 +66,7 @@
   NEXT
 
 # -----------------------------------------------------------------------------
-  CODEWORD Flag_foldable_2, ">", GREATER # ( x1 x2 -- ? )
+  CODEWORD Flag_visible, ">", GREATER # ( x1 x2 -- ? )
                       # Checks if x2 is greater than x1.
 # -----------------------------------------------------------------------------
   lw x5, 0(x4)
@@ -77,7 +77,7 @@
   NEXT
 
 # -----------------------------------------------------------------------------
-  CODEWORD Flag_foldable_2, "u>=", UGREATEREQUAL # ( u1 u2 -- ? )
+  CODEWORD Flag_visible, "u>=", UGREATEREQUAL # ( u1 u2 -- ? )
 # -----------------------------------------------------------------------------
   lw x5, 0(x4)
   addi x4, x4, 4
@@ -86,7 +86,7 @@
   NEXT
 
 # -----------------------------------------------------------------------------
-  CODEWORD Flag_foldable_2, "u<=", ULESSEQUAL # ( u1 u2 -- ? )
+  CODEWORD Flag_visible, "u<=", ULESSEQUAL # ( u1 u2 -- ? )
 # -----------------------------------------------------------------------------
   lw x5, 0(x4)
   addi x4, x4, 4
@@ -95,7 +95,7 @@
   NEXT
 
 # -----------------------------------------------------------------------------
-  CODEWORD Flag_foldable_2, "u<", ULESS # ( u1 u2 -- ? )
+  CODEWORD Flag_visible, "u<", ULESS # ( u1 u2 -- ? )
 # -----------------------------------------------------------------------------
   lw x5, 0(x4)
   addi x4, x4, 4
@@ -105,7 +105,7 @@
   NEXT
 
 # -----------------------------------------------------------------------------
-  CODEWORD Flag_foldable_2, "u>", UGREATER # ( u1 u2 -- ? )
+  CODEWORD Flag_visible, "u>", UGREATER # ( u1 u2 -- ? )
 # -----------------------------------------------------------------------------
   lw x5, 0(x4)
   addi x4, x4, 4
@@ -115,8 +115,7 @@
   NEXT
 
 # -----------------------------------------------------------------------------
-  # Definition Flag_inline|Flag_opcodierbar_GleichUngleich, "<>" # ( x1 x2 -- ? )
-  CODEWORD Flag_foldable_2, "<>", NOTEQUAL # ( x1 x2 -- ? )
+  CODEWORD Flag_visible, "<>", NOTEQUAL # ( x1 x2 -- ? )
 
                        # Compares the top two stack elements for inequality.
 # -----------------------------------------------------------------------------
@@ -128,8 +127,7 @@
   NEXT
 
 # -----------------------------------------------------------------------------
-  # Definition Flag_inline|Flag_opcodierbar_GleichUngleich, "=" # ( x1 x2 -- ? )
-  CODEWORD Flag_foldable_2, "=", EQUAL # ( x1 x2 -- ? )
+  CODEWORD Flag_visible, "=", EQUAL # ( x1 x2 -- ? )
                       # Compares the top two stack elements for equality.
 # -----------------------------------------------------------------------------
 equal_einsprung:
@@ -142,7 +140,7 @@ equal_einsprung:
   NEXT
 
 # -----------------------------------------------------------------------------
-  CODEWORD Flag_foldable_2, "min", MIN # ( x1 x2 -- x3 )
+  CODEWORD Flag_visible, "min", MIN # ( x1 x2 -- x3 )
                         # x3 is the lesser of x1 and x2.
 # -----------------------------------------------------------------------------
   lw x5, 0(x4)
@@ -152,7 +150,7 @@ equal_einsprung:
 1:NEXT
 
 # -----------------------------------------------------------------------------
-  CODEWORD Flag_foldable_2, "max", MAX # ( x1 x2 -- x3 )
+  CODEWORD Flag_visible, "max", MAX # ( x1 x2 -- x3 )
                         # x3 is the greater of x1 and x2.
 # -----------------------------------------------------------------------------
   lw x5, 0(x4)
@@ -162,7 +160,7 @@ equal_einsprung:
 1:NEXT
 
 # -----------------------------------------------------------------------------
-  CODEWORD Flag_foldable_2, "umin", UMIN # ( u1 u2 -- u1|u2 )
+  CODEWORD Flag_visible, "umin", UMIN # ( u1 u2 -- u1|u2 )
 # -----------------------------------------------------------------------------
   lw x5, 0(x4)
   addi x4, x4, 4
@@ -171,7 +169,7 @@ equal_einsprung:
 1:NEXT
 
 # -----------------------------------------------------------------------------
-  CODEWORD Flag_foldable_2, "umax", UMAX # ( u1 u2 -- u1|u2 )
+  CODEWORD Flag_visible, "umax", UMAX # ( u1 u2 -- u1|u2 )
 # -----------------------------------------------------------------------------
   lw x5, 0(x4)
   addi x4, x4, 4

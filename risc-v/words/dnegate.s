@@ -1,7 +1,6 @@
 #------------------------------------------------------------------------------
-  CODEWORD Flag_foldable_2, "dnegate", DNEGATE
+  CODEWORD Flag_visible, "dnegate", DNEGATE
 #------------------------------------------------------------------------------
-dnegate:
 
   lw x5, 0(x4) # Low
   xori x5, x5, -1

@@ -87,7 +87,7 @@ move:  # ( Quelladdr Zieladdr Byteanzahl -- ) ( Source Destination Count -- )
   NEXT
 
 # -----------------------------------------------------------------------------
-  CODEWORD Flag_inline, "c@", CFETCH # ( 8-addr -- x )
+  CODEWORD Flag_visible, "c@", CFETCH # ( 8-addr -- x )
                               # Loads the byte at 'addr'.
 # -----------------------------------------------------------------------------
   lbu x3, 0(x3)

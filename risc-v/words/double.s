@@ -1,20 +1,20 @@
 
 #------------------------------------------------------------------------------
-  CODEWORD Flag_foldable_1, "s>d", S2D # ( n - dl dh ) Single --> Double conversion
+  CODEWORD Flag_visible, "s>d", S2D # ( n - dl dh ) Single --> Double conversion
 #------------------------------------------------------------------------------
   savetos
   srai x3, x3, 31    # Turn MSB into 0xffffffff or 0x00000000
   NEXT
 
 #------------------------------------------------------------------------------
-  COLON Flag_visible|Flag_foldable_3, "um/mod", UMSLASHMOD
+  COLON Flag_visible, "um/mod", UMSLASHMOD
 um_slash_mod: # ( ud u -- u u ) Dividend Divisor -- Rest Ergebnis
              # 64/32 = 32 Rest 32
 #------------------------------------------------------------------------------
   .word XT_ZERO, XT_UDSLASHMOD,XT_NIP,XT_NIP,XT_EXIT
 
 #------------------------------------------------------------------------------
-  CODEWORD Flag_visible|Flag_foldable_4, "ud/mod", UDSLASHMOD
+  CODEWORD Flag_visible, "ud/mod", UDSLASHMOD
          # Unsigned divide 64/64 = 64 remainder 64
          # ( ud1 ud2 -- ud ud)
          # ( 1L 1H 2L tos: 2H -- Rem-L Rem-H Quot-L tos: Quot-H )
@@ -106,14 +106,14 @@ ud_slash_mod_internal:
    NEXT
 
 #------------------------------------------------------------------------------
-  CODEWORD Flag_inline|Flag_foldable_2, "d0<", DZEROLESS # ( 1L 1H -- Flag ) Is double number negative ?
+  CODEWORD Flag_visible, "d0<", DZEROLESS # ( 1L 1H -- Flag ) Is double number negative ?
 #------------------------------------------------------------------------------
   addi x4, x4, 4
   srai x3, x3, 31    # Turn MSB into 0xffffffff or 0x00000000
   NEXT
 
 #------------------------------------------------------------------------------
-  CODEWORD Flag_foldable_2, "d0=", DZEROEQUAL # ( 1L 1H -- Flag )
+  CODEWORD Flag_visible, "d0=", DZEROEQUAL # ( 1L 1H -- Flag )
 #------------------------------------------------------------------------------
   lw x5, 0(x4)
   addi x4, x4, 4
