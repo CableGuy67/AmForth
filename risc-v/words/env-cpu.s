@@ -1,5 +1,5 @@
 
 ENVIRONMENT Flag_visible, "cpu", CPU
 
-STRING "RV32IIM"
+STRING "RV32IM"
 .word XT_EXIT
