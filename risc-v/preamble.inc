@@ -3,6 +3,7 @@
 
 # used by ramallot
 .set rampointer, RamStart  
+.set dppointer,FlashStart
 
 .equ datastack_size, 128
 .equ returnstack_size, 128

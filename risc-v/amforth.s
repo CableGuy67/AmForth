@@ -12,5 +12,4 @@ STARTDICT
 
 
 .equ HERESTART, rampointer
-.equ DPSTART, dppointer
 ENDDICT

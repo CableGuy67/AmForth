@@ -1,5 +1,5 @@
 
-COLON Flag_immediate, "until", UNTIL
+IMMED "until", UNTIL
     .word XT_DOLITERAL
     .word XT_DOCONDBRANCH
     .word XT_COMMA

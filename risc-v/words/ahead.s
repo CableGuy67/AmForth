@@ -1,5 +1,5 @@
 
-COLON Flag_immediate, "ahead", AHEAD
+IMMED "ahead", AHEAD
     .word XT_COMPILE
     .word XT_DOBRANCH
     .word XT_GMARK

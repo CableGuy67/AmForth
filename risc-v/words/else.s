@@ -1,5 +1,5 @@
 
-COLON Flag_immediate, "else", ELSE
+IMMED "else", ELSE
 
     .word XT_COMPILE
     .word XT_DOBRANCH

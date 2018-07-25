@@ -24,15 +24,6 @@
 .equ UART0_IP        , UART0BASE + 0x14
 .equ UART0_DIV       , UART0BASE + 0x18
 
-.equ PRCI_BASE, 0x10008000
-
-.equ PRCI_HFROSCCFG  , PRCI_BASE + 0x00
-.equ PRCI_HFXOSCCFG  , PRCI_BASE + 0x04
-.equ PRCI_PLLCFG     , PRCI_BASE + 0x08
-.equ PRCI_PLLDIV     , PRCI_BASE + 0x0C
-.equ PRCI_PROCMONCFG , PRCI_BASE + 0xF0
-
-
 .include "words/uart-init.s"
 .include "words/usart-rx-poll.s"
 .include "words/usart-tx-poll.s"

@@ -30,15 +30,18 @@
   addi sp, sp, 4
 .endm
 
+# start of flash dictionary. The 0 is the stop marker
 .macro STARTDICT
-  .word 0
-9:
-6:
+.word 0
+9: # forth-wordlist
+6: # environment wordlist
 .endm
 
+# save the beginning of the wordlists
 .macro ENDDICT
 CONSTANT "dp", DP
 .word 9b
+.set DPSTART, 9b
 CONSTANT "edp", EDP
 .word 6b
 .endm
@@ -56,34 +59,74 @@ CONSTANT "edp", EDP
   .equ RAM_upper_\Name, rampointer     # \Name at
 .endm
 
-.macro CODEWORD Flags, Name, Label
+.equ Flag_invisible,  0xFFFFFFFF
+.equ Flag_visible,    0x00000000
+
+.equ Flag_immediate,  0x0010
+.equ Flag_value,      0x0020
+.equ Flag_defer,      0x0040
+
+.equ Flag_ramallot,   Flag_visible | 0x0080      # Ramallot means that RAM is reserved and initialised by catchflashpointers for this definition on startup
+.equ Flag_variable,   Flag_ramallot| 1           # How many 32 bit locations shall be reserved ?
+.equ Flag_2variable,  Flag_ramallot| 2
+
+.macro HEADER Flags, Name, Label, PFA
     .p2align 2
 VE_\Label:
     .word 9b          # Insert Link
-9:
-    .word \Flags      # Flag field
-
+9:  .word \Flags      # Flag field
     .byte 8f - 7f     # Calculate length of name field
 7:  .ascii "\Name"    # Insert name string
 8:  .p2align 2        # Realign
+   XT_\Label: .word \PFA
+   PFA_\Label: 
+.endm
 
+.macro CODEWORD Flags, Name, Label
+    HEADER \Flags, "\Name", \Label, PFA_\Label
+.endm
+
+.macro COLON Flags, Name, Label
+    HEADER \Flags, "\Name", \Label, DOCOLON
+.endm
+
+.macro IMMED Name, Label
+    COLON Flag_visible|Flag_immediate, \Name, \Label
+.endm
+
+
+.macro VARIABLE Name, Label
+   HEADER Flag_visible|Flag_variable, "\Name", \Label, PFA_DOVARIABLE
+   .word rampointer
+   .set rampointer, rampointer+4
+.endm
+
+.macro VALUE Name, Label
+    HEADER Flag_visible|Flag_value, "\Name", \Label, PFA_DOVALUE
+   .word rampointer
+   .set rampointer, rampointer+4
+.endm
+
+.macro CONSTANT Name, Label
+    HEADER Flag_visible, "\Name", \Label, PFA_DOVARIABLE
+.endm
+
+.macro DATA Name, Label
+    HEADER Flag_visible, "\Name", \Label, PFA_DODATA
+.endm
+
+.macro NONAME Label
+   XT_\Label: .word DOCOLON
+   PFA_\Label: 
+.endm
+
+.macro HEADLESS Label
    XT_\Label: .word PFA_\Label
    PFA_\Label: 
 .endm
 
-.macro COLON Flags, Name, Label
-    .p2align 2
-VE_\Label:
-    .word 9b          # Insert Link
-9:
-    .word \Flags      # Flag field
-
-    .byte 8f - 7f     # Calculate length of name field
-7:  .ascii "\Name"    # Insert name string
-8:  .p2align 2        # Realign
-
-   XT_\Label: .word DOCOLON
-   PFA_\Label:
+.macro DEFER Name
+    HEADER Flag_visible|Flag_defer, "\Name", \Label, DO_DEFER
 .endm
 
 .macro ENVIRONMENT Flags, Name, Label
@@ -101,105 +144,6 @@ VE_ENV_\Label:
    PFA_ENV_\Label:
 .endm
 
-.macro VARIABLE Name, Label
-    .p2align 2
-VE_\Label:
-    .word 9b          # Insert Link
-9:
-    .word Flag_visible|Flag_variable      # Flag field
-
-    .byte 8f - 7f     # Calculate length of name field
-7:  .ascii "\Name"    # Insert name string
-8:  .p2align 2        # Realign
-
-   XT_\Label: .word PFA_DOVARIABLE
-   PFA_\Label: .word rampointer
-   .set rampointer, rampointer+4
-.endm
-
-.macro VALUE Name, Label
-    .p2align 2
-VE_\Label:
-    .word 9b          # Insert Link
-9:
-    .word Flag_visible|Flag_variable      # Flag field
-
-    .byte 8f - 7f     # Calculate length of name field
-7:  .ascii "\Name"    # Insert name string
-8:  .p2align 2        # Realign
-
-   XT_\Label: .word PFA_DOVALUE
-   PFA_\Label: .word rampointer
-   .set rampointer, rampointer+4
-.endm
-
-.macro CONSTANT Name, Label
-    .p2align 2
-VE_\Label:
-    .word 9b          # Insert Link
-9:
-    .word Flag_visible|Flag_variable      # Flag field
-
-    .byte 8f - 7f     # Calculate length of name field
-7:  .ascii "\Name"    # Insert name string
-8:  .p2align 2        # Realign
-
-   XT_\Label: .word PFA_DOVARIABLE
-   PFA_\Label: 
-.endm
-
-.macro DATA Name, Label
-    .p2align 2
-VE_\Label:
-    .word 9b          # Insert Link
-9:
-    .word Flag_visible|Flag_variable      # Flag field
-
-    .byte 8f - 7f     # Calculate length of name field
-7:  .ascii "\Name"    # Insert name string
-8:  .p2align 2        # Realign
-
-   XT_\Label: .word PFA_DODATA
-   PFA_\Label: 
-
-.endm
-
-.macro NONAME Label
-   XT_\Label: .word DOCOLON
-   PFA_\Label: 
-.endm
-
-.macro HEADLESS Label
-   XT_\Label: .word PFA_\Label
-   PFA_\Label: 
-.endm
-
-  .equ Flag_invisible,  0xFFFFFFFF
-  .equ Flag_visible,    0x00000000
-  
-  
-.equ Flag_immediate,  Flag_visible | 0x0010
-.equ Flag_inline,     Flag_visible | 0x0020
-.equ Flag_immediate_compileonly, Flag_visible | 0x0030 # Immediate + Inline
-
-.equ Flag_ramallot,   Flag_visible | 0x0080      # Ramallot means that RAM is reserved and initialised by catchflashpointers for this definition on startup
-.equ Flag_variable,   Flag_ramallot| 1           # How many 32 bit locations shall be reserved ?
-.equ Flag_2variable,  Flag_ramallot| 2
-
-.equ Flag_foldable,   Flag_visible | 0x0040 # Foldable when given number of constants are available.
-.equ Flag_foldable_0, Flag_visible | 0x0040
-.equ Flag_foldable_1, Flag_visible | 0x0041
-.equ Flag_foldable_2, Flag_visible | 0x0042
-.equ Flag_foldable_3, Flag_visible | 0x0043
-.equ Flag_foldable_4, Flag_visible | 0x0044
-.equ Flag_foldable_5, Flag_visible | 0x0045
-.equ Flag_foldable_6, Flag_visible | 0x0046
-.equ Flag_foldable_7, Flag_visible | 0x0047
-
-.equ Flag_buffer, Flag_visible | 0x0100
-.equ Flag_buffer_foldable, Flag_buffer|Flag_foldable  
-
-.equ Flag_allocator, 0
 
 .macro push_x1_x10_x11
   addi sp, sp, -12

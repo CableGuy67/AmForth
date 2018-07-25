@@ -1,5 +1,5 @@
 
-COLON Flag_immediate, "again", AGAIN
+IMMED "again", AGAIN
     .word XT_COMPILE
     .word XT_DOBRANCH
     .word XT_LRESOLVE
