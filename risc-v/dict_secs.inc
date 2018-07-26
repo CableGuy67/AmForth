@@ -109,4 +109,6 @@
 .include "words/again.s"
 .include "words/turnkey.s"
 
+.include "words/tick.s"
+
 .include "dict_appl.inc"
