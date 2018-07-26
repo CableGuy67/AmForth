@@ -44,6 +44,7 @@ CONSTANT "dp", DP
 .set DPSTART, 9b
 CONSTANT "edp", EDP
 .word 6b
+.equ HERESTART, rampointer
 .endm
 
 .macro STRING string
@@ -66,7 +67,7 @@ CONSTANT "edp", EDP
 .equ Flag_value,      0x0020
 .equ Flag_defer,      0x0040
 
-.equ Flag_ramallot,   Flag_visible | 0x0080      # Ramallot means that RAM is reserved and initialised by catchflashpointers for this definition on startup
+.equ Flag_ramallot,   Flag_visible | 0x0100      # Ramallot means that RAM is reserved and initialised by catchflashpointers for this definition on startup
 .equ Flag_variable,   Flag_ramallot| 1           # How many 32 bit locations shall be reserved ?
 .equ Flag_2variable,  Flag_ramallot| 2
 
@@ -125,8 +126,8 @@ VE_\Label:
    PFA_\Label: 
 .endm
 
-.macro DEFER Name
-    HEADER Flag_visible|Flag_defer, "\Name", \Label, DO_DEFER
+.macro DEFER Name, Label
+    HEADER Flag_visible|Flag_defer, "\Name", \Label, PFA_DO_DEFER
 .endm
 
 .macro ENVIRONMENT Flags, Name, Label
@@ -220,14 +221,4 @@ VE_ENV_\Label:
   lw x10,  4(sp)
   lw x11, 0(sp)
   addi sp, sp, 8
-.endm
-
-.macro pop_x10_x15
-  lw x10, 20(sp)
-  lw x11, 16(sp)
-  lw x12, 12(sp)
-  lw x13, 8(sp)
-  lw x14, 4(sp)
-  lw x15, 0(sp)    
-  addi sp, sp, 24
 .endm

@@ -102,7 +102,14 @@ ud_slash_mod_internal:
    pop x8
    pop x7
 
-   pop_x10_x15
+   lw x10, 20(sp)
+   lw x11, 16(sp)
+   lw x12, 12(sp)
+   lw x13, 8(sp)
+   lw x14, 4(sp)
+   lw x15, 0(sp)    
+   addi sp, sp, 24
+
    NEXT
 
 #------------------------------------------------------------------------------

@@ -10,6 +10,4 @@ STARTDICT
 .include "dict_secs.inc"
 .include "dict_env.inc"
 
-
-.equ HERESTART, rampointer
 ENDDICT

@@ -1,7 +1,4 @@
 #------------------------------------------------------------------------------
-  CODEWORD Flag_visible, "emit?",EMITQ # ( -- ? )
+  DEFER "emit?",EMITQ # ( -- ? )
 #------------------------------------------------------------------------------
-#  li x5, hook_qemit
-#  lw x5, 0(x5)
-#  jalr zero, x5, 0
-  j PFA_SERIAL_EMITQ
+  .word XT_SERIAL_EMITQ

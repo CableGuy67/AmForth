@@ -99,6 +99,7 @@ DO_EXECUTE:
 .include "words/do-data.s"
 .include "words/do-value.s"
 .include "words/do-to.s"
+.include "words/do-defer.s"
 .include "words/1ms.s"
 .include "words/dobranch.s"
 .include "words/docondbranch.s"

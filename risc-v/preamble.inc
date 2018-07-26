@@ -5,11 +5,7 @@
 .set rampointer, RamStart  
 .set dppointer,FlashStart
 
-.equ datastack_size, 128
-.equ returnstack_size, 128
-.equ refill_buf_size, 96
-
-  ramallot datastack, datastack_size
-  ramallot returnstack, returnstack_size
-  ramallot refill_buf, refill_buf_size
+ramallot datastack, datastack_size
+ramallot returnstack, returnstack_size
+ramallot refill_buf, refill_buf_size
 

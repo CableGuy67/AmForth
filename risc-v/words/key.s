@@ -1,7 +1,10 @@
 #------------------------------------------------------------------------------
-  COLON Flag_visible, "key",KEY # ( -- c )
+  DEFER "key",KEY # ( -- c )
 #------------------------------------------------------------------------------
 
-    .word XT_SERIAL_KEYQ, XT_DOCONDBRANCH, PFA_KEY
+.word XT_KEY_PAUSE
+
+NONAME KEY_PAUSE
+    .word XT_PAUSE,XT_SERIAL_KEYQ, XT_DOCONDBRANCH, PFA_KEY_PAUSE
     .word XT_SERIAL_KEY
     .word XT_EXIT
