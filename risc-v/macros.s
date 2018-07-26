@@ -43,10 +43,10 @@
 # save the beginning of the wordlists
 .macro ENDDICT
 CONSTANT "dp", DP
-.word 9b
+  .word 9b
 .set DPSTART, 9b
 CONSTANT "edp", EDP
-.word 6b
+  .word 6b
 .equ HERESTART, rampointer
 .endm
 
@@ -69,6 +69,7 @@ CONSTANT "edp", EDP
 .equ Flag_immediate,  0x0010
 .equ Flag_value,      0x0020
 .equ Flag_defer,      0x0040
+.equ Flag_init,       0x0080
 
 .equ Flag_ramallot,   Flag_visible | 0x0100      # Ramallot means that RAM is reserved and initialised by catchflashpointers for this definition on startup
 .equ Flag_variable,   Flag_ramallot| 1           # How many 32 bit locations shall be reserved ?
@@ -107,18 +108,21 @@ VE_\Label:
 .macro USERVARIABLE Name, Label
    HEADER Flag_visible|Flag_variable, "\Name", \Label, PFA_DOUSER
    .word userpointer
+    .equ USER_\Label,userpointer # for listing
    .set userpointer, userpointer+4
 .endm
 
 .macro VALUE Name, Label
-    HEADER Flag_visible|Flag_value, "\Name", \Label, PFA_DOVALUE
+    HEADER Flag_visible|Flag_value|Flag_init, "\Name", \Label, PFA_DOVALUE
    .word rampointer
+    .equ RAM_\Label,rampointer # for listing
    .set rampointer, rampointer+4
 .endm
 
 .macro DEFER Name, Label
-    HEADER Flag_visible|Flag_defer, "\Name", \Label, PFA_DO_DEFER
+    HEADER Flag_visible|Flag_defer|Flag_init, "\Name", \Label, PFA_DODEFER
    .word rampointer
+    .equ DEFER_RAM_\Label,rampointer # for listing
    .set rampointer, rampointer+4
 .endm
 
@@ -140,13 +144,12 @@ VE_\Label:
    PFA_\Label: 
 .endm
 
-
-.macro ENVIRONMENT Flags, Name, Label
+.macro ENVIRONMENT Name, Label
     .p2align 2
 VE_ENV_\Label:
     .word 6b          # Insert Link
 6:
-    .word \Flags      # Flag field
+    .word Flag_visible      # Flag field
 
     .byte 8f - 7f     # Calculate length of name field
 7:  .ascii "\Name"    # Insert name string

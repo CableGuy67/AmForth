@@ -7,6 +7,8 @@ BOARD ?= freedom-e300-hifive1
 
 LINK_TARGET ?= flash
 
+LANG=C
+
 #########################
 # location of binaries 
 #########################
