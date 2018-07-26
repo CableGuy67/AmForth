@@ -1,4 +1,7 @@
 
-COLON Flag_visible, ".input", PROMPTINPUT
+DEFER ".input", PROMPTINPUT
+.word XT_PROMPTINPUT_DEFAULT
+
+NONAME PROMPTINPUT_DEFAULT
     .word XT_CR
     .word XT_EXIT

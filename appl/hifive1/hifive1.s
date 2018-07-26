@@ -8,9 +8,10 @@
 .equ FlashStart, 0x20400000 # Start of Flash          Porting: Change this !
 .equ FlashEnd,   0x20410000 # End   of Flash.  64 kb. Porting: Change this !
 
-.equ Kernschutzadresse,     FlashStart + 0x6000 # 24 kb reserved for core.
-.equ FlashDictionaryAnfang, FlashStart + 0x6000 # 24 kb reserved for core.
-.equ FlashDictionaryEnde,   FlashEnd
+.equ datastack_size, 128   # 32 cells
+.equ returnstack_size, 128 # 32 cells
+.equ refill_buf_size, 96
+.equ appl_userarea_size, 8 # 2 cells
 
 # -----------------------------------------------------------------------------
 # Core start

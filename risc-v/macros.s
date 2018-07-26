@@ -3,8 +3,11 @@
 #   x2/SP RSP Return Stack Pointer
 #   x3 TOS Top Of Stack
 #   x4 DSP Data Stack Pointer
-#   x17 W   Forth VM W register
+
 #   x16 IP  Forth VM IP register (ITC Instruction Pointer)
+#   x17 W   Forth VM W register
+#   x18 temporary
+#   x19 user pointer UP
 
 .macro NEXT
     j DO_NEXT
@@ -95,15 +98,26 @@ VE_\Label:
     COLON Flag_visible|Flag_immediate, \Name, \Label
 .endm
 
-
 .macro VARIABLE Name, Label
    HEADER Flag_visible|Flag_variable, "\Name", \Label, PFA_DOVARIABLE
    .word rampointer
    .set rampointer, rampointer+4
 .endm
 
+.macro USERVARIABLE Name, Label
+   HEADER Flag_visible|Flag_variable, "\Name", \Label, PFA_DOUSER
+   .word userpointer
+   .set userpointer, userpointer+4
+.endm
+
 .macro VALUE Name, Label
     HEADER Flag_visible|Flag_value, "\Name", \Label, PFA_DOVALUE
+   .word rampointer
+   .set rampointer, rampointer+4
+.endm
+
+.macro DEFER Name, Label
+    HEADER Flag_visible|Flag_defer, "\Name", \Label, PFA_DO_DEFER
    .word rampointer
    .set rampointer, rampointer+4
 .endm
@@ -126,9 +140,6 @@ VE_\Label:
    PFA_\Label: 
 .endm
 
-.macro DEFER Name, Label
-    HEADER Flag_visible|Flag_defer, "\Name", \Label, PFA_DO_DEFER
-.endm
 
 .macro ENVIRONMENT Flags, Name, Label
     .p2align 2

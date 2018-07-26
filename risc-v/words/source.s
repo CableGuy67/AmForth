@@ -1,5 +1,8 @@
 
-COLON Flag_visible, "source", SOURCE
+DEFER "source", SOURCE
+.word XT_SOURCETIB
+
+COLON Flag_visible, "source-tib", SOURCETIB
 
     .word XT_TIB
     .word XT_NUMBERTIB

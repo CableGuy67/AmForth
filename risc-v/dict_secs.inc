@@ -107,5 +107,6 @@
 .include "words/if.s"
 .include "words/else.s"
 .include "words/again.s"
+.include "words/turnkey.s"
 
 .include "dict_appl.inc"

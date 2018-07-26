@@ -1,4 +1,8 @@
-COLON Flag_visible, ".error", PROMPTERROR
+
+DEFER ".error", PROMPTERROR
+.word XT_PROMPTERROR_DEFAULT
+
+NONAME PROMPTERROR_DEFAULT
     STRING " ?? "
     .word XT_TYPE
     .word XT_BASE

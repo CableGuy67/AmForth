@@ -1,5 +1,9 @@
 
-COLON Flag_visible, ".ready", PROMPTREADY
+DEFER ".ready", PROMPTREADY
+
+.word XT_PROMPTREADYDEFAULT
+
+NONAME PROMPTREADYDEFAULT
 
     .word XT_CR
     STRING "> "
