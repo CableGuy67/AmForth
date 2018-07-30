@@ -1,12 +1,10 @@
 
 COLON Flag_visible, "?do", QDO
-#    .dw XT_COMPILE
-#    .dw XT_QDOCHECK
-#    .dw XT_IF
-#    .dw XT_DO
-#    .dw XT_SWAP    ; DO sets a 0 marker on the leave stack
-#    .dw XT_TO_L    ; then follows at the end.
-#    .dw XT_EXIT
+    .word XT_COMPILE
+    .word XT_QDOCHECK
+    .word XT_IF
+    .word XT_DO
+    .word XT_EXIT
 
 
 NONAME QDOCHECK

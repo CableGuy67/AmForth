@@ -1,0 +1,3 @@
+
+VARIABLE "latest", LATEST
+

@@ -1,0 +1,3 @@
+
+DEFER "wlscope", WLSCOPE
+.word XT_GET_CURRENT
