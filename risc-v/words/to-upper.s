@@ -8,7 +8,7 @@ COLON Flag_visible, "toupper", TOUPPER
     .word XT_WITHIN 
     .word XT_DOCONDBRANCH,PFA_TOUPPER0
     .word XT_DOLITERAL
-    .word 223 # inverse of 0x20: 0xdf
+    .word 223 
     .word XT_AND 
 PFA_TOUPPER0:
     .word XT_EXIT 

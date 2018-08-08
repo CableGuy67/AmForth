@@ -1,8 +1,8 @@
 
 DATA "rectype-null", RECTYPE_NULL
-    .word XT_FAIL  # interpret
-    .word XT_FAIL  # compile
-    .word XT_FAIL  # postpone
+    .word XT_FAIL  
+    .word XT_FAIL  
+    .word XT_FAIL  
 
 COLON Flag_visible, "fail", FAIL
     .word XT_DOLITERAL

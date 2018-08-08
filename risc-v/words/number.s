@@ -34,7 +34,7 @@ PFA_NUMBER0:
       .word XT_EQUAL
       .word XT_DOCONDBRANCH,PFA_NUMBER2
 	.word XT_CFETCH
-	.word XT_DOLITERAL, 0x2e # . 
+	.word XT_DOLITERAL, 0x2e 
 	.word XT_EQUAL
 	.word XT_DOCONDBRANCH, PFA_NUMBER6
 	.word XT_R_FROM

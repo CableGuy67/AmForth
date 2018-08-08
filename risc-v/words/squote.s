@@ -1,7 +1,7 @@
 
-COLON Flag_visible, "s\"", SQUOTE # "
+COLON Flag_visible, "s\"", SQUOTE 
     .word XT_DOLITERAL
-    .word 34   # 0x22 
+    .word 34  
     .word XT_PARSE       
     .word XT_STATE
     .word XT_FETCH

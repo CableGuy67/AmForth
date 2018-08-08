@@ -4,7 +4,7 @@ NONAME QSIGN
     .word XT_OVER 
     .word XT_CFETCH
     .word XT_DOLITERAL
-    .word 45 # '-'
+    .word 45 
     .word XT_EQUAL  
     .word XT_DUP
     .word XT_TO_R
