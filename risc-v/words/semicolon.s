@@ -1,5 +1,5 @@
 
-IMMED "..", SEMICOLON
+IMMED "\x3b", SEMICOLON
     .word XT_COMPILE
     .word XT_EXIT
     .word XT_LBRACKET
