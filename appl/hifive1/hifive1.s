@@ -17,7 +17,9 @@
 # Core start
 # -----------------------------------------------------------------------------
 
+
 .text
+.global PFA_COLD
   j PFA_COLD
 
 .include "amforth.s"

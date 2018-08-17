@@ -1,7 +1,4 @@
 
 COLON Flag_visible, "build-info", BUILD_INFO
- .word XT_DOSLITERAL
- .byte 2f - 1f
-1:  .ascii "%d"
-2:  .p2align 2
+ STRING "%d"
 .word XT_EXIT

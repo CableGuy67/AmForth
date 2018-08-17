@@ -35,6 +35,7 @@
 
 # start of flash dictionary. The 0 is the stop marker
 .macro STARTDICT
+.text
 .word 0
 9: # forth-wordlist
 6: # environment wordlist
@@ -54,7 +55,7 @@ CONSTANT "edp", EDP
     .word XT_DOSLITERAL
     .byte 8f - 7f
 7:  .ascii "\string"
-8:  .p2align 2
+8:  .p2align 2,0x0f
 .endm
 
 .macro ramallot Name, Length 
@@ -76,13 +77,13 @@ CONSTANT "edp", EDP
 .equ Flag_2variable,  Flag_ramallot| 2
 
 .macro HEADER Flags, Name, Label, PFA
-    .p2align 2
+    .p2align 2,0xfe
 VE_\Label:
     .word 9b          # Insert Link
 9:  .word \Flags      # Flag field
     .byte 8f - 7f     # Calculate length of name field
 7:  .ascii "\Name"    # Insert name string
-8:  .p2align 2        # Realign
+8:  .p2align 2,0xff        # Realign
    XT_\Label: .word \PFA
    PFA_\Label: 
 .endm
@@ -145,7 +146,7 @@ VE_\Label:
 .endm
 
 .macro ENVIRONMENT Name, Label
-    .p2align 2
+    .p2align 2,0xf0
 VE_ENV_\Label:
     .word 6b          # Insert Link
 6:
@@ -153,7 +154,7 @@ VE_ENV_\Label:
 
     .byte 8f - 7f     # Calculate length of name field
 7:  .ascii "\Name"    # Insert name string
-8:  .p2align 2        # Realign
+8:  .p2align 2,0xf0        # Realign
 
    XT_ENV_\Label: .word DOCOLON
    PFA_ENV_\Label:

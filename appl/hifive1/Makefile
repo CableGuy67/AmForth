@@ -12,9 +12,9 @@ LANG=C
 #########################
 # location of binaries 
 #########################
-RISCV_GDB     = riscv64-unknown-elf-gdb
 RISCV_OPENOCD = openocd
-RISCV_TOOLS   = riscv64-unknown-elf
+#RISCV_TOOLS   = riscv64-unknown-elf
+RISCV_TOOLS   = riscv64-linux-gnu
 
 COPS = -Wall  -Os -nostdlib -nostartfiles -ffreestanding -save-temps
 AOPS = --warn --fatal-warnings
@@ -44,11 +44,11 @@ buildinfo: words/build-info.tmpl
 
 upload:
 	$(RISCV_OPENOCD) $(OPENOCDARGS) & \
-	$(RISCV_GDB) $(PROGRAM_DIR)/$(PROGRAM) $(GDB_UPLOAD_ARGS) $(GDB_UPLOAD_CMDS) && \
+	riscv64-unknown-elf-gdb $(PROGRAM_DIR)/$(PROGRAM) $(GDB_UPLOAD_ARGS) $(GDB_UPLOAD_CMDS) && \
 	echo "Successfully uploaded '$(PROGRAM)' to $(BOARD)."
 
 hifive1.o: buildinfo
-	$(RISCV_TOOLS)-as -alms=hifive1.lst -I ../../risc-v hifive1.s -o hifive1.o -march=rv32im
+	$(RISCV_TOOLS)-as -alms=hifive1.lst -I ../../risc-v -I ../../shared hifive1.s -o hifive1.o -march=rv32ima
 
 hifive1.bin : memmap hifive1.o
 	$(RISCV_TOOLS)-ld -o hifive1.elf -T memmap  hifive1.o -m elf32lriscv

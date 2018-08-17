@@ -70,6 +70,8 @@ DO_EXECUTE:
 .include "words/1-minus.s"
 .include "words/2-plus.s"
 .include "words/2-minus.s"
+.include "words/2-star.s"
+.include "words/2-slash.s"
 .include "words/cell-plus.s"
 .include "words/cells.s"
 

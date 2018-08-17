@@ -6,4 +6,4 @@
   NEXT
 
 VARIABLE "#tib", NUMBERTIB
-VARIABLE ">in", TO_IN 
+
