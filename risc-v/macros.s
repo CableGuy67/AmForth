@@ -43,7 +43,7 @@
 
 # save the beginning of the wordlists
 .macro ENDDICT
-CONSTANT "dp", DP
+CONSTANT "fdp", FDP
   .word 9b
 .set DPSTART, 9b
 CONSTANT "edp", EDP

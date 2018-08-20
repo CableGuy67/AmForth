@@ -1,4 +1,5 @@
 
 DATA "cfg-order", CFG_ORDER
-.word 1
+.word 2
+.word XT_FDP
 .word XT_DP

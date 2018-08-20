@@ -145,5 +145,5 @@
 .include "words/get-current.s"
 .include "words/greater-zero.s"
 .include "words/to-in.s"
-
+.include "words/dp.s"
 .include "dict_appl.inc"

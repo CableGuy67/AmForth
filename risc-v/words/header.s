@@ -5,7 +5,7 @@ COLON Flag_visible, "header", HEADER
     .word XT_DOCONDBRANCH, PFA_HEADER1
     .word XT_FETCH
     .word XT_COMMA
-    .word XT_HERE,XT_TO_R
+    .word XT_DP,XT_TO_R
     .word XT_DOLITERAL
     .word Flag_invisible
     .word XT_COMMA
