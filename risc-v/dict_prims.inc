@@ -110,3 +110,5 @@ DO_EXECUTE:
 .include "words/docondbranch.s"
 .include "words/doliteral.s"
 .include "words/compare.s"
+.include "words/n_to_r.s"
+.include "words/n_r_from.s"
