@@ -13,10 +13,9 @@ PFA_DOPLUSLOOP1:
   NEXT
 PFA_DOLOOP_LEAVE:
   # restore loop-sys
-  lw x10, 0(sp)
-  lw x9, 4(sp)
-  lw x8, 8(sp)
-  addi sp, sp, 12
+  lw x9, 0(sp)
+  lw x8, 4(sp)
+  addi sp, sp, 8
 
   # skip loop address
   addi x16,x16,4
