@@ -3,7 +3,12 @@
 #   x2/SP RSP Return Stack Pointer
 #   x3 TOS Top Of Stack
 #   x4 DSP Data Stack Pointer
-
+#   x5 temp 
+#   x6 temp
+#   x7 temp
+#   x8 loop index
+#   x9 loop limit
+#   x10..x15 temp
 #   x16 IP  Forth VM IP register (ITC Instruction Pointer)
 #   x17 W   Forth VM W register
 #   x18 temporary
