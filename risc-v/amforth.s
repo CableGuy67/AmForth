@@ -2,6 +2,7 @@
 .include "macros.s"
 
 .include "preamble.inc"
+.include "user.inc"
 
 STARTDICT
 

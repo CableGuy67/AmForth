@@ -1,5 +1,5 @@
 
-VARIABLE "handler", HANDLER
+USER "handler", HANDLER, USER_HANDLER
 
 COLON Flag_visible, "catch", CATCH
 

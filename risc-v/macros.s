@@ -111,11 +111,10 @@ VE_\Label:
    .set rampointer, rampointer+4
 .endm
 
-.macro USERVARIABLE Name, Label
+.macro USER Name, Label, UOffset
    HEADER Flag_visible|Flag_variable, "\Name", \Label, PFA_DOUSER
-   .word userpointer
-    .equ USER_\Label,userpointer # for listing
-   .set userpointer, userpointer+4
+   .word \UOffset
+   .equ USER_\Label,\UOffset # for listing
 .endm
 
 .macro VALUE Name, Label

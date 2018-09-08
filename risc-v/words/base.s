@@ -1,1 +1,1 @@
-  USERVARIABLE "base", BASE 
+  USER "base", BASE, USER_BASE

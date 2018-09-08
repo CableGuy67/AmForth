@@ -1,13 +1,11 @@
 
 # initial setup of assembly variables and settings
 
-# used by ramallot
 .set rampointer, RamStart  
-.set dppointer,FlashStart
 
-.set userpointer, 0
+.equ cellsize, 4
 
-.set sys_userarea_size, 32
+.set sys_userarea_size, 32*cellsize
 
 .set userarea_size, sys_userarea_size+appl_userarea_size
 
