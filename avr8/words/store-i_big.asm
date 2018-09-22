@@ -16,7 +16,7 @@ PFA_DO_STOREI_BIG:
   push yl
   push yh
   ldi zl, byte3(DO_STOREI_atmega)
-  out_ rampz, zl
+  out_ eind, zl
   ldi zh, byte2(DO_STOREI_atmega)
   ldi zl, byte1(DO_STOREI_atmega)
   eicall 
