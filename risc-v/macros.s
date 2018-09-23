@@ -131,8 +131,9 @@ VE_\Label:
    .set rampointer, rampointer+4
 .endm
 
-.macro CONSTANT Name, Label
+.macro CONSTANT Name, Label, NUM
     HEADER Flag_visible, "\Name", \Label, PFA_DOVARIABLE
+    .word \NUM
 .endm
 
 .macro DATA Name, Label
