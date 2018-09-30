@@ -2,9 +2,11 @@
 
 # -----------------------------------------------------------------------------
   CODEWORD Flag_visible, "move",MOVE  # Move some bytes around. This can cope with overlapping memory areas.
-move:  # ( Quelladdr Zieladdr Byteanzahl -- ) ( Source Destination Count -- )
 # -----------------------------------------------------------------------------
-  push_x1_x10_x11
+  addi sp, sp, -12
+  sw x1,  8(sp)
+  sw x10, 4(sp)
+  sw x11, 0(sp)   
 
   popdadouble x10, x11
 
@@ -42,7 +44,11 @@ move:  # ( Quelladdr Zieladdr Byteanzahl -- ) ( Source Destination Count -- )
   lw x3, 0(x4)
   addi x4, x4, 4
 
-  pop_x1_x10_x11
+  lw x1,  8(sp)
+  lw x10, 4(sp)
+  lw x11, 0(sp)
+  addi sp, sp, 12
+
   NEXT
 
 
@@ -52,7 +58,9 @@ move:  # ( Quelladdr Zieladdr Byteanzahl -- ) ( Source Destination Count -- )
 # -----------------------------------------------------------------------------
   # 6.1.1540 FILL CORE ( c-addr u char -- ) If u is greater than zero, store char in each of u consecutive characters of memory beginning at c-addr.
 
-  push_x10_x11
+  addi sp, sp, -8
+  sw x10,  4(sp)
+  sw x11, 0(sp)
 
   popdadouble x10, x11
   #popda x10 # Filling byte
@@ -70,7 +78,10 @@ move:  # ( Quelladdr Zieladdr Byteanzahl -- ) ( Source Destination Count -- )
   lw x3, 0(x4)
   addi x4, x4, 4
 
-  pop_x10_x11
+  lw x10,  4(sp)
+  lw x11, 0(sp)
+  addi sp, sp, 8
+
   NEXT
 
 

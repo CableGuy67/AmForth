@@ -29,7 +29,12 @@ ud_slash_mod:
    # Shift-High Shift-Low Dividend-High Dividend-Low
    #        x13       x12           x11          x10
 
-   push_x10_x13
+  addi sp, sp, -16
+  sw x10, 12(sp)
+  sw x11, 8(sp)
+  sw x12, 4(sp)   
+  sw x13, 0(sp)
+
 
    li x13, 0
    li x12, 0

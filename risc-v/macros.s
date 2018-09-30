@@ -38,6 +38,43 @@
   addi sp, sp, 4
 .endm
 
+.macro pushdouble register1 register2
+  addi sp, sp, -8  
+  sw \register1, 4(sp)
+  sw \register2, 0(sp)  
+.endm
+
+.macro popdouble register1 register2
+  lw \register1, 4(sp)
+  lw \register2, 0(sp)
+  addi x4, x4, 8
+.endm
+
+.macro pushda register # Push register on Datastack
+  savetos
+  mv x3, \register    
+.endm
+
+.macro popda register # Pop register from Datastack
+  mv \register, x3
+  loadtos
+.endm
+
+.macro pushdadouble register1 register2 # Push register on Datastack
+  addi x4, x4, -8
+  sw x3, 4(x4)
+  sw \register1, 0(x4)
+  mv x3, \register2
+.endm
+
+.macro popdadouble register1 register2 # Pop register from Datastack
+  mv \register1, x3
+  lw \register2, 0(x4)
+  lw x3, 4(x4)
+  addi x4, x4, 8
+.endm
+
+
 # start of flash dictionary. The 0 is the stop marker
 .macro STARTDICT
 .text
@@ -165,80 +202,3 @@ VE_ENV_\Label:
    PFA_ENV_\Label:
 .endm
 
-
-.macro push_x1_x10_x11
-  addi sp, sp, -12
-  sw x1,  8(sp)
-  sw x10, 4(sp)
-  sw x11, 0(sp)   
-.endm
-.macro pop_x1_x10_x11
-  lw x1,  8(sp)
-  lw x10, 4(sp)
-  lw x11, 0(sp)
-  addi sp, sp, 12
-.endm
-
-.macro pushdouble register1 register2
-  addi sp, sp, -8  
-  sw \register1, 4(sp)
-  sw \register2, 0(sp)  
-.endm
-
-.macro popdouble register1 register2
-  lw \register1, 4(sp)
-  lw \register2, 0(sp)
-  addi x4, x4, 8
-.endm
-
-.macro pushda register # Push register on Datastack
-  savetos
-  mv x3, \register    
-.endm
-
-.macro popda register # Pop register from Datastack
-  mv \register, x3
-  lw x3, 0(x4)
-  addi x4, x4, 4
-.endm
-
-.macro pushdadouble register1 register2 # Push register on Datastack
-  addi x4, x4, -8
-  sw x3, 4(x4)
-  sw \register1, 0(x4)
-  mv x3, \register2
-.endm
-
-.macro popdadouble register1 register2 # Pop register from Datastack
-  mv \register1, x3
-  lw \register2, 0(x4)
-  lw x3, 4(x4)
-  addi x4, x4, 8
-.endm
-
-
-.macro push_x10_x13
-  addi sp, sp, -16
-  sw x10, 12(sp)
-  sw x11, 8(sp)
-  sw x12, 4(sp)   
-  sw x13, 0(sp)
-.endm
-.macro pop_x10_x13
-  lw x10,  12(sp)
-  lw x11, 8(sp)
-  lw x12, 4(sp)
-  lw x13, 0(sp)
-  addi sp, sp, 16
-.endm
-
-.macro push_x10_x11
-  addi sp, sp, -8
-  sw x10,  4(sp)
-  sw x11, 0(sp)
-.endm
-.macro pop_x10_x11
-  lw x10,  4(sp)
-  lw x11, 0(sp)
-  addi sp, sp, 8
-.endm
