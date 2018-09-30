@@ -1,5 +1,6 @@
 
 VALUE "forth-recognizer", FORTHRECOGNIZER
+.word PFA_CFG_RECOGNIZER
 
 DATA "cfg-recognizer", CFG_RECOGNIZER
 
