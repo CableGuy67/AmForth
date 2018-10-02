@@ -5,7 +5,7 @@ COLON Flag_visible, "quit", QUIT
 #    .dw XT_SP_STORE
 #    .dw XT_RP0
 #    .dw XT_RP_STORE
-    .word XT_LBRACKET,XT_GREEN
+    .word XT_LBRACKET
 
 PFA_QUIT2:
     .word XT_STATE, XT_FETCH, XT_ZEROEQUAL
