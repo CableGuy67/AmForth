@@ -119,3 +119,5 @@ DO_EXECUTE:
 .include "words/doliteral.s"
 .include "words/compare.s"
 .include "words/num-constants.s"
+.include "words/n_to_r.s"
+.include "words/n_r_from.s"
