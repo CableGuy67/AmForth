@@ -6,8 +6,7 @@ COLON Flag_visible, "map-stack", MAPSTACK
     .word XT_FETCH
     .word XT_CELLS
     .word XT_BOUNDS
-    .word XT_QDOCHECK
-    .word XT_DOCONDBRANCH,PFA_MAPSTACK3
+    .word XT_QDOCHECK, XT_DOCONDBRANCH,PFA_MAPSTACK3
     .word XT_DODO,PFA_MAPSTACK3
 PFA_MAPSTACK1:
       .word XT_I

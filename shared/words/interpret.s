@@ -1,7 +1,7 @@
 
 COLON Flag_visible, "interpret", INTERPRET
     .word XT_PARSENAME 
-    .word XT_DUP   
+    .word XT_DUP
     .word XT_DOCONDBRANCH,PFA_INTERPRET2
       .word XT_FORTHRECOGNIZER
       .word XT_RECOGNIZE
