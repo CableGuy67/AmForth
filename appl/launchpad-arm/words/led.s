@@ -42,3 +42,33 @@ CODEWORD Flag_visible,"red", RED
    ldr r0, =GPIO_PORTF_DATA_R
    str r1, [r0]
    NEXT
+
+CODEWORD Flag_visible, "white", WHITE
+   ldr r1, =LED_RED+LED_GREEN+LED_BLUE
+   ldr r0, =GPIO_PORTF_DATA_R
+   str r1, [r0]
+   NEXT
+
+CODEWORD Flag_visible, "yellow", YELLOW
+   ldr r1, =LED_RED+LED_GREEN
+   ldr r0, =GPIO_PORTF_DATA_R
+   str r1, [r0]
+   NEXT
+
+CODEWORD Flag_visible, "cyan", CYAN
+   ldr r1, =LED_BLUE+LED_GREEN
+   ldr r0, =GPIO_PORTF_DATA_R
+   str r1, [r0]
+   NEXT
+
+CODEWORD Flag_visible, "magenta", MAGENTA
+   ldr r1, =LED_RED+LED_BLUE
+   ldr r0, =GPIO_PORTF_DATA_R
+   str r1, [r0]
+   NEXT
+
+CODEWORD Flag_visible, "black", BLACK
+   ldr r1, =0
+   ldr r0, =GPIO_PORTF_DATA_R
+   str r1, [r0]
+   NEXT

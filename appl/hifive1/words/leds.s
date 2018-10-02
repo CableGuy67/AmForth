@@ -53,3 +53,8 @@ CODEWORD Flag_visible, "magenta", MAGENTA
     sw x20, 0(x21)
 NEXT
 
+CODEWORD Flag_visible, "black", BLACK
+    li x20, red|green|blue
+    li x21, GPIO_PORT
+    sw x20, 0(x21)
+NEXT
