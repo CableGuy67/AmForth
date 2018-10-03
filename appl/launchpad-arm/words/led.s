@@ -19,10 +19,6 @@ CODEWORD Flag_visible, "led-init", LED_INIT
    str r1, [r0]
    ldr r0, =GPIO_PORTF_DEN_R
    str r1, [r0]
-
-   ldr r1, =LED_BLUE
-   ldr r0, =GPIO_PORTF_DATA_R
-   str r1, [r0]
 NEXT
 
 CODEWORD Flag_visible,"green", GREEN

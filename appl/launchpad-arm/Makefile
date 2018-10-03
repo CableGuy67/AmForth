@@ -12,7 +12,7 @@ LANG=C
 	arm-none-eabi-objcopy -O ihex $< $@
 
 %.o: %.asm buildinfo
-	arm-none-eabi-as --warn --fatal-warnings -alms=lp-stellaris.list -I../../arm -I ../../shared -o $@ $<
+	arm-none-eabi-as --warn --fatal-warnings -alms=lp-stellaris.list -I../../arm -I ../../arm/devices/lm4f120xl -I ../../shared -o $@ $<
 
 all: lp-stellaris.hex lp-stellaris.lst
 

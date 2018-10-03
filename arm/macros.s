@@ -147,7 +147,7 @@ VE_ENV_\Label:
 
 .macro savetos @ Push TOS on Datastack - a common, often used factor.
 .ifdef m0core
-    subs psp, #4
+    sub psp, #4
     str tos, [psp]
 .else
     ldm psp!, {tos}
@@ -156,16 +156,16 @@ VE_ENV_\Label:
 
 .macro loadtos
     ldr tos, [psp]
-    adds psp, #4
+    add psp, #4
 .endm
 
 .macro pushda register @ Push register on Datastack
   savetos
-  movs tos, \register
+  mov tos, \register
 .endm
 
 .macro popda register @ Pop register from Datastack
-  movs \register, tos
+  mov \register, tos
   loadtos
 .endm
 
