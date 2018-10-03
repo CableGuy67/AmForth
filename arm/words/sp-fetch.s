@@ -2,5 +2,5 @@
   CODEWORD Flag_visible, "sp@", SP_FETCH @ ( -- a-addr )
 @ -----------------------------------------------------------------------------
   savetos
-  movs tos, psp
+  mov tos, psp
 NEXT

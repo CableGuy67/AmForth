@@ -13,7 +13,7 @@
 ; bleeding edge
 ;.include "words/build-info.asm"
 
-.include "words/mcu-sr-fetch.asm"
+;.include "words/mcu-sr-fetch.asm"
 
 ; additional environment queries
 ;.include "words/env-usersize.asm"

@@ -1,8 +1,8 @@
 
 .include "preamble.inc"
-APPUSERSIZE equ 10        ; bytes, see uinit.asm
-RSTACK_SIZE equ 40        ; cells
-PSTACK_SIZE equ 40        ; cells
+APPUSERSIZE equ 8         ; bytes, see uinit.asm
+RSTACK_SIZE equ 30        ; cells
+PSTACK_SIZE equ 30        ; cells
 ; following only required for terminal tasks
 TIB_SIZE  equ 102         ; bytes (must be even)
 
@@ -14,4 +14,5 @@ AMFORTH_START equ 0E000h
 
 .include "amforth.asm"
 .include "drivers/usart_a0.inc"
+; .include "drivers/1-wire.asm"
 .include "epilogue.asm"

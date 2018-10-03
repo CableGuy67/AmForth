@@ -1,11 +1,19 @@
 
-@ -----------------------------------------------------------------------------
-  CODEWORD Flag_visible, "depth", DEPTH @ ( -- Zahl der Elemente, die vorher auf den Datenstack waren )
-                                  @ ( -- Number of elements that have been on datastack before )
-@ -----------------------------------------------------------------------------
-  @ Berechne den Stackfüllstand
-  ldr r1, =RAM_upper_datastack @ Anfang laden  Calculate stack fill gauge
-  subs r1, psp @ und aktuellen Stackpointer abziehen
+CODEWORD Flag_visible, "depth", DEPTH 
+  ldr r1, =RAM_upper_datastack 
+  sub r1, psp 
   savetos
-  lsrs tos, r1, #2 @ Durch 4 teilen  Divide through 4 Bytes/element.
+  lsrs tos, r1, #2 
+NEXT
+
+CODEWORD Flag_visible, "rdepth", RDEPTH
+  savetos
+  mov tos, sp
+  ldr r1, =RAM_upper_returnstack
+  sub r1, tos 
+  lsrs tos, r1, #2 
+NEXT
+
+CODEWORD Flag_visible, "rdrop", RDROP
+  add sp, #4
 NEXT

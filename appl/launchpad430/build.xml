@@ -2,7 +2,19 @@
 <project name="Launchpad 430" basedir="." default="Help">
     <import file="../msp-build.xml"/>
 
-    <target name="lp-2553.hex" description="Hexfiles for TI launchpad430">
+
+    <target name="lp-2355.hex" depends="git-info, build-info" description="Hexfiles for TI launchpad430">
+      <nakenasm projectname="lp-2355" mcu="msp430fr2355"/> 
+    </target>
+    <target name="lp-2355" depends="lp-2355.hex" description="Launchpad FR2355">
+        <echo>Uploading Hexfiles for TI LP 2355</echo>
+        <mspdebug   mcu="msp430fr2355"
+		    projectname="lp-2355"
+		    programmer="tilib"/>
+    </target>
+
+
+    <target name="lp-2553.hex" depends="git-info, build-info" description="Hexfiles for TI launchpad430">
       <nakenasm projectname="lp-2553" mcu="msp430g2553"/> 
     </target>
 
@@ -13,7 +25,8 @@
 		    programmer="rf2500"/>
     </target>
 
-    <target name="lp-5529.hex" description="Hexfiles for TI LP F5529">
+
+    <target name="lp-5529.hex" depends="git-info, build-info" description="Hexfiles for TI LP F5529">
       <nakenasm projectname="lp-5529" mcu="msp430f5529"/> 
     </target>
 
@@ -25,7 +38,7 @@
     </target>
 
 
-    <target name="lp-5969.hex" description="Hexfiles for TI LP FR5969">
+    <target name="lp-5969.hex" depends="git-info, build-info" description="Hexfiles for TI LP FR5969">
       <nakenasm projectname="lp-5969" mcu="msp430fr5969"/> 
     </target>
 

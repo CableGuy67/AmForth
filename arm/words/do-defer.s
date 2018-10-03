@@ -1,4 +1,3 @@
 HEADLESS DODEFER
-  adds FORTHW, #4
-  ldr FORTHW, [FORTHW]
+  ldr FORTHW, [FORTHW, #4]
   b DO_EXECUTE

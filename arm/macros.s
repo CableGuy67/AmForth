@@ -1,6 +1,6 @@
 
 @ register usage
-@ temporary r0, r1, r2, r3
+@ temporary r0, r1, r2, r3, r4, r5
 
 tos     .req r6
 psp     .req r7
@@ -146,8 +146,12 @@ VE_ENV_\Label:
 .endm
 
 .macro savetos @ Push TOS on Datastack - a common, often used factor.
+.ifdef m0core
     subs psp, #4
     str tos, [psp]
+.else
+    ldm psp!, {tos}
+.endif
 .endm
 
 .macro loadtos

@@ -1,35 +1,14 @@
 @ -----------------------------------------------------------------------------
-  CODEWORD Flag_visible, "mod", MOD @ ( n1 n2 -- rem )
+  COLON Flag_visible, "mod", MOD @ ( n1 n2 -- rem )
 @ -----------------------------------------------------------------------------
-  bl mod
-NEXT
-
-mod:
-  push {lr}
-  bl divmod
-  ldm psp!, {tos}
-  pop {pc}
+  .word XT_SLASHMOD, XT_NIP
+  .word XT_EXIT
 
 @ -----------------------------------------------------------------------------
-  CODEWORD Flag_visible, "/", SLASH @ ( n1 n2 -- n1/n2 )
+  COLON Flag_visible, "/", SLASH @ ( n1 n2 -- n1/n2 )
 @ -----------------------------------------------------------------------------
-  bl slash
-NEXT
-
-slash:
-  .ifdef m0core
-  push {lr}
-  bl divmod
-  adds psp, #4    @ NIP - Move SP to eliminate next element.
-  pop {pc}
-
-  .else
-
-  push {lr}
-  ldm psp!, {r0}       @ Get n1 into a register
-  sdiv tos, r0, tos    @ Divide !
-  pop {pc}
-  .endif
+  .word XT_SLASHMOD, XT_DROP
+  .word XT_EXIT
 
 @ -----------------------------------------------------------------------------
   CODEWORD Flag_visible, "*",STAR @ ( u1|n1 u2|n2 -- u3|n3 )
