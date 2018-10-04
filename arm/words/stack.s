@@ -3,7 +3,7 @@ CODEWORD Flag_visible, "depth", DEPTH
   ldr r1, =RAM_upper_datastack 
   sub r1, psp 
   savetos
-  lsrs tos, r1, #2 
+  asrs tos, r1, #2 
 NEXT
 
 CODEWORD Flag_visible, "rdepth", RDEPTH
@@ -11,7 +11,7 @@ CODEWORD Flag_visible, "rdepth", RDEPTH
   mov tos, sp
   ldr r1, =RAM_upper_returnstack
   sub r1, tos 
-  lsrs tos, r1, #2 
+  asrs tos, r1, #2 
 NEXT
 
 CODEWORD Flag_visible, "rdrop", RDROP
