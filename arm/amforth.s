@@ -3,7 +3,8 @@
 
 .include "preamble.inc"
 .include "user.inc"
-.include "common/vectors.s" 
+.include "vectors.s" 
+.include "common/isr.s"
 
 STARTDICT
 
