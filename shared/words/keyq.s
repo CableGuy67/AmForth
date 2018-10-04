@@ -1,3 +1,2 @@
-  DEFER "key?",KEYQ 
-  .word XT_SERIAL_KEYQ
+  DEFER "key?",KEYQ, XT_SERIAL_KEYQ
 

@@ -161,11 +161,14 @@ VE_\Label:
    .set rampointer, rampointer+4
 .endm
 
-.macro DEFER Name, Label
+.macro DEFER Name, Label, XT
     HEADER Flag_visible|Flag_defer|Flag_init, "\Name", \Label, PFA_DODEFER
    .word rampointer
     .equ DEFER_RAM_\Label,rampointer # for listing
    .set rampointer, rampointer+4
+   .word \XT
+   .word XT_FETCH
+   .word XT_STORE
 .endm
 
 .macro CONSTANT Name, Label, NUM

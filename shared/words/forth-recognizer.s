@@ -8,5 +8,4 @@ DATA "cfg-recognizer", CFG_RECOGNIZER
 
 .word XT_REC_FIND
 .word XT_REC_NUM
-.word XT_REC_TRACE
 

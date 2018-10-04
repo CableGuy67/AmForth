@@ -1,3 +1,2 @@
 
-DEFER "wlscope", WLSCOPE
-.word XT_GET_CURRENT
+DEFER "wlscope", WLSCOPE, XT_GET_CURRENT

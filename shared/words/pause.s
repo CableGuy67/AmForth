@@ -1,2 +1,1 @@
-  DEFER "pause",PAUSE 
-  .word XT_NOOP
+  DEFER "pause",PAUSE, XT_NOOP

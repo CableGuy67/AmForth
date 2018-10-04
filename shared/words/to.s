@@ -18,9 +18,10 @@ NONAME DOTO2
     .word XT_TO_R
     .word XT_FETCH
 PFA_TO1:
-    .word XT_DUP
+    .word XT_DUP, XT_FETCH,XT_SWAP
+    .word XT_CELLPLUS
     .word XT_CELLPLUS
     .word XT_CELLPLUS
     .word XT_FETCH
-    .word XT_FETCH
+    .word XT_EXECUTE
     .word XT_EXIT

@@ -1,3 +1,2 @@
 
-DEFER "turnkey", TURNKEY
-.word XT_APPLTURNKEY
+DEFER "turnkey", TURNKEY, XT_APPLTURNKEY

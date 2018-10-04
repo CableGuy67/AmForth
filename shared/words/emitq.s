@@ -1,2 +1,1 @@
-  DEFER "emit?",EMITQ 
-  .word XT_SERIAL_EMITQ
+  DEFER "emit?",EMITQ, XT_SERIAL_EMITQ
