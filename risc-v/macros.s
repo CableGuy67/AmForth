@@ -154,11 +154,14 @@ VE_\Label:
    .equ USER_\Label,\UOffset # for listing
 .endm
 
-.macro VALUE Name, Label
+.macro VALUE Name, Label, Default
     HEADER Flag_visible|Flag_value|Flag_init, "\Name", \Label, PFA_DOVALUE
    .word rampointer
     .equ RAM_\Label,rampointer # for listing
    .set rampointer, rampointer+4
+   .word \Default
+   .word XT_FETCH
+   .word XT_STORE
 .endm
 
 .macro DEFER Name, Label, XT

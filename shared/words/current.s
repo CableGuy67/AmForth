@@ -1,4 +1,3 @@
 
-VALUE "current" CURRENT
-.word PFA_FDP
+VALUE "current" CURRENT, PFA_FDP
 

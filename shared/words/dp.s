@@ -1,4 +1,3 @@
 
-VALUE "dp", DP
-.word 0
+VALUE "dp", DP, 0
 

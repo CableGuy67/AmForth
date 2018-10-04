@@ -1,3 +1,2 @@
 
-VALUE "here", HERE
-.word HERESTART
+VALUE "here", HERE, HERESTART
