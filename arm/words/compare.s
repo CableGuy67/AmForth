@@ -6,7 +6,7 @@
 NEXT
 
 compare:
-  push {r0, r1, r2, r3, lr}
+  push {lr}
 
   popda r1        @ Length of second string
   ldm psp!, {r0}  @ Length of first  string
@@ -15,7 +15,7 @@ compare:
 
     ldm psp!, {tos}
     movs tos, #0
-    pop {r0, r1, r2, r3, pc}
+    pop {pc}
 
 1: @ Lengths are equal. Compare characters.
    ldm psp!, {r1}  @ Address of first string.
@@ -34,10 +34,10 @@ compare:
 
      @ Unequal
      movs tos, #0
-     pop {r0, r1, r2, r3, pc}
+     pop {pc}
 
 3: @ Equal !
    movs tos, #0
    mvns tos, tos
-   pop {r0, r1, r2, r3, pc}
+   pop {pc}
 
