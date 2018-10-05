@@ -7,3 +7,5 @@
 .equ USER_SP, 4*cellsize
 .equ USER_HANDLER, 5*cellsize
 .equ USER_BASE, 6*cellsize
+
+.equ USER_UDT, 7*cellsize

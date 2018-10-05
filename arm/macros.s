@@ -112,10 +112,17 @@ VE_\Label:
    .word rampointer
     .equ DEFER_RAM_\Label,rampointer @ for listing
    .set rampointer, rampointer+cellsize
-
    .word \XT
    .word XT_FETCH
    .word XT_STORE
+.endm
+
+.macro UDEFER Name, Label, XT
+    HEADER Flag_visible|Flag_defer|Flag_init, "\Name", \Label, PFA_DODEFER
+   .word USER_\Label @ see user.inc for corresponding labels
+   .word \XT
+   .word XT_UDEFER_FETCH
+   .word XT_UDEFER_STORE
 .endm
 
 .macro CONSTANT Name, Label, NUM

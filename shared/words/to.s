@@ -6,17 +6,18 @@ IMMED "to", TO
     .word XT_FETCH
     .word XT_DOCONDBRANCH, PFA_TO1
     .word XT_COMPILE
-    .word XT_DOTO2
+    .word XT_DOTO
     .word XT_COMMA
     .word XT_EXIT
 
-NONAME DOTO2
-
+NONAME DOTO
     .word XT_R_FROM
     .word XT_DUP
     .word XT_CELLPLUS
     .word XT_TO_R
     .word XT_FETCH
+    .word XT_CELLPLUS
+
 PFA_TO1:
     .word XT_DUP, XT_FETCH,XT_SWAP
     .word XT_CELLPLUS

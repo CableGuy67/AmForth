@@ -54,16 +54,10 @@
 DOCOLON: 
         push {FORTHIP}
         mov FORTHIP, FORTHW
-@	ldr r1, =#67 @ C
-@	SEMIT r1
 DO_NEXT:
         ldr FORTHW, [FORTHIP]
         adds FORTHIP, #4
-@	ldr r1, =#78 @ N
-@	SEMIT r1
 DO_EXECUTE:
-@	ldr r1, =#69 @ E
-@	SEMIT r1
         ldr r0, [FORTHW]
         adds FORTHW, #4
         adds r0,#1
@@ -108,9 +102,9 @@ DO_EXECUTE:
 .include "words/do-variable.s"
 .include "words/do-data.s"
 .include "words/do-value.s"
-.include "words/do-to.s"
 .include "words/do-defer.s"
 .include "words/do-user.s"
+.include "words/do-does.s"
 .include "words/up.s"
 
 .include "words/1ms.s"
