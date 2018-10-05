@@ -41,9 +41,9 @@ DO_NEXT:
         lw x17, 0(x16) # @IP -> W 
         addi x16,x16,4 # INC IP
 DO_EXECUTE:
-        lw x18, 0(x17) # @W, address of some executable code
+        lw x10, 0(x17) # @W, address of some executable code
         addi x17,x17,4 # INC W, points now to PFA
-        jalr zero,x18,0 # jump to code
+        jalr zero,x10,0 # jump to code
 
 
 .include "words/comparisions.s"
@@ -100,9 +100,9 @@ DO_EXECUTE:
 .include "words/do-variable.s"
 .include "words/do-data.s"
 .include "words/do-value.s"
-.include "words/do-to.s"
 .include "words/do-defer.s"
 .include "words/do-user.s"
+.include "words/do-does.s"
 .include "words/up.s"
 
 .include "words/1ms.s"

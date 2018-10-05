@@ -11,8 +11,7 @@
 #   x10..x15 temp
 #   x16 IP  Forth VM IP register (ITC Instruction Pointer)
 #   x17 W   Forth VM W register
-#   x18 temporary
-#   x19 user pointer UP
+#   x18 user pointer UP
 
 .macro NEXT
     j DO_NEXT
