@@ -39,3 +39,16 @@
   xori x3, x3, -1
   NEXT
 
+# -----------------------------------------------------------------------------
+  CODEWORD Flag_visible, "rshift", RSHIFT # ( x n -- x )
+# -----------------------------------------------------------------------------
+  lw x5, 0(x4)
+  addi x4, x4, 4
+  srl x3, x5, x3
+  NEXT
+
+  CODEWORD Flag_visible, "lshift", LSHIFT # ( x n -- x )
+  lw x5, 0(x4)
+  addi x4, x4, 4
+  sll x3, x5, x3
+  NEXT
