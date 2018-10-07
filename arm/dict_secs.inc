@@ -119,6 +119,7 @@
 .include "words/brackettick.s"
 .include "words/char.s"
 .include "words/colon-noname.s"
+.include "words/colon.s"
 .include "words/constant.s"
 .include "words/create.s"
 .include "words/defer-fetch.s"
@@ -146,5 +147,7 @@
 .include "words/to-in.s"
 .include "words/dp.s"
 .include "words/udefer.s"
+.include "words/wordlist.s"
+.include "words/ramwordlist.s"
 
 .include "dict_appl.inc"

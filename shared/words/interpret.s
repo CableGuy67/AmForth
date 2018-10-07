@@ -8,7 +8,7 @@ COLON Flag_visible, "interpret", INTERPRET
       .word XT_STATE
       .word XT_FETCH
       .word XT_DOCONDBRANCH, PFA_INTERPRET1
-      .word XT_CELLPLUS   
+        .word XT_CELLPLUS   
 PFA_INTERPRET1:
       .word XT_FETCH
       .word XT_EXECUTE

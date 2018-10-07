@@ -1,3 +1,2 @@
 
-VALUE "dp", DP, 0
-
+VALUE "dp", DP, HERESTART

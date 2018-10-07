@@ -22,17 +22,15 @@ rlooplimit .req r12
 
 .macro STARTDICT
 .word 0
-9: @ forth-wordlist
-6: @ environment wordlist
+98: @ environment wordlist
+99: @ forth-wordlist
 .endm
 
 @ save the beginning of the wordlists
 .macro ENDDICT
-CONSTANT "fdp", FDP
-  .word 9b
-.set DPSTART, 9b
-CONSTANT "edp", EDP
-  .word 6b
+CONSTANT "edp", EDP, 98b
+CONSTANT "fdp", FDP, 99b
+.set DPSTART, 99b
 .equ HERESTART, rampointer
 .endm
 
@@ -64,8 +62,8 @@ CONSTANT "edp", EDP
 .macro HEADER Flags, Name, Label, PFA
     .p2align 2
 VE_\Label:
-    .word 9b          @ Insert Link
-9:  .word \Flags      @ Flag field
+    .word 99b         @ Insert Link
+99: .word \Flags      @ Flag field
     .byte 8f - 7f     @ Calculate length of name field
 7:  .ascii "\Name"    @ Insert name string
 8:  .p2align 2        @ Realign
@@ -147,8 +145,8 @@ VE_\Label:
 .macro ENVIRONMENT Name, Label
     .p2align 2
 VE_ENV_\Label:
-    .word 6b          @ Insert Link
-6:
+    .word 98b          @ Insert Link
+98:
     .word Flag_visible      @ Flag field
 
     .byte 8f - 7f     @ Calculate length of name field

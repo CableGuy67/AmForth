@@ -78,17 +78,17 @@
 .macro STARTDICT
 .text
 .word 0
-9: # forth-wordlist
-6: # environment wordlist
+97: # csr-wordlist
+98: # environment
+99: # forth-wordlist
 .endm
 
 # save the beginning of the wordlists
 .macro ENDDICT
-CONSTANT "fdp", FDP
-  .word 9b
-.set DPSTART, 9b
-CONSTANT "edp", EDP
-  .word 6b
+CONSTANT "csr-wordlist", CSR_WORDLIST, 97b
+CONSTANT "edp", EDP, 98b
+CONSTANT "fdp", FDP, 99b
+.set DPSTART, 99b
 .equ HERESTART, rampointer
 .endm
 
@@ -120,8 +120,8 @@ CONSTANT "edp", EDP
 .macro HEADER Flags, Name, Label, PFA
     .p2align 2,0xfe
 VE_\Label:
-    .word 9b          # Insert Link
-9:  .word \Flags      # Flag field
+    .word 99b         # Insert Link
+99: .word \Flags      # Flag field
     .byte 8f - 7f     # Calculate length of name field
 7:  .ascii "\Name"    # Insert name string
 8:  .p2align 2,0xff        # Realign
@@ -195,8 +195,8 @@ VE_\Label:
 .macro ENVIRONMENT Name, Label
     .p2align 2,0xf0
 VE_ENV_\Label:
-    .word 6b          # Insert Link
-6:
+    .word 98b          # Insert Link
+98:
     .word Flag_visible      # Flag field
 
     .byte 8f - 7f     # Calculate length of name field
@@ -207,3 +207,19 @@ VE_ENV_\Label:
    PFA_ENV_\Label:
 .endm
 
+.macro CSR NUM, Name
+    .p2align 2,0xf0
+VE_CSR_\Name:
+    .word 97b               # Insert Link
+97: .word Flag_visible      # Flag field
+
+    .byte 8f - 7f     # Calculate length of name field
+7:  .ascii "\Name"    # Insert name string
+8:  .p2align 2,0xf0   # Realign
+
+   XT_CSR_\Name: .word PFA_CSR_\Name
+   PFA_CSR_\Name:
+     savetos
+     csrr x3, \NUM
+   NEXT
+.endm
