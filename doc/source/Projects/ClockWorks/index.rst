@@ -25,11 +25,11 @@ adding optional units to cover other things.
 
 If you speak or read German: a lot of this material has been covered
 in the journal "Vierte Dimension" of "Forth Gesellschaft e.V."
-available at http://www.forth-ev.de
-and http://wiki.forth-ev.de/doku.php/vd-archiv
+available at https://www.forth-ev.de
+and https://wiki.forth-ev.de/doku.php/vd-archiv
 starting 2016-04 and references therein. There is a corresponding page
 for the source code and pointers in the wiki as well, see
-http://wiki.forth-ev.de/doku.php/projects:clockworks
+https://wiki.forth-ev.de/doku.php/projects:clockworks:clockworks
 
 Warning
 -------
