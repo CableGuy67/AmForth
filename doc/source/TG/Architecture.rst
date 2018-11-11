@@ -5,11 +5,11 @@ Architecture
 Overview
 --------
 
-amforth is a 16 bit Forth implementing the indirect threading
-model. The flash memory contains the whole dictionary. The RAM
-contains buffers, variables and the stacks. Depending on the
-platform, either the EEPROM or a special section of the flash
-is used for vital data such as pointers or configuration settings.
+amforth is an indirect threading Forth. The dictionary is on 
+a memory that allows execution of code. The RAM contains buffers, 
+variables and the stacks. Depending on the platform, either the 
+EEPROM or a special section of the flash is used for vital data 
+such as pointers or configuration settings. 
 
 The compiler is a classic compiler without any optimization
 support.
@@ -18,7 +18,6 @@ Amforth uses all of the CPU registers internally: The
 data stack pointer, the instruction pointer, the user pointer, and
 the Top-Of-Stack cell. The hardware stack is used as the return
 stack. Some registers are used for temporary data in primitives.
-
 
 Text Interpreter
 ----------------
@@ -61,7 +60,6 @@ result consists of two elements: The actual data (if any)
 and an object like identifier connected with certain methods.
 
 .. digraph:: Recognizer
-   :inline:
 
    "Interpret" -> "Get Next Word"
    "Get Next Word" -> "Recognize" [label="Got one"]
@@ -99,19 +97,18 @@ parse actions is preserved and is restored for every iteration
 cycle.
 
 .. digraph:: Recognize
-   :inline:
 
    "Get Recognizer Stack" -> "Rec-Stack Exhausted?"
-   "Rec-Stack Exhausted?" -> "DT:NULL"  [label="Yes"]
+   "Rec-Stack Exhausted?" -> "RECTYPE-NULL"  [label="Yes"]
    "Rec-Stack Exhausted?" -> "Call Parse Action"  [label="Consume Rec-TOS"]
-   "Call Parse Action" -> "Rec-Stack Exhausted?" [label="DT:NULL"]
+   "Call Parse Action" -> "Rec-Stack Exhausted?" [label="RECTYPE-NULL"]
    "Call Parse Action" -> "End" [label="Success"]
-   "DT:NULL" -> "End"
+   "RECTYPE-NULL" -> "End"
 
 A recognizer consists of a few words that work together.
 To ease maintenance, a naming convention is used: The
-recognizer itself is named with the prefix ``rec:``. The
-method table name gets the prefix ``r:`` followed by
+recognizer itself is named with the prefix ``rec-``. The
+method table name gets the prefix ``rectype-`` followed by
 the same name as the recognizer.
 
 :command:`POSTPONE` serialises the parsed data as literals and
@@ -119,18 +116,18 @@ adds the compile action from the method table. This an
 almost generic operation, it depends only on the number
 of cells from the parsing actions.
 
-Recognizer List
-~~~~~~~~~~~~~~~
+Recognizer Stack
+~~~~~~~~~~~~~~~~
 
-The interpreter uses a list of recognizers. They are managed
+The interpreter uses a default stack of recognizers. It is managed
 with the words :command:`get-recognizers` and :command:`set-recognizers`.
 
 The entries in the list are called in order until the first 
-one returns a different result but :command:`DT:NULL`. If the list
-is exhausted and no one succeeds, the :command:`DT:NULL` is delivered
+one returns a different result but :command:`RECTYPE-NULL`. If the list
+is exhausted and no one succeeds, the :command:`RECTYPE-NULL` is delivered
 nevertheless and leads to the error reactions.
 
-The standard recognizer list is defined as follows
+The standard recognizer stack is defined as follows
 
 .. code-block:: forth
 
@@ -159,7 +156,7 @@ and to call the recognizers. It also maintains the state.
    ;
 
 :command:`recognize` always returns a valid method table. If no
-recognizer succeeds, the :command:`DT:NULL` is returned with the 
+recognizer succeeds, the :command:`RECTYPE-NULL` is returned with the 
 addr/len of the unknown-to-handle word.
 
 API
@@ -175,29 +172,29 @@ the criteria for a certain data type.
    :noname ... ;  \ interpret action
    :noname ... ;  \ compile action
    :noname ... ;  \ postpone action
-   dt-token: dt:foo
+   rectype: rectype-foo
 
-   : rec:foo ( addr len -- i*x dt:foo | DT:NULL ) ... ;
+   : rec:foo ( addr len -- i*x rectype-foo | RECTYPE-NULL ) ... ;
 
-The word :command:`rec:foo` is the actual parsing action of the
+The word :command:`rec-foo` is the actual parsing action of the
 recognizer. It analyzes the string it gets. There are two results 
 possible: Either the word is recognized and the address of the data
 token is returned or the NULL data token is used which is 
-actually a predefined method table named :command:`DT:NULL`.
+actually a predefined method table named :command:`RECTYPE-NULL`.
 
-The calling parameters to :command:`rec:foo` are the address and 
+The calling parameters to :command:`rec-foo` are the address and 
 the length of a word in RAM. The recognizer must not change it. 
 The result (i*x) is the parsed and converted data and the method
 table to deal with it.
 
 There is a standard method table that does not require
 additional data (i*x is empty) and which is used to communicate
-the "not-recognized" information: :command:`r:fail`. Its method
-table entries throw the exception -13 if called.
+the "not-recognized" information: :command:`RECTYPE-NULL`. Its 
+method table entries throw the exception -13 if called.
 
-Other pre-defined method tables are :command:`dt:num` to deal 
-with single cell numeric data, :command:`dt:dnum` to work with
-double cell numerics and :command:`dt:xt` to execute, compile 
+Other pre-defined method tables are :command:`rectype-num` to deal 
+with single cell numeric data, :command:`rectype-dnum` to work with
+double cell numerics and :command:`rectype-xt` to execute, compile 
 and postpone execution tokens XT from the dictionary.
 
 The words in the method tables get the output of the recognizer 
@@ -208,7 +205,7 @@ Default (NULL)
 ~~~~~~~~~~~~~~
 
 This is a special system level recognizer. It is
-never called actually but its data token (DT:NULL) 
+never called actually but its data token (RECTYPE-NULL) 
 is used as both a error flag and for the final error 
 actions. Its methods get the addr/len of a single 
 word. They consume it by printing the string and 
@@ -219,11 +216,11 @@ inside the :command:`quit` loop.
 .. code-block:: forth
 
    :noname type -13 throw ; dup dup
-   dt-token: dt:null
+   rectype: RECTYPE-NULL
 
    \ this definition is never called actually
-   : rec:fail ( addr len -- r:fail)
-     2drop dt:null
+   : rec-null ( addr len -- rectype-null)
+     2drop rectype-null
    ;
 
 NUMBER
@@ -241,19 +238,19 @@ printed and an exception is thrown.
 
    ' noop
    ' literal
-   :noname . -48 throw ; \ subject to dispute
-   dt-token: dt:num
+   :noname . -48 throw ; \ subject to disput
+   recognizer: rectype-num
 
    ' noop
    ' 2literal
    :noname d. -48 throw ; \ subject to dispute
-   dt-token: dt:dnum
+   recognizer: rectype-dnum
 
-   : rec:intnum ( addr len -- n r:num | d r:dnum | r:fail )
+   : rec:intnum ( addr len -- n rectype-num | d rectype-dnum | rectype-null )
      number if
-      1 = if dt:num else dt:dnum then
+      1 = if rectype-num else rectype-dnum then
      else 
-       dt:null
+       rectype-null
      then
    ;
 
@@ -272,13 +269,13 @@ immediate words for compiling and postponing.
    :noname drop execute ; 
    :noname 0> if compile, else execute then ; 
    :noname 0> if postpone [compile] then , ; 
-   dt-token: dt:xt
+   recognizer: rectype-xt
 
-   : rec:word ( addr len -- XT flags dt:xt | dt:null )
+   : rec-find ( addr len -- XT flags rectype-xt | rectype-null )
      find-name ?dup if
-       dt:xt
+       rectype-xt
      else
-       dt:null
+       rectype-null
      then
    ;
 
@@ -381,6 +378,11 @@ The first USER area is located at the first data address
 +--------------------------+-----------------------------+
 | 12                       | BASE (number conversion)    |
 +--------------------------+-----------------------------+
+
+The AVR8 and MSP430 support deferred words based in the
+USER area.
+
++--------------------------+-----------------------------+
 | 14                       | EMIT (deferred)             |
 +--------------------------+-----------------------------+
 | 16                       | EMIT? (deferred)            |
@@ -396,6 +398,21 @@ The first USER area is located at the first data address
 | 26                       | REFILL (deferred)           |
 +--------------------------+-----------------------------+
 
+The command line prompt can be changed with the following
+defers. More information is in the recipe :ref:`prompts`
+
++--------------------------+-----------------------------+
+| 28                       | .OK  (deferred)             |
++--------------------------+-----------------------------+
+| 30                       | .ERROR (deferred)           |
++--------------------------+-----------------------------+
+| 32                       | .READY (deferred)           |
++--------------------------+-----------------------------+
+| 34                       | .INPUT (deferred)           |
++--------------------------+-----------------------------+
+
+
+
 The User Area is used to provide task local
 information. Without an active multitasker it
 contains the starting values for the stackpointers,
@@ -407,8 +424,6 @@ status and the link to the next entry in the task
 list. In that situation the user area is/can be seen
 as the task control block.
 
-Beginning with release 3.7 the USER area has been split
-into two parts. The first one called system user area contains
-all the variables described above. The second one is the application
-user area that contains all variables defined with the USER command.
-The default application user area is empty and by default of size zero.
+The size available to application programs is determined
+at compile time. This size is set to 0 initially, can be
+changed in the application master file.
