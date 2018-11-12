@@ -1,36 +1,26 @@
 .. _Hifive1:
 
-
+=======
 Hifive1
 =======
+
+An eval board from sifive.
 
 Tools
 -----
 
-From `RISC-V Tools <https://www.sifive.com/products/tools/>`_ download the
-files from the section prebuilt RISC-V GCC Toolchain. You need both the embedded toolchain 
-and the openocd toolchain.
-
-Unpack the archives and find and put the following files and directories 
-into the ``tools`` directory.
+The easiest way to get working are the riscv packages in Ubuntu Bionic.
+They come pre-configured and ready for use. Currently used version is
+2.30.
 
 .. code-block:: bash
 
-   $ ls tools
-    # from riscv-openocd-20171231-x86_64-linux-centos6.tar.gz:/share
-    share/   
-    # from riscv-openocd-20171231-x86_64-linux-centos6.tar.gz:/bin
-    openocd  
-    # from riscv64-unknown-elf-gcc-20171231-x86_64-linux-centos6.tar.gz:/bin
-    risc64-unknown-elf-gdb 
+   $ dpkg -l | grep risvc
+     ii  binutils-riscv64-linux-gnu  2.30-20ubuntu2~18.04  
 
-The ``share`` directory contains many files for a lot of boards. Next find and apply the 
-file ``60-openocd.rules`` from this directory tree to your system. Usually at
-``/etc/udev/rules.d``. This requires root access with e.g. sudo.
-
-pre-packages binaries can be found here too: `riscv-binutils-bin-64bit-2.28.tar.gz <href=/riscv-binutils-bin-64bit-2.28.tar.gz>`_
-they work at least with recent ubuntu versions (64bit). Newer release (2.29 an newer) do work
-currently.
+To upload the compiled binary, an risc-v enabled `openocd` and a special
+`gdb` is needed. Both come from the `sifive.com <https://www.sifive.com/products/tools/>`__
+website.
 
 Board Setup
 -----------
@@ -41,12 +31,12 @@ download the whole freedom-e300-hifive1 directory and place it at ``risc-v/board
 Application Setup
 -----------------
 
-Checkout svn with at least rev. 2300. It contains an appl/hifive1
-directory with the necessary files. place the binaries from above
-somewhere in PATH and call make.
+Checkout amforth svn with at least rev. 2300. It contains an `appl/hifive1`
+directory with the necessary files. place the binaries for `openocd` and `gdb`
+somewhere in your `PATH` and call `make`.
 
-The Makefile can upload the hex file to the controller using openocd
-and gdb as well.
+The Makefile at `hifive/` can upload the hex file to the controller using `openocd`
+and `gdb`.
 
 .. code-block:: bash
 
@@ -136,6 +126,3 @@ and gdb as well.
 This shall give the amforth prompt at the serial terminal (38400 8N1). Sometimes the
 openocd process does not terminate properly. Either kill it manually or start another
 make upload to terminate it.
-
-
-

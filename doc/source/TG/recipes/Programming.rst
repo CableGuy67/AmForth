@@ -27,6 +27,7 @@ Programming and Debugging
    Tracer
    Upgrade-Amforth
    Unbreakable
+   User
    Values
    WalkingWordlists
    Watcher
