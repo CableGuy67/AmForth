@@ -20,6 +20,13 @@ COPS = -Wall  -Os -nostdlib -nostartfiles -ffreestanding -save-temps
 AOPS = --warn --fatal-warnings
 
 GDB_PORT ?= 3333
+
+######################
+# location of includes 
+######################
+
+INCLUDES = ../../risc-v/board/$(BOARD)
+
 #############################################################
 # This Section is for uploading a program to SPI Flash
 #############################################################
@@ -50,7 +57,7 @@ upload:
 	echo "Successfully uploaded '$(PROGRAM)' to $(BOARD)."
 
 hifive1.o: buildinfo
-	$(RISCV_TOOLS)-as -alms=hifive1.lst -I ../../risc-v -I ../../shared hifive1.s -o hifive1.o -march=rv32im
+	$(RISCV_TOOLS)-as -alms=hifive1.lst -I $(INCLUDES) -I ../../risc-v -I ../../shared hifive1.s -o hifive1.o -march=rv32im
 
 hifive1.bin : memmap hifive1.o
 	$(RISCV_TOOLS)-ld -o hifive1.elf -T memmap  hifive1.o -m elf32lriscv
