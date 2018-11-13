@@ -33,8 +33,8 @@ space.
 
 With this new setting, new hexfiles need to be generated and uploaded.
 
-Create
-------
+Use
+---
 
 To create a user variable, the offset number and the name is required.
 
@@ -53,6 +53,21 @@ the user variable ``foo``. the settings for the ``APPUSERSIZE`` shall
 be at least cover the offset 49. That is is has to be at least 
 ``49 - SYSUSERSIZE``.
 
+The variables itself work with the normal RAM operations
+
+.. code-block:: forth
+
+   > 42 answer !
+   ok
+   > answer @ u.
+   42 ok
+   > 2424. question 2!
+   ok
+   > foo c@ 
+   ok
+
+Operations like ``fill`` work as well.
+
 The file ``defer.frt`` adds support for defers in the user area. They 
 are used exactly like normal defers, but store the XT in the user area.
 
@@ -63,17 +78,27 @@ are used exactly like normal defers, but store the XT in the user area.
    > ' ver is answer
    ok
    > answer
-   amforth 6.8 ....
+   amforth 6.8 RV32IM ok
    >
 
-The file ``value.frt`` adds support for values in the user area. They store 
-their value in the user area (instead of the EEPROM an AVR8), but behave 
-identically. The definition requires both the intial value and the offset
+Some system words like ``emit``, ``key?`` and ``source`` are in 
+fact user defers and can thus be redefined on a per task basis.
+
+The file ``value.frt`` adds support for values in the user area. They 
+store their value in the user area (instead of the EEPROM an AVR8), 
+but behave identically. The definition requires both the intial 
+value and the offset:
 
 .. code-block:: forth
 
    > 0 42 Uvalue answer
    ok
+   > answer u.
+   0 ok
    > 42 to answer
    ok
+   > answer u.
+   42 ok
    >
+
+.. seealso:: :ref:`Multitasking`, :ref:`Values`, :ref:`Defer`
