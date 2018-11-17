@@ -1,4 +1,9 @@
 
+.text
+.global PFA_COLD
+  j PFA_COLD
+
+
 .include "macros.s"
 
 .include "preamble.inc"
