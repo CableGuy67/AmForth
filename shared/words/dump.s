@@ -48,6 +48,7 @@ COLON Flag_visible, ".8hex", DOT8HEX
 
 
 #: dump ( addr count -- )
+#  swap $ff invert and $swap
 #  cr 0
 #  do dup .8hex space
 #     $10 0 do dup i + c@ .2hex space loop 2 spaces
@@ -56,7 +57,7 @@ COLON Flag_visible, ".8hex", DOT8HEX
 #  $10 +loop drop ;
 
 COLON Flag_visible, "dump", DUMP
-
+    .word XT_SWAP,XT_DOLITERAL, 0xffffff00, XT_AND,XT_SWAP
     .word XT_CR,XT_ZERO,XT_DODO,PFA_DUMP5
 PFA_DUMP0:
       .word XT_DUP,XT_DOT8HEX,XT_SPACE
