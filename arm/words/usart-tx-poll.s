@@ -7,9 +7,9 @@
 @ -----------------------------------------------------------------------------
 
 SERIAL_EMIT_WAIT: 
-   ldr r0, =UARTFR
-   ldr r0, [r0]
-   ands r0, #TXFF
+     ldr r0, =UARTFR
+     ldr r0, [r0]
+     ands r0, #TXFF
    bne SERIAL_EMIT_WAIT
 
    ldr r0, =UARTDR
@@ -21,11 +21,11 @@ NEXT
   CODEWORD Flag_visible, "serial-emit?", SERIAL_EMITQ
 @ -----------------------------------------------------------------------------
    savetos
-   movs tos, #0
+   mov tos, #0
    ldr r0, =UARTFR
    ldr r1, [r0]
    ands r1, #TXFF
    bne SERIAL_EMITQ1
-     mvns tos, tos
+     mvn tos, tos
 SERIAL_EMITQ1:
 NEXT

@@ -20,10 +20,8 @@
 .include "words/to-r.s"
 .include "words/r-from.s"
 .include "words/r-fetch.s"
-.include "words/rp-fetch.s"
-.include "words/rp-store.s"
-.include "words/sp-fetch.s"
-.include "words/sp-store.s"
+.include "words/rp.s"
+.include "words/sp.s"
 
 .include "words/fetch.s"
 .include "words/store.s"

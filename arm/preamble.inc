@@ -13,5 +13,6 @@
 
 ramallot datastack, datastack_size
 ramallot returnstack, returnstack_size
-ramallot refill_buf, refill_buf_size
 ramallot userarea, userarea_size
+ramallot refill_buf, refill_buf_size
+

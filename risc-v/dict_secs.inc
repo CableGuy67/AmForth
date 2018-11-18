@@ -146,4 +146,8 @@
 .include "words/greater-zero.s"
 .include "words/to-in.s"
 .include "words/dp.s"
+.include "words/udefer.s"
+.include "words/wordlist.s"
+.include "words/ramwordlist.s"
+
 .include "dict_appl.inc"

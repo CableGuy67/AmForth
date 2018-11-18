@@ -1,6 +1,6 @@
 
 DATA "cfg-order", CFG_ORDER
-.word 2
+.word 3
+.word XT_RAM_WORDLIST
 .word XT_FORTH_WORDLIST
 .word XT_ENVIRONMENT
-

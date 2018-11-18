@@ -85,7 +85,7 @@
 
 # save the beginning of the wordlists
 .macro ENDDICT
-VALUE "csr-wordlist", CSR_WORDLIST, 97b
+VALUE "csr", CSR_WORDLIST, 97b
 VALUE "edp", EDP, 98b
 VALUE "fdp", FDP, 99b
 .set DPSTART, 99b

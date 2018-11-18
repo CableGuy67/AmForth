@@ -9,7 +9,7 @@ COLON Flag_visible, "header", HEADER
     .word XT_DOLITERAL
     .word Flag_invisible
     .word XT_COMMA
-    .word XT_DOSCOMMA
+    .word XT_SCOMMA
     .word XT_R_FROM
     .word XT_EXIT
 
