@@ -53,11 +53,9 @@ DOCOLON:
         push {FORTHIP}
         mov FORTHIP, FORTHW
 DO_NEXT:
-        ldr FORTHW, [FORTHIP]
-        adds FORTHIP, #4
+        ldr FORTHW, [FORTHIP], #4
 DO_EXECUTE:
-        ldr r0, [FORTHW]
-        adds FORTHW, #4
+        ldr r0, [FORTHW], #4
         adds r0,#1
         mov pc, r0
 
