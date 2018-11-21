@@ -56,7 +56,6 @@ DO_NEXT:
         ldr FORTHW, [FORTHIP], #4
 DO_EXECUTE:
         ldr r0, [FORTHW], #4
-        adds r0,#1
         mov pc, r0
 
 .include "words/d-plus.s"
