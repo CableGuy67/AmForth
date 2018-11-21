@@ -1,0 +1,5 @@
+
+ENVIRONMENT "cpu", CPU
+
+  STRING "CORTEX-M"
+.word XT_EXIT

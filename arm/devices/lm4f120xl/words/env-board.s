@@ -1,0 +1,5 @@
+
+ENVIRONMENT "board", BOARD
+
+  STRING "LM4F120XL"
+.word XT_EXIT
