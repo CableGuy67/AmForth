@@ -1,2 +1,2 @@
 
-VARIABLE "newest", NEWEST
+DVARIABLE "newest", NEWEST

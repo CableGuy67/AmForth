@@ -147,6 +147,12 @@ VE_\Label:
    .set rampointer, rampointer+4
 .endm
 
+.macro DVARIABLE Name, Label
+   HEADER Flag_visible|Flag_variable, "\Name", \Label, PFA_DOVARIABLE
+   .word rampointer
+   .set rampointer, rampointer+2*cellsize
+.endm
+
 .macro USER Name, Label, UOffset
    HEADER Flag_visible|Flag_variable, "\Name", \Label, PFA_DOUSER
    .word \UOffset
