@@ -14,5 +14,6 @@ PFA_SCOMMA1:
     .word XT_DOLOOP
     .word PFA_SCOMMA1
 PFA_SCOMMA2:
-    .word XT_DROP 
+    .word XT_DROP
+    .word XT_DP, XT_ALIGNED, XT_DOTO, XT_DP
     .word XT_EXIT

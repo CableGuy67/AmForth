@@ -8,6 +8,9 @@ CODEWORD Flag_visible, "led-init", LED_INIT
   li x20, red|green|blue
   li x21, GPIO_OUTPUT_EN
   sw x20, 0(x21)
+  li x20, red|green|blue
+  li x21, GPIO_PORT
+  sw x20, 0(x21)
 NEXT
 
 CODEWORD Flag_visible, "red", RED

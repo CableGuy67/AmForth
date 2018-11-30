@@ -4,7 +4,6 @@ COLON Flag_visible,"appl-turnkey", APPLTURNKEY
   .word XT_LED_INIT, XT_UART_INIT
   .word XT_DOT_VER
 
-  STRING " LM4F120XL"
-  .word XT_TYPE, XT_CR
+  .word XT_SPACE,XT_ENV_BOARD,XT_TYPE, XT_CR
   .word XT_BUILD_INFO,XT_TYPE, XT_SPACE, XT_REV_INFO, XT_TYPE
 .word XT_EXIT

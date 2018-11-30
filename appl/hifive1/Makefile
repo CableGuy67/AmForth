@@ -3,11 +3,13 @@ PROGRAM_DIR=.
 # PROGRAM ?= demo_gpio
 # PROGRAM ?= led_fade
 PROGRAM ?= hifive1.hex
+
+# BOARD corresponds to the directory name at <arch>/board
 BOARD ?= freedom-e300-hifive1
 
 LINK_TARGET ?= flash
 
-LANG=C
+LANG=ASM
 
 #########################
 # location of binaries 

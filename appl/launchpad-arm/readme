@@ -1,0 +1,13 @@
+
+mcu is a LM4F120H5QR 32-bit ARM Cortex M4F
+256 kB flash memory
+32 kB SRAM
+80 MHz
+
+GPIO
+PF4 SW1
+PF0 SW2
+PF1 LED (red)
+PF2 LED (blue)
+PF3 LED (green)
+

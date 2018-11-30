@@ -28,8 +28,8 @@ rlooplimit .req r12
 
 @ save the beginning of the wordlists
 .macro ENDDICT
-VALUE "edp", EDP, 98b
-VALUE "fdp", FDP, 99b
+VALUE "environment", ENVIRONMENT, 98b
+VALUE "forth-wordlist", FORTH_WORDLIST, 99b
 .set DPSTART, 99b
 .equ HERESTART, rampointer
 .endm

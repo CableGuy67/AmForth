@@ -59,7 +59,6 @@
 .include "words/traverse-wordlist.s"
 .include "words/show-wordlist.s"
 .include "words/current.s"
-.include "words/forth-wordlist.s"
 .include "words/search-wordlist.s"
 .include "words/name2string.s"
 .include "words/name2flags.s"
@@ -89,7 +88,6 @@
 
 .include "words/count.s"
 .include "words/type.s"
-.include "words/environment.s"
 .include "words/squote.s"
 .include "words/scomma.s"
 .include "words/sliteral.s"

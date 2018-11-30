@@ -1,4 +1,2 @@
 
-VALUE "current", CURRENT, PFA_RDP
-
-
+VALUE "current", CURRENT, XT_RAM_WORDLIST

@@ -1,8 +1,9 @@
 
 NONAME IMMEDIATEQ
+    .word XT_FETCH
     .word  XT_DOLITERAL
     .word  Flag_immediate
-    .word  XT_SWAP, XT_OVER
+    .word  XT_TUCK
     .word  XT_AND
     .word  XT_EQUAL
     .word  XT_DOCONDBRANCH,IMMEDIATEQ1
