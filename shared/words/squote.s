@@ -1,5 +1,5 @@
 
-COLON Flag_visible, "s\"", SQUOTE 
+IMMED "s\x22", SQUOTE 
     .word XT_DOLITERAL
     .word 34  
     .word XT_PARSE       
