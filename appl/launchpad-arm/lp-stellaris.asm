@@ -3,7 +3,6 @@
 .syntax unified
 .cpu cortex-m4
 .thumb
-.equ m0core, 0
 
 .text
 

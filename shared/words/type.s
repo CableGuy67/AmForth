@@ -9,3 +9,6 @@ PFA_TYPE_LOOP:
    .word XT_DOLOOP,PFA_TYPE_LOOP
 PFA_TYPE_LEAVE:
  .word XT_EXIT
+
+COLON Flag_visible, "itype", ITYPE
+    .word XT_TYPE,XT_EXIT
