@@ -27,6 +27,7 @@
 .include "words/store.s"
 
 .include "words/negate.s"
+.include "words/abs.s"
 .include "words/multiplydivide.s"
 .include "words/stack.s"
 .include "words/logic.s"
