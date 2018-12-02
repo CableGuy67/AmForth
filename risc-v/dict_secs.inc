@@ -89,6 +89,7 @@
 .include "words/count.s"
 .include "words/type.s"
 .include "words/squote.s"
+.include "words/dot-quote.s"
 .include "words/scomma.s"
 .include "words/sliteral.s"
 .include "words/words.s"
