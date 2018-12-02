@@ -2,9 +2,9 @@
   CODEWORD Flag_visible, "serial-key", SERIAL_KEY
 @ -----------------------------------------------------------------------------
 
-   ldr r0, =UARTDR    @ Einkommendes Zeichen abholen
-   stmdb psp!, {tos}  @ Platz auf dem Datenstack schaffen
+   savetos
 
+   ldr r0, =UARTDR    @ Einkommendes Zeichen abholen
    ldr tos, [r0]      @ Register lesen
    uxtb tos, tos      @ 8 Bits davon nehmen, Rest mit Nullen auffüllen.
   
