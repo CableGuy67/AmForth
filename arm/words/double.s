@@ -21,34 +21,6 @@
     NEXT
 
 @------------------------------------------------------------------------------
-@ Tool for ud/mod
-@------------------------------------------------------------------------------
-
-  .macro division_step
-    @ Shift the long chain of four registers.
-    lsls r0, #1
-    adcs r1, r1
-    adcs r2, r2
-    adcs r3, r3
-
-    @ Compare Divisor with top two registers
-    cmp r3, r5 @ Check high part first
-    bhi 1f
-    blo 2f
-
-    cmp r2, r4 @ High part is identical. Low part decides.
-    blo 2f
-
-    @ Subtract Divisor from two top registers
-1:  subs r2, r4 @ Subtract low part
-    sbcs r3, r5 @ Subtract high part with carry
-
-    @ Insert a bit into Result which is inside LSB of the long register.
-    adds r0, #1
-2:
-  .endm
-
-@------------------------------------------------------------------------------
   CODEWORD Flag_visible, "ud/mod", UDSLASHMOD
          @ Unsigned divide 64/64 = 64 remainder 64
          @ ( ud1 ud2 -- ud ud)
@@ -83,7 +55,28 @@ ud_slash_mod_internal:
    @ For this long division, we need 64 individual division steps.
    movs tos, #64
 
-3: division_step
+3: 
+    @ Shift the long chain of four registers.
+    lsls r0, #1
+    adcs r1, r1
+    adcs r2, r2
+    adcs r3, r3
+
+    @ Compare Divisor with top two registers
+    cmp r3, r5 @ Check high part first
+    bhi 1f
+    blo 2f
+
+    cmp r2, r4 @ High part is identical. Low part decides.
+    blo 2f
+
+    @ Subtract Divisor from two top registers
+1:  subs r2, r4 @ Subtract low part
+    sbcs r3, r5 @ Subtract high part with carry
+
+    @ Insert a bit into Result which is inside LSB of the long register.
+    adds r0, #1
+2:
    subs tos, #1
    bne 3b
 
@@ -154,18 +147,11 @@ d_slash_mod:  @ ( 1L 1H 2L tos: 2H -- Rem-L Rem-H Quot-L tos: Quot-H )
 @------------------------------------------------------------------------------
   CODEWORD Flag_visible, "d/", DSLASH
 @------------------------------------------------------------------------------
-  bl d_slash
-NEXT
-
-d_slash:
-  push {lr}
   bl d_slash_mod
   ldm psp!, {r0, r1, r2}
   subs psp, #4
   str r0, [psp]
-
-  pop {pc}
-
+  NEXT
 @------------------------------------------------------------------------------
 @ --- Double memory ---
 @------------------------------------------------------------------------------
