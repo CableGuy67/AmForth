@@ -9,5 +9,9 @@ HEADLESS DODO
     loadtos
     mv x9,x3
     loadtos
+    # 0x800000 magic
+    li x6, 0x80000000
+    add x9, x9, x6
+    sub  x8, x8, x9
     addi x16,x16,4
 NEXT

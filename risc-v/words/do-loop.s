@@ -7,8 +7,11 @@ HEADLESS DOPLUSLOOP
   mv x5, x3
   loadtos
 PFA_DOPLUSLOOP1:
-  add x8,x8,x5
-  bge  x8,x9,PFA_DOLOOP_LEAVE
+  add x6,x8,x5
+  slti x11,x5,0
+  slt x12,x6,x8
+  bne x11, x12, PFA_DOLOOP_LEAVE
+  mv x8, x6
   lw x16,0(x16)
   NEXT
 PFA_DOLOOP_LEAVE:
