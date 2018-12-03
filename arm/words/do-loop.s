@@ -7,13 +7,12 @@ HEADLESS DOPLUSLOOP
   loadtos
 
 PFA_DOPLUSLOOP_INTERN:
-  add rloopindex, r0
-  cmp rloopindex,rlooplimit
-  bge PFA_DOPLUSLOOP1
+  adds rloopindex, r0
+  bvs PFA_DOPLUSLOOP_LEAVE
   ldr FORTHIP, [FORTHIP]
 NEXT
 
-PFA_DOPLUSLOOP1:
+PFA_DOPLUSLOOP_LEAVE:
   add FORTHIP, #4
   pop {rloopindex, rlooplimit}
 NEXT

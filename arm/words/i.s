@@ -3,4 +3,5 @@
 @------------------------------------------------------------------------------
   savetos
   mov tos, rloopindex 
+  add tos, rlooplimit
 NEXT
