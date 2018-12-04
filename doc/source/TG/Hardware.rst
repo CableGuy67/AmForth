@@ -2,19 +2,13 @@
 Hardware
 ========
 
-Controller
-----------
-
-Amforth is designed to run on AVR Atmega
-and MSP 430 micro controllers. It requires
-8KB flash memory for the basic system.
-
-The ATtiny micro controllers and a few ATmega 
-types lack the minimum flash capacity. The 
-ATtiny's lack some machine instructions as well. 
+Amforth is designed to run on small controllers. It's
+core system has a very small footprint.
 
 .. toctree::
+   :maxdepth: 1
 
    AVR8
    MSP430
    RISC-V
+   ARM

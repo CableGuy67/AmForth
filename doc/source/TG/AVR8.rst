@@ -46,7 +46,7 @@ The Forth VM has a few registers that need to be mapped to the
 microcontroller registers. The mapping has been extended over time
 and may cover all available registers. The actual coverage depends
 on the amount of additional packages. The default settings are shown
-in the table :ref:`register_mappings`.
+in the table :ref:`avr8_register_mappings`.
 
 .. _avr8_register_mappings:
 

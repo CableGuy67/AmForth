@@ -14,9 +14,9 @@ Tools
 -----
 
 Ubuntu 18.04 provides all necessary tools in the packages
-binutils-arm-none-eabi and lm4flash. All steps required
-to build and upload the code is in the `launchpad-arm/Makefile`. 
-Just run `make clean && make && make upload` in one go.
+``binutils-arm-none-eabi`` and ``lm4flash``. All steps required
+to build and upload the code is in the ``launchpad-arm/Makefile``. 
+Just run ``make clean && make && make upload`` in one go.
 
 Flashing the binary requires root privileges. See
 `lm4tools <https://github.com/utzig/lm4tools>`__ for a
@@ -25,7 +25,6 @@ solution.
 Features
 --------
 
-The interpreter is working and the RGB led is initialized and
-can be controlled with commands like `red` or `black` (turns it
-off).
+The RGB led is initialized and can be controlled with commands like ``red`` 
+or ``black`` (turns it off).
 
