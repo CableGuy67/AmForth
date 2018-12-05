@@ -106,6 +106,7 @@
 .include "words/if.s"
 .include "words/else.s"
 .include "words/again.s"
+.include "words/repeat.s"
 .include "words/turnkey.s"
 
 .include "words/tick.s"
