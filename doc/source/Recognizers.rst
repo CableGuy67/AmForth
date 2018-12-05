@@ -33,58 +33,13 @@ initiated a spin off stack RFD resulting in a much smaller
 recognizer RFD.
 
 `Version 4 </pr/Recognizer-rfc-D.html>`__ `(pdf) </pr/Recognizer-rfc-D.pdf>`__, 
-`(txt) </pr/Recognizer-rfc-D.text>`__  
+`(txt) </pr/Recognizer-rfc-D.text>`__  All discussions and remarks went into 
+a new document `(html) </pr/Recognizer-rfc-D-comments.html>`__, 
+`(pdf) </pr/Recognizer-rfc-D-comments.pdf>`__
+`(text) </pr/Recognizer-rfc-D-comments.text>`__
 
 Forth `source code </pr/Recognizer-D.frt>`__ and `test code </pr/Recognizer-D-test.frt>`__
 require `Stack.frt </pr/Stack.frt>`__ and `tester.fs </pr/tester.fs>`__.
-
-Most changes are only wording changes. More important is that
-the stack managing words are omitted. They are expected to
-re-appaear in a separate stack RFD.
-
-+---------------+---------------+
-|    v3         |    v4         |
-+---------------+---------------+
-| recognizer:   | rectype:      |
-+---------------+---------------+
-| do-recognizer | recognize     |
-+---------------+---------------+
-| r>*           | rectype>*     |
-+---------------+---------------+
-| r:fail        | rectype-null  |
-+---------------+---------------+
-
-non-normative wording changes
-
-+---------------+---------------+
-|    v3         |    v4         |
-+---------------+---------------+
-| rec:word      | rec-find      |
-+---------------+---------------+
-| r:word        | rectype-xt    |
-+---------------+---------------+
-| r:num         | rectype-num   |
-+---------------+---------------+
-| r:dnum        | rectype-dnum  |
-+---------------+---------------+
-| r:float       | rectype-float |
-+---------------+---------------+
-| r:name        | rectype-nt    |
-+---------------+---------------+
-
-The following words are removed from this RFD. The
-replacement words are subject to further discussion
-and probably will change in the future.
-
-+---------------+---------------+
-|    v3         |    v4         |
-+---------------+---------------+
-| recognizer    | stack (*)     |
-+---------------+---------------+
-| set-recognizer| set-stack (*) |
-+---------------+---------------+
-| get-recognizer| get-stack (*) |
-+---------------+---------------+
 
 Outdated
 --------

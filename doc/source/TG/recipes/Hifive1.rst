@@ -126,3 +126,6 @@ and `gdb`.
 This shall give the amforth prompt at the serial terminal (38400 8N1). Sometimes the
 openocd process does not terminate properly. Either kill it manually or start another
 make upload to terminate it.
+
+The RGB led is initialized at boot time and can be accessed with the color command
+names ``red``, ``green``, ``blue``, ``white``, ``black`` and a few others. 
