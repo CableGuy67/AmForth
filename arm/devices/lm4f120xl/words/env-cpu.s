@@ -1,5 +1,5 @@
 
 ENVIRONMENT "cpu", CPU
 
-  STRING "CORTEX-M"
+  STRING "CORTEX-M4"
 .word XT_EXIT
