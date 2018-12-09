@@ -105,6 +105,7 @@
 .include "words/while.s"
 .include "words/repeat.s"
 .include "words/leave.s"
+.include "words/immediate.s"
 .include "words/if.s"
 .include "words/else.s"
 .include "words/again.s"
