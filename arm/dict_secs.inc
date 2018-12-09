@@ -104,6 +104,7 @@
 .include "words/until.s"
 .include "words/while.s"
 .include "words/repeat.s"
+.include "words/leave.s"
 .include "words/if.s"
 .include "words/else.s"
 .include "words/again.s"

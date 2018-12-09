@@ -1,6 +1,6 @@
 COLON Flag_visible, "quit", QUIT
 
-#    .dw XT_LP0,XT_LP,XT_STORE
+    .word XT_LP0,XT_LP,XT_STORE
 #    .dw XT_SP0
 #    .dw XT_SP_STORE
 #    .dw XT_RP0

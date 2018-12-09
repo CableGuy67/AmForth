@@ -10,5 +10,4 @@ HEADLESS DODO
 
  add rlooplimit, #0x80000000
  sub rloopindex, rlooplimit
- add FORTHIP, #4
 NEXT

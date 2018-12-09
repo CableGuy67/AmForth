@@ -1,4 +1,10 @@
 
 IMMED "endloop", ENDLOOP
-        .word XT_LRESOLVE, XT_GRESOLVE
-LOOP2:  .word XT_EXIT
+
+        .word XT_LRESOLVE
+ENDLOOP1:
+        .word XT_L_FROM,XT_QDUP,XT_DOCONDBRANCH, ENDLOOP2
+        .word XT_THEN, XT_DOBRANCH, ENDLOOP1
+ENDLOOP2:
+	.word XT_EXIT
+

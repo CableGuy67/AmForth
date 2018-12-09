@@ -30,7 +30,6 @@
 NEXT
 
 ud_slash_mod:
-   push {lr}
    push {r4, r5}
 
    @ ( DividendL DividendH DivisorL DivisorH -- RemainderL RemainderH ResultL ResultH )
@@ -53,9 +52,9 @@ ud_slash_mod_internal:
    ldr  r4, [psp, #0]
 
    @ For this long division, we need 64 individual division steps.
-   movs tos, #64
+   mov tos, #64
 
-3: 
+3:
     @ Shift the long chain of four registers.
     lsls r0, #1
     adcs r1, r1
@@ -77,6 +76,7 @@ ud_slash_mod_internal:
     @ Insert a bit into Result which is inside LSB of the long register.
     adds r0, #1
 2:
+
    subs tos, #1
    bne 3b
 
@@ -87,7 +87,7 @@ ud_slash_mod_internal:
    str  r2, [psp, #8] @ Remainder-Low
 
    pop {r4, r5}
-   pop {pc}
+   bx lr
 
 @------------------------------------------------------------------------------
   CODEWORD Flag_visible, "d/mod", DSLASHMOD

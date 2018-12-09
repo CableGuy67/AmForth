@@ -182,11 +182,14 @@ VE_ENV_\Label:
 .endm
 
 .macro SEMIT register
-0: ldr r0, =UARTFR
+   push {r0}
+0: 
+   ldr r0, =UARTFR
    ldr r0, [r0]
    ands r0, #TXFF
    bne 0b
 
    ldr r0, =UARTDR
    str \register, [r0]
+   pop {r0}
 .endm

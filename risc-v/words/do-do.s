@@ -13,5 +13,4 @@ HEADLESS DODO
     li x6, 0x80000000
     add x9, x9, x6
     sub  x8, x8, x9
-    addi x16,x16,4
 NEXT

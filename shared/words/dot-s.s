@@ -7,7 +7,7 @@ COLON Flag_visible, ".s", DOTS
     .word XT_DEPTH
     .word XT_ZERO
     .word XT_QDOCHECK, XT_DOCONDBRANCH,PFA_DOTS2
-    .word XT_DODO, PFA_DOTS2
+    .word XT_DODO
 PFA_DOTS1:
     .word XT_I
     .word XT_PICK

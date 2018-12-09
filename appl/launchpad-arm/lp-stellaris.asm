@@ -16,5 +16,6 @@
 .equ returnstack_size, 128 
 .equ refill_buf_size, 96
 .equ appl_userarea_size, 8 
+.equ leavestack_size, 8*cellsize
 
 .include "amforth.s"

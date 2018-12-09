@@ -5,3 +5,4 @@
 .include "words/env-board.s"
 .include "flash.s"
 .include "words/dump.s"
+.include "words/defer-test.s"
