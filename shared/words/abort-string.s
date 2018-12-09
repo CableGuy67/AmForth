@@ -1,5 +1,5 @@
 
-COLON Flag_immediate, "abort\"", ABORTQUOTE
+IMMED "abort\x22", ABORTQUOTE
 
     .word XT_SQUOTE
     .word XT_COMPILE
