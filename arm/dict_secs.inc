@@ -4,7 +4,6 @@
 #
 
 .include "words/warm.s"
-.include "words/ms.s"
 .include "words/cr.s"
 .include "words/bl.s"
 .include "words/space.s"

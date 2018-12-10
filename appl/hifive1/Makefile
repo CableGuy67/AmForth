@@ -32,7 +32,7 @@ INCLUDES = ../../risc-v/board/$(BOARD)
 #############################################################
 # This Section is for uploading a program to SPI Flash
 #############################################################
-OPENOCDCFG = ../../risc-v/board/$(BOARD)/openocd.cfg
+OPENOCDCFG = ./openocd.cfg
 OPENOCDARGS += -f $(OPENOCDCFG)
 
 GDB_UPLOAD_ARGS = --batch

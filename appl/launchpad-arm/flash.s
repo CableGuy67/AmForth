@@ -6,7 +6,7 @@
 .equ FLASH_FMC, 0x400FD008
 
 @ -----------------------------------------------------------------------------
-  CODEWORD Flag_visible, "flash!", FLASH_STORE @ ( x Addr -- )
+  CODEWORD Flag_visible, "!i", STORE_FLASH @ ( x Addr -- )
 @ -----------------------------------------------------------------------------
   popda r0 @ Adresse
   popda r1 @ Inhalt.
@@ -46,7 +46,7 @@ flashkomma_innen:
 2:NEXT
 
 @ -----------------------------------------------------------------------------
-  CODEWORD Flag_visible, "hflash!", HFLASH_STORE @ ( x Addr -- )
+  CODEWORD Flag_visible, "w!i", W_STORE_FLASH @ ( x Addr -- )
   @ Schreibt an die auf 2 gerade Adresse in den Flash.
 @ -----------------------------------------------------------------------------
   popda r0 @ Adresse
@@ -95,7 +95,7 @@ hflash_gerade:
 
 
  @ -----------------------------------------------------------------------------
-  CODEWORD Flag_visible, "cflash!", CFLASH_STORE @ ( x Addr -- )
+  CODEWORD Flag_visible, "c!i", C_STORE_FLASH @ ( x Addr -- )
   @ Schreibt ein einzelnes Byte in den Flash.
 @ -----------------------------------------------------------------------------
   popda r0 @ Adresse
@@ -134,7 +134,7 @@ cflash_gerade:
   orrs r1, r3 @ Den Inhalt zu den gewünschten Daten hinzuverodern
   @ Fertig. Habe die Daten für den auf 4 geraden Zugriff fertig.
   b.n h_flashkomma_innen
-
+NEXT
 
 @ -----------------------------------------------------------------------------
   CODEWORD Flag_visible, "flashpageerase", FLASHPAGEERASE @ ( Addr -- )
