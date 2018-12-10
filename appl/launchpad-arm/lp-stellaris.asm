@@ -18,4 +18,6 @@
 .equ appl_userarea_size, 8 
 .equ leavestack_size, 8*cellsize
 
+.equ WANT_IGNORECASE, 1
+
 .include "amforth.s"
