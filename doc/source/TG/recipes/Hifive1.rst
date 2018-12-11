@@ -123,9 +123,18 @@ and `gdb`.
    Remote communication error.  Target disconnected.: Die Verbindung wurde vom Kommunikationspartner zurückgesetzt.
    Successfully uploaded 'amforth.hex' to freedom-e300-hifive1.
 
-This shall give the amforth prompt at the serial terminal (38400 8N1). Sometimes the
+This shall give the amforth prompt at the serial terminal. Sometimes the
 openocd process does not terminate properly. Either kill it manually or start another
 make upload to terminate it.
 
+Features
+--------
+
+The serial command line uses 38400 8N1.
+
 The RGB led is initialized at boot time and can be accessed with the color command
-names ``red``, ``green``, ``blue``, ``white``, ``black`` and a few others. 
+names ``red``, ``green``, ``blue``, ``white``, ``black`` and a few others.
+
+There is a separate wordlist called `csr` that contains a few registers. Use
+`csr show-wordlist` to get a listing of the available words. The word
+`@cycle` returns a double cell number of the cpu cycles since boot.

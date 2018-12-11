@@ -4,12 +4,13 @@
 Forward Declarations
 ====================
 
-Forward declarations are used to create recursive calls.
+Forward declarations are used to create recursive calls if
+``recurse`` cannot be used.
 
 .. code-block:: forth
 
-   forward: foo
    : bar foo ;
+   : foo bar ;
 
 One solution for this task is :ref:`Defer`.
 
@@ -19,7 +20,7 @@ One solution for this task is :ref:`Defer`.
    : bar foo ;
    :noname ... ; is foo
 
-They work usually fine. Furthermore they are based upon
+This works usually. Furthermore they are based upon
 standard techniques.
 
 Another solution for forward declarations uses a Just-In-Time (JIT)

@@ -28,3 +28,41 @@ Features
 The RGB led is initialized and can be controlled with commands like ``red`` 
 or ``black`` (turns it off).
 
+.. code-block:: forth
+
+   > red \ turns on the red LED
+    ok
+   > cyan blue yellow white
+    ok
+   > black \ essentially turns off the LED
+    ok
+   >
+
+The CPU contains a timer that can be used for hardware assisted delays. It may
+be started in the ``turnkey`` action and runs independently. The millisecond wait
+loop calls the word ``pause`` internally to make the multitasker happy. The loop
+terminates as soon as the minimum time is expired. This way, the actual delay 
+may be slightly longer.
+
+.. code-block:: forth
+
+   > delay-init
+    ok
+   > 1000 ms \ waits 1 second
+    ok 
+   > 400000 us \ waits 400.000 microseconds
+    ok
+   >
+
+Basic flash write words are available: 
+
+  * ``!i`` ( n addr -- )
+    stores n at addr, with repeated writes to the same address only bit changes from 1 to 0 are done.
+  * ``c!i`` ( n addr -- )
+    stores a single byte at addr. Same restrictions as ``!i``
+  * ``w!i`` ( n addr -- )
+    stores a 16-bit number at addr. Same restrictions as ``i!``
+  * ``flashpageerase`` ( addr -- )
+    erases the 1KB flash page at addr
+
+Access to the data stored provide the usual ``@`` and ``c@`` operations.
