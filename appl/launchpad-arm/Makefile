@@ -1,7 +1,8 @@
 
-CPU ?= cortex-m0
-
 REVISION := $(shell git log -1 --abbrev=8 --pretty=format:%h)
+ifeq ("$(REVISION)", "")
+    REVISION := $(shell svnversion -n)
+endif
 
 BOARD = lp-stellaris
 LANG=C

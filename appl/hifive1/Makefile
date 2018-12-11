@@ -48,7 +48,12 @@ GDB_UPLOAD_CMDS += -ex "quit"
 
 all : hifive1.bin
 
+
 REVISION := $(shell git log -1 --abbrev=8 --pretty=format:%h)
+ifeq ("$(REVISION)", "")
+    REVISION := $(shell svnversion -n)
+endif
+
 
 buildinfo: words/build-info.tmpl
 	cat words/build-info.tmpl | sed "s/%d/ `date`/" | sed "s/%r/${REVISION}/" > words/build-info.s
