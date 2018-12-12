@@ -21,6 +21,7 @@ Programming and Debugging
    Profiler
    Quotations
    RAM-Efficiency
+   RAM-Wordlist
    Recognizer
    Stacks
    Testing

@@ -26,8 +26,8 @@ AmForth for the AVR8 needs 8 to 12 KB Flash memory, 80 bytes EEPROM, and 200 byt
 RAM for the core system. A similar code for the MSP430 fits into 8KB flash. The MSP430
 info flash is used for similar purposes as the EEPROM for the AVR8 platform.
 
-The 32-bit variants for ARM and RISC-V are experimental. They share high-level code
-with the 16-bit variants.
+The 32-bit variants for  :ref:`ARM` and :ref:`RISC-V` are experimental. They 
+share most of the high-level code with the 16-bit variants.
 
 Work In Progress
 ................
@@ -36,16 +36,16 @@ Here you'll find things that are not yet released but will be part of the next r
 See the code section at Sourceforge to get the
 `most recent sources <http://sourceforge.net/p/amforth/code/HEAD/tree/trunk/>`__
 
-* core(ARM32): new target ARM with 32bit word size using the Cortex M4 board 
+* core(ARM32): new target :ref:`ARM` with 32bit word size using the Cortex M4 board 
   :ref:`LM4F120XL` TI Stellaris Launchpad.
-* core(ARM32+RV32): compile to RAM, introducing the :command:`ram-wordlist` as target.
+* core(ARM32+RV32): compile to RAM, introducing the :ref:`RAM-Wordlist` as target.
 * core(AVR8): small fixes for bigger Atmegas. Thanks to Martin.
 * core(RV32): numerous small improvements.
 
 24.7.2018: release 6.7
 .......................
 
-* core(RV32): new target :ref:`Hifive1`, interpreter mode only.
+* core(RV32): new target :ref:`RISC-V` with the :ref:`Hifive1`, interpreter mode only.
 * core(ALL): Fix some errors in :command:`accept` in corner cases. Thanks to Richard.
 
 3.10.2017: release 6.6

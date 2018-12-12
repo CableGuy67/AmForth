@@ -61,7 +61,7 @@ Basic flash write words are available:
   * ``c!i`` ( n addr -- )
     stores a single byte at addr. Same restrictions as ``!i``
   * ``w!i`` ( n addr -- )
-    stores a 16-bit number at addr. Same restrictions as ``i!``
+    stores a 16-bit number at addr. Same restrictions as ``!i``
   * ``flashpageerase`` ( addr -- )
     erases the 1KB flash page at addr
 
