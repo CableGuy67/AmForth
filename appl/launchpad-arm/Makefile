@@ -1,5 +1,5 @@
 
-REVISION := $(shell git log -1 --abbrev=8 --pretty=format:%h)
+REVISION := $(shell git status -bs -u no)
 ifeq ("$(REVISION)", "")
     REVISION := $(shell svnversion -n)
 endif
@@ -23,7 +23,7 @@ lp-stellaris.elf: lp-stellaris.o ../../arm/amforth.s buildinfo
 	arm-none-eabi-objcopy lp-stellaris.elf lp-stellaris.hex -O ihex
 
 clean:
-	rm -f *.elf *.bin *.o *.log *.lst *.hex *.list
+	rm -f *.elf *.bin *.o *.log *.lst *.hex *.list words/build-info.s
 
 upload: lp-stellaris.elf
 	lm4flash lp-stellaris.bin

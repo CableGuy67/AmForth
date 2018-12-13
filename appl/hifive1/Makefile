@@ -49,7 +49,7 @@ GDB_UPLOAD_CMDS += -ex "quit"
 all : hifive1.bin
 
 
-REVISION := $(shell git log -1 --abbrev=8 --pretty=format:%h)
+REVISION := $(shell git status -bs -u no)
 ifeq ("$(REVISION)", "")
     REVISION := $(shell svnversion -n)
 endif
