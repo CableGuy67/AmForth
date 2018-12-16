@@ -1,7 +1,7 @@
 
 
 @------------------------------------------------------------------------------
-  CODEWORD Flag_visible, "um*", UMSTAR
+  CODEWORD  "um*", UMSTAR
   @ Multiply unsigned 32*32 = 64
   @ ( u u -- ud )
 @------------------------------------------------------------------------------
@@ -11,7 +11,7 @@
     NEXT
 
 @------------------------------------------------------------------------------
-  CODEWORD Flag_visible, "m*", MSTAR
+  CODEWORD  "m*", MSTAR
   @ Multiply signed 32*32 = 64
   @ ( n n -- d )
 @------------------------------------------------------------------------------
@@ -21,7 +21,7 @@
     NEXT
 
 @------------------------------------------------------------------------------
-  CODEWORD Flag_visible, "ud/mod", UDSLASHMOD
+  CODEWORD  "ud/mod", UDSLASHMOD
          @ Unsigned divide 64/64 = 64 remainder 64
          @ ( ud1 ud2 -- ud ud)
          @ ( 1L 1H 2L tos: 2H -- Rem-L Rem-H Quot-L tos: Quot-H )
@@ -90,7 +90,7 @@ ud_slash_mod_internal:
    bx lr
 
 @------------------------------------------------------------------------------
-  CODEWORD Flag_visible, "d/mod", DSLASHMOD
+  CODEWORD  "d/mod", DSLASHMOD
               @ Signed symmetric divide 64/64 = 64 remainder 64
               @ ( d1 d2 -- d d )
   bl d_slash_mod
@@ -145,7 +145,7 @@ d_slash_mod:  @ ( 1L 1H 2L tos: 2H -- Rem-L Rem-H Quot-L tos: Quot-H )
     pop {pc}
 
 @------------------------------------------------------------------------------
-  CODEWORD Flag_visible, "d/", DSLASH
+  CODEWORD  "d/", DSLASH
 @------------------------------------------------------------------------------
   bl d_slash_mod
   ldm psp!, {r0, r1, r2}
@@ -157,7 +157,7 @@ d_slash_mod:  @ ( 1L 1H 2L tos: 2H -- Rem-L Rem-H Quot-L tos: Quot-H )
 @------------------------------------------------------------------------------
 
 @------------------------------------------------------------------------------
-  CODEWORD Flag_visible, "2!",2STORE @ Store ( d addr -- )
+  CODEWORD  "2!",2STORE @ Store ( d addr -- )
 @------------------------------------------------------------------------------
   ldmia psp!, {r1, r2}
   str r1, [tos]
@@ -166,7 +166,7 @@ d_slash_mod:  @ ( 1L 1H 2L tos: 2H -- Rem-L Rem-H Quot-L tos: Quot-H )
 NEXT
 
 @------------------------------------------------------------------------------
-  CODEWORD Flag_visible, "2@",2FETCH @ Fetch ( addr -- d )
+  CODEWORD  "2@",2FETCH @ Fetch ( addr -- d )
 @------------------------------------------------------------------------------
   subs psp, #4
   ldr r0, [tos, #4]
@@ -179,7 +179,7 @@ NEXT
 @------------------------------------------------------------------------------
 
 @------------------------------------------------------------------------------
-  CODEWORD Flag_visible, "d<", DLESS
+  CODEWORD  "d<", DLESS
   @ ( 2L 2H 1L 1H -- Flag )
   @   8y 4x 0w tos
 @------------------------------------------------------------------------------
@@ -205,7 +205,7 @@ NEXT
 NEXT
 
 @------------------------------------------------------------------------------
-  CODEWORD Flag_visible, "d>", DGREATER
+  CODEWORD  "d>", DGREATER
   @ ( 2L 2H 1L 1H -- Flag )
   @   8y 4x 0w tos
 @------------------------------------------------------------------------------
@@ -231,14 +231,14 @@ NEXT
 NEXT
 
 @------------------------------------------------------------------------------
-  CODEWORD Flag_visible, "d0<", DZEROLESS @ ( 1L 1H -- Flag ) Is double number negative ?
+  CODEWORD  "d0<", DZEROLESS @ ( 1L 1H -- Flag ) Is double number negative ?
 @------------------------------------------------------------------------------
   adds psp, #4
   movs TOS, TOS, asr #31    @ Turn MSB into 0xffffffff or 0x00000000
 NEXT
 
 @------------------------------------------------------------------------------
-  CODEWORD Flag_visible, "d0=", DZEROEQUAL @ ( 1L 1H -- Flag )
+  CODEWORD  "d0=", DZEROEQUAL @ ( 1L 1H -- Flag )
 @------------------------------------------------------------------------------
   ldm psp!, {r0}
   cmp r0, #0
@@ -251,7 +251,7 @@ NEXT
 NEXT
 
 @------------------------------------------------------------------------------
-  CODEWORD Flag_visible, "d=", DEQUAL @ ( 1L 1H 2L 2H -- Flag )
+  CODEWORD  "d=", DEQUAL @ ( 1L 1H 2L 2H -- Flag )
 @------------------------------------------------------------------------------
   ldm psp!, {r0, r1, r2}
 
@@ -265,7 +265,7 @@ NEXT
   sbcs tos, tos
 NEXT
 
-CODEWORD Flag_visible, "s>d", S2D
+CODEWORD  "s>d", S2D
   savetos
   movs tos, tos, asr #31
 NEXT

@@ -1,3 +1,3 @@
-  CODEWORD Flag_visible, "unloop", UNLOOP 
+  CODEWORD "unloop", UNLOOP 
   pop {rloopindex, rlooplimit}
   NEXT

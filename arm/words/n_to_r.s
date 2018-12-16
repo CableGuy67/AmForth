@@ -1,4 +1,4 @@
-CODEWORD Flag_visible, "n>r", N_TO_R
+CODEWORD "n>r", N_TO_R
     mov r0, tos
     mov r1, tos
 N_TO_R_LOOP:

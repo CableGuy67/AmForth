@@ -1,5 +1,5 @@
 #------------------------------------------------------------------------------
-  CODEWORD Flag_visible, "r@", R_FETCH # Kopiert das oberste Element des Returnstacks auf den Datenstack
+  CODEWORD "r@", R_FETCH 
 #------------------------------------------------------------------------------
   savetos
   lw x3, 0(sp)

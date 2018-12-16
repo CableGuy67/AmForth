@@ -1,5 +1,5 @@
 @------------------------------------------------------------------------------
-  CODEWORD Flag_visible, "i", I @ Kopiert den obersten Schleifenindex       Innermost loop index
+  CODEWORD "i", I @ Innermost loop index
 @------------------------------------------------------------------------------
   savetos
   add tos, rloopindex,rlooplimit

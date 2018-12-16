@@ -1,5 +1,5 @@
 @------------------------------------------------------------------------------
-  CODEWORD Flag_visible, "r>", R_FROM @ Holt das zwischengespeicherte Element aus dem Returnstack zurück
+  CODEWORD "r>", R_FROM @ 
 @------------------------------------------------------------------------------
   savetos
   pop {tos}

@@ -8,7 +8,7 @@
 .equ PRCI_PROCMONCFG , PRCI_BASE + 0xF0
 
 
-CODEWORD Flag_visible, "cold", COLD
+CODEWORD "cold", COLD
 
   # set up the clock system and make it run
 

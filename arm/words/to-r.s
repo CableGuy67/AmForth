@@ -1,5 +1,5 @@
 @------------------------------------------------------------------------------
-  CODEWORD Flag_visible, ">r", TO_R @ Legt das oberste Element des Datenstacks auf den Returnstack.
+  CODEWORD ">r", TO_R @ 
 @------------------------------------------------------------------------------
   push {tos}
   ldm psp!, {tos}

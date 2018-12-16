@@ -1,5 +1,5 @@
 @ -----------------------------------------------------------------------------
-  CODEWORD Flag_visible, "swap", SWAP @ ( x y -- y x )
+  CODEWORD "swap", SWAP @ ( x y -- y x )
 @ -----------------------------------------------------------------------------
   ldr r1,  [psp]  @ Load X from the stack, no SP change.
   str tos, [psp]  @ Replace it with TOS.

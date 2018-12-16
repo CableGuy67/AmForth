@@ -1,5 +1,5 @@
 @------------------------------------------------------------------------------
-  CODEWORD Flag_visible, "j", J @ Kopiert den zweitobersten Schleifenindex  Second loop index
+  CODEWORD "j", J @ Second loop index
 @------------------------------------------------------------------------------
   savetos
   pop {r0,r1}

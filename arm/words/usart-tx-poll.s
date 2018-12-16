@@ -1,9 +1,8 @@
-@ Werte für den UARTFR-Register
 .equ RXFE, 0x10 @ Receive  FIFO empty
 .equ TXFF, 0x20 @ Transmit FIFO full
 
 @ -----------------------------------------------------------------------------
-  CODEWORD Flag_visible, "serial-emit", SERIAL_EMIT
+  CODEWORD  "serial-emit", SERIAL_EMIT
 @ -----------------------------------------------------------------------------
 
 SERIAL_EMIT_WAIT: 
@@ -18,7 +17,7 @@ SERIAL_EMIT_WAIT:
 NEXT
 
 @ -----------------------------------------------------------------------------
-  CODEWORD Flag_visible, "serial-emit?", SERIAL_EMITQ
+  CODEWORD  "serial-emit?", SERIAL_EMITQ
 @ -----------------------------------------------------------------------------
    savetos
    mov tos, #0

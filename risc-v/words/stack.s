@@ -1,7 +1,7 @@
 
 
 # -----------------------------------------------------------------------------
-  CODEWORD Flag_visible, "depth", DEPTH # ( -- Zahl der Elemente, die vorher auf den Datenstack waren )
+  CODEWORD  "depth", DEPTH # ( -- Zahl der Elemente, die vorher auf den Datenstack waren )
                                   # ( -- Number of elements that have been on datastack before )
 # -----------------------------------------------------------------------------
   # Berechne den Stackfüllstand
@@ -12,7 +12,7 @@
   NEXT
 
 # -----------------------------------------------------------------------------
-  CODEWORD Flag_visible, "rdepth", RDEPTH
+  CODEWORD  "rdepth", RDEPTH
 # -----------------------------------------------------------------------------
   # Berechne den Stackfüllstand
   li x5, RAM_upper_returnstack # Anfang laden  Calculate stack fill gauge
@@ -23,7 +23,7 @@
 
 
 #------------------------------------------------------------------------------
-  CODEWORD Flag_visible, "rdrop", RDROP # Entfernt das oberste Element des Returnstacks
+  CODEWORD  "rdrop", RDROP # Entfernt das oberste Element des Returnstacks
 #------------------------------------------------------------------------------
   addi sp, sp, 4
   NEXT

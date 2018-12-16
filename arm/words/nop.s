@@ -1,2 +1,2 @@
-CODEWORD Flag_visible, "nop", NOOP
+CODEWORD "nop", NOOP
 NEXT

@@ -1,5 +1,5 @@
 
-CODEWORD Flag_visible, "1ms", 1MS
+CODEWORD "1ms", 1MS
 
   li x5, 10000000 # approx 1s, for the hifive1-board
   li x5, 10000 # approx 0.001s, for the hifive1-board

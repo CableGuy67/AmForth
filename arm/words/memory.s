@@ -1,5 +1,5 @@
 @------------------------------------------------------------------------------
-  CODEWORD Flag_visible, "move",MOVE  @ Move some bytes around. This can cope with overlapping memory areas.
+  CODEWORD  "move",MOVE  @ Move some bytes around. This can cope with overlapping memory areas.
 @------------------------------------------------------------------------------
 
   push {r0, r1, r2}
@@ -40,7 +40,7 @@
   NEXT
 
 @------------------------------------------------------------------------------
-  CODEWORD Flag_visible, "fill",FILL  @ Fill memory with given byte.
+  CODEWORD  "fill",FILL  @ Fill memory with given byte.
   @ ( Destination Count Filling -- )
 @------------------------------------------------------------------------------
   popda r0 @ Filling byte
@@ -59,7 +59,7 @@
 NEXT
 
 @ -----------------------------------------------------------------------------
-  CODEWORD Flag_visible, "+!", PLUSSTORE @ ( x 32-addr -- )
+  CODEWORD  "+!", PLUSSTORE @ ( x 32-addr -- )
                                @ Adds 'x' to the memory cell at 'addr'.
 @ -----------------------------------------------------------------------------
   ldm psp!, {r0, r1} @ X is the new TOS after the store completes.
@@ -70,14 +70,14 @@ NEXT
 NEXT
 
 @ -----------------------------------------------------------------------------
-  CODEWORD Flag_visible, "c@", CFETCH @ ( 8-addr -- x )
+  CODEWORD  "c@", CFETCH @ ( 8-addr -- x )
                               @ Loads the byte at 'addr'.
 @ -----------------------------------------------------------------------------
   ldrb tos, [tos]
 NEXT
 
 @ -----------------------------------------------------------------------------
-  CODEWORD Flag_visible, "c!", CSTORE @ ( x 8-addr -- )
+  CODEWORD  "c!", CSTORE @ ( x 8-addr -- )
 @ Given a value 'x' and an 8-bit-aligned address 'addr', stores 'x' to memory at 'addr', consuming both.
 @ -----------------------------------------------------------------------------
   ldm psp!, {r0, r1} @ X is the new TOS after the store completes.

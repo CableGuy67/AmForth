@@ -17,7 +17,7 @@
 .equ UARTCC,     Terminal_UART_Base + 0xFC8
 
 
-CODEWORD Flag_visible, "uart-init", UART_INIT
+CODEWORD  "uart-init", UART_INIT
 
   @ Baud rate generation:
   @ 16000000 / (16 * 115200 ) = 1000000 / 115200 = 8.6805

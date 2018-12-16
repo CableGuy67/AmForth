@@ -1,5 +1,5 @@
 
-CODEWORD Flag_visible,"execute",EXECUTE
+CODEWORD "execute",EXECUTE
 
   mv x17,x3
   loadtos

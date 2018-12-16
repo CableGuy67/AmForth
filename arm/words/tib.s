@@ -1,5 +1,5 @@
 
-CODEWORD Flag_visible, "tib", TIB 
+CODEWORD "tib", TIB 
   savetos
   ldr tos, =RAM_lower_refill_buf
 NEXT

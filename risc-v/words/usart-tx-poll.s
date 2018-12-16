@@ -1,6 +1,6 @@
 
 # -----------------------------------------------------------------------------
-  CODEWORD Flag_visible, "serial-emit", SERIAL_EMIT
+  CODEWORD  "serial-emit", SERIAL_EMIT
 # -----------------------------------------------------------------------------
 
 SERIAL_EMIT_WAIT:
@@ -15,7 +15,7 @@ SERIAL_EMIT_WAIT:
   NEXT
 
 # -----------------------------------------------------------------------------
-  CODEWORD Flag_visible, "serial-emit?", SERIAL_EMITQ
+  CODEWORD  "serial-emit?", SERIAL_EMITQ
 # -----------------------------------------------------------------------------
   savetos
   li x5, UART0_TXDATA

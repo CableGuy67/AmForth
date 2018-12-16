@@ -1,4 +1,4 @@
 
-CODEWORD Flag_visible, "exit", EXIT
+CODEWORD "exit", EXIT
   pop x16   # IP
   NEXT

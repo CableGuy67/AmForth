@@ -1,5 +1,5 @@
 
-CODEWORD Flag_visible,"aligned", ALIGNED
+CODEWORD "aligned", ALIGNED
     adds tos, tos, #3
     movs r0, #3
     mvns r0, r0

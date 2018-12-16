@@ -1,7 +1,7 @@
 # Logic.
 
 # -----------------------------------------------------------------------------
-  CODEWORD Flag_visible, "and", AND # ( x1 x2 -- x1&x2 )
+  CODEWORD  "and", AND # ( x1 x2 -- x1&x2 )
                         # Combines the top two stack elements using bitwise AND.
 # -----------------------------------------------------------------------------
   lw x5, 0(x4)
@@ -10,7 +10,7 @@
   NEXT
 
 # -----------------------------------------------------------------------------
-  CODEWORD Flag_visible, "or", OR # ( x1 x2 -- x1|x2 )
+  CODEWORD  "or", OR # ( x1 x2 -- x1|x2 )
                        # Combines the top two stack elements using bitwise OR.
 # -----------------------------------------------------------------------------
   lw x5, 0(x4)
@@ -19,7 +19,7 @@
   NEXT
 
 # -----------------------------------------------------------------------------
-  CODEWORD Flag_visible, "xor", XOR # ( x1 x2 -- x1|x2 )
+  CODEWORD  "xor", XOR # ( x1 x2 -- x1|x2 )
                         # Combines the top two stack elements using bitwise exclusive-OR.
 # -----------------------------------------------------------------------------
   lw x5, 0(x4)
@@ -28,26 +28,26 @@
   NEXT
 
 # -----------------------------------------------------------------------------
-  CODEWORD Flag_visible, "not", NOT # ( x -- ~x )
+  CODEWORD  "not", NOT # ( x -- ~x )
 # -----------------------------------------------------------------------------
   xori x3, x3, -1
   NEXT
 
 # -----------------------------------------------------------------------------
-  CODEWORD Flag_visible, "invert", INVERT # ( x -- ~x )
+  CODEWORD  "invert", INVERT # ( x -- ~x )
 # -----------------------------------------------------------------------------
   xori x3, x3, -1
   NEXT
 
 # -----------------------------------------------------------------------------
-  CODEWORD Flag_visible, "rshift", RSHIFT # ( x n -- x )
+  CODEWORD  "rshift", RSHIFT # ( x n -- x )
 # -----------------------------------------------------------------------------
   lw x5, 0(x4)
   addi x4, x4, 4
   srl x3, x5, x3
   NEXT
 
-  CODEWORD Flag_visible, "lshift", LSHIFT # ( x n -- x )
+  CODEWORD  "lshift", LSHIFT # ( x n -- x )
   lw x5, 0(x4)
   addi x4, x4, 4
   sll x3, x5, x3

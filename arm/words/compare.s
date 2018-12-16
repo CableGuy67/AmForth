@@ -1,5 +1,5 @@
 @ -----------------------------------------------------------------------------
-  CODEWORD Flag_visible, "compare",COMPARE  @ Vergleicht zwei Strings  Compare two strings
+  CODEWORD "compare",COMPARE  @ Compare two strings
 @ -----------------------------------------------------------------------------
   bl compare
   mvns tos,tos

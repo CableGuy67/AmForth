@@ -1,4 +1,4 @@
-CODEWORD Flag_visible, "nr>", N_R_FROM
+CODEWORD "nr>", N_R_FROM
     pop x5
     mv x6, x5
     savetos

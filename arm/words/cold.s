@@ -1,5 +1,5 @@
 
-CODEWORD Flag_visible, "cold", COLD
+CODEWORD "cold", COLD
 
    ldr r0, =RAM_upper_returnstack
    mov sp, r0

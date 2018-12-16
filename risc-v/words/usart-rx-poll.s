@@ -2,7 +2,7 @@
   VARIABLE  "serial-lastchar", SERIAL_LASTCHAR # ( -- addr )
 
 # -----------------------------------------------------------------------------
-  CODEWORD Flag_visible, "serial-key", SERIAL_KEY
+  CODEWORD  "serial-key", SERIAL_KEY
 # -----------------------------------------------------------------------------
   savetos
   la x6, PFA_SERIAL_LASTCHAR
@@ -15,7 +15,7 @@
   NEXT
 
 # -----------------------------------------------------------------------------
-  CODEWORD Flag_visible, "serial-key?", SERIAL_KEYQ
+  CODEWORD  "serial-key?", SERIAL_KEYQ
 # -----------------------------------------------------------------------------
 
   savetos

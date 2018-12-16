@@ -1,4 +1,4 @@
-CODEWORD Flag_visible, "j", J
+CODEWORD "j", J
   savetos
   lw x3,0(sp) # usual assumptions about J
   lw x5,4(sp)

@@ -20,14 +20,14 @@
 @ Comparision operators
 
 @ -----------------------------------------------------------------------------
-  CODEWORD Flag_visible, "0=", ZEROEQUAL @ ( x -- ? )
+  CODEWORD  "0=", ZEROEQUAL @ ( x -- ? )
 @ -----------------------------------------------------------------------------
   subs tos, #1
   sbcs tos, tos
 NEXT
 
 @ -----------------------------------------------------------------------------
-  CODEWORD Flag_visible, "0<>", NOTZEROEQUAL @ ( x -- ? ) @ Meins
+  CODEWORD  "0<>", NOTZEROEQUAL @ ( x -- ? ) @ Meins
 @ -----------------------------------------------------------------------------
   subs tos, #1
   sbcs tos, tos
@@ -35,14 +35,14 @@ NEXT
 NEXT
 
 @ -----------------------------------------------------------------------------
-  CODEWORD Flag_visible, "0<", ZEROLESS @ ( n -- ? )
+  CODEWORD  "0<", ZEROLESS @ ( n -- ? )
 @ -----------------------------------------------------------------------------
   movs tos, tos
   asr tos, #32    @ Turn MSB into 0xffffffff or 0x00000000
 NEXT
 
 @ -----------------------------------------------------------------------------
-  CODEWORD Flag_visible, ">=", GREATEREQUAL @ ( x1 x2 -- ? ) @ Meins
+  CODEWORD  ">=", GREATEREQUAL @ ( x1 x2 -- ? ) @ Meins
 @ -----------------------------------------------------------------------------
   ldm psp!, {r0}     @ Get x1 into a register.
   cmp r0, tos        @ Is x2 less?
@@ -52,7 +52,7 @@ NEXT
 NEXT
 
 @ -----------------------------------------------------------------------------
-  CODEWORD Flag_visible, "<=", LESSEQUAL @ ( x1 x2 -- ? ) @ Meins          
+  CODEWORD  "<=", LESSEQUAL @ ( x1 x2 -- ? ) @ Meins          
 @ -----------------------------------------------------------------------------
   ldm psp!, {r0}     @ Get x1 into a register.
   cmp r0, tos        @ Is x2 greater?
@@ -62,7 +62,7 @@ NEXT
 NEXT
 
 @ -----------------------------------------------------------------------------
-  CODEWORD Flag_visible, "<", LESS @ ( x1 x2 -- ? )
+  CODEWORD  "<", LESS @ ( x1 x2 -- ? )
                       @ Checks if x2 is less than x1.
 @ -----------------------------------------------------------------------------
   ldm psp!, {r0}     @ Get x1 into a register.
@@ -73,7 +73,7 @@ NEXT
 NEXT
 
 @ -----------------------------------------------------------------------------
-  CODEWORD Flag_visible, ">", GREATER @ ( x1 x2 -- ? )
+  CODEWORD  ">", GREATER @ ( x1 x2 -- ? )
                       @ Checks if x2 is greater than x1.
 @ -----------------------------------------------------------------------------
   ldm psp!, {r0}     @ Get x1 into a register.
@@ -84,21 +84,21 @@ NEXT
 NEXT
 
 @ -----------------------------------------------------------------------------
-  CODEWORD Flag_visible, "u<", ULESS @ ( u1 u2 -- ? )
+  CODEWORD  "u<", ULESS @ ( u1 u2 -- ? )
 @ -----------------------------------------------------------------------------
   ldm psp!, {r0}      @ Get u1 into a register.
   subs tos, r0, tos   @ subs tos, w, tos   @ TOS = a-b  -- carry set if a is less than b
   sbcs tos, tos
 NEXT
 @ -----------------------------------------------------------------------------
-  CODEWORD Flag_visible, "u>", UGREATER @ ( u1 u2 -- ? ) @ Meins
+  CODEWORD  "u>", UGREATER @ ( u1 u2 -- ? ) @ Meins
 @ -----------------------------------------------------------------------------
   ldm psp!, {r0}
   subs tos, r0
   sbcs tos, tos
 NEXT
 @ -----------------------------------------------------------------------------
-  CODEWORD Flag_visible, "<>", NOTEQUAL @ ( x1 x2 -- ? )
+  CODEWORD  "<>", NOTEQUAL @ ( x1 x2 -- ? )
                        @ Compares the top two stack elements for inequality.
 @ -----------------------------------------------------------------------------
   ldm psp!, {r0}      @ Get the next elt into a register.
@@ -109,7 +109,7 @@ NEXT
 NEXT
 
 @ -----------------------------------------------------------------------------
-  CODEWORD Flag_visible, "=", EQUAL @ ( x1 x2 -- ? )
+  CODEWORD  "=", EQUAL @ ( x1 x2 -- ? )
                       @ Compares the top two stack elements for equality.
 @ -----------------------------------------------------------------------------
   ldm psp!, {r0}     @ Get the next elt into a register.
@@ -119,7 +119,7 @@ NEXT
   sbcs tos, tos
 NEXT
 @ -----------------------------------------------------------------------------
-  CODEWORD Flag_visible, "min", MIN @ ( x1 x2 -- x3 )
+  CODEWORD  "min", MIN @ ( x1 x2 -- x3 )
                         @ x3 is the lesser of x1 and x2.
 @ -----------------------------------------------------------------------------
   ldm psp!, {r0}       @ Get x1 into a register.
@@ -129,7 +129,7 @@ NEXT
 NEXT
 
 @ -----------------------------------------------------------------------------
-  CODEWORD Flag_visible, "max", MAX @ ( x1 x2 -- x3 )
+  CODEWORD  "max", MAX @ ( x1 x2 -- x3 )
                         @ x3 is the greater of x1 and x2.
 @ -----------------------------------------------------------------------------
   ldm psp!, {r0}       @ Get x1 into a register.
@@ -139,7 +139,7 @@ NEXT
 NEXT
 
 @ -----------------------------------------------------------------------------
-  CODEWORD Flag_visible, "umax", UMAX @ ( u1 u2 -- u1|u2 )
+  CODEWORD  "umax", UMAX @ ( u1 u2 -- u1|u2 )
 @ -----------------------------------------------------------------------------
   ldm psp!, {r0}  @ Get u1 into a register.
   cmp r0, tos 
@@ -148,7 +148,7 @@ NEXT
 NEXT
 
 @ -----------------------------------------------------------------------------
-  CODEWORD Flag_visible, "umin",UMIN @ ( u1 u2 -- u1|u2 )
+  CODEWORD  "umin",UMIN @ ( u1 u2 -- u1|u2 )
 @ -----------------------------------------------------------------------------
   ldm psp!, {r0}  @ Get u1 into a register.
   cmp r0, tos

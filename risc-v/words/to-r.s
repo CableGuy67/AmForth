@@ -1,3 +1,3 @@
-CODEWORD Flag_visible, ">r", TO_R # some comment
+CODEWORD ">r", TO_R 
   push x3
   j PFA_DROP

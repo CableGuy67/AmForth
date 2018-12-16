@@ -1,7 +1,7 @@
 # Memory access
 
 # -----------------------------------------------------------------------------
-  CODEWORD Flag_visible, "move",MOVE  # Move some bytes around. This can cope with overlapping memory areas.
+  CODEWORD  "move",MOVE  # Move some bytes around. This can cope with overlapping memory areas.
 # -----------------------------------------------------------------------------
   addi sp, sp, -12
   sw x1,  8(sp)
@@ -53,7 +53,7 @@
 
 
 # -----------------------------------------------------------------------------
-  CODEWORD Flag_visible, "fill", FILL  # Fill memory with given byte.
+  CODEWORD  "fill", FILL  # Fill memory with given byte.
   # ( Destination Count Filling -- )
 # -----------------------------------------------------------------------------
   # 6.1.1540 FILL CORE ( c-addr u char -- ) If u is greater than zero, store char in each of u consecutive characters of memory beginning at c-addr.
@@ -86,7 +86,7 @@
 
 
 # -----------------------------------------------------------------------------
-  CODEWORD Flag_visible, "+!", PLUSSTORE # ( x 32-addr -- )
+  CODEWORD  "+!", PLUSSTORE # ( x 32-addr -- )
                                # Adds 'x' to the memory cell at 'addr'.
 # -----------------------------------------------------------------------------
   lw x5, 0(x4)
@@ -98,14 +98,14 @@
   NEXT
 
 # -----------------------------------------------------------------------------
-  CODEWORD Flag_visible, "c@", CFETCH # ( 8-addr -- x )
+  CODEWORD  "c@", CFETCH # ( 8-addr -- x )
                               # Loads the byte at 'addr'.
 # -----------------------------------------------------------------------------
   lbu x3, 0(x3)
   NEXT
 
 # -----------------------------------------------------------------------------
-  CODEWORD Flag_visible, "c!", CSTORE # ( x 8-addr -- )
+  CODEWORD  "c!", CSTORE # ( x 8-addr -- )
 # Given a value 'x' and an 8-bit-aligned address 'addr', stores 'x' to memory at 'addr', consuming both.
 # -----------------------------------------------------------------------------
   lw x5, 0(x4)

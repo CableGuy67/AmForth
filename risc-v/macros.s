@@ -129,16 +129,26 @@ VE_\Label:
    PFA_\Label: 
 .endm
 
-.macro CODEWORD Flags, Name, Label
-    HEADER \Flags, "\Name", \Label, PFA_\Label
+.macro CODEWORD Name, Label
+    HEADER Flag_visible, "\Name", \Label, PFA_\Label
 .endm
 
-.macro COLON  Name, Label
+.macro HEADLESS Label
+   XT_\Label: .word PFA_\Label
+   PFA_\Label: 
+.endm
+
+.macro COLON Name, Label
     HEADER Flag_visible, "\Name", \Label, DOCOLON
 .endm
 
+.macro NONAME Label
+   XT_\Label: .word DOCOLON
+   PFA_\Label: 
+.endm
+
 .macro IMMED Name, Label
-    HEADER Flag_visible|Flag_immediate, \Name, \Label
+    HEADER Flag_visible|Flag_immediate, \Name, \Label, DOCOLON
 .endm
 
 .macro VARIABLE Name, Label
@@ -188,15 +198,6 @@ VE_\Label:
     HEADER Flag_visible, "\Name", \Label, PFA_DODATA
 .endm
 
-.macro NONAME Label
-   XT_\Label: .word DOCOLON
-   PFA_\Label: 
-.endm
-
-.macro HEADLESS Label
-   XT_\Label: .word PFA_\Label
-   PFA_\Label: 
-.endm
 
 # ===================
 # environment contains colon words only

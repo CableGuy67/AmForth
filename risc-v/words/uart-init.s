@@ -1,5 +1,5 @@
 
-CODEWORD Flag_visible, "+usart", INIT_USART
+CODEWORD "+usart", INIT_USART
 
   # UART RX/TX are selected IOF_SEL on Reset. Set IOF_EN bits.
 
