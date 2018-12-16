@@ -1,5 +1,5 @@
 
-COLON Flag_visible, "ms", MS
+COLON "ms", MS
 
 XT_MS_LOOP:
   .word XT_1MINUS

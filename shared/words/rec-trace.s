@@ -1,5 +1,5 @@
 
-COLON Flag_visible, "rec-trace", REC_TRACE
+COLON "rec-trace", REC_TRACE
 
     .word XT_DROP, XT_TO_R
     STRING " | "

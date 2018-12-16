@@ -2,7 +2,7 @@
 DATA "bases", BASES
     .word 10,16,2,10 
 
-COLON Flag_visible, "set-base", SET_BASE
+COLON "set-base", SET_BASE
     .word XT_OVER
     .word XT_CFETCH
     .word XT_DOLITERAL

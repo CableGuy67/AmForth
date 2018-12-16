@@ -9,7 +9,7 @@ DATA "rectype-dnum", RECTYPE_DNUM
     .word XT_2LITERAL
     .word XT_2LITERAL
 
-COLON Flag_visible, "rec-num", REC_NUM
+COLON "rec-num", REC_NUM
     .word XT_NUMBER
     .word XT_DOCONDBRANCH,PFA_REC_NONUMBER
     .word XT_DOLITERAL,1

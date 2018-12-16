@@ -1,5 +1,5 @@
 
-COLON Flag_visible, "accept", ACCEPT
+COLON "accept", ACCEPT
 
         .word XT_OVER,XT_PLUS,XT_OVER
 ACC1:   .word XT_KEY,XT_DUP,XT_CRLFQ,XT_ZEROEQUAL,XT_DOCONDBRANCH
@@ -28,7 +28,7 @@ ACC4:   .word XT_DOBRANCH
 ACC5:   .word XT_DROP,XT_NIP,XT_SWAP,XT_MINUS,XT_EXIT
 
 
-COLON Flag_visible, "bs", BS
+COLON "bs", BS
     .word XT_DOLITERAL
     .word 8
     .word XT_DUP
@@ -37,7 +37,7 @@ COLON Flag_visible, "bs", BS
     .word XT_EMIT
     .word XT_EXIT
 
-COLON Flag_visible, "?crlf", CRLFQ
+COLON "?crlf", CRLFQ
 
     .word XT_DUP
     .word XT_DOLITERAL

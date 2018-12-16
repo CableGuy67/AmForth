@@ -1,5 +1,5 @@
 
-COLON Flag_visible, "parse-name", PARSENAME
+COLON "parse-name", PARSENAME
     .word XT_BL
     .word XT_SKIPSCANCHAR
     .word XT_EXIT 

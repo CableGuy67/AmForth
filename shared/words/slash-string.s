@@ -1,5 +1,5 @@
 
-COLON Flag_visible, "/string", SLASHSTRING
+COLON "/string", SLASHSTRING
 
     .word XT_ROT
     .word XT_OVER

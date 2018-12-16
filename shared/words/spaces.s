@@ -1,5 +1,5 @@
 
-COLON Flag_visible, "spaces", SPACES
+COLON "spaces", SPACES
 
 .word XT_ZERO, XT_MAX
 SPCS1:

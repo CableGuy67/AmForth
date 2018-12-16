@@ -1,4 +1,4 @@
-COLON Flag_visible, "?stack", QSTACK
+COLON "?stack", QSTACK
 
     .word XT_DEPTH
     .word XT_ZEROLESS

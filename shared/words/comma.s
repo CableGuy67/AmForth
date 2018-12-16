@@ -1,5 +1,5 @@
 
-COLON Flag_visible, ",", COMMA
+COLON ",", COMMA
 
     .word XT_HERE
     .word XT_STORE
@@ -7,6 +7,8 @@ COLON Flag_visible, ",", COMMA
     .word XT_ALLOT
     .word XT_EXIT
 
-COLON Flag_visible, "c,", CCOMMA
-   .word XT_HERE, XT_CSTORE, XT_ONE, XT_ALLOT
+COLON "c,", CCOMMA
+   .word XT_HERE
+   .word XT_CSTORE
+   .word XT_ONE, XT_ALLOT
    .word XT_EXIT

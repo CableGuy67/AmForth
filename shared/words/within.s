@@ -1,5 +1,5 @@
 
-COLON Flag_visible, "within", WITHIN
+COLON "within", WITHIN
 
     .word XT_OVER
     .word XT_MINUS

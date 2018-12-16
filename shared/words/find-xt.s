@@ -1,5 +1,5 @@
 
-COLON Flag_visible, "find-xt", FINDXT
+COLON "find-xt", FINDXT
 
     .word XT_DOLITERAL
     .word XT_FINDXTA

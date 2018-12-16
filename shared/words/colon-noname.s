@@ -1,5 +1,5 @@
 
-COLON Flag_visible, ":noname", COLONNONAME
+COLON ":noname", COLONNONAME
     .word XT_HERE
     .word XT_DUP
     .word XT_LATEST

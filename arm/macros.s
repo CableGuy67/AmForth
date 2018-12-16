@@ -20,14 +20,34 @@ rlooplimit .req r12
     .ltorg
 .endm
 
+.macro savetos @ Push TOS on Datastack - a common, often used factor.
+    str tos, [psp, #-4]!
+.endm
+
+.macro loadtos
+    ldr tos, [psp], #4
+.endm
+
+.macro pushda register @ Push register on Datastack
+  savetos
+  mov tos, \register
+.endm
+
+.macro popda register @ Pop register from Datastack
+  mov \register, tos
+  loadtos
+.endm
+
 .macro STARTDICT
 .word 0
+97: @ arm-wordlist
 98: @ environment wordlist
 99: @ forth-wordlist
 .endm
 
 @ save the beginning of the wordlists
 .macro ENDDICT
+VALUE "arm-wordlist" ARM_WORDLIST, 97b
 VALUE "environment", ENVIRONMENT, 98b
 VALUE "forth-wordlist", FORTH_WORDLIST, 99b
 .set DPSTART, 99b
@@ -75,12 +95,12 @@ VE_\Label:
     HEADER \Flags, "\Name", \Label, PFA_\Label
 .endm
 
-.macro COLON Flags, Name, Label
-    HEADER \Flags, "\Name", \Label, DOCOLON
+.macro COLON Name, Label
+    HEADER Flag_visible, "\Name", \Label, DOCOLON
 .endm
 
 .macro IMMED Name, Label
-    COLON Flag_visible|Flag_immediate, \Name, \Label
+    Header Flag_visible|Flag_immediate, \Name, \Label
 .endm
 
 .macro VARIABLE Name, Label
@@ -148,6 +168,10 @@ VE_\Label:
    PFA_\Label: 
 .endm
 
+@ =============================
+@ Environment entry. All of them are
+@ treated as COLON words
+@ =============================
 .macro ENVIRONMENT Name, Label
     .p2align 2
 VE_ENV_\Label:
@@ -163,24 +187,38 @@ VE_ENV_\Label:
    PFA_ENV_\Label:
 .endm
 
-.macro savetos @ Push TOS on Datastack - a common, often used factor.
-    str tos, [psp, #-4]!
+@ ================================
+@ ARM Wordlist Entry
+@ different types
+@ ================================
+
+.macro ARM_HEADER Flags, Name, Label, PFA
+    .p2align 2
+VE_\Label:
+    .word 97b          @ Insert Link
+97:
+    .word Flag_visible      @ Flag field
+
+    .byte 8f - 7f     @ Calculate length of name field
+7:  .ascii "\Name"    @ Insert name string
+8:  .p2align 2        @ Realign
+   XT_\Label: .word \PFA
+   PFA_\Label: 
 .endm
 
-.macro loadtos
-    ldr tos, [psp], #4
+.macro ARM_COLON Name, Label
+    ARM_HEADER Flag_visible, "\Name", \Label, DOCOLON
 .endm
 
-.macro pushda register @ Push register on Datastack
-  savetos
-  mov tos, \register
+.macro ARM_CONSTANT Name, Label, NUM
+    ARM_HEADER Flag_visible, "\Name", \Label, PFA_DOVARIABLE
+    .word \NUM
 .endm
 
-.macro popda register @ Pop register from Datastack
-  mov \register, tos
-  loadtos
-.endm
 
+@ ==================================
+@ Debug Macro. Not used in production
+@ ==================================
 .macro SEMIT register
    push {r0}
 0: 

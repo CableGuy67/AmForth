@@ -1,5 +1,5 @@
 
-COLON Flag_visible, "traverse-wordlist",TRAVERSEWORDLIST
+COLON "traverse-wordlist",TRAVERSEWORDLIST
 
 PFA_TRAVERSEWORDLIST1:
     .word XT_DUP

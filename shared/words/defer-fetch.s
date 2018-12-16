@@ -1,5 +1,5 @@
 
-COLON Flag_visible, "defer@", DEFERFETCH
+COLON "defer@", DEFERFETCH
     .word XT_TO_BODY
     .word XT_DUP, XT_FETCH,XT_SWAP
     .word XT_CELLPLUS

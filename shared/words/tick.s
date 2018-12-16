@@ -1,5 +1,5 @@
 
-COLON Flag_visible, "'", TICK
+COLON "'", TICK
     .word XT_PARSENAME
     .word XT_FORTHRECOGNIZER
     .word XT_RECOGNIZE

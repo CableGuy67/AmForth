@@ -1,5 +1,5 @@
 
-COLON Flag_visible, ".s", DOTS
+COLON ".s", DOTS
 
     .word XT_DEPTH
     .word XT_UDOT

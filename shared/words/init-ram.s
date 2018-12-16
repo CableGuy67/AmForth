@@ -1,5 +1,5 @@
 
-COLON Flag_visible, "init-ram", INIT_RAM
+COLON "init-ram", INIT_RAM
 
     .word XT_DOLITERAL, RAM_lower_userarea, XT_UP_STORE
     .word XT_DOLITERAL, XT_FORTH_WORDLIST, XT_TO_BODY,XT_DUP,XT_CELLPLUS,XT_FETCH,XT_SWAP,XT_FETCH,XT_STORE

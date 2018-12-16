@@ -6,7 +6,7 @@
 .equ FLASH_FMC, 0x400FD008
 
 @ -----------------------------------------------------------------------------
-  CODEWORD Flag_visible, "!i", STORE_FLASH @ ( x Addr -- )
+  CODEWORD Flag_visible, "!flash", STORE_FLASH @ ( x Addr -- )
 @ -----------------------------------------------------------------------------
   popda r0 @ Adresse
   popda r1 @ Inhalt.
@@ -46,7 +46,7 @@ flashkomma_innen:
 2:NEXT
 
 @ -----------------------------------------------------------------------------
-  CODEWORD Flag_visible, "w!i", W_STORE_FLASH @ ( x Addr -- )
+  CODEWORD Flag_visible, "w!flash", W_STORE_FLASH @ ( x Addr -- )
   @ Schreibt an die auf 2 gerade Adresse in den Flash.
 @ -----------------------------------------------------------------------------
   popda r0 @ Adresse
@@ -95,7 +95,7 @@ hflash_gerade:
 
 
  @ -----------------------------------------------------------------------------
-  CODEWORD Flag_visible, "c!i", C_STORE_FLASH @ ( x Addr -- )
+  CODEWORD Flag_visible, "c!flash", CSTORE_FLASH @ ( x Addr -- )
   @ Schreibt ein einzelnes Byte in den Flash.
 @ -----------------------------------------------------------------------------
   popda r0 @ Adresse
@@ -157,3 +157,7 @@ NEXT
 
   pop {r0, r1, r2, r3}
   NEXT
+
+COLON "inflash?", INFLASHQ
+   .word XT_FALSE
+   .word XT_EXIT

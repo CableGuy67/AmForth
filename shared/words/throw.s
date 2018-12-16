@@ -1,4 +1,4 @@
-COLON Flag_visible, "throw", THROW
+COLON "throw", THROW
 
     .word XT_QDUP
     .word XT_DOCONDBRANCH,PFA_THROW1

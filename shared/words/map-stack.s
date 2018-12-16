@@ -1,5 +1,5 @@
 
-COLON Flag_visible, "map-stack", MAPSTACK
+COLON "map-stack", MAPSTACK
     .word XT_DUP
     .word XT_CELLPLUS
     .word XT_SWAP

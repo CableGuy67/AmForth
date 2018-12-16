@@ -3,11 +3,11 @@
 .equ CLINT_MTIME, 0xBFF8
 .equ CLINT_MTIMECMP, 0x4000
 
-COLON Flag_visible, "mtime", MTIME
+COLON "mtime", MTIME
   .word XT_DOLITERAL, CLINT_MTIME+CLINT_CTRL_ADDR
   .word XT_FETCH
 .word XT_EXIT
 
-COLON Flag_visible, "mtimecmp", MTIMECMP
+COLON "mtimecmp", MTIMECMP
   .word XT_DOLITERAL, CLINT_MTIMECMP+CLINT_CTRL_ADDR
 .word XT_EXIT

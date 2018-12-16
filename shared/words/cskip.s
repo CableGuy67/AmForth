@@ -1,5 +1,5 @@
 
-COLON Flag_visible, "cskip", CSKIP
+COLON "cskip", CSKIP
 
     .word XT_TO_R
 PFA_CSKIP1:

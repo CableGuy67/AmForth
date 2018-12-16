@@ -1,5 +1,5 @@
 
-COLON Flag_visible, ">number", TO_NUMBER
+COLON ">number", TO_NUMBER
 
 
 TONUM1: .word XT_DUP,XT_DOCONDBRANCH,TONUM3

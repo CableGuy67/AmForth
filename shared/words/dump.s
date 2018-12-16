@@ -9,7 +9,7 @@
 #           then ;
 
 
-COLON Flag_visible, "?ascii", QASCII
+COLON "?ascii", QASCII
     .word XT_DUP, XT_DOLITERAL,0x20,XT_LESS
     .word XT_DOCONDBRANCH,PFA_QASCII1
 	.word XT_DROP, XT_DOLITERAL,0x2e
@@ -22,7 +22,7 @@ PFA_QASCII2:
     .word XT_EXIT
 
 
-COLON Flag_visible, ".2hex", DOT2HEX
+COLON ".2hex", DOT2HEX
     .word XT_BASE,XT_FETCH,XT_TO_R,XT_HEX
     .word XT_S2D,XT_L_SHARP,XT_SHARP,XT_SHARP,XT_SHARP_G,XT_TYPE
     .word XT_R_FROM,XT_BASE,XT_STORE
@@ -31,14 +31,14 @@ COLON Flag_visible, ".2hex", DOT2HEX
 #: .2hex base @ >r hex s>d <# # # #> type r> base ! ;
 #: .4hex base @ >r hex s>d <# # # # # #> type r> base ! ;
 
-COLON Flag_visible, ".4hex", DOT4HEX
+COLON ".4hex", DOT4HEX
     .word XT_BASE,XT_FETCH,XT_TO_R,XT_HEX
     .word XT_S2D,XT_L_SHARP,XT_SHARP,XT_SHARP,XT_SHARP,XT_SHARP
     .word XT_SHARP_G,XT_TYPE
     .word XT_R_FROM,XT_BASE,XT_STORE
     .word XT_EXIT
 
-COLON Flag_visible, ".8hex", DOT8HEX
+COLON ".8hex", DOT8HEX
     .word XT_BASE,XT_FETCH,XT_TO_R,XT_HEX
     .word XT_S2D,XT_L_SHARP,XT_SHARP,XT_SHARP,XT_SHARP,XT_SHARP
     .word XT_SHARP,XT_SHARP,XT_SHARP,XT_SHARP
@@ -56,7 +56,7 @@ COLON Flag_visible, ".8hex", DOT8HEX
 #     $10 + cr 
 #  $10 +loop drop ;
 
-COLON Flag_visible, "dump", DUMP
+COLON "dump", DUMP
     .word XT_SWAP,XT_DOLITERAL, 0xfffffff0, XT_AND,XT_SWAP
     .word XT_CR,XT_ZERO,XT_DODO
 PFA_DUMP0:

@@ -1,5 +1,5 @@
 
-COLON Flag_visible, "show-wordlist", SHOWWORDLIST
+COLON "show-wordlist", SHOWWORDLIST
     .word XT_DOLITERAL
     .word XT_SHOWWORD
     .word XT_SWAP

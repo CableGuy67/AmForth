@@ -1,5 +1,5 @@
 
-COLON Flag_visible,"type", TYPE
+COLON "type", TYPE
 
  .word XT_BOUNDS
  .word XT_QDOCHECK,XT_DOCONDBRANCH,PFA_TYPE_LEAVE
@@ -10,5 +10,5 @@ PFA_TYPE_LOOP:
 PFA_TYPE_LEAVE:
  .word XT_EXIT
 
-COLON Flag_visible, "itype", ITYPE
+COLON "itype", ITYPE
     .word XT_TYPE,XT_EXIT

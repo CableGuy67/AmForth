@@ -1,5 +1,5 @@
 
-COLON Flag_visible, ":", COLON
+COLON ":", COLON
     .word XT_DOCREATE
     .word XT_COLONNONAME
     .word XT_DROP

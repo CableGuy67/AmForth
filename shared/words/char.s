@@ -1,5 +1,5 @@
 
-COLON Flag_visible, "char", CHAR
+COLON "char", CHAR
     .word XT_PARSENAME
     .word XT_DROP
     .word XT_CFETCH

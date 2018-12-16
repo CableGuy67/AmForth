@@ -1,5 +1,5 @@
 
-COLON Flag_visible, "wordlist", WORDLIST
+COLON "wordlist", WORDLIST
 
     .word XT_HERE
     .word XT_DOLITERAL,4

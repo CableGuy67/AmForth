@@ -1,10 +1,10 @@
 
-COLON Flag_visible, "<#", L_SHARP
+COLON "<#", L_SHARP
 
     .word XT_PAD, XT_HLD, XT_STORE
     .word XT_EXIT
 
-COLON Flag_visible, "#", SHARP
+COLON "#", SHARP
 
     .word XT_BASE, XT_FETCH
     .word XT_UDSLASHMOD, XT_ROT
@@ -16,12 +16,12 @@ PFA_SHARP1:
     .word XT_DOLITERAL, 48, XT_PLUS
     .word XT_HOLD, XT_EXIT
 
-COLON Flag_visible, "#s", SHARP_S
+COLON "#s", SHARP_S
     .word XT_SHARP, XT_2DUP, XT_OR
     .word XT_ZEROEQUAL, XT_DOCONDBRANCH, PFA_SHARP_S
     .word XT_EXIT
 
-COLON Flag_visible, "#>", SHARP_G
+COLON "#>", SHARP_G
     .word XT_2DROP, XT_HLD, XT_FETCH
     .word XT_PAD, XT_OVER, XT_MINUS
     .word XT_EXIT

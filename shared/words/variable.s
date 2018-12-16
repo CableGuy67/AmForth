@@ -1,5 +1,5 @@
 
-COLON Flag_visible, "variable", VARIABLE
+COLON "variable", VARIABLE
     .word XT_HERE
     .word XT_CONSTANT
     .word XT_DOLITERAL,4

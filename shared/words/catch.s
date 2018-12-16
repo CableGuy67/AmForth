@@ -1,7 +1,7 @@
 
 USER "handler", HANDLER, USER_HANDLER
 
-COLON Flag_visible, "catch", CATCH
+COLON "catch", CATCH
 
     .word XT_SP_FETCH
     .word XT_TO_R

@@ -1,5 +1,5 @@
 
-COLON Flag_visible, "constant", CONSTANT
+COLON "constant", CONSTANT
     .word XT_DOCREATE
     .word XT_REVEAL
     .word XT_COMPILE

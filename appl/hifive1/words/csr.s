@@ -15,7 +15,7 @@ CSR 0x342, mcause
 CSR 0xb00, mcycle
 CSR 0xb80, mcycleh
 
-COLON Flag_visible, "@cycle", FETCH_CYCLE
+COLON "@cycle", FETCH_CYCLE
   .word XT_CSR_mcycle
   .word XT_CSR_mcycleh
   .word XT_EXIT

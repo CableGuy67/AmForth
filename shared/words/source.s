@@ -1,7 +1,7 @@
 
 DEFER "source", SOURCE, XT_SOURCETIB
 
-COLON Flag_visible, "source-tib", SOURCETIB
+COLON "source-tib", SOURCETIB
 
     .word XT_TIB
     .word XT_NUMBERTIB

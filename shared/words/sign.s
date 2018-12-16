@@ -1,5 +1,5 @@
 
-COLON Flag_visible, "sign", SIGN
+COLON "sign", SIGN
     .word XT_ZEROLESS
     .word XT_DOCONDBRANCH
     .word PFA_SIGN1

@@ -78,14 +78,14 @@
 .macro STARTDICT
 .text
 .word 0
-97: # csr-wordlist
+97: # riscv-wordlist
 98: # environment
 99: # forth-wordlist
 .endm
 
 # save the beginning of the wordlists
 .macro ENDDICT
-VALUE "csr", CSR_WORDLIST, 97b
+VALUE "riscv-wordlist", RISCV_WORDLIST, 97b
 VALUE "environment", ENVIRONMENT, 98b
 VALUE "forth-wordlist", FORTH_WORDLIST, 99b
 .set DPSTART, 99b
@@ -133,12 +133,12 @@ VE_\Label:
     HEADER \Flags, "\Name", \Label, PFA_\Label
 .endm
 
-.macro COLON Flags, Name, Label
-    HEADER \Flags, "\Name", \Label, DOCOLON
+.macro COLON  Name, Label
+    HEADER Flag_visible, "\Name", \Label, DOCOLON
 .endm
 
 .macro IMMED Name, Label
-    COLON Flag_visible|Flag_immediate, \Name, \Label
+    HEADER Flag_visible|Flag_immediate, \Name, \Label
 .endm
 
 .macro VARIABLE Name, Label
@@ -198,6 +198,10 @@ VE_\Label:
    PFA_\Label: 
 .endm
 
+# ===================
+# environment contains colon words only
+# ===================
+
 .macro ENVIRONMENT Name, Label
     .p2align 2,0xf0
 VE_ENV_\Label:
@@ -212,6 +216,10 @@ VE_ENV_\Label:
    XT_ENV_\Label: .word DOCOLON
    PFA_ENV_\Label:
 .endm
+
+# =====================
+# CSR are RISC-V specific registers
+# =====================
 
 .macro CSR NUM, Name
     .p2align 2,0xf0

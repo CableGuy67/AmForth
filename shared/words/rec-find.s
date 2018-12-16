@@ -1,5 +1,5 @@
 
-COLON Flag_visible, "rec-find", REC_FIND
+COLON "rec-find", REC_FIND
     .word XT_FINDXT
     .word XT_DUP
     .word XT_ZEROEQUAL, XT_DOCONDBRANCH, PFA_REC_WORD_FOUND

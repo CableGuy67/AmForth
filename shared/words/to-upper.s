@@ -1,5 +1,5 @@
 
-COLON Flag_visible, "toupper", TOUPPER
+COLON "toupper", TOUPPER
     .word XT_DUP 
     .word XT_DOLITERAL 
     .word 'a' 

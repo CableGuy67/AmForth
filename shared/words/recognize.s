@@ -1,5 +1,5 @@
 
-COLON Flag_visible, "recognize", RECOGNIZE
+COLON "recognize", RECOGNIZE
 
     .word XT_DOLITERAL
     .word XT_RECOGNIZE_A

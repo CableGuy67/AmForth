@@ -1,5 +1,5 @@
 
-COLON Flag_visible, "s,", SCOMMA
+COLON "s,", SCOMMA
     .word XT_DUP, XT_CCOMMA
     .word XT_ZERO
     .word XT_QDOCHECK

@@ -1,5 +1,5 @@
 
-COLON Flag_visible, "header", HEADER
+COLON "header", HEADER
 
     .word XT_OVER,XT_GREATERZERO 
     .word XT_DOCONDBRANCH, PFA_HEADER1

@@ -1,5 +1,5 @@
 
-COLON Flag_visible, "ver", DOT_VER
+COLON "ver", DOT_VER
 
 .word XT_ENV_FORTHNAME, XT_TYPE, XT_SPACE
 

@@ -1,5 +1,5 @@
 
-COLON Flag_visible, "hifive-turnkey", APPLTURNKEY
+COLON "hifive-turnkey", APPLTURNKEY
 
   .word XT_LED_INIT
   .word XT_DECIMAL

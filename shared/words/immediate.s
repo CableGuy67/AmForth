@@ -1,5 +1,5 @@
 
-COLON Flag_visible, "immediate", IMMEDIATE
+COLON "immediate", IMMEDIATE
 
     .word XT_GET_CURRENT,XT_EXECUTE
     .word XT_DUP, XT_DOLITERAL,Flag_immediate

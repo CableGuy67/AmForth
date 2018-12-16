@@ -1,5 +1,5 @@
 
-COLON Flag_visible, "compile", COMPILE
+COLON "compile", COMPILE
     .word XT_R_FROM
     .word XT_DUP
     .word XT_CELLPLUS

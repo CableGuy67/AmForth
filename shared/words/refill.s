@@ -1,7 +1,7 @@
 
 DEFER "refill", REFILL, XT_REFILLTIB
 
-COLON Flag_visible, "refill-tib", REFILLTIB
+COLON "refill-tib", REFILLTIB
 
     .word XT_TIB
     .word XT_DOLITERAL

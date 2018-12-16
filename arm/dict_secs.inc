@@ -9,6 +9,7 @@
 .include "words/space.s"
 .include "words/spaces.s"
 .include "words/left-bracket.s"
+.include "words/l-paren.s"
 .include "words/decimal.s"
 .include "words/hex.s"
 

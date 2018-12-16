@@ -1,5 +1,5 @@
 
-COLON Flag_visible, "warm", WARM
+COLON "warm", WARM
   .word XT_INIT_RAM
   .word XT_LBRACKET
   .word XT_TURNKEY

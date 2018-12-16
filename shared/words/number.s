@@ -1,4 +1,4 @@
-COLON Flag_visible, "number", NUMBER
+COLON "number", NUMBER
 
     .word XT_BASE
     .word XT_FETCH

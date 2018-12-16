@@ -1,5 +1,5 @@
 
-COLON Flag_visible, "cscan", CSCAN
+COLON "cscan", CSCAN
     .word XT_TO_R
     .word XT_OVER
 PFA_CSCAN1:

@@ -1,5 +1,5 @@
 
-COLON Flag_visible, "interpret", INTERPRET
+COLON "interpret", INTERPRET
     .word XT_PARSENAME 
     .word XT_DUP
     .word XT_DOCONDBRANCH,PFA_INTERPRET2

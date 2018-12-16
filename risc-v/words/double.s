@@ -7,7 +7,7 @@
   NEXT
 
 #------------------------------------------------------------------------------
-  COLON Flag_visible, "um/mod", UMSLASHMOD
+  COLON "um/mod", UMSLASHMOD
 um_slash_mod: # ( ud u -- u u ) Dividend Divisor -- Rest Ergebnis
              # 64/32 = 32 Rest 32
 #------------------------------------------------------------------------------

@@ -1,5 +1,5 @@
 
-COLON Flag_visible, "search-wordlist",SEARCH_WORDLIST
+COLON "search-wordlist",SEARCH_WORDLIST
 
     .word XT_TO_R
     .word XT_ZERO

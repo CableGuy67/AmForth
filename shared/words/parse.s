@@ -1,5 +1,5 @@
 
-COLON Flag_visible, "parse", PARSE
+COLON "parse", PARSE
     .word XT_TO_R 
     .word XT_SOURCE
     .word XT_TO_IN 

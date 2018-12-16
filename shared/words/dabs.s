@@ -1,4 +1,4 @@
-  COLON Flag_visible, "dabs", DABS
+COLON "dabs", DABS
   .word XT_DUP,XT_ZEROLESS, XT_DOCONDBRANCH,DABS_LEAVE
     .word XT_DNEGATE
 DABS_LEAVE:

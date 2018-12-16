@@ -1,5 +1,5 @@
 
-COLON Flag_visible, "name>string",NAME2STRING
+COLON "name>string",NAME2STRING
     .word XT_CELLPLUS
     .word XT_COUNT
     .word XT_DOLITERAL

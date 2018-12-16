@@ -1,3 +1,3 @@
 
-COLON Flag_visible, "here", HERE
+COLON "here", HERE
   .word XT_DP, XT_EXIT
