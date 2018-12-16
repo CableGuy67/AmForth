@@ -91,8 +91,13 @@ VE_\Label:
    PFA_\Label: 
 .endm
 
-.macro CODEWORD Flags, Name, Label
-    HEADER \Flags, "\Name", \Label, PFA_\Label
+.macro CODEWORD Name, Label
+    HEADER Flag_visible, "\Name", \Label, PFA_\Label
+.endm
+
+.macro HEADLESS Label
+   XT_\Label: .word PFA_\Label
+   PFA_\Label: 
 .endm
 
 .macro COLON Name, Label
@@ -100,8 +105,14 @@ VE_\Label:
 .endm
 
 .macro IMMED Name, Label
-    Header Flag_visible|Flag_immediate, \Name, \Label
+    Header Flag_visible|Flag_immediate, \Name, \Label, DOCOLON
 .endm
+
+.macro NONAME Label
+   XT_\Label: .word DOCOLON
+   PFA_\Label: 
+.endm
+
 
 .macro VARIABLE Name, Label
    HEADER Flag_visible|Flag_variable, "\Name", \Label, PFA_DOVARIABLE
@@ -158,15 +169,6 @@ VE_\Label:
     HEADER Flag_visible, "\Name", \Label, PFA_DODATA
 .endm
 
-.macro NONAME Label
-   XT_\Label: .word DOCOLON
-   PFA_\Label: 
-.endm
-
-.macro HEADLESS Label
-   XT_\Label: .word PFA_\Label
-   PFA_\Label: 
-.endm
 
 @ =============================
 @ Environment entry. All of them are
@@ -195,9 +197,9 @@ VE_ENV_\Label:
 .macro ARM_HEADER Flags, Name, Label, PFA
     .p2align 2
 VE_\Label:
-    .word 97b          @ Insert Link
+    .word 97b         @ Insert Link
 97:
-    .word Flag_visible      @ Flag field
+    .word \Flags      @ Flag field
 
     .byte 8f - 7f     @ Calculate length of name field
 7:  .ascii "\Name"    @ Insert name string
