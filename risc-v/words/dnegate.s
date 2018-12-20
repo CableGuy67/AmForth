@@ -12,4 +12,4 @@
   savetos
   li x3, 0
 
-  j dplus
+  j PFA_DPLUS

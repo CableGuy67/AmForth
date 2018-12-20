@@ -8,24 +8,12 @@
 
 #------------------------------------------------------------------------------
   CODEWORD  "d-", DMINUS # ( 1L 1H 2L 2H )
-dminus: # Carry out in x5.
 #------------------------------------------------------------------------------
-  addi sp, sp, -24
-  sw x7, 20(sp)
-  sw x8, 16(sp)
-  sw x9, 12(sp)
+  addi sp, sp, -12
+  sw x7, 8(sp)
+  sw x8, 4(sp)
+  sw x9, 0(sp)
   
-  #push x7
-  #push x8
-  #push x9
-  
-  sw x11, 8(sp)
-  sw x12, 4(sp)
-  sw x13, 0(sp)
-  #push x11
-  #push x12
-  #push x13
-
   popda x13 # 2H
   popda x12 # 2L
   popda x11 # 1H
@@ -38,13 +26,9 @@ dminus: # Carry out in x5.
 
   pushda x11
 
-  lw x13,0(sp)
-  lw x12,4(sp)
-  lw x11,8(sp)
-
-  lw x9,12(sp)
-  lw x8,16(sp)
-  lw x7,20(sp)
-  addi sp,sp,24
+  lw x9,0(sp)
+  lw x8,4(sp)
+  lw x7,8(sp)
+  addi sp,sp,12
 
   NEXT

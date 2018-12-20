@@ -9,15 +9,10 @@
 
 #------------------------------------------------------------------------------
   CODEWORD "d+",DPLUS # ( 1L 1H 2L 2H )
-dplus:
 #------------------------------------------------------------------------------
   push x7
   push x8
   push x9
-
-  push x11
-  push x12
-  push x13
 
   popda x13 # 2H
   popda x12 # 2L
@@ -30,10 +25,6 @@ dplus:
   addc x11, x11, x13
 
   pushda x11
-
-  pop x13
-  pop x12
-  pop x11
 
   pop x9
   pop x8
