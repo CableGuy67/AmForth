@@ -22,7 +22,7 @@ COLON "stdout?", SERIAL_EMITQ
 
 CODEWORD "stdin", SERIAL_KEY
   savetos
-  
+  mov tos, #0
   push {r0, r1, r2, r3, r4, r5, r7}
  
   push {r6}
@@ -43,6 +43,7 @@ CODEWORD "stdin", SERIAL_KEY
   cmp tos, #4 @ Ctrl-D
   beq.n PFA_BYE
 NEXT
+
 
 COLON "stdin?", SERIAL_KEYQ
    .word XT_TRUE, XT_EXIT
