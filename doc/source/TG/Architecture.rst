@@ -19,6 +19,101 @@ data stack pointer, the instruction pointer, the user pointer, and
 the Top-Of-Stack cell. The hardware stack is used as the return
 stack. Some registers are used for temporary data in primitives.
 
+Core System
+-----------
+
+Threading Model
+...............
+
+AmForth implements the classic indirect threaded variant of
+forth. The registers and their mappings are shown in table
+:ref:`avr8_register_mappings`.
+
+.. _Inner Interpreter:
+
+Inner Interpreter
+.................
+
+For the indirect threading model an inner interpreter is
+needed. The inner interpreter does the interrupt handling too.
+It repeatedly reads the cell, the :command:`IP` points to, takes this number
+as the address for the next code segment and jumps to that code.
+It is expected that this code segment does a jump back to the
+inner interpreter (NEXT). The :command:`IP` is incremented by 1 just before
+the jumps are done to get the next cell.
+
+.. code-block:: none
+
+   Check_Interrupt
+   W  <- [IP]   ; read at IP
+   IP <- IP+1   ; advance IP
+   X  <- [W]    ; EXECUTE phase, W points to execution token
+   JMP [X]      ; read execution token and execute its code
+
+NEXT
+~~~~
+
+The NEXT routine is the core of the inner interpreter. It does the
+mapping between the execution tokens and the corresponding machine
+code. It consists of 4 steps which are executed for every forth word.
+
+The first step is to check whether an interrupt needs to
+be handled. In that case, the interrupt service is called first.
+
+The next step is to read the cell the :command:`IP` points to and
+stores this value in the W register. For a COLON word
+W contains the address of the code field.
+
+The 3rd step is to increase the :command:`IP` register by 1.
+
+The 4th step is the EXECUTE step.
+
+
+EXECUTE
+~~~~~~~
+
+This operation is the JUMP.  It reads the content of the cell the
+:command:`W` register points to. The result is stored in a scratch pad
+register The data in it is the address of the machine code to be
+executed in the last step. This step is used by the forth command
+:command:`EXECUTE` too. The forth command does not get the address
+of the next destination from the current :command:`IP` but from the data stack.
+
+This last step finally jumps to the machine code pointed to
+by the scratch pad register.
+
+
+DO COLON
+~~~~~~~~
+
+DO COLON (aka NEST) is the subroutine call. It pushes the
+:command:`IP` onto the return stack. It then increments :command:`W`
+by one cell, so that it points to the body of the (colon) word,
+and sets :command:`IP` to that value. Then it continues with
+:command:`NEXT`, which begins executing the words in the body
+of the (parent) colon word. Note that :command:`W` points to
+the execution token of the current word, so the next cell points 
+to the parameter field (body) of the forth word.
+
+.. code-block:: none
+
+  push IP
+  IP <- W+1
+  JMP NEXT
+
+EXIT
+~~~~
+
+The code for EXIT (aka UNNEST) is the return from a subroutine.
+It is defined in the forth word :command:`EXIT` in the dictionary.
+It reads the :command:`IP` from the return stack and jumps to NEXT. 
+
+.. code-block:: none
+
+  pop IP
+  JMP NEXT
+
+
 Text Interpreter
 ----------------
 

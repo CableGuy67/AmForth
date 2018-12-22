@@ -5,3 +5,4 @@ Hardware Modules (ARM)
    :maxdepth: 1
 
    LM4F120XL
+   Linux-ARM

@@ -57,7 +57,8 @@ may be slightly longer.
 Basic flash write words are available: 
 
   * ``!i`` ( n addr -- )
-    stores n at addr, with repeated writes to the same address only bit changes from 1 to 0 are done.
+    stores n at addr, with repeated writes to the same address 
+    only bit changes from 1 to 0 are done.
   * ``c!i`` ( n addr -- )
     stores a single byte at addr. Same restrictions as ``!i``
   * ``w!i`` ( n addr -- )

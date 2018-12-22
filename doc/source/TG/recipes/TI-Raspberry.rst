@@ -5,7 +5,8 @@ Amforth with Raspberry PI
 
 No, this recipe is not abot using amforth *on* the Raspberry 
 PI, but use the RPi as the development platform *for* the
-microcontrollers it supports.
+microcontrollers it supports. For amforth on the Raspberry
+PI look at :ref:`Linux-ARM`.
 
 Compiling amforth for the Atmegas requires the Atmel
 Assembler which runs only on some, widespread however,
@@ -39,3 +40,5 @@ if necessary.
 The `naken_asm` is installed from the sources. Just follow the instructions.
 
 Other tools are the `make` utility (or ant), the editor and the terminal program.
+
+.. seealso:: :ref:`Linux-ARM`

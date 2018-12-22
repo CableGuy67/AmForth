@@ -135,6 +135,7 @@ The serial command line uses 38400 8N1.
 The RGB led is initialized at boot time and can be accessed with the color command
 names ``red``, ``green``, ``blue``, ``white``, ``black`` and a few others.
 
-There is a separate wordlist called `csr` that contains a few registers. Use
-`csr show-wordlist` to get a listing of the available words. The word
-`@cycle` returns a double cell number of the cpu cycles since boot.
+There is a separate wordlist called `riscv-wordlist` that contains controller
+specific words like CSR registers. Use ``riscv-wordlist show-wordlist`` to get 
+a listing of the available words. The word ``@cycle`` returns a double cell number 
+of the cpu cycles since boot.

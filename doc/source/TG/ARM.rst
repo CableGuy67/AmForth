@@ -10,6 +10,9 @@ found here, only a small subset of boards may be usable at all.
 Boot process
 ------------
 
+This describes the bare metal process. The Linux ports run as
+ordinary programs.
+
 Upon boot, the ARM core reads the first 2 words at address 0 and 4 
 respectivly. The first number becomes the initial stack pointer
 address, the second the initial PC address, effectivly the first 
@@ -32,7 +35,7 @@ Register Mapping
 ................
 
 +------------------------------+--------------------+
-| Forth Register               | ARM Registers      |
+| Forth Register               | ARM Register       |
 +------------------------------+--------------------+
 | W: Working Register          | r8                 |
 +------------------------------+--------------------+
@@ -57,7 +60,7 @@ Memory
 ------
 
 The memory model is unified. All addresses are available with
-the usual @/! words.
+the usual ``@``/``!`` words.
 
 Strings are addr/len pairs. Since len is a cell sized number, the 
 length is not really limited. Compiled strings however are limited 
@@ -71,10 +74,11 @@ RAM. The first unused RAM address can be obtained with ``here``.
 Dictionary
 ----------
 
-The dictionary consists of two wordlists. One, :command:`forth-wordlist`
-resides in flash memory and contains all standard words. The other one
-called :command:`ram-wordlist` contains all user defined words. They both
-are in the search order. The :command:`ram-wordlist` is the current
+The dictionary consists of four wordlists. One, ``forth-wordlist``
+resides in flash memory and contains all standard words. Another one
+called ``ram-wordlist`` contains all user defined words. A third
+one called ``arm-wordlist`` contains ARM specific words. The first
+two are in the search order. The ``ram-wordlist`` is the current
 wordlist too.
 
 Upon reset all words from the ram-wordlist are erased.
@@ -110,4 +114,4 @@ the environment query actually exists.
    :maxdepth: 1
 
    recipes/LM4F120XL
-
+   recipes/Linux-ARM

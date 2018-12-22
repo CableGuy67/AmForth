@@ -51,7 +51,7 @@ Memory
 ------
 
 The memory model is unified. All addresses are available with
-the usual @/! words.
+the usual ``@``/``!`` words.
 
 Strings are addr/len pairs. Since len is a cell sized number, the 
 length is not really limited. Compiled strings however are limited 
@@ -60,10 +60,10 @@ to be usable with COUNT, that means up to 255 bytes in length.
 Dictionary
 ----------
 
-The dictionary consists of three wordlists. One, ``forth-wordlist``
-resides in flash memory and contains all standard words. The other one
+The dictionary consists of four wordlists. One, ``forth-wordlist``
+resides in flash memory and contains all standard words. Another one
 called ``ram-wordlist`` contains all user defined words. The third
-wordlist ``csr`` has definitions for controller specific words and 
+wordlist ``riscv-wordlist`` has definitions for controller specific words and 
 constants. Only the first two wordlists are part of the standard search order.
 The ``ram-wordlist`` is the current wordlist for new definitions too.
 
