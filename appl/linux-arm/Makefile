@@ -1,5 +1,5 @@
-
-REVISION := $(shell git status -bs -u no)
+# git status may display remote/branch names. That disturbs sed later on
+REVISION := $(shell git status -bs -u no|tr / -)
 ifeq ("$(REVISION)", "")
     REVISION := $(shell svnversion -n)
 endif
@@ -14,7 +14,7 @@ endif
 LANG=C
 
 
-%.o: %.asm
+%.o: %.asm buildinfo
 	$(CROSS)as --warn -al=amforth.list -I ../../arm -I ../../arm/devices/linux -I ../../shared -o $@ $<
 
 all: amforth
@@ -28,5 +28,8 @@ clean:
 buildinfo: words/build-info.tmpl
 	cat words/build-info.tmpl | sed "s/%d/ `date`/" | sed "s/%r/${REVISION}/" > words/build-info.s
 
+# setup some terminal settings. Otherwise all input will be echo'ed
 run: amforth
-	$(QEMU) ./amforth
+	stty -icanon -echo
+	$(QEMU) ./amforth || true
+	stty sane
