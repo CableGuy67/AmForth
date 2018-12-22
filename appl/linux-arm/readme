@@ -1,0 +1,12 @@
+
+Short Notice for the bravest
+
+Required packages (Ubuntu 18.04 LTS standard repo)
+
+  binutils-arm-linux-gnueabi for build
+  qemu-system-arm and qemu-user-static to run it on a PC 
+
+Build with "make". 
+
+Test it with "make run" with the qemu installed. or copy 
+the binary to a Raspberry PI

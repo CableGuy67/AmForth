@@ -1,0 +1,16 @@
+ENTRY (_start)       /* Einsprungpunkt            */
+
+SECTIONS {           /* lege Speicherinhalt fest          */
+
+ . = 0x10000;
+  
+  amforth : {
+    *(amforth);  /* Daten */
+    *(.text);    /* Text  */
+    *(.data);    /* Daten (dito) */
+  }
+
+  userdictionary (NOLOAD) : {
+    *(.bss);    /* Nullen */
+  }
+}

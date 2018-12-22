@@ -1,0 +1,5 @@
+
+ENVIRONMENT "board", BOARD
+
+  STRING "LINUX"
+.word XT_EXIT

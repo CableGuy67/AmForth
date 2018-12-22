@@ -1,0 +1,5 @@
+
+ENVIRONMENT "cpu", CPU
+
+  STRING "ARM-QEMU"
+.word XT_EXIT
