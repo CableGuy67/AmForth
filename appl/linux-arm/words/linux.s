@@ -101,3 +101,5 @@ CODEWORD "bye", BYE
   movs r7, #1  @ Syscall 1: Exit
   swi #0
 NEXT
+
+VARIABLE "argv", ARGV

@@ -13,6 +13,9 @@
 
 .global _start
 _start:
+  ldr r0, =PFA_ARGV  @ Save the initial stack pointer, as it contains
+  str sp, [r0]       @ command line arguments. Do this only once on first entry.
+
   ldr r0, =PFA_COLD+1
   bx r0 @ Switch to thumb mode
 
