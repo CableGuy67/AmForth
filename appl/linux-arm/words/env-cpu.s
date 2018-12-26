@@ -1,5 +1,5 @@
 
 ENVIRONMENT "cpu", CPU
 
-  STRING "ARM-QEMU"
-.word XT_EXIT
+  .word XT_DOLITERAL,RAM_lower_UNAME_BUF, XT_COUNT0
+  .word XT_EXIT

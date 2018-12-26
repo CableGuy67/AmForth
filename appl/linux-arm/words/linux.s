@@ -1,6 +1,6 @@
 
 CODEWORD "stdout", SERIAL_EMIT
-  push {r0, r1, r2, r3, r4, r5, r7}
+  push {r7}
  
   push {r6}
   
@@ -12,7 +12,7 @@ CODEWORD "stdout", SERIAL_EMIT
   
   pop {r6}
  
-  pop {r0, r1, r2, r3, r4, r5, r7}
+  pop {r7}
   loadtos
 
 NEXT
@@ -23,7 +23,7 @@ COLON "stdout?", SERIAL_EMITQ
 CODEWORD "stdin", SERIAL_KEY
   savetos
   mov tos, #0
-  push {r0, r1, r2, r3, r4, r5, r7}
+  push {r7}
  
   push {r6}
   
@@ -38,7 +38,7 @@ CODEWORD "stdin", SERIAL_KEY
 
   pop {r6}
   
-  pop {r0, r1, r2, r3, r4, r5, r7}
+  pop {r7}
   
   cmp tos, #4 @ Ctrl-D
   beq.n PFA_BYE
@@ -52,48 +52,19 @@ CODEWORD "std-init", UART_INIT
 NEXT
 
 
-CODEWORD "syscall", SYSCALL @ ( r0 r1 r2 r3 r4 r5 r6 Syscall# -- r0 )
- push {r4, r5, r7} @ Save registers !
+CODEWORD "syscall", SYSCALL @ ( r0 r1 r2 r3 r4 r5 Syscall# -- r0 )
 
- push {r6} @ Syscall number
-
- ldm psp!, {r6}
- ldm psp!, {r5}
- ldm psp!, {r4}
- ldm psp!, {r3}
- ldm psp!, {r2}
- ldm psp!, {r1}
- ldm psp!, {r0}
-
- pop {r7} @ into r7
+ mov r7, tos
+ ldr r5, [psp], #4
+ ldr r4, [psp], #4
+ ldr r3, [psp], #4
+ ldr r2, [psp], #4
+ ldr r1, [psp], #4
+ ldr r0, [psp], #4
 
  swi #0
 
- pop {r4, r5, r7}
-
- adds r7, #28 @ Drop 7 elements at once
- movs r6, r0 @ Syscall reply into TOS
- 
-NEXT
-
-CODEWORD "cacheflush", CACHEFLUSH @ ( -- )
-  push {r4, r5, r6, r7}
-
-  dmb
-  dsb
-  isb  
-  
-  ldr r0, =FlashStart  @ Start address
-  ldr r1, =RamEnd      @ End  address
-  movs r2, #0          @ This zero is important !s
-  movs r3, #0
-  movs r4, #0
-  movs r5, #0
-  movs r6, #0
-  ldr r7, =0x000f0002  @ Syscall __ARM_NR_cacheflush
-  swi #0
-
-  pop {r4, r5, r6, r7}
+ mov tos, r0 @ Syscall reply into TOS
 NEXT
 
 CODEWORD "bye", BYE
@@ -103,3 +74,27 @@ CODEWORD "bye", BYE
 NEXT
 
 VARIABLE "argv", ARGV
+
+ramallot UNAME_BUF, 1024
+
+CODEWORD "uname", UNAME
+  savetos
+  push {r7}
+
+  ldr r0, =RAM_lower_UNAME_BUF  @ Start address
+  movs r1, #0
+  movs r2, #0
+  movs r3, #0
+  movs r4, #0
+  movs r5, #0
+  movs r6, #0
+  ldr r7, =#122  
+  swi #0
+
+  pop {r7}
+  ldr tos, =RAM_lower_UNAME_BUF
+NEXT
+
+ENVIRONMENT "hostname", HOSTNAME
+  .word XT_DOLITERAL,RAM_lower_UNAME_BUF+0x41, XT_COUNT0
+.word XT_EXIT
