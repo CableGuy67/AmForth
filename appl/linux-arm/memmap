@@ -1,16 +1,21 @@
 ENTRY (_start)       /* Einsprungpunkt            */
 
+MEMORY {
+    forth (rwx) : ORIGIN = 0x00010000, LENGTH = 1m
+    dataspace (rwx)  : ORIGIN = 0x10000000, LENGTH = 1m
+}
+
 SECTIONS {           /* lege Speicherinhalt fest          */
 
- . = 0x10000;
-  
   amforth : {
     *(amforth);  /* Daten */
     *(.text);    /* Text  */
     *(.data);    /* Daten (dito) */
-  }
+  } > forth
 
   userdictionary (NOLOAD) : {
+    CACHE_START = . ;
     *(.bss);    /* Nullen */
-  }
+    CACHE_END = . ;
+  } > dataspace
 }

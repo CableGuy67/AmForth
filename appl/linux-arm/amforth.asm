@@ -5,12 +5,12 @@
 .equ returnstack_size, 128 
 .equ refill_buf_size, 96
 .equ appl_userarea_size, 8 
-.equ leavestack_size, 8*4
+.equ leavestack_size, 128
 
 
 .section amforth, "awx" @ Everything is writeable and executable
 .align 4
-
+.text
 .global _start
 _start:
   ldr r0, =PFA_ARGV  @ Save the initial stack pointer, as it contains
@@ -22,7 +22,6 @@ _start:
 .thumb
 
 .include "macros.s"
-
 .include "preamble.inc"
 .include "user.inc"
 
@@ -36,7 +35,7 @@ ENDDICT
 
 .bss
 
-@ Dataspace
+.equ CACHESTART, .
 
 .equ RamStart, .
   .rept 1024 * 256      @ 1024 * 254*4 = 1 MB for RAM dictionary
@@ -44,8 +43,4 @@ ENDDICT
   .endr
 .equ RamEnd, .
 
-.equ FlashStart, .
-  .rept 1024 * 256      @ 1024 * 254*4 = 1 MB for RAM dictionary
-  .word 0x00000000
-  .endr
-.equ FlashEnd, .
+.equ CACHEEND, .
