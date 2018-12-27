@@ -67,6 +67,27 @@ CODEWORD "syscall", SYSCALL @ ( r0 r1 r2 r3 r4 r5 Syscall# -- r0 )
  mov tos, r0 @ Syscall reply into TOS
 NEXT
 
+CODEWORD "cacheflush", CACHEFLUSH @ ( -- )
+@ -----------------------------------------------------------------------------
+  push {r6, r7}
+
+  dmb
+  dsb
+  isb  
+  
+  ldr r0, =CACHESTART  @ Start address
+  ldr r1, =CACHEEND    @ End  address
+  movs r2, #0          @ This zero is important !s
+  movs r3, #0
+  movs r4, #0
+  movs r5, #0
+  movs r6, #0
+  ldr r7, =0x000f0002  @ Syscall __ARM_NR_cacheflush
+  swi #0
+
+  pop {r6, r7}
+NEXT
+
 CODEWORD "bye", BYE
   movs r0, tos @ Error code 
   movs r7, #1  @ Syscall 1: Exit
