@@ -1,8 +1,8 @@
 
 .syntax unified
 
-.equ datastack_size, 128   
-.equ returnstack_size, 128 
+.equ datastack_size, 1024   
+.equ returnstack_size, 1024
 .equ refill_buf_size, 96
 .equ appl_userarea_size, 8 
 .equ leavestack_size, 128
