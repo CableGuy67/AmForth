@@ -39,6 +39,7 @@ rlooplimit .req r12
 .endm
 
 .macro STARTDICT
+.equ FLASH_START, .
 .word 0
 97: @ arm-wordlist
 98: @ environment wordlist
@@ -50,6 +51,7 @@ rlooplimit .req r12
 VALUE "arm-wordlist" ARM_WORDLIST, 97b
 VALUE "environment", ENVIRONMENT, 98b
 VALUE "forth-wordlist", FORTH_WORDLIST, 99b
+.equ FLASH_END, .
 .set DPSTART, 99b
 .equ HERESTART, rampointer
 .endm

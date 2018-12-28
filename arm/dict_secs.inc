@@ -151,5 +151,3 @@
 .include "words/udefer.s"
 .include "words/wordlist.s"
 .include "words/ramwordlist.s"
-
-.include "dict_appl.inc"

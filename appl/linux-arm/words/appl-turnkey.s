@@ -7,3 +7,6 @@ COLON "appl-turnkey", APPLTURNKEY
   STRING "Type CTRL-D or CTRL-C to exit"
   .word XT_TYPE
 .word XT_EXIT
+
+CONSTANT "cache-start", CACHE_START, CACHESTART
+CONSTANT "cache-end", CACHE_END, CACHEEND

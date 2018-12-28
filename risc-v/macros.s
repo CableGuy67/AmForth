@@ -118,13 +118,13 @@ VALUE "forth-wordlist", FORTH_WORDLIST, 99b
 .equ Flag_2variable,  Flag_ramallot| 2
 
 .macro HEADER Flags, Name, Label, PFA
-    .p2align 2,0xfe
+    .p2align 2,0x55
 VE_\Label:
     .word 99b         # Insert Link
 99: .word \Flags      # Flag field
     .byte 8f - 7f     # Calculate length of name field
 7:  .ascii "\Name"    # Insert name string
-8:  .p2align 2,0xff        # Realign
+8:  .p2align 2,0xaa   # Realign
    XT_\Label: .word \PFA
    PFA_\Label: 
 .endm

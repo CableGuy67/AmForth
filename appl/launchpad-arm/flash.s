@@ -161,3 +161,6 @@ NEXT
 COLON "inflash?", INFLASHQ
    .word XT_FALSE
    .word XT_EXIT
+
+COLON "cacheflush", CACHEFLUSH
+.word XT_EXIT

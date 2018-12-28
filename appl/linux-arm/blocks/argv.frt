@@ -23,13 +23,15 @@
 ;
 
 : printarguments ( -- )
-
-  cr 
-  ." Number of arguments: " argv @ . cr
-
+  cr ." Number of arguments: "
+  argv @ . cr
   argv @ 0 do
-    ." Argument " i . ." : " argv i 1+ cells + @ type0 cr
-  loop
+    ." Argument "
+    i .
+    ." : "
+    i 1+ cells argv + @
+    type0 cr
+  loop 
 ;
 
 printarguments

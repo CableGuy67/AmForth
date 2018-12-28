@@ -3,7 +3,6 @@
 
 # used by ramallot
 .set rampointer, RamStart  
-.set dppointer,FlashStart
 
 .equ cellsize, 4
 

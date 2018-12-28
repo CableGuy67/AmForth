@@ -7,3 +7,6 @@ COLON "c!i", CSTORE_FLASH
 
 COLON "inflash?", INFLASHQ
     .word XT_FALSE, XT_EXIT
+
+COLON "cacheflush", CACHEFLUSH
+    .word XT_EXIT

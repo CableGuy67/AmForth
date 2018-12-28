@@ -4,10 +4,10 @@ CODEWORD "stdout", SERIAL_EMIT
  
   push {r6}
   
-  movs r0, #1   @ File descriptor 1: STDOUT
+  mov  r0, #1   @ File descriptor 1: STDOUT
   mov  r1, sp   @ Pointer to Message
-  movs r2, #1   @ 1 Byte
-  movs r7, #4   @ Syscall 4: Write
+  mov  r2, #1   @ 1 Byte
+  mov  r7, #4   @ Syscall 4: Write
   swi #0
   
   pop {r6}
@@ -27,10 +27,10 @@ CODEWORD "stdin", SERIAL_KEY
  
   push {r6}
   
-  movs r0, #0   @ File descriptor 0: STDIN
+  mov  r0, #0   @ File descriptor 0: STDIN
   mov  r1, sp   @ Pointer to Message
-  movs r2, #1   @ 1 Byte
-  movs r7, #3   @ Syscall 3: Read
+  mov  r2, #1   @ 1 Byte
+  mov  r7, #3   @ Syscall 3: Read
   swi #0
   
   cmp r0, #0 @ A size of zero bytes or less denotes EOF.
@@ -89,31 +89,31 @@ CODEWORD "cacheflush", CACHEFLUSH @ ( -- )
 NEXT
 
 CODEWORD "bye", BYE
-  movs r0, tos @ Error code 
-  movs r7, #1  @ Syscall 1: Exit
+  mov  r0, tos @ Error code 
+  mov  r7, #1  @ Syscall 1: Exit
   swi #0
 NEXT
 
 VARIABLE "argv", ARGV
 
-ramallot UNAME_BUF, 1024
+ramallot UNAME_BUF, 512
 
 CODEWORD "uname", UNAME
   savetos
   push {r7}
 
   ldr r0, =RAM_lower_UNAME_BUF  @ Start address
-  movs r1, #0
-  movs r2, #0
-  movs r3, #0
-  movs r4, #0
-  movs r5, #0
-  movs r6, #0
+  mov r1, #0
+  mov r2, #0
+  mov r3, #0
+  mov r4, #0
+  mov r5, #0
+  mov r6, #0
   ldr r7, =#122  
   swi #0
 
   pop {r7}
-  ldr tos, =RAM_lower_UNAME_BUF
+  loadtos
 NEXT
 
 ENVIRONMENT "hostname", HOSTNAME
