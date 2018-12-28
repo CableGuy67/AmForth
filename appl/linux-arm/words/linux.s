@@ -52,20 +52,6 @@ CODEWORD "std-init", UART_INIT
 NEXT
 
 
-CODEWORD "syscall", SYSCALL @ ( r0 r1 r2 r3 r4 r5 Syscall# -- r0 )
-
- mov r7, tos
- ldr r5, [psp], #4
- ldr r4, [psp], #4
- ldr r3, [psp], #4
- ldr r2, [psp], #4
- ldr r1, [psp], #4
- ldr r0, [psp], #4
-
- swi #0
-
- mov tos, r0 @ Syscall reply into TOS
-NEXT
 
 CODEWORD "cacheflush", CACHEFLUSH @ ( -- )
 @ -----------------------------------------------------------------------------
@@ -92,6 +78,30 @@ CODEWORD "bye", BYE
   mov  r0, tos @ Error code 
   mov  r7, #1  @ Syscall 1: Exit
   swi #0
+NEXT
+
+CODEWORD "syscall", SYSCALL @ ( r0 r1 r2 r3 r4 r5 Syscall# -- r0 )
+ push { r7} @ Save psp register
+
+ push {tos} @ Syscall number
+
+ ldm psp!, {r6}
+ ldm psp!, {r5}
+ ldm psp!, {r4}
+ ldm psp!, {r3}
+ ldm psp!, {r2}
+ ldm psp!, {r1}
+ ldm psp!, {r0}
+
+ pop {r7} @ into r7
+
+ swi #0
+
+ pop {r7}     @ restore old psp
+ adds r7, #28 @ Drop 7 elements at once
+
+ movs r6, r0  @ Syscall reply into TOS
+
 NEXT
 
 VARIABLE "argv", ARGV
