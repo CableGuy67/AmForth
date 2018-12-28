@@ -1,9 +1,9 @@
 
 COLON "!i", STORE_FLASH
-    .word XT_2DROP, XT_EXIT
+    .word XT_DOLITERAL, -20, XT_THROW, XT_EXIT
 
 COLON "c!i", CSTORE_FLASH
-    .word XT_2DROP, XT_EXIT
+    .word XT_DOLITERAL, -20, XT_THROW, XT_EXIT
 
 COLON "inflash?", INFLASHQ
     .word XT_FALSE, XT_EXIT
