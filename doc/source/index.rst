@@ -36,8 +36,11 @@ Here you'll find things that are not yet released but will be part of the next r
 See the code section at Sourceforge to get the
 `most recent sources <http://sourceforge.net/p/amforth/code/HEAD/tree/trunk/>`__
 
+7.1.2019: release 6.8
+.....................
+
 * core(ARM32): new target :ref:`ARM` with 32bit word size using the Cortex M4 board 
-  :ref:`LM4F120XL` TI Stellaris Launchpad.
+  :ref:`LM4F120XL` TI Stellaris Launchpad and as a :ref:`Linux-ARM` program.
 * core(ARM32+RV32): compile to RAM, introducing the :ref:`RAM-Wordlist` as target.
 * core(AVR8): small fixes for bigger Atmegas. Thanks to Martin.
 * core(RV32): numerous small improvements.
@@ -83,7 +86,7 @@ More To Read
 ............
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
 
    UG/amforth_user
    faq
