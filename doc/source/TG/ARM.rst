@@ -29,7 +29,7 @@ CPU -- Forth VM Mapping
 The Forth VM has a few registers that need to be mapped to the
 controller registers. 
 
-.. _arm_register_mappings:
+.. _arm_register_mapping:
 
 Register Mapping
 ................
@@ -94,7 +94,7 @@ Upon reset all words from the ram-wordlist are erased.
    > ram-wordlist show-wordlist
    foo bar ok
    > cold
-   amforth 6.8 CORTEX-M LM4F120XL
+   amforth 6.8 CORTEX-M4 LM4F120XL
    > ram-wordlist show-wordlist
    ok
    >

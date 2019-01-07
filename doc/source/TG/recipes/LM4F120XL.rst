@@ -4,9 +4,9 @@
 LM4F120XL
 =========
 
-An older (2013) TI Launchpad board. 
+It is an older (2013) TI Launchpad board.
 
-The CPU is a LM4F120H5QR 32-bit ARM Cortex M4F running at 80MHz. 
+The CPU is a LM4F120H5QR 32-bit ARM Cortex M4F running at 80MHz.
 It has 256 kB flash memory and 32 kB SRAM.
 
 
@@ -38,8 +38,8 @@ or ``black`` (turns it off).
     ok
    >
 
-The CPU contains a timer that can be used for hardware assisted delays. It may
-be started in the ``turnkey`` action and runs independently. The millisecond wait
+The CPU contains a timer that can be used for hardware assisted delays. It is
+started in the ``turnkey`` action and runs independently. The millisecond wait
 loop calls the word ``pause`` internally to make the multitasker happy. The loop
 terminates as soon as the minimum time is expired. This way, the actual delay 
 may be slightly longer.
@@ -67,3 +67,5 @@ Basic flash write words are available:
     erases the 1KB flash page at addr
 
 Access to the data stored provide the usual ``@`` and ``c@`` operations.
+
+.. seealso :ref:`RAM-Wordlist`

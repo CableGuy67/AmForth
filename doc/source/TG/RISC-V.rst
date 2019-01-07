@@ -20,7 +20,7 @@ CPU -- Forth VM Mapping
 The Forth VM has a few registers that need to be mapped to the
 controller registers. 
 
-.. _riscv_register_mappings:
+.. _riscv_register_mapping:
 
 Register Mapping
 ................
