@@ -224,6 +224,7 @@ VE_\Label:
 @ Debug Macro. Not used in production
 @ ==================================
 .macro SEMIT register
+.ifdef DEBUG
    push {r0}
 0: 
    ldr r0, =UARTFR
@@ -234,4 +235,5 @@ VE_\Label:
    ldr r0, =UARTDR
    str \register, [r0]
    pop {r0}
+.endif
 .endm
