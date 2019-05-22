@@ -17,6 +17,10 @@ XT_CHAR:
 PFA_CHAR:
 .endif
     .dw XT_PARSENAME
-    .dw XT_DROP
+    .dw XT_ZEROEQUAL,XT_DOCONDBRANCH 
+    DEST(CHAR_1)
+       .dw XT_DOLITERAL, -16, XT_THROW
+CHAR_1:
+
     .dw XT_CFETCH
     .dw XT_EXIT
