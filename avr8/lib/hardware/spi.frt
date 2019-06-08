@@ -90,14 +90,20 @@ $c constant spi.mode3  \ --/sample rising
 ;
 
 \ send a byte, ignore recieved byte
+\ uses words/spirw.asm
 : c!spi ( c -- )
     c!@spi drop
 ;
-
-  \ receive a byte, send a dummy one
+\ receive a byte, send a dummy one
 : c@spi ( -- c)
     0 c!@spi
 ;
+
+\ without words/spirw.asm
+\ : c!spi SPDR c! ;
+\ : c@cpi 0 SPDR c! 1ms SPDR c@ ;
+\ note that the 1ms delay may require tests
+\
 
 \ send a cell, check data order for MSB/LSB
 \ untested so far
