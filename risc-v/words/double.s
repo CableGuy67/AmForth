@@ -19,6 +19,14 @@ um_slash_mod: # ( ud u -- u u ) Dividend Divisor -- Rest Ergebnis
          # ( ud1 ud2 -- ud ud)
          # ( 1L 1H 2L tos: 2H -- Rem-L Rem-H Quot-L tos: Quot-H )
 #------------------------------------------------------------------------------
+.macro addc dest, sour1, sour2
+  add x7, \sour1, \sour2
+  sltu x8, x7, \sour1
+  add \dest, x7, x5
+  sltu x9, \dest, x7
+  or x5, x8, x9
+.endm
+
 ud_slash_mod:
 
 

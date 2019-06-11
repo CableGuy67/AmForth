@@ -9,26 +9,22 @@
 #------------------------------------------------------------------------------
   CODEWORD  "d-", DMINUS # ( 1L 1H 2L 2H )
 #------------------------------------------------------------------------------
-  addi sp, sp, -12
-  sw x7, 8(sp)
-  sw x8, 4(sp)
-  sw x9, 0(sp)
-  
-  popda x13 # 2H
-  popda x12 # 2L
-  popda x11 # 1H
-            # 1L in x3
+  push x10
 
-  li x5, 0 # Carry in
+  lw x5, 8(x4)
+  lw x6, 0(x4)
 
-  subc x3,  x3,  x12
-  subc x11, x11, x13
+  sub x10, x5, x6
+  sw x10, 8(x4)
 
-  pushda x11
+  sltu x10, x5, x6
 
-  lw x9,0(sp)
-  lw x8,4(sp)
-  lw x7,8(sp)
-  addi sp,sp,12
+  lw x5, 4(x4)
+  sub x3, x5, x3
+  sub x3, x3, x10
+
+  addi x4, x4, 8
+
+  pop x10
 
   NEXT

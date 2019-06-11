@@ -1,33 +1,23 @@
-.macro addc dest, sour1, sour2
-  add x7, \sour1, \sour2
-  sltu x8, x7, \sour1
-  add \dest, x7, x5
-  sltu x9, \dest, x7
-  or x5, x8, x9
-.endm
-
-
 #------------------------------------------------------------------------------
   CODEWORD "d+",DPLUS # ( 1L 1H 2L 2H )
 #------------------------------------------------------------------------------
-  push x7
-  push x8
-  push x9
 
-  popda x13 # 2H
-  popda x12 # 2L
-  popda x11 # 1H
-            # 1L in x3
+  push x10
 
-  li x5, 0 # Carry in
+  lw x5, 8(x4)
+  lw x6, 0(x4)
 
-  addc x3,  x3,  x12
-  addc x11, x11, x13
+  add x10, x5, x6
+  sw x10, 8(x4)
 
-  pushda x11
+  sltu x10, x10, x5
 
-  pop x9
-  pop x8
-  pop x7
+  lw x5, 4(x4)
+  add x3, x5, x3
+  add x3, x3, x10
+
+  addi x4, x4, 8
+
+  pop x10
 
   NEXT
