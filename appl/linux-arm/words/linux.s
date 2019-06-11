@@ -18,7 +18,7 @@ CODEWORD "stdout", SERIAL_EMIT
 NEXT
 
 COLON "stdout?", SERIAL_EMITQ
-   .word XT_TRUE, XT_EXIT
+   .word XT_PAUSE,XT_TRUE, XT_EXIT
 
 CODEWORD "stdin", SERIAL_KEY
   savetos
@@ -46,7 +46,7 @@ NEXT
 
 
 COLON "stdin?", SERIAL_KEYQ
-   .word XT_TRUE, XT_EXIT
+   .word XT_PAUSE, XT_TRUE, XT_EXIT
 
 CODEWORD "std-init", UART_INIT
 NEXT
@@ -108,23 +108,12 @@ VARIABLE "argv", ARGV
 
 ramallot UNAME_BUF, 512
 
-CODEWORD "uname", UNAME
-  savetos
-  push {r7}
-
-  ldr r0, =RAM_lower_UNAME_BUF  @ Start address
-  mov r1, #0
-  mov r2, #0
-  mov r3, #0
-  mov r4, #0
-  mov r5, #0
-  mov r6, #0
-  ldr r7, =#122  
-  swi #0
-
-  pop {r7}
-  loadtos
-NEXT
+COLON "uname", UNAME
+  .word XT_DOLITERAL,RAM_lower_UNAME_BUF
+  .word XT_ZERO, XT_ZERO, XT_ZERO, XT_ZERO, XT_ZERO, XT_ZERO
+  .word XT_DOLITERAL, 122
+  .word XT_SYSCALL, XT_DROP
+  .word XT_EXIT
 
 ENVIRONMENT "hostname", HOSTNAME
   .word XT_DOLITERAL,RAM_lower_UNAME_BUF+0x41, XT_COUNT0
