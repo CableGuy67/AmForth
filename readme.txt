@@ -1,5 +1,9 @@
 Author:
     Matthias Trute <mtrute@users.sourceforge.net>
+    died 2020-03-25
+
+Maintainer:
+    2020-     Erich Wälde <erwaelde@users.sourceforge.net>
 
 Major Contributors:
     Erich Waelde
