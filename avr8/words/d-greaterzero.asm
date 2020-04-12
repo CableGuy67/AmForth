@@ -9,11 +9,14 @@ VE_DGREATERZERO:
 XT_DGREATERZERO:
     .dw PFA_DGREATERZERO
 PFA_DGREATERZERO:
-    cp tosl, zerol
-    cpc tosh, zeroh
+    cp tosh, zeroh
+    brlt PFA_DGREATERZERO_FALSE ; if MSBit is set, d:arg is negative, we are done (false).
+    cpc tosl, zerol
     loadtos
     cpc tosl, zerol
     cpc tosh, zeroh
-    brlt PFA_ZERO1
-    brbs 1, PFA_ZERO1
-    rjmp PFA_TRUE1
+    brbs 1, PFA_ZERO1           ; if all 4 Bytes of d:arg are zero, we are done (false).
+    rjmp PFA_TRUE1              ; if we get this far, d:arg was positive! (true)
+PFA_DGREATERZERO_FALSE:
+    movw tosl, zerol            ; ZERO
+    rjmp PFA_NIP                ; NIP
