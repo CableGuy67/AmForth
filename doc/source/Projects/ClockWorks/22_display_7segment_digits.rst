@@ -38,7 +38,7 @@ construction code to simplify writing the lookup table.
 .. figure:: i_model3_2.jpg
    :width: 450 px
 
-.. figure:: p_display_wallclock2.svg
+.. figure:: p_display_wallclock2.png
    :width: 450 px
 
 Code Details

@@ -81,7 +81,7 @@ the master clock --- everything is as described before (:doc:`Model 2
 <41_main_clock_abakus>`).
 
 
-.. figure:: p_display_wallclock2.svg
+.. figure:: p_display_wallclock2.png
 
    **Schematic** for one 7-segment digit
 

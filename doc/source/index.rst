@@ -36,6 +36,12 @@ Here you'll find things that are not yet released but will be part of the next r
 See the code section at Sourceforge to get the
 `most recent sources <http://sourceforge.net/p/amforth/code/HEAD/tree/trunk/>`__
 
+* added :ref:`NewMaintainer_fixing-dgreaterzero` to :ref:`Opinion`.
+* added a new section :ref:`Opinion` for blog type pieces of text.
+* core(AVR8): fixed :command:`d>0`, reported by Martin Nicholas.
+* April 2020: friendly takeover of new maintainer
+  (see `this email message <https://sourceforge.net/p/amforth/mailman/message/36959799/>`__)
+
 7.1.2019: release 6.8
 .....................
 
@@ -93,6 +99,7 @@ More To Read
    TG/TG
    Projects/index
    TG/Cookbook
+   Opinion/Opinion
    Recognizers
    TG/refcard
    history

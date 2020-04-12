@@ -39,7 +39,7 @@ surprised, should I be the first one to do that.
    LEDs count 1 each. So the displayed time is 18:18:47 h.
 
 
-.. figure:: p_display_abakus.svg
+.. figure:: p_display_abakus.png
    :width: 450 px
 
    **Schematic:** The LEDs of the abakus display are connected to a
