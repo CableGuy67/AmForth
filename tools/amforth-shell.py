@@ -750,6 +750,7 @@ additional definitions (e.g. register names)
             raise AMForthException("file " + filename + " not found in search path")
           if len(self._filedirs[filename])!=1:
             # oops, too many files or no one at all found?
+            self.progress_callback("Error", None,  "Wrong # of file "+ filename+" found in search path") # add this line above the one below 
             raise AMForthException("Wrong # of file occurances: " + filename + " ("+str(len(self._filedirs[filename]))+")\n\t"+"\n\t".join(self._filedirs[filename]))
           self.progress_callback("Information", None,  "using "+ filename+" from"+ self._filedirs[filename][0])
           fpath = os.path.join(self._filedirs[filename][0], filename)
@@ -769,9 +770,9 @@ additional definitions (e.g. register names)
             except AMForthException, e:
                 self.progress_callback("Error", None, str(e))
                 raise
-	    if self._amforth_cpu=="":
+            if self._amforth_cpu=="":
                 self._update_cpu()
-    	        self._update_files()
+                self._update_files()
             self.progress_callback("File", None, fpath)
             try:
                 with open(fpath, "r") as f:
@@ -1248,16 +1249,16 @@ additional definitions (e.g. register names)
             return # Something went wrong, just silently ignore
         mcudef = words[:-3].lower()
         self._amforth_regs = {}
-	if mcudef.startswith("msp"):
-	    flavor="msp430"
-	else:
-	    if mcudef.startswith("rv"):
-		flavor="risc-v"
-	    else:
-		flavor="avr8"
+        if mcudef.startswith("msp"):
+            flavor="msp430"
+        else:
+            if mcudef.startswith("rv"):
+                flavor="risc-v"
+            else:
+                flavor="avr8"
         self._search_list.insert(0,os.path.abspath(os.path.join(os.path.dirname(sys.argv[0]),"..", flavor, "lib")))
         self._search_list.insert(0,os.path.abspath(os.path.join(os.path.dirname(sys.argv[0]),"..", flavor, "devices",mcudef)))
-	sys.path.insert(1,os.path.join(os.path.dirname(sys.argv[0]),"..", flavor, "devices",mcudef))
+        sys.path.insert(1,os.path.join(os.path.dirname(sys.argv[0]),"..", flavor, "devices",mcudef))
         try:
           from device import MCUREGS
           self._amforth_regs=MCUREGS
