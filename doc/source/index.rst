@@ -36,6 +36,8 @@ Here you'll find things that are not yet released but will be part of the next r
 See the code section at Sourceforge to get the
 `most recent sources <http://sourceforge.net/p/amforth/code/HEAD/tree/trunk/>`__
 
+* core(AVR8): restored avr8/words/no-jtag.asm from release 5.5; removed not functional
+  avr8/devices/*/words/no-jtag.asm files
 * added one-line patch to amforth-shell.py, provided by Tristan
   Williams. Will now report filenames which occur more than once.
 * added :ref:`NewMaintainer_fixing-dgreaterzero` to :ref:`Opinion`.
