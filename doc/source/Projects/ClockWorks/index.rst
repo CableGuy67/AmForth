@@ -1,11 +1,12 @@
 .. _clockworks:
 
-Clock Works
-===========
+=============
+ Clock Works
+=============
    
 :Author:   Erich Wälde
 :Contact:  amforth-devel@lists.sourceforge.net
-:Date:     2017-09-25
+:Date:     2018-12-15
 :License:  CC BY-NC-SA
 
 
@@ -15,7 +16,7 @@ Clock Works
 
 
 Intro
------
+=====
 
 This is the top page of a project, which deals with clocks. However,
 this project did happily explode into a large collection of fun
@@ -28,11 +29,11 @@ in the journal "Vierte Dimension" of "Forth Gesellschaft e.V."
 available at https://www.forth-ev.de
 and https://wiki.forth-ev.de/doku.php/vd-archiv
 starting 2016-04 and references therein. There is a corresponding page
-for the source code and pointers in the wiki as well, see
+for some source code and pointers in the wiki as well, see
 https://wiki.forth-ev.de/doku.php/projects:clockworks:clockworks
 
 Warning
--------
+=======
 
 Let's be very clear about this: **Noone needs yet another clock!** ---
 there are way too many of them already dictating our course during the
@@ -43,7 +44,7 @@ AmForth on atmega microcontrollers, time, and clocks. Have the
 appropriate amount of fun!
 
 License
--------
+=======
 
 **AmForth** is licensed under GPLv3 (since version 5.6), and GPLv2
 before. 
@@ -109,7 +110,7 @@ Projects* Section.
 
 
 Setup of Hardware
------------------
+=================
 
 The code presented here was developed and tested on an atmega-644p
 controller. The AmForth system (version 6.5 at the time of writing)
@@ -130,7 +131,7 @@ things work for you. Do not burn your house!
 .. _clockworks_ingredients:
 
 Ingredients and Clocks
-----------------------
+======================
 
 A microcontroller driven clock needs some means to produce a periodic
 event, e.g. a timer overflow interrupt at some known frequency. This
@@ -178,12 +179,14 @@ is written.
 
 
 Model 1: The Fairly Minimal Clock
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+---------------------------------
 
 :doc:`Model 1 <40_main_fairly_minimal>` needs one version of clock
 ticks, keeping track of time, the periodic jobs plus some means to
 display its counters representing the time, in other words: a main
 program to make the whole magic work.
+
+-------------------------------------------------------------------
 
 ..
 
@@ -196,12 +199,15 @@ program to make the whole magic work.
  * :doc:`Abakus display <21_display_abakus>` --- even more geek than binary?
 
 
+
 Model 2: The Abakus Clock
-^^^^^^^^^^^^^^^^^^^^^^^^^
+-------------------------
 
 :doc:`Model 2 <41_main_clock_abakus>` features a unique display and
 also a battery backed real time clock to keep correct time across
 power outage.
+
+-------------------------------------------------------------------
 
 ..
 
@@ -216,16 +222,117 @@ power outage.
    rather than UTC? This is the way to go.
 
 Model 3: The UTC Wall-Clock
-^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+---------------------------
 
 :doc:`Model 3 <42_main_utc_wall_clock>` features four 7-segment digits
 as a display, however, they are large (70mm high) to make them
 readable across the room. The concept of time zones has been added, so
 daylight savings time is only flipping a switch away.
 
+-------------------------------------------------------------------
+
+..
+
+ * :doc:`Small improvements for readable code <09_small_improvements>`
+   --- there are a lot of functions available to write your code more
+   concise. 
+
+ * :doc:`Changing the prompt / StationID <10_prompt_ready>` --- we add
+   a station ID to the code running on every board and display its
+   value in the prompt. Because we can!
+
+ * :doc:`Managing several sets of clock counters <11_clocks>` ---
+   using ``structures`` will ease book keeping. Along the way we add
+   labels for time zones. And we can run several such `clocks` in
+   parallel, if needed.
+
+ * :doc:`Calculating the length of a month <11_lastday_of_month>` in
+   the Gregorian Calendar might be useful in its own right, so
+   factored it.
+   
+ * :doc:`Keeping Track of Time revisited <02_keeping_track_2>` ---
+   cleaning up the remaining code while using `clocks`.
+
+ * :doc:`Creating a persisten jump table <11_persistent_jump_table>`
+   --- this is a technique I have used in other places. The content of
+   the jump table is calculated at compile time (in RAM) and then
+   preserved in flash memory.
+
+ * :doc:`Reading a dcf77 receiver <12_reading_dcf77>` --- this turns
+   out to be quite complex and requires a lengthy chunk of code.
+   
+
+Model 4: The DCF77 controlled UTC Wall-Clock
+--------------------------------------------
+
+:doc:`Model 4 <43_main_utc_dcf77_wall_clock>` is Model 3 but with a
+large software addition: the time is read from a DCF77 receiver and
+periodically synchronised to the microcontrollers counters, and
+optionally to the attached RTC.
+
+Another warning: DCF77 is a central-european facility. There are
+alternatives elswehere on the planet, consult `wikipedia Radio Clock
+<https://en.wikipedia.org/wiki/Radio_clock>`_ for a list.
+
+
+-------------------------------------------------------------------
+
+
+More Stuff to come
+==================
+
+ * phase accumulator to compensate a frequency offset in ticks
+
+ * Multitasker and simultaneous access on serial interface
+
+ * Conversion to Unix Epoch Seconds :ref:`epoch_seconds`
+
+ * Long term accuracy
+
+ * Displays, also fancy ones
+
+   This represents the visible part of the clock. Given diverse
+   preferences amongst people, this is the most creative area of clock
+   projects. I urge you to spend an afternoon looking at all the fancy
+   clock designs, that can be found on the world wide web! This list
+   cannot be complete ever, not even in categories:
+
+   * serial interface
+   * some LCDisplay --- this is a common choice
+   * LEDs of 7Segment-Digits, multiplexed in some way.
+   * Did I mention that I hate multiplexed displays? It hurts my eyes,
+     so please use shift-registers and do away with multiplex
+     blinking!
+   * analog type displays
+   * audio *display* for the vision impaired, or just because we can
+
+ * Time Zones, Daylight Savings Time
+
+ * Other Time Scales
+
+   * Epoch seconds
+   * siderial time
+   * swatch beats
+
+ * Alarm Clock
+
+
+The Things Side
+===============
+
+While dealing with such a project, once in a while a number of things
+must be relearned the hard way. Afterwards they are obvious, however,
+while in the (code--)jungle they are not funny at all. On the other
+hand, what would the world be if noone had to tell stupid stories ...
+
+
+ * Cables --- There exists a subtle variation of `"is the cable connected?"`:
+   Never underestimate the possibility to have more than one broken
+   cable at the same time.
+
 
 References
-----------
+==========
 
  * `wikipedia: List of calendars  <https://en.wikipedia.org/wiki/List_of_calendars>`_
  * `wikipedia: Gregorian Calendar <https://en.wikipedia.org/wiki/Gregorian_calendar>`_
@@ -234,6 +341,7 @@ References
  * `wikipedia: Time zone          <https://en.wikipedia.org/wiki/Time_zone>`_
  * `wikipedia: Daylight saving time <https://en.wikipedia.org/wiki/Daylight_saving_time>`_
  * `wikipedia: Julian Day         <https://en.wikipedia.org/wiki/Julian_day>`_
+ * `wikipedia Radio Clock         <https://en.wikipedia.org/wiki/Radio_clock>`_
  * `Unix Time (aka Epoch Seconds) <https://en.wikipedia.org/wiki/Unix_time>`_
  * `The Year 2038 Problem         <https://en.wikipedia.org/wiki/Year_2038_problem>`_
  * `wikipedia: Abacus             <https://en.wikipedia.org/wiki/Abacus>`_
@@ -241,12 +349,13 @@ References
  
 
 Changes
--------
+=======
 
  * *2017-10-01* initial release
+ * *2018-12-15* added Model 4 (UTC DCF77 clock)
    
 Included Docs
--------------
+=============
 .. toctree::
    :maxdepth: 1
 
@@ -262,12 +371,20 @@ Included Docs
    06_rtc_ds3231.rst
    07_shift_register.rst
    08_timezones.rst
+   09_small_improvements.rst
+   10_prompt_ready.rst
+   11_persistent_jump_table.rst
+   11_clocks.rst
+   11_lastday_of_month.rst
+   02_keeping_track_2.rst
+   12_reading_dcf77.rst
    20_display_top.rst
    21_display_abakus.rst
    22_display_7segment_digits.rst
    40_main_fairly_minimal.rst
    41_main_clock_abakus.rst
    42_main_utc_wall_clock.rst
+   43_main_utc_dcf77_wall_clock.rst
    Doc_02_unixtime.rst
 
        
