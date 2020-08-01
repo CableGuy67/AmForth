@@ -35,7 +35,8 @@ Work In Progress
 Here you'll find things that are not yet released but will be part of the next release.
 See the code section at Sourceforge to get the
 `most recent sources <http://sourceforge.net/p/amforth/code/HEAD/tree/trunk/>`__
-
+* tools/amforth-shell.py ported to python3, patch contributed by
+  Tristan Williams, thank you!
 * Added refcard manually generated from 5.5 with a warning! This is outdated!
 * Commented Projects/ClockWorks: added version from 2018-12-15; they were apparently
   lost or never published on the website. This version features a clock reading the

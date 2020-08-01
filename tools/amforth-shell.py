@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 #
 # pySerial based upload & interpreter interaction module for amforth.
 #
@@ -87,7 +87,7 @@
 #
 #   #include <file>
 #       Upload the named <file> before proceeding further.
-# 
+#
 #   #require <file>
 #       Like #include but would skip if <file> was already uploaded
 #       during the shell session.
@@ -258,7 +258,7 @@ import os
 import re
 import readline
 import serial
-import StringIO
+from io import StringIO
 import subprocess
 import sys
 import traceback
@@ -388,7 +388,7 @@ class AMForth(object):
     interact_directives = [
         "#cd", "#edit", "#require", "#include", "#directive", "#ignore-error",
         "#error-on-output", "#string-start-word", "#quote-char-word",
-        "#timeout", "#timeout-next", "#update-words", "#exit", 
+        "#timeout", "#timeout-next", "#update-words", "#exit",
         "#update-cpu", "#update-files"
         ]
     # standard words are usually uppercase, but amforth needs
@@ -487,7 +487,7 @@ class AMForth(object):
         "EDITOR","STATE","[ELSE]","[IF]","[THEN]",
         # *** Wordset TOOLS-EXT-obsolescent
         "FORGET",
-        # *** Tester wordset 
+        # *** Tester wordset
         "T{", "}T",
     ]
     def __init__(self, serial_port="/dev/amforth", rtscts=False, speed=38400):
@@ -511,7 +511,7 @@ class AMForth(object):
         self._last_error = ()
         self._last_edited_file = None
         self._config = BehaviorManager()
-        if os.environ.has_key("AMFORTH_LIB"):
+        if "AMFORTH_LIB" in os.environ:
             self._search_list = os.environ["AMFORTH_LIB"].split(":")
         else:
             self._search_list=["."]
@@ -592,9 +592,9 @@ class AMForth(object):
         except AMForthException:
             return 1
         except KeyboardInterrupt:
-            print "\nBye bye"
-        except Exception, e:
-            print "\n---- Unexpected exception ----"
+            print( "\nBye bye")
+        except Exception as e:
+            print( "\n---- Unexpected exception ----")
             traceback.print_exc()
             return 1
         finally:
@@ -605,10 +605,10 @@ class AMForth(object):
 
     def parse_arg(self):
         "Argument parsing used when module is used as a script"
-        parser = argparse.ArgumentParser(description="Interact with AMForth", 
+        parser = argparse.ArgumentParser(description="Interact with AMForth",
              epilog="""
-The environment variable AMFORTH_LIB can be set with to a colon (:) separated 
-list of directories that are recursivly searched for file names. If not set, 
+The environment variable AMFORTH_LIB can be set with to a colon (:) separated
+list of directories that are recursivly searched for file names. If not set,
 the current work directory is used instead.
 
 The script assumes to be located in the standard amforth installation under
@@ -698,7 +698,7 @@ additional definitions (e.g. register names)
                                              timeout, False,
                                              self.serial_rtscts,
                                              None, False)
-        except serial.SerialException, e:
+        except serial.SerialException as  e:
             raise AMForthException("Serial port connect failure: %s" % str(e))
 
     def serial_disconnect(self):
@@ -728,7 +728,7 @@ additional definitions (e.g. register names)
             try:
                 self.send_line("\n") # Get empty line echo to make sure ready
                 self.read_response() # Throw away the response.
-            except serial.SerialException, e:
+            except serial.SerialException as e:
                 self.progress_callback("Error", None, str(e))
                 raise AMForthException("Failed to get prompt: %s" % str(e))
         finally:
@@ -745,18 +745,18 @@ additional definitions (e.g. register names)
           fpath=filename
           self.progress_callback("Information", None,  "using "+ filename+" verbatim")
         else:
-          if not self._filedirs.has_key(filename):
+          if not filename in self._filedirs:
             self.progress_callback("Error", None,  "file "+ filename+" not found in search path")
             raise AMForthException("file " + filename + " not found in search path")
           if len(self._filedirs[filename])!=1:
             # oops, too many files or no one at all found?
-            self.progress_callback("Error", None,  "Wrong # of file "+ filename+" found in search path") # add this line above the one below 
+            self.progress_callback("Error", None,  "Wrong # of file " + filename + " found in search path") # add this line above the one below
             raise AMForthException("Wrong # of file occurances: " + filename + " ("+str(len(self._filedirs[filename]))+")\n\t"+"\n\t".join(self._filedirs[filename]))
           self.progress_callback("Information", None,  "using "+ filename+" from"+ self._filedirs[filename][0])
           fpath = os.path.join(self._filedirs[filename][0], filename)
         self._config.push_file(fpath)
         fdir=os.path.dirname(fpath)
-        print "**** " + self._config.current_behavior.working_directory
+        print ("**** " + self._config.current_behavior.working_directory)
         if os.path.isabs(fdir):
           dirpath = os.path.normpath(fdir)
         else:
@@ -767,7 +767,7 @@ additional definitions (e.g. register names)
         try:
             try:
                 self.find_prompt()
-            except AMForthException, e:
+            except AMForthException as e:
                 self.progress_callback("Error", None, str(e))
                 raise
             if self._amforth_cpu=="":
@@ -777,17 +777,17 @@ additional definitions (e.g. register names)
             try:
                 with open(fpath, "r") as f:
                     self._send_file_contents(f)
-            except (OSError, IOError), e:
+            except (OSError, IOError) as e:
                 self.progress_callback("Error", None, str(e))
                 raise AMForthException("Unknown file: " + fpath)
             self._last_error = ()
         finally:
-            print "**** " + self._config.current_behavior.working_directory
+            print ("**** " + self._config.current_behavior.working_directory)
             self._config.pop_file()
             self._serialconn.timeout = self._config.current_behavior.timeout
             try:
                 os.chdir(self._config.current_behavior.working_directory)
-            except OSError, e:
+            except OSError as e:
                 errmsg = ("Failed to change to directory '%s': %s"
                           % (self._config.current_behavior.working_directory,
                              str(e)))
@@ -806,7 +806,7 @@ additional definitions (e.g. register names)
             self._serialconn.timeout = self._config.current_behavior.timeout
             try:
                 os.chdir(self._config.current_behavior.working_directory)
-            except OSError, e:
+            except OSError as e:
                 errmsg = ("Failed to change to directory '%s': %s"
                           % (self._config.current_behavior.working_directory,
                              str(e)))
@@ -829,7 +829,7 @@ additional definitions (e.g. register names)
                  directive,
                  directive_arg) = self.preprocess_line(full_line, in_comment,
                                                        self.upload_directives)
-            except AMForthException, e:
+            except AMForthException as e:
                 self._record_error(lineno)
                 self.progress_callback("Error", lineno, full_line)
                 self.progress_callback("Error", None, str(e))
@@ -848,7 +848,7 @@ additional definitions (e.g. register names)
                 continue
             try:
                 self.send_line(line)
-            except AMForthException, e:
+            except AMForthException as e:
                 self._record_error(lineno)
                 self.progress_callback("Error", lineno, full_line)
                 self.progress_callback("Error", None, str(e))
@@ -875,7 +875,6 @@ additional definitions (e.g. register names)
                                 raise AMForthException(errmsg)
                 elif self._log:
                     self._log.write(line + "\n")
-                    
             else:
                 self.progress_callback("Error", None, response)
                 if not self._config.current_behavior.ignore_errors:
@@ -1010,14 +1009,14 @@ additional definitions (e.g. register names)
         elif directive == "#timeout":
             try:
                 timeout = float(directive_arg)
-            except ValueError, e:
+            except ValueError as e:
                 self.progress_callback("Error", None, "Invalid timeout")
                 return
             self._config.current_file_behavior.timeout = timeout
         elif directive == "#timeout-next":
             try:
                 timeout = float(directive_arg)
-            except ValueError, e:
+            except ValueError as e:
                 self.progress_callback("Error", None, "Invalid timeout")
                 return
             behavior = copy.deepcopy(self._config.current_behavior)
@@ -1078,14 +1077,15 @@ additional definitions (e.g. register names)
             if self.debug:
                 sys.stderr.write(repr(c)[1:-1]+"->")
                 sys.stderr.flush()
-            self._serialconn.write(c)
+            self._serialconn.write(c.encode())
             self._serialconn.flush()
             r = self._serialconn.read(1) # Read echo of character we just sent
+            r=r.decode()
             while r and (r != c or (c == '\t' and r != ' ')):
                 if self.debug:
                     sys.stderr.write(repr(r)[1:-1])
                     sys.stderr.flush()
-                r = self._serialconn.read(1)
+                r = self._serialconn.read(1).decode()
             if not r:
                 raise AMForthException("Input character not echoed.")
             if self.debug:
@@ -1098,7 +1098,7 @@ additional definitions (e.g. register names)
         if self.debug:
             sys.stderr.write("|r(     )")
         response = ""
-        r = self._serialconn.read(1)
+        r = self._serialconn.read(1).decode()
         while r != "":
             if self.debug:
                 sys.stderr.write(repr(r)[1:-1])
@@ -1111,7 +1111,7 @@ additional definitions (e.g. register names)
             elif self.amforth_error_cre.search(response) is not None:
                 response = response[:-3]  # Don't return prompt in response
                 break
-            r = self._serialconn.read(1)
+            r = self._serialconn.read(1).decode()
         if not response:
             response = "Timed out waiting for ok response"
         if self.debug:
@@ -1120,9 +1120,9 @@ additional definitions (e.g. register names)
 
     def print_progress(self, type, lineno, info):
         if not lineno:
-            print "|%s=%s" % (type[:1], info)
+            print("|%s=%s" % (type[:1], info))
         else:
-            print "|%s|%5d|%s" % (type[:1], lineno, info)
+            print ("|%s|%5d|%s" % (type[:1], lineno, info))
 
     def interact(self):
         self.progress_callback("Interact", None,
@@ -1131,7 +1131,7 @@ additional definitions (e.g. register names)
         self._config.push_file(None)
         try:
             self.find_prompt()
-        except AMForthException, e:
+        except AMForthException as e:
             self.progress_callback("Error", None, str(e))
             self._config.pop_file()
             raise
@@ -1143,15 +1143,15 @@ additional definitions (e.g. register names)
                   prompt="("+self._amforth_cpu+")> "
                 else:
                   prompt="> "
-                full_line = raw_input(prompt)
-            except EOFError, e:
-                print ""
+                  full_line = input(prompt)
+            except EOFError as e:
+                print("")
                 break
             self._config.advance_line()
             self._serialconn.timeout = self._config.current_behavior.timeout
             try:
                 os.chdir(self._config.current_behavior.working_directory)
-            except OSError, e:
+            except OSError as e:
                 errmsg = ("Failed to change to directory '%s': %s"
                           % (self._config.current_behavior.working_directory,
                              str(e)))
@@ -1183,7 +1183,7 @@ additional definitions (e.g. register names)
                         elif self._last_edited_file:
                             self.edit_file(self._last_edited_file)
                         else:
-                            print "No file to edit"
+                            print("No file to edit")
                         continue
                     self.handle_common_directives(directive, directive_arg)
                     if directive == "#include" or directive == "#require":
@@ -1193,14 +1193,14 @@ additional definitions (e.g. register names)
                     continue
                 else:
                     self.send_line(line)
-                    print self.read_response()
-            except AMForthException, e:
-                print "Error: " + str(e)
+                    print (self.read_response())
+            except AMForthException as e:
+                print ("Error: " + str(e))
         self._config.pop_file()
         self._serialconn.timeout = self._config.current_behavior.timeout
         try:
             os.chdir(self._config.current_behavior.working_directory)
-        except OSError, e:
+        except OSError as e:
             errmsg = ("Failed to change to directory '%s': %s"
                       % (self._config.current_behavior.working_directory,
                          str(e)))
@@ -1218,7 +1218,7 @@ additional definitions (e.g. register names)
                                   ".frt-interact.history")
             try:
                 readline.read_history_file(histfn)
-            except IOError, e:
+            except IOError as e:
                 pass
             self._update_words()
             self._update_cpu()
@@ -1277,7 +1277,7 @@ additional definitions (e.g. register names)
 #            print f
             fpath=os.path.realpath(os.path.join(root, f))
             fpathdir=os.path.dirname(fpath)
-            if self._filedirs.has_key(f):
+            if f in self._filedirs:
               # check for duplicates
               for d in self._filedirs[f]:
                 if d==fpathdir:
@@ -1359,7 +1359,7 @@ additional definitions (e.g. register names)
             try:
                 subprocess.call(cmd)
                 self._last_edited_file = filename
-            except OSError, e:
+            except OSError as e:
                 raise AMForthException("Could not start editor: "+self.editor)
         else:
             raise AMForthException("No editor specified.  Use --editor or EDITOR environment variable")
