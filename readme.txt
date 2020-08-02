@@ -14,6 +14,7 @@ Major Contributors:
     Enoch
     Bradford Rodriguez (MSP430 code from Camelforth 0.5)
     Matthias Koch (RV32IM + ARM Code from mecrisp)
+    Tristan Williams
 
 License: General Public License (GPL) Version 3 from 2007. See the
 file LICENSE.txt or http://www.gnu.org/licenses/gpl.html. This
