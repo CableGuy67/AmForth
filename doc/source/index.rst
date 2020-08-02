@@ -35,6 +35,7 @@ Work In Progress
 Here you'll find things that are not yet released but will be part of the next release.
 See the code section at Sourceforge to get the
 `most recent sources <http://sourceforge.net/p/amforth/code/HEAD/tree/trunk/>`__
+* tools/amforth-upload.py fixed logic error in search_and_open_file
 * tools/amforth-shell.py ported to python3, patch contributed by
   Tristan Williams, thank you!
 * Added refcard manually generated from 5.5 with a warning! This is outdated!
