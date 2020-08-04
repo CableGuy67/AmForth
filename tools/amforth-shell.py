@@ -1143,7 +1143,7 @@ additional definitions (e.g. register names)
                   prompt="("+self._amforth_cpu+")> "
                 else:
                   prompt="> "
-                  full_line = input(prompt)
+                full_line = input(prompt)
             except EOFError as e:
                 print("")
                 break
