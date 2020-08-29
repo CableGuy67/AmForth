@@ -857,7 +857,7 @@ additional definitions (e.g. register names)
             self.progress_callback("Sent", lineno, full_line)
             if response[-3:] == " ok":
                 if len(response) > 3:
-                    for l in StringIO.StringIO(response[:-3]):
+                    for l in StringIO(response[:-3]):
                         self.progress_callback("Output", lineno, l.rstrip())
                     r = self._config.current_behavior.expected_output_regexp
                     if r:
