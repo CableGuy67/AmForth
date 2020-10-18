@@ -36,6 +36,9 @@ Here you'll find things that are not yet released but will be part of the next r
 See the code section at Sourceforge to get the
 `most recent sources <http://sourceforge.net/p/amforth/code/HEAD/tree/trunk/>`__
 
+18.10.2020: release 6.9
+.......................
+
 * tools/amforth-shell.py fixed python3 error (in --no-error-on-output
   option path), fix provided by Tristan Williams.
 * tools/amforth-shell.py fixed indentation error in line 1146, fix provided by Tristan Williams.
