@@ -20,10 +20,10 @@ Building
 
 The ``appl/linux-arm`` directory is the starting point.
 
-On ative ARM linux environments the binutils are sufficient.
+On native ARM linux environments the binutils are sufficient.
 
-Cross-Building from a PC requires the `binutils-linux-gnueabi` package 
-from the standard Ubuntu 18.04 repository. Other platforms may work 
+Cross-Building from a PC requires the `binutils-linux-gnueabi` package
+from the standard Ubuntu 18.04 repository. Other platforms may work
 too.
 
 Note the difference to the `binutils-none-eabi` package for the
@@ -41,7 +41,7 @@ just call amforth on a raspberry pi in a terminal
    $ ./amforth
    amforth 6.8 Linux armv7l rpi
    Type CTRL-D or CTRL-C to exit
-   > 
+   >
 
 On a PC the qemu-arm-static emulates what the raspberry pi provides
 
@@ -50,23 +50,23 @@ On a PC the qemu-arm-static emulates what the raspberry pi provides
    $ qemu-arm-static ./amforth
    amforth 6.8 Linux armv7l ayla
    Type CTRL-D or CTRL-C to exit
-   > 
+   >
 
 If the qemu-user-static package is installed and configured, the system
 autodetects the ARM target inside the amforth binary and calls the
 qemu-arm-static automatically:
 
 .. code-block:: shell
-  
+
    $ uname -mso
    Linux x86_64 GNU/Linux
    $ file ./amforth
-   ./amforth: ELF 32-bit LSB executable, ARM, EABI5 version 1 (SYSV), 
+   ./amforth: ELF 32-bit LSB executable, ARM, EABI5 version 1 (SYSV),
      statically linked, not stripped
    $ ./amforth
    amforth 6.8 Linux armv7l ayla
    Type CTRL-D or CTRL-C to exit
-   > 
+   >
 
 The welcome banner changes with the architecture (armv71) and the
 hostname according to the uname data from Linux.

@@ -8,25 +8,25 @@ TI MSP430. The RISC-V CPU (32bit) is currently beeing worked on.
 It has a turnkey feature for embedded use too.
 
 AmForth is published under the GNU Public License v3 (GPL).
-A commercial use is possible but for traditional commercial 
-uses there are commercial Forths --- amForth just is not one 
+A commercial use is possible but for traditional commercial
+uses there are commercial Forths --- amForth just is not one
 of them.
 
 AmForth runs completely on the controller. It does not need additional
 hardware. It makes no restrictions for hardware extensions that can be
-connected to the controller. The default command prompt is in a serial 
+connected to the controller. The default command prompt is in a serial
 terminal.
 
 The command language is `Forth <http://www.forth.org/tutorials.html>`_.
-AmForth implements an almost compatible `Forth 2012 
-<http://forth-standard.org/standard/words/>`_ indirect 
-threading 16bit Forth. 
+AmForth implements an almost compatible `Forth 2012
+<http://forth-standard.org/standard/words/>`_ indirect
+threading 16bit Forth.
 
 AmForth for the AVR8 needs 8 to 12 KB Flash memory, 80 bytes EEPROM, and 200 bytes
 RAM for the core system. A similar code for the MSP430 fits into 8KB flash. The MSP430
 info flash is used for similar purposes as the EEPROM for the AVR8 platform.
 
-The 32-bit variants for  :ref:`ARM` and :ref:`RISC-V` are experimental. They 
+The 32-bit variants for  :ref:`ARM` and :ref:`RISC-V` are experimental. They
 share most of the high-level code with the 16-bit variants.
 
 Work In Progress
@@ -35,6 +35,9 @@ Work In Progress
 Here you'll find things that are not yet released but will be part of the next release.
 See the code section at Sourceforge to get the
 `most recent sources <http://sourceforge.net/p/amforth/code/HEAD/tree/trunk/>`__
+
+* small documentation patch provided by Carsten Strotmann. Also a few
+  "delete-trailing-whitespace" changes.
 
 18.10.2020: release 6.9
 .......................
@@ -62,7 +65,7 @@ See the code section at Sourceforge to get the
 7.1.2019: release 6.8
 .....................
 
-* core(ARM32): new target :ref:`ARM` with 32bit word size using the Cortex M4 board 
+* core(ARM32): new target :ref:`ARM` with 32bit word size using the Cortex M4 board
   :ref:`LM4F120XL` TI Stellaris Launchpad and as a :ref:`Linux-ARM` program.
 * core(ARM32+RV32): compile to RAM, introducing the :ref:`RAM-Wordlist` as target.
 * core(AVR8): small fixes for bigger Atmegas. Thanks to Martin.
@@ -82,7 +85,7 @@ See the code section at Sourceforge to get the
   module for :ref:`LCD HD44780`.
 * core(ALL): new deferred prompt word :command:`.input`. :ref:`Prompts`
 * core(AVR8): More work in interrupt reliability.
-* core(ALL): factor :command:`(create-in)` (addr len wid --  ) to make a new 
+* core(ALL): factor :command:`(create-in)` (addr len wid --  ) to make a new
   wordlist entry in a given wordlist without XT and data area.
 
 30.4.2017: release 6.5
@@ -98,9 +101,9 @@ See the code section at Sourceforge to get the
 
 * lib(ALL): :command:`((` for multiline comments. Comments end with :command:`))`.
   Uses recognizers for that from ``rec-double-paren.frt``.
-* lib(AVR8): Implement :ref:`I2C Slave`. Renamed :command:`i2c.>n` to 
+* lib(AVR8): Implement :ref:`I2C Slave`. Renamed :command:`i2c.>n` to
   :command:`i2c.n@` and :command:`i2c.n>` to :command:`i2c.n!`. :ref:`I2C Generic`
-* lib(ALL): Recognizer for the Forth 2012 ``'c'`` Syntax to replace ``char c`` 
+* lib(ALL): Recognizer for the Forth 2012 ``'c'`` Syntax to replace ``char c``
   and ``[char] c``. Just load the ``rec-char.frt`` file.
 * core(AVR8): add :command:`>rx-buf (c -- )` that appends a character to the
   ring buffer that uses the usart receive interrupt.
