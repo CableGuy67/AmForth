@@ -36,6 +36,8 @@ Here you'll find things that are not yet released but will be part of the next r
 See the code section at Sourceforge to get the
 `most recent sources <http://sourceforge.net/p/amforth/code/HEAD/tree/trunk/>`__
 
+* Early release of a new test subdirectory. Only one targetboard so
+  far. See test/Howto.txt
 * small documentation patch provided by Carsten Strotmann. Also a few
   "delete-trailing-whitespace" changes.
 

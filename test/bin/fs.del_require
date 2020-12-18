@@ -1,0 +1,18 @@
+#!/usr/bin/perl -w
+# 2019-03-09 EW
+#
+# filter, read all input, drop lines like
+#   "^#require filename$"
+
+use strict;
+my $Prog=$0;
+my $file="";
+
+my $pattern='^[#]*require\s+(\S+)';
+
+while (<>)
+{
+    next if (m/$pattern/);
+
+    print $_;
+}

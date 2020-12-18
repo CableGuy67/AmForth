@@ -1,0 +1,223 @@
+# 2020-12-07 amforth/Erich Wälde -*-org-*-
+
+* test
+
+  How to run this stuff?
+
+** prolog
+
+   This new "test" tree is a "release early" thing. I can run "make
+   test" on exactly my specific target board. I have written only a
+   handful of tests in order to demonstrate the tree structure and the
+   scripts. It probably needs a few more scripts and iterations to get
+   this all into a clean state.
+
+
+   While preparing this I realized that I probably do things quite a
+   bit different. Here is why:
+
+   Firstly, when I started with AmForth (version 2.1) neither
+   "amforth-upload.py" let alone "amforth-shell.py" existed. They came
+   in version 2.7 and 3.2 respectively. I remember using
+   "tools/am4up.c" from within minicom and maybe other exiting hacks.
+
+   Secondly, since sending comments to the controller were clearly a
+   waste of time, I did, what any "good (tm)" Unix citizen would do: I
+   wrote a few (perl) scripts as filters to make this more pleasant.
+   "fs.unfold" and "fs.trim" --- they are included in
+   : trunk/test/bin
+   These scripts are quite simple.
+
+   - fs.unfold :: will read the given input line by line. If a line
+     starts with the pattern '^[#]*include\s+' then the next word is
+     used as a file name (no spaces allowed). The file name is
+     expected to be relative to the current directory. There is no
+     searching and thus no error-multiple-files-found to handle. If
+     the path/name does not exist, too bad, the script will bail out!
+
+     To make the tree structure look identical in all projects, I use
+     symlinks to point into the relevant source tree.
+
+     If the file is found, its content will be added verbatim to the
+     output stream, of course resolving any new include statements if
+     present (recursively call the script itself again).
+
+     The output is annotated with text markers, the resulting output
+     is there to be read by human eyes.
+
+   - fs.trim :: is removing comments, trailing whitespace, empty
+     lines. It compresses whitespace after the first word (I like the
+     indentation to be kept, it makes reading more pleasant while the
+     code is uploading.
+
+   And in the Makefile I will unfold by program.fs file, trim it and
+   then uplaod it. Any error makes the pipeline "Fail early!"
+
+   I switched to amforth-upload.py when it became available for the
+   upload part. However, I stayed with an old version (4.0), because I
+   did not like something about the newer version.
+
+   Then along came "amforth-shell.py". It is spectacularly useful for
+   newcomers. However: it needs a nicely populated tree and it changes
+   the uploaded source code behind my neck (e.g. replacing PORTA by
+   the appropriate value). While I do agree that this is nice for
+   others, I hate it. I will not learn, that I forgot to define
+   something. This will bite me when "away from home" without the
+   nicely populated tree of useful files, of course.
+
+   After that the "#require" thing came along. for similar reasons I
+   don't like it, and therefore I wrote another script to delete
+   these lines: "fs.del_require".
+
+   The astute reader may have noticed, that in my little world
+   comments are comments:
+   : \ #include
+   : \ #require
+   are just comments. They are ignored.
+
+
+   So, this is why things are set up like they are:
+   - no searching
+   - bail out on the slightest error
+   - be strict to make this experiment /reproducible/
+
+   In the interactive world, by all means use amforth-shell.py if you
+   like!
+
+
+** preparations
+
+   As usual you will need all external software, to make this run. In
+   my case this is at least (you hopefully get the idea):
+
+   : bash perl python make wine/AvrAsm2 avrdude minicom
+
+   Then there are a few /important/ symlinks.
+
+   1.
+   : trunk/avr8/Atmel -> your/local/path/to/AvrAssembler2
+   This is referenced in
+   : trunk/test/firmware/avr8-at644p/Makefile
+   to find the Atmel assembler (run with wine)
+
+   2.
+   : trunk/test/firmware/avr8-at644p/lib
+   : trunk/test/firmware/avr8-at644p/lib-avr8
+   which point back into the source code tree. This is my way to find
+   files like the Hayes tester
+   : include lib/forth2012/tester/tester-amforth.frt
+   or any other loadable forth code.
+   These symlinks are currently checked in, so nothing to do.
+
+
+   And there are a number of variables in
+   : trunk/test/Makefile
+   : trunk/firmware/avr8-at644p/Makefile
+   describing the programmer and the serial interface. These should
+   maybe go into separate files to be included ...
+
+
+
+** directory tree explained
+
+   : trunk
+   :     +-- avr8
+   :     |   +-- Atmel -> .local.path.to/AvrAssembler2
+   :     |
+   :     +-- test
+   :     |   +-- Makefile
+   :     |   +-- bin
+   :     |   |   +-- amforth-upload-4.0.py
+   :     |   |   +-- fs.del_require
+   :     |   |   +-- fs.trim
+   :     |   |   +-- fs.unfold
+   :     |   |   +-- grok-test-log.pl
+   :     |   |
+   :     |   +-- cases
+   :     |   |   +-- common
+   :     |   |   |   +-- double
+   :     |   |   |   |   +-- t_2over.frt
+   :     |   |   |   +-- t_arithmetic.fs
+   :     |   |   +-- avr8
+   :     |   |
+   :     |   +-- firmware
+   :     |       +-- avr8-at644p
+   :     |           +-- Makefile
+   :     |           +-- dict_appl.inc
+   :     |           +-- dict_appl_core.inc
+   :     |           +-- first.fs
+   :     |           +-- lib      -> ../../../common/lib
+   :     |           +-- lib-avr8 -> ../../../avr8/lib
+   :     |           +-- testfirmware.asm
+   :     |           +-- testfirmware.fs
+   :     |           +-- words
+   :     |               +-- applturnkey.asm
+   :     |               +-- qmark.asm
+
+   - "test" is the new subdirectory.
+   - "test/bin" holds hopefully all needed scripts.
+   - "test/firmware" holds subdirectories for specific
+     "architecture"-"target board" combinations. An obvious new
+     candidate would be "avr8-duemilanove" or similar.
+   - "test/cases" holds a tree of test case files.
+
+
+** prepare a given target board
+
+   : make firmware TARGET=avr8-at644p
+   : make firmware-install TARGET=avr8-at644p
+
+   Please note that the exact configuration of your target boards need
+   possibly new subdirectories, specific values for cpu speed, baud
+   rate, and serial interface, maybe much more.
+
+   This would also be the place to include more .asm functions.
+
+   "firmware" and "firmware-install" are make targets in
+   : firmware/$arch-$target/Makefile
+   They are called from the top level Makefile.
+
+   I resisted the urge to create a superfancy single session make.
+   While modern and sexy it is close to unpenetrable if you have not
+   used this before.
+
+** run tests
+
+   : make upload-tester TARGET=avr8-at644p
+   : make test TARGET=avr8-at644p
+
+   Uploading the hayes tester is a separate step. The relevant file
+   can be amended to include any desired .frt files, of course.
+
+** write new tests
+
+   Well, this is hopefully simple, get inspired by the few examples
+   available.
+
+
+
+** Epilog
+
+   As said, this is "minimal art work".
+
+   Don't be afraid to experiment with it.
+
+   My goal is to make it simple for anyone to actually run the test
+   suite.
+
+   It should be simple to add more test cases. The structure should
+   maybe follow the structure in the lib source directories.
+
+   It should be possible to add a new board for any supported
+   architecture with modest effort.
+
+   I am awaiting you comments, ideas, contributions.
+
+
+
+   Thank you for your patience and time!
+
+   Cheers,
+   Erich
+   2020-12-18
+

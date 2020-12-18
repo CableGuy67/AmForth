@@ -1,0 +1,45 @@
+#!/usr/bin/perl
+# 2007-12-08 amforth/Erich Wälde
+#
+# filter, read all input, expand lines like
+#   "^.include filename$"
+# with the content found in filename
+#
+# this is written to unfold amforth projects before
+# transferring them to the target controller.
+#
+# includes must be relative file names from here
+# no searching!
+# this script gives up, if an included file cannot
+# be found.
+
+use warnings;
+use strict;
+my $Prog=$0;
+my $file="";
+
+my $pattern='^[#]*include\s+(\S+)';
+my $comment='\ ---';
+
+my $verbose=0;
+
+while (<>)
+{
+    if (m/$pattern/)
+    {
+        $file = "$1";
+        print STDERR "  $file\n" if ($verbose);
+        if (not -r $file)
+        {
+            print STDERR "$Prog: file $file not found!\n";
+            exit 2;
+        }
+        print "$comment include begin $file\n";
+        system("$Prog $file") == 0 or  die "failed.\n";
+        print "$comment include end $file\n";
+    }
+    else
+    {
+        print $_;
+    }
+}

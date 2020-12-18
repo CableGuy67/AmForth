@@ -1,0 +1,25 @@
+#!/usr/bin/perl -w
+# 2007-12-08 EW
+# trim_fs
+#
+# filter, remove comments, leading and trailing whitespace and empty lines 
+#
+# this is written to trim unfolded amforth projects
+
+use strict;
+my $Prog=$0;
+
+while (<>)
+{
+    chomp;
+    s/\\[ \t].*$//;     # remove line comments
+    s/^\\$//;           # remove '\' if alone on line
+    s/\( .* \)//;       # remove inline comments
+
+    #s/^\s+//;          # delete leading whitespace / well no, keep indendation
+    s/\s+$//;           # delete trailing whitespace
+    s/\b\s+/ /g;        # compress white space after first word
+    next if /^$/;       # delete empty lines
+
+    print "$_\n";
+}
