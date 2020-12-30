@@ -1,0 +1,64 @@
+#!/usr/bin/python
+
+from xml.dom import minidom
+import re
+import pd
+
+def get_all_modules(x):
+  peripherals = x.getElementsByTagName('peripherals').item(0)
+  modules = peripherals.getElementsByTagName('module')
+  return modules
+
+# ################## MAIN ##################
+
+def process_xml(filename):
+  xml = minidom.parse(filename)
+  device = xml.getElementsByTagName("device").item(0)
+  try: 
+    family = device.attributes['family'].value.lower()
+  except:
+    # some old file formats
+    return
+  # check if ATmega, currently no other type
+  if family != 'megaavr':
+    return
+  mcu = device.attributes['name'].value.lower()
+  pd.make_path(mcu)
+
+  asm = open(mcu+"/device.asm", "w")
+  py  = open(mcu+"/device.py", "w")
+  frt = open(mcu+"/device.frt", "w")
+  frt.write("\\ Generated Automatically\n\n")
+  asm.write('; Generated Automatically\n\n')
+  py.write('# Generated Automatically\n\n')
+
+  asm.write(pd.format_device_asm(device))
+  py.write(pd.format_device_py(device))
+
+  ints = pd.get_all_interrupts(xml)
+  frt.write(pd.format_interrupt_forth(ints))
+  py.write(pd.format_interrupt_py(ints))
+  asm.write(pd.format_interrupt_asm(ints))
+
+  for m in get_all_modules(xml):
+    rg = pd.get_registergroup_name_for_module(m)
+    mt = rg.attributes['address-space'].value
+    if mt=='data':
+      name = m.attributes['name'].value
+      reg_frt = open(mcu+"/blocks/"+name+".frt", "w")
+      details = pd.get_module(xml, name)
+      reg_frt.write(pd.format_register_forth(details))
+      frt.write(pd.format_register_forth(details))
+      py.write(pd.format_register_py(details))
+      reg_frt.close()
+
+  py.write(pd.end_device_py())
+  frt.close()
+  asm.close()
+  py.close()
+
+import glob
+#for filename in glob.glob("../avr8/Atmel/Partdescriptionfiles.v6/*.xml"):
+for filename in glob.glob("*.xml"):
+  print(filename)
+  process_xml(filename)

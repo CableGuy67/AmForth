@@ -1,0 +1,57 @@
+2020-12-30 AmForth/Erich Wälde
+
+these files were copied from Matthias Trutes work place with help
+of his wife. Thanks for making this possible.
+
+Copyright so far 2015-2020 Matthias Trute
+
+The script "pd2amforth" reads part description files, e.g. "ATmega328P.xml"
+These files are part of Atmels (now Microchip) AvrAssembler/Simulator/Studio
+software packages. The three example files seem to be extracts of their original
+versions.
+
+$ ls -l {.,~/wine/Partdescriptionfiles}/ATmega{16,32,328P}.xml 
+-rw-r----- 1 ew ew  62330 2015-09-03 18:09 ./ATmega16.xml
+-rw-r----- 1 ew ew  60309 2015-09-03 18:08 ./ATmega32.xml
+-rw-r----- 1 ew ew  67197 2015-09-03 18:09 ./ATmega328P.xml
+-rw-r----- 1 ew ew 363833 2008-11-07 12:36 /home/ew/wine/Partdescriptionfiles/ATmega16.xml
+-rw-r----- 1 ew ew 358143 2008-11-07 12:36 /home/ew/wine/Partdescriptionfiles/ATmega32.xml
+-rw-r----- 1 ew ew 396109 2008-11-07 12:36 /home/ew/wine/Partdescriptionfiles/ATmega328P.xml
+
+
+The script will then for each part description generate a subdirectory:
+$ find ./atmega328p -ls
+ 22682184      4 drwxr-x---   4 ew       ew           4096 Sep  4  2016 ./atmega328p
+ 22682201     16 -rw-r-----   1 ew       ew          14216 Dec 29 12:15 ./atmega328p/device.py
+ 22682202      4 -rw-r-----   1 ew       ew           1461 Dec 29 12:15 ./atmega328p/device.asm
+ 22682185      4 drwxr-x---   2 ew       ew           4096 Sep  4  2016 ./atmega328p/blocks
+ 22682198      4 -rw-r-----   1 ew       ew            139 Dec 29 12:15 ./atmega328p/blocks/PORTB.frt
+ 22682191      4 -rw-r-----   1 ew       ew           1701 Dec 29 12:15 ./atmega328p/blocks/TIMER_COUNTER_2.frt
+ 22682200      4 -rw-r-----   1 ew       ew            564 Dec 29 12:15 ./atmega328p/blocks/SPI.frt
+ 22682195      4 -rw-r-----   1 ew       ew           1316 Dec 29 12:15 ./atmega328p/blocks/USART0.frt
+ 22682194      4 -rw-r-----   1 ew       ew           1565 Dec 29 12:15 ./atmega328p/blocks/TIMER_COUNTER_1.frt
+ 22682196      4 -rw-r-----   1 ew       ew            338 Dec 29 12:15 ./atmega328p/blocks/WATCHDOG.frt
+ 22682186      4 -rw-r-----   1 ew       ew            987 Dec 29 12:15 ./atmega328p/blocks/AD_CONVERTER.frt
+ 22682193      4 -rw-r-----   1 ew       ew            139 Dec 29 12:15 ./atmega328p/blocks/PORTC.frt
+ 22682188      4 -rw-r-----   1 ew       ew           2172 Dec 29 12:15 ./atmega328p/blocks/CPU.frt
+ 22682199      4 -rw-r-----   1 ew       ew            139 Dec 29 12:15 ./atmega328p/blocks/PORTD.frt
+ 22682187      4 -rw-r-----   1 ew       ew            832 Dec 29 12:15 ./atmega328p/blocks/TWI.frt
+ 22682190      4 -rw-r-----   1 ew       ew            403 Dec 29 12:15 ./atmega328p/blocks/EEPROM.frt
+ 22682192      4 -rw-r-----   1 ew       ew            619 Dec 29 12:15 ./atmega328p/blocks/ANALOG_COMPARATOR.frt
+ 22682189      4 -rw-r-----   1 ew       ew            923 Dec 29 12:15 ./atmega328p/blocks/EXTERNAL_INTERRUPT.frt
+ 22682197      4 -rw-r-----   1 ew       ew           1246 Dec 29 12:15 ./atmega328p/blocks/TIMER_COUNTER_0.frt
+ 22682203      4 drwxr-x---   2 ew       ew           4096 Sep  4  2016 ./atmega328p/words
+ 22682204     16 -rw-r-----   1 ew       ew          14497 Dec 29 12:15 ./atmega328p/device.frt
+
+At this time it is not clear, whether the generated files are those found in the amforth tree.
+$ ls -l {.,../avr8/devices}/atmega328p/device.{asm,py}
+-rw-r----- 1 ew ew  2233 2015-09-03 18:08 ../avr8/devices/atmega328p/device.asm
+-rw-r----- 1 ew ew 14216 2016-10-18 20:40 ../avr8/devices/atmega328p/device.py
+-rw-r----- 1 ew ew  1461 2020-12-29 12:15 ./atmega328p/device.asm
+-rw-r----- 1 ew ew 14216 2020-12-29 12:15 ./atmega328p/device.py
+
+probably not.
+
+"Use the Source, Luke!"
+
+This is added to the AmForth project in the hope, that it may be useful.
