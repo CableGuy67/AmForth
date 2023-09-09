@@ -1,1 +1,18 @@
- 
+how did this get lost...
+
+The avra directory (folder for the Amiga folks) is something of a placeholder
+at the moment. It is the code from a forked version of avra that actually can
+build the AmForth source tree. Bringing it here in this form is sort of like
+hacking off a limb and saying, "oh hey, here is your leg" but the proper way
+to do this is not quite clear. It is a zero volume repo that can be treated as
+static.
+
+What to do?
+
+Mostly I'd like to preserve the history when bringing it in. Me thinks I'll
+have to learn how to do the subgit thing (or whatever it is called) to park the
+repo in this one.
+
+Right, so, this directory has it's own licence. Respect it, or I'll send
+Cartman after you to RESPECT MAI AUTHORITAH! Actually I don't care so much.
+Just do what is right whilst I ramble on here.
