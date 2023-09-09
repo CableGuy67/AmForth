@@ -59,6 +59,7 @@ install: $(TARGET).hex
 
 $(TARGET).hex: $(TARGET).asm words/*.asm $(ROOT)/common/words/*.asm \
                $(ROOT)/avr8/words/*.asm $(ROOT)/avr8/devices/$(MCU)/*.asm
+	# If you don't want to build avra comment this next line out.
 	cd $(ROOT)/avr8/tools/avra/; make; cd -;
 	( TSTAMP=$$(date +"%Y-%m-%dT%H:%M:%S"); \
 	TSTAMPLEN=$${#TSTAMP}; \
