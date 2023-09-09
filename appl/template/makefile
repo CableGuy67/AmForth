@@ -26,7 +26,7 @@ HFUSE=0xNN
 EFUSE=0xNN
 
 # Assembler information
-AVRA=$(ROOT)/avr8/tools/avra/avra
+AVRA=$(ROOT)/avr8/tools/avra/src/avra
 AVRASM=$(ROOT)/avr8/tools/avrasm/avrasm2.exe
 # Leave this blank if using Windows
 USING_WINE=wine
@@ -35,6 +35,7 @@ USING_WINE=wine
 ASSEMBLER=./avra -I $(ATMEL_INC)
 
 # Programmer information
+# change PROGRAMMER, BAUD_RATE, PORT and AVRDUDE as needed
 PROGRAMMER=usbasp
 BAUD_RATE=19200
 PORT=/dev/ttyUSB0
@@ -56,6 +57,7 @@ install: $(TARGET).hex
 
 $(TARGET).hex: $(TARGET).asm words/*.asm $(ROOT)/common/words/*.asm \
                $(ROOT)/avr8/words/*.asm $(ROOT)/avr8/devices/$(MCU)/*.asm
+	cd $(ROOT)/avr8/tools/avra/ make; cd - ;
 	( TSTAMP=$$(date +"%Y-%m-%dT%H:%M:%S"); \
 	TSTAMPLEN=$${#TSTAMP}; \
 	echo "($$TSTAMPLEN) $$TSTAMP"; \
