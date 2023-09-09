@@ -28,11 +28,13 @@ EFUSE=0xNN
 # Assembler information
 AVRA=$(ROOT)/avr8/tools/avra/src/avra
 AVRASM=$(ROOT)/avr8/tools/avrasm/avrasm2.exe
-# Leave this blank if using Windows
-USING_WINE=wine
+# Uncomment if using avrasm2 with linux
+# USING_WINE=wine
 
-#ASSEMBLER=$(USING_WINE) $(AVRASM) -I $(ATMEL_INC)
-ASSEMBLER=./avra -I $(ATMEL_INC)
+# Use this for avrasm2.exe with Windows or linux with wine
+# ASSEMBLER=$(USING_WINE) $(AVRASM) -I $(ATMEL_INC)
+# Use this to use avra 
+ASSEMBLER=$(AVRA) -I $(ATMEL_INC)
 
 # Programmer information
 # change PROGRAMMER, BAUD_RATE, PORT and AVRDUDE as needed
@@ -57,7 +59,7 @@ install: $(TARGET).hex
 
 $(TARGET).hex: $(TARGET).asm words/*.asm $(ROOT)/common/words/*.asm \
                $(ROOT)/avr8/words/*.asm $(ROOT)/avr8/devices/$(MCU)/*.asm
-	cd $(ROOT)/avr8/tools/avra/ make; cd - ;
+	cd $(ROOT)/avr8/tools/avra/; make; cd -;
 	( TSTAMP=$$(date +"%Y-%m-%dT%H:%M:%S"); \
 	TSTAMPLEN=$${#TSTAMP}; \
 	echo "($$TSTAMPLEN) $$TSTAMP"; \
