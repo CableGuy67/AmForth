@@ -1,46 +1,50 @@
-# simple makefile for building the 
-# template project. 
+# --------------------------------------------------------- #
 
+# --------- makefile to build project application --------- #
+
+# ---------------- begin edit local values ---------------- #
+
+# Your shell of choice
 SHELL=/bin/bash
 
-# --- edit these values ------------------------------------
-# Name of your application (useful, if you rename template.asm)
+# Application name. Must match the project .asm file here.
+# All files that are generated will use this name.
 TARGET=template
 
-# versions before 2.1 may produce some warnings
-# but should produce a running system. You should
-# _always_ use the trunk.
+# Point to the root of the AmForth repo
+ROOT=../..
+# Location of the Atmel include files
+ATMEL_INC=$(ROOT)/avr8/devices/appnote_inc
 
-#AMFORTH=../../releases/3.6
-AMFORTH=../..
+# MCU should be identical to the device as listed in MCU/devices
+MCU=YOUR_DEVICE
 
-# the MCU should be identical to the device
-MCU=atmega1284p
-# set the fuses according to your MCU
-LFUSE=0xnn
-HFUSE=0xnn
+# Set the fuses according to your MCU
+LFUSE=0xNN
+HFUSE=0xNN
 # some MCU have this one, see write-fuses target below
-EFUSE=0xnn
+EFUSE=0xNN
 
-# serial port
-CONSOLE=/dev/ttyUSB0
+# Assembler information
+AVRA=$(ROOT)/avr8/tools/avra/avra
+AVRASM=$(ROOT)/avr8/tools/avrasm/avrasm2.exe
+# Leave this blank if using Windows
+USING_WINE=wine
 
-# directories
-DIR_ATMEL=../../avr8/Atmel
+#ASSEMBLER=$(USING_WINE) $(AVRASM) -I $(ATMEL_INC)
+ASSEMBLER=./avra -I $(ATMEL_INC)
 
-# programms / flags
-USB=-c avr911  -P /dev/ttyUSB3
-PP=-c stk200  -P /dev/parport0
-JTAG=-c jtag2 -P /dev/ttyUSB2
-BURNER=$(USB)
+# Programmer information
+PROGRAMMER=usbasp
+BAUD_RATE=19200
+PORT=/dev/ttyUSB0
+PROGRAMMER_FLAGS=-c $(PROGRAMMER) -b $(BAUD_RATE) -P $(PORT)
 AVRDUDE=avrdude
-AVRDUDE_FLAGS=-q $(BURNER) -p $(MCU)
+AVRDUDE_FLAGS=$(PROGRAMMER_FLAGS) -p $(MCU)
 
-AVRASM=wine $(DIR_ATMEL)/avrasm2.exe -I $(DIR_ATMEL)/Appnotes2
+# ----------------- end edit local values ----------------- #
 
-# ----------------------------------------------------------
-
-INCLUDE=-I $(AMFORTH)/avr8/devices/$(MCU) -I $(AMFORTH)/avr8 -I $(AMFORTH)/common
+INCLUDE=-I $(ROOT)/avr8/devices/$(MCU) -I $(ROOT)/avr8 -I $(ROOT)/common
 
 default:  $(TARGET).hex
 
@@ -50,15 +54,17 @@ erase:
 install: $(TARGET).hex
 	$(AVRDUDE) $(AVRDUDE_FLAGS)  -e -U flash:w:$(TARGET).hex:i -U eeprom:w:$(TARGET).eep.hex:i
 
-$(TARGET).hex: $(TARGET).asm words/*.asm $(AMFORTH)/common/words/*.asm $(AMFORTH)/avr8/words/*.asm $(AMFORTH)/avr8/devices/$(MCU)/*.asm
+$(TARGET).hex: $(TARGET).asm words/*.asm $(ROOT)/common/words/*.asm \
+               $(ROOT)/avr8/words/*.asm $(ROOT)/avr8/devices/$(MCU)/*.asm
 	( TSTAMP=$$(date +"%Y-%m-%dT%H:%M:%S"); \
-         TSTAMPLEN=$${#TSTAMP}; \
-         echo "($$TSTAMPLEN) $$TSTAMP"; \
-         sed -e "s/@TSTAMPLEN@/$$TSTAMPLEN/g" -e "s/@TSTAMP@/$$TSTAMP/g" $(AMFORTH)/common/words/build-info.tmpl > words/build-info.asm )
-	$(AVRASM) $(INCLUDE) -fI -v0 -e $(TARGET).eep.hex -l $(TARGET).lst $(TARGET).asm
+	TSTAMPLEN=$${#TSTAMP}; \
+	echo "($$TSTAMPLEN) $$TSTAMP"; \
+	sed -e "s/@TSTAMPLEN@/$$TSTAMPLEN/g" -e "s/@TSTAMP@/$$TSTAMP/g" \
+	$(ROOT)/common/words/build-info.tmpl > words/build-info.asm )
+	$(ASSEMBLER) $(INCLUDE) -fI -e $(TARGET).eep.hex -l $(TARGET).lst $(TARGET).asm
 
 $(TARGET).back:
-	$(AVRDUDE) $(AVRDUDE_FLAGS)  -U flash:r:$(TARGET).hex:i -U eeprom:r:$(TARGET).eep.hex:i
+	$(AVRDUDE) $(AVRDUDE_FLAGS)  -U flash:r:$(TARGET).backup.hex:i -U eeprom:r:$(TARGET).eep.backup.hex:i
 
 clean:
 	rm -f $(TARGET).hex
@@ -69,9 +75,7 @@ clean:
 	rm -f $(TARGET).obj
 
 read-fuse:
-	$(AVRDUDE) $(AVRDUDE_FLAGS) -U hfuse:r:-:h -U lfuse:r:-:h -U lock:r:-:h
-	# $(AVRDUDE) $(AVRDUDE_FLAGS) -U hfuse:r:-:h -U lfuse:r:-:h -U efuse:r:-:h -U lock:r:-:h
+	$(AVRDUDE) $(AVRDUDE_FLAGS) -U hfuse:r:-:h -U lfuse:r:-:h -U efuse:r:-:h -U lock:r:-:h
 
 write-fuse:
-	$(AVRDUDE) $(AVRDUDE_FLAGS) -U hfuse:w:$(HFUSE):m -U lfuse:w:$(LFUSE):m
-#	$(AVRDUDE) $(AVRDUDE_FLAGS) -U efuse:w:$(EFUSE):m -U hfuse:w:$(HFUSE):m -U lfuse:w:$(LFUSE):m
+	$(AVRDUDE) $(AVRDUDE_FLAGS) -U hfuse:w:$(HFUSE):m -U lfuse:w:$(LFUSE):m -U efuse:w:$(EFUSE):m

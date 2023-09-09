@@ -1,0 +1,5 @@
+The files in this directory are to be used as stated in the LICENCE.
+To use these you must abide by the conditions set by Atmel.
+
+The command line switches for avrasm2.exe can be found in the HELP file. It
+can be run under Windows or by using wine on Linux.
