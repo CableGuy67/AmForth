@@ -1,3 +1,5 @@
 .directory
 *.kate-swp
 appl/testing
+*.o
+avr8/tools/avra/src/avra
