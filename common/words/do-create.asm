@@ -28,7 +28,7 @@ PFA_DOCREATE:
 .if cpu_avr8==1
 VE_DOCREATE_IN:
     .dw $ff0b
-    .db "(create-in)"
+    .db "(create-in)",0
     .dw VE_HEAD
     .set VE_HEAD = VE_DOCREATE_IN
 XT_DOCREATE_IN:

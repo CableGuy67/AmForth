@@ -6,7 +6,7 @@
 .if cpu_avr8==1
 VE_UDSTAR:
     .dw $ff03
-    .db "ud*"
+    .db "ud*",0
     .dw VE_HEAD
     .set VE_HEAD = VE_UDSTAR
 XT_UDSTAR:

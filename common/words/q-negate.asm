@@ -8,7 +8,7 @@
 .if cpu_avr8==1
 VE_QNEGATE:
     .dw $ff07
-    .db "?negate"
+    .db "?negate",0
     .dw VE_HEAD
     .set VE_HEAD = VE_QNEGATE
 XT_QNEGATE:
