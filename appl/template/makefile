@@ -78,6 +78,7 @@ clean:
 	rm -f $(TARGET).map
 	rm -f $(TARGET).cof
 	rm -f $(TARGET).obj
+	cd $(ROOT)/avr8/tools/avra/; make clean; cd -;
 
 read-fuse:
 	$(AVRDUDE) $(AVRDUDE_FLAGS) -U hfuse:r:-:h -U lfuse:r:-:h -U efuse:r:-:h -U lock:r:-:h
