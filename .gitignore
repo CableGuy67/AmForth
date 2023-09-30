@@ -1,5 +1,6 @@
 .directory
 *.kate-swp
 appl/testing
+appl/megaForth
 *.o
 avr8/tools/avra/src/avra
