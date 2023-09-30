@@ -21,6 +21,6 @@ XT_BUILDINFO:
 PFA_BUILDINFO:
     .dw XT_DOSLITERAL
     .dw @TSTAMPLEN@
-    .db "@TSTAMP@"
+    .db "@TSTAMP@", "0"
 .endif
     .dw XT_EXIT
