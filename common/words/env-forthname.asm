@@ -19,7 +19,7 @@ PFA_EN_FORTHNAME:
     .dw XT_DOSLITERAL
     .dw 7
 .endif
-    .db "amForth",0
+    .db "AmForth",0
 .if cpu_msp430==1
     .align 16
 .endif
