@@ -9,7 +9,7 @@
 .if cpu_avr8==1
 VE_TICK:
     .dw $ff01
-    .db "'",0
+    .db "'"
     .dw VE_HEAD
     .set VE_HEAD = VE_TICK
 XT_TICK:
