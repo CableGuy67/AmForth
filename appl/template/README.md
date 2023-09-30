@@ -1,26 +1,29 @@
-GETTING STARTED
+## QUICK START
 
 This is the basic application template that can be used as a starting point
-for your own app. Just make a copy of this and rename it.
+for your own app. Just make a copy of this file and rename it to match your project.
 
-Once that is done you can rename the template.asm file to match your application
-or anything that you might want. You just need to change the TARGET in the
-makefile to match. This is also a useful way to build multiple targets in the
+Once that is done you can rename the ***template.asm*** file to match your application
+or to anything that you might want. You just need to change the  **TARGET** in the
+makefile to match. This is also a useful way to build multiple versions in the
 same directory if, for example, you want to build with both avra and avrasm2 or just to have a handy backup.
 
-The TARGET.asm file has a couple things that may need to be changed. The first
-is the MCU clock speed and defaults to this 8MHz setting:
+The _**TARGET.asm**_ file has a couple things that may need to be changed. The first
+is the *MCU clock speed* which defaults to an *8MHz* setting:
 
+```Assembly
 ; amforth needs two essential parameters: CPU clock
 ; and command terminal line.
 ; cpu clock in hertz, 1MHz is factory default
 .equ F_CPU = 8000000
+```
 
-The other is the BAUD for the serial connection. Make sure this matches your
+The other is the *BAUD* for the serial connection. Make sure this matches your
 serial terminal setting that you use to connect to the MCU. Most likely you
-will just need to remove the semicolon in the .set BAUD line and change it to
+will just need to remove the semicolon in the `.set BAUD` line and change it to
 match what you are using. I've used 19200 reliably for some time.
 
+```Assembly
 ; serial line settings. The defaults are set in avr8/preamble.inc.
 ; You should not change that file but use your own settings *here*
 ; since it may get changed in future versions of amforth.
@@ -28,6 +31,7 @@ match what you are using. I've used 19200 reliably for some time.
 ;.set BAUD_MAXERROR=10
 ;.set WANT_ISR_RX = 1 ; interrupt driven receive
 ;.set WANT_ISR_TX = 0 ; send slowly but with less code space
+```
 
 There are a good deal of settings in that file that can deal with pretty much
 anything for a successful build.
@@ -39,9 +43,8 @@ fill in.
 
 Once everything is set just do 'make' to build your project and/or avra. As
 noted in the makefile after the first build removing the 'yes' from USING_AVRA
-and leaving USING_AVRASM blank will still use avra as the assembler. It just
-won't build or clean avra anymore. Maybe another .PHONY target to build avra
-will show up for clarity.
+and leaving **USING_AVRASM** blank will still use avra as the assembler. It just
+won't build or clean avra anymore.
 
-The build.xml file is for ant(elope) and may be removed in the future since I
+The ***build.xml*** file is for ant(elope) and may be removed in the future since I
 don't use ant nor know if it is even still working correctly.
