@@ -18,7 +18,7 @@ XT_DEFAULT_PROMPTOK:
     .dw DO_COLON
 PFA_DEFAULT_PROMPTOK:
     .dw XT_DOSLITERAL
-    .dw 3
+    .dw $ff03
     .db " ok",0
 .endif
     .dw XT_ITYPE
@@ -39,8 +39,8 @@ XT_PROMPTOK:
 
 .if cpu_avr8==1
 VE_PROMPTOK:
-    .dw $FF03
-    .db ".ok"
+    .dw $ff03
+    .db ".ok",0
     .dw VE_HEAD
     .set VE_HEAD = VE_PROMPTOK
 XT_PROMPTOK:

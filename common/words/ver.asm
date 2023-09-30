@@ -9,7 +9,7 @@
 .if cpu_avr8==1
 VE_DOT_VER:
     .dw $ff03
-    .db "ver"
+    .db "ver",0
     .dw VE_HEAD
     .set VE_HEAD = VE_DOT_VER
 XT_DOT_VER:

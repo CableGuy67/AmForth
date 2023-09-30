@@ -9,7 +9,7 @@
 .if cpu_avr8==1
 VE_CSCAN:
     .dw $ff05
-    .db "cscan"
+    .db "cscan",0
     .dw VE_HEAD
     .set VE_HEAD = VE_CSCAN
 XT_CSCAN:
