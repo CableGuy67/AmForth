@@ -8,7 +8,7 @@ on:
       - master
       
 env:
-  USER_TOKEN: ${{ secrets.AmForth }}
+  USER_TOKEN: ${{ secrets.WIKI_ACTION_TOKEN }}
   USER_NAME: CableGuy67
   USER_EMAIL: cableguy67@gmail.com
   OWNER: ${{ github.event.repository.owner.name }}
