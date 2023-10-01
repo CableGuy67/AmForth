@@ -1,0 +1,38 @@
+name: Publish wiki to Wiki
+
+on:
+  push:
+    paths:
+      - wiki/**
+    branches:
+      - master
+      
+env:
+  USER_TOKEN: ${{ secrets.WIKI_ACTION_TOKEN }}
+  USER_NAME: CGbot
+  USER_EMAIL: pretendemail@gmail.com
+  OWNER: ${{ github.event.Cableguy67 }}
+  REPOSITORY_NAME: ${{ github.event.AmForth }}
+
+jobs:
+  publish_docs_to_wiki:
+    runs-on: ubuntu-latest
+    steps:  
+    - uses: actions/checkout@v2
+
+    - name: Pull wiki
+      run: |
+         mkdir tmp_wiki
+         cd tmp_wiki
+         git init
+         git config user.name $USER_NAME
+         git config user.email $USER_EMAIL
+         git pull https://$USER_TOKEN@github.com/$OWNER/$REPOSITORY_NAME.wiki.git
+
+    - name: Push wiki
+      run: |
+        rsync -av --delete wiki/ tmp_wiki/ --exclude .git
+        cd tmp_wiki
+        git add .
+        git commit -m "Update Wiki content"
+        git push -f --set-upstream https://$USER_TOKEN@github.com/$OWNER/$REPOSITORY_NAME.wiki.git master
