@@ -1,7 +1,7 @@
 ** IMPORTANT NOTE
 This is not the officical AmForth Repository. That still lives on Sourceforge
 and can be found at:
-[https://sourceforge.net/projects/amforth/](AmForth officical repository)
+[AmForth officical repository](https://sourceforge.net/projects/amforth/)
 at this time.
 
 This repository is based on my personal use of AVR8 devices and may lose
