@@ -1,3 +1,21 @@
+** IMPORTANT NOTE
+This is not the officical AmForth Repository. That still lives on Sourceforge
+and can be found at:
+[AmForth officical repository]:https://sourceforge.net/projects/amforth/
+at this time.
+
+This repository is based on my personal use of AVR8 devices and may lose
+support for any of the other platforms. The RISC-V stuff will probably stick
+around for the time being just in case I do pursue that rabbit hole in the
+future.
+
+You can safely assume that nothing but the appl/avr8-app-template is currently
+working. This was just a proof of concept for some structural changes in the
+repository and making the template makefile easier to work with. It also was to
+help facilitate the addition of avra as a valid assembler for the avr8 chips.
+
+BELOW FOLLOWS THE ORIGINAL README
+
 Author:
     Matthias Trute <mtrute@users.sourceforge.net>
     died 2020-03-25
