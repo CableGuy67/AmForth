@@ -42,7 +42,7 @@ etc. It is pretty well documented so it should be easy to figure out what to
 fill in.
 
 Once everything is set just do 'make' to build your project and/or avra. As
-noted in the makefile after the first build removing the 'yes' from USING_AVRA
+noted in the makefile after the first build removing the 'yes' from **USING_AVRA**
 and leaving **USING_AVRASM** blank will still use avra as the assembler. It just
 won't build or clean avra anymore.
 
