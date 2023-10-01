@@ -11,8 +11,8 @@ env:
   USER_TOKEN: ${{ secrets.WIKI_ACTION_TOKEN }}
   USER_NAME: CableGuy67
   USER_EMAIL: cableguy67@gmail.com
-  OWNER: ${{ github.event.CableGuy67 }}
-  REPOSITORY_NAME: ${{ github.event.AmForth }}
+  OWNER: ${{ github.event.repository.owner.name }}
+  REPOSITORY_NAME: ${{ github.event.repository.name }}
 
 jobs:
   publish_docs_to_wiki:
