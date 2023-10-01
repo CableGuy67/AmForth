@@ -9,7 +9,7 @@ SHELL=/bin/bash
 
 # Application name. Must match the project .asm file here.
 # All files that are generated will use this name.
-TARGET=template
+TARGET=app_name
 
 # CONDITIONALS
 # Set to 'yes' if you want to build and use avra or leave empty.
