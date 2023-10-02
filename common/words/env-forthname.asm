@@ -17,7 +17,7 @@ XT_ENV_FORTHNAME:
     .dw DO_COLON
 PFA_EN_FORTHNAME:
     .dw XT_DOSLITERAL
-    .dw 7
+    .dw 7 ; must be 7 not $ff07 or hangs uploads from sliteral?
 .endif
     .db "AmForth",0
 .if cpu_msp430==1

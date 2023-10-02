@@ -19,7 +19,7 @@ XT_DEFAULT_PROMPTERROR:
     .dw DO_COLON
 PFA_DEFAULT_PROMPTERROR:
 	.dw XT_DOSLITERAL
-    .dw 4
+    .dw 4 ; must be 4 not $ff04 or hangs uploads from sliteral?
     .db " ?? "
 .endif
     .dw XT_ITYPE

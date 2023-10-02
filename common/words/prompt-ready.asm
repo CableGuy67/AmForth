@@ -19,7 +19,7 @@ XT_DEFAULT_PROMPTREADY:
     .dw DO_COLON
 PFA_DEFAULT_PROMPTREADY:
     .dw XT_DOSLITERAL
-    .dw 2
+    .dw 2 ; must be 2 not $ff02 or hangs uploads from sliteral?
     .db "> "
 .endif
     .dw XT_CR
