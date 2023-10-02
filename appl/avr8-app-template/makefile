@@ -12,14 +12,13 @@ SHELL=/bin/bash
 TARGET=app_name
 
 # CONDITIONALS
-# Set to 'yes' if you want to build and use avra or leave empty.
-# After the first build this can be left blank to just use avra
-# and not rebuild or clean it as long as USE_AVRASM is blank.
+# Set to 'yes' if you want to build avra. After the first build this can
+# be left blank and avra will not rebuild or clean it.
+MAKE_AVRA=yes
+# Set to 'yes' if you want to use avra or leave empty for avrasm2.
 USE_AVRA=yes
-# Set to 'yes' if you want to use avrasm.exe or leave empty.
-USE_AVRASM=
-# Set to 'wine' if using avrasm2 with linux under wine or leave empty.
-# Leave this blank if using avrasm2 under windows.
+# Set to 'wine' if using avrasm2 with linux under wine or leave empty
+# if using avrasm2 under windows.
 USE_WINE=
 # Set to 'yes' if your MCU has an EFUSE or empty if no EFUSE.
 HAVE_EFUSE=yes
@@ -42,10 +41,10 @@ EFUSE=0xNN
 AVRA=$(ROOT)/avr8/tools/avra/src/avra
 AVRASM=$(ROOT)/avr8/tools/avrasm/avrasm2.exe
 
-ifeq ($(USE_AVRASM),yes)
-        ASSEMBLER=$(USE_WINE) $(AVRASM) -I $(ATMEL_INC)
-else
+ifeq ($(USE_AVRA),yes)
         ASSEMBLER= $(AVRA) -I $(ATMEL_INC)
+else
+        ASSEMBLER=$(USE_WINE) $(AVRASM) -I $(ATMEL_INC)
 endif
 
 # Programmer information
@@ -69,7 +68,7 @@ install: $(TARGET).hex
 $(TARGET).hex: $(TARGET).asm words/*.asm $(ROOT)/common/words/*.asm \
                $(ROOT)/avr8/words/*.asm $(ROOT)/avr8/devices/$(MCU)/*.asm
 
-        ifeq ($(USE_AVRA),yes)
+        ifeq ($(MAKE_AVRA),yes)
 	    cd $(ROOT)/avr8/tools/avra/; make;
         endif
 
@@ -89,7 +88,7 @@ clean:
 	rm -f $(TARGET).cof
 	rm -f $(TARGET).obj
 
-        ifeq ($(USE_AVRA),yes)
+        ifeq ($(MAKE_AVRA),yes)
 	    cd $(ROOT)/avr8/tools/avra/; make clean;
         endif
 
