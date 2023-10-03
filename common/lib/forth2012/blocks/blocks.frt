@@ -5,8 +5,8 @@
 \ only basic routines. No hardware access
 \
 
-#require defer.frt
-#require buffer.frt
+\ #require defer.frt
+\ #require buffer.frt
 
 \ high level blocksize, ANS94 says 1024 bytes, SD Cards have 512
 #512 constant blocksize

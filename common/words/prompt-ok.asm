@@ -18,7 +18,7 @@ XT_DEFAULT_PROMPTOK:
     .dw DO_COLON
 PFA_DEFAULT_PROMPTOK:
     .dw XT_DOSLITERAL
-    .dw 3 ; must be 3 not $ff03 or hangs uploads from sliteral?
+    .dw 3
     .db " ok",0
 .endif
     .dw XT_ITYPE

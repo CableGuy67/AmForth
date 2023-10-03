@@ -19,7 +19,7 @@ XT_DEFAULT_PROMPTREADY:
     .dw DO_COLON
 PFA_DEFAULT_PROMPTREADY:
     .dw XT_DOSLITERAL
-    .dw 2 ; must be 2 not $ff02 or hangs uploads from sliteral?
+    .dw 2
     .db "> "
 .endif
     .dw XT_CR
@@ -41,7 +41,7 @@ XT_PROMPTREADY:
 
 .if cpu_avr8==1
 VE_PROMPTREADY:
-    .dw $FF06
+    .dw $ff06
     .db ".ready"
     .dw VE_HEAD
     .set VE_HEAD = VE_PROMPTREADY

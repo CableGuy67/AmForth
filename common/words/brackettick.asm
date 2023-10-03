@@ -8,8 +8,8 @@
 
 .if cpu_avr8==1
 VE_BRACKETTICK:
-    .dw $ff03
-    .db "[']"
+    .dw $0003
+    .db "[']",0
     .dw VE_HEAD
     .set VE_HEAD = VE_BRACKETTICK
 XT_BRACKETTICK:
