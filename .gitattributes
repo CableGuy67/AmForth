@@ -1,1 +1,3 @@
 *.frt linguist-language=Forth
+*.inc linguist-language=asm
+inc/* linguist-generated
