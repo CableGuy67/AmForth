@@ -1,5 +1,4 @@
 # The AmForth Wiki
-===
 
 ## Scope
 

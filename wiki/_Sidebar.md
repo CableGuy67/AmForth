@@ -1,14 +1,15 @@
 [Introduction to AmForth](./Introduction)
 
-[Building AmForth](./02-building)
+[Building AmForth](./Building)
 
-[Technical Guide](./03-technical)
+[Technical Guide](./Technical)
 
-[Recognizers](./.04-recognizers)
+[Recognizers](./Recognizers)
 
-[Cookbook](./05-cookbook)
+[Cookbook](./Cookbook)
 
-[RefCard](./06-refcard)
+[RefCard](./Refcard)
 
-[History](./07-history)
+[History](./History)
  
+[FAQ](./FAQ)
