@@ -1,4 +1,4 @@
-[Introduction to AmForth](./01-introduction)
+[Introduction to AmForth](/wiki/01-introduction/)
 
 [Building AmForth](./02-building)
 
