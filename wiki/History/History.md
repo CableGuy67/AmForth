@@ -244,7 +244,7 @@ History
     studio v6. added bitnames to the forth and python modules (later to be used
     with the shell).
 -   tools: completly new shell program with cool upload features from Keith:
-    [amforth-shell](../tools/amforth-shell.py)
+    [amforth-shell](../blob/master/tools/amforth-shell.py)
     It has command completion, full command history, automatic
     controller identification with all register names and much more.
     Updated the **Upload** for this task
