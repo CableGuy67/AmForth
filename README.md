@@ -14,6 +14,8 @@ working. This was just a proof of concept for some structural changes in the
 repository and making the template makefile easier to work with. It also was to
 help facilitate the addition of avra as a valid assembler for the avr8 chips.
 
+The [wiki](../../wiki/Introduction/) should be updated as I work to reflect the intent.
+
 BELOW FOLLOWS THE ORIGINAL README
 
 Author:
