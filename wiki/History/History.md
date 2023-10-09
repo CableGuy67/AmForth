@@ -159,7 +159,7 @@ History
 -   Wordlist entries are now 8bit clean. Words with umlauts or e.g. Greek commands
     work as expected, unless the terminal does not cooperate. Thanks to Enoch.
 
-    ```Forth
+    ```forth
     > : Σ  0 swap 0  do  +  loop  ;
      ok
     > 7 8 9 3 Σ .
@@ -192,13 +192,13 @@ History
     in [reStructured Text](http://sphinx-doc.org/).
 -   lib: Simple Quotations. Their typical use case is
 
-    ```Forth
+    ```forth
     : foo ... [: bar baz ;] ... ;
     ```
 
     which is equivalent to
 
-    ```Forth
+    ```forth
     :noname bar baz ; Constant#temp#
     : foo ... #temp# ...;
     ```
@@ -221,7 +221,7 @@ History
     destination on the stack. If there is nothing, a stack underflow exception
     gets thrown.
 
-    ```Forth
+    ```forth
     > : ?do i . loop ;
     ?? -4 14
     > : t2 ?do i . loop ;
