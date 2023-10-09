@@ -238,15 +238,13 @@ History
 27.7.2012: release 4.9
 ----------------------
 
--   core: initialisation of the USER area is now done in WARM. please
-    check your TURNKEY to remove the call to it. Thanks to Erich for
-    pointing to.
--   core: regenerated the devices files with the part description files
-    from studio v6. added bitnames to the forth and python modules
-    (later to be used with the shell).
--   tools: completly new shell program with cool upload features from
-    Keith:
-    [amforth-shell](http://amforth.svn.sourceforge.net/viewvc/amforth/trunk/tools/amforth-shell.py?view=log)
+-   core: initialisation of the USER area is now done in WARM. please check your
+    TURNKEY to remove the call to it. Thanks to Erich for pointing to.
+-   core: regenerated the devices files with the part description files from
+    studio v6. added bitnames to the forth and python modules (later to be used
+    with the shell).
+-   tools: completly new shell program with cool upload features from Keith:
+    [amforth-shell](../../tools/amforth-shell.py)
     It has command completion, full command history, automatic
     controller identification with all register names and much more.
     Updated the **Upload** for this task
