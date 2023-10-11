@@ -1,0 +1,96 @@
+|I=appl_defs: 0 loaded
+|I=getting filenames on the host
+|I=  Reading .
+|I=using tests.forth from/Users/tw/AmForth/appl/avr8-prebuilt
+**** /Users/tw/AmForth/appl/avr8-prebuilt
+|I=getting MCU name..
+|I=successfully loaded register definitions for atmega328p
+|I=getting filenames on the host
+|I=  Reading /Users/tw/AmForth/avr8/devices/atmega328p
+|I=  Reading /Users/tw/AmForth/avr8/lib
+|I=  Reading .
+|F=/Users/tw/AmForth/appl/avr8-prebuilt/tests.forth
+|D|    1|#include ../../common/lib/forth2012/tester/tester-amforth.frt
+|I=getting filenames on the host
+|I=  Reading /Users/tw/AmForth/avr8/devices/atmega328p
+|I=  Reading /Users/tw/AmForth/avr8/lib
+|I=  Reading .
+|I=using ../../common/lib/forth2012/tester/tester-amforth.frt verbatim
+**** /Users/tw/AmForth/appl/avr8-prebuilt
+|F=../../common/lib/forth2012/tester/tester-amforth.frt
+|C|    1|\ From: John Hayes S1I
+|C|    2|\ Subject: tester.fr
+|C|    3|\ Date: Mon, 27 Nov 95 13:10:09 PST  
+|W|    4|
+|C|    5|\ (C) 1995 JOHNS HOPKINS UNIVERSITY / APPLIED PHYSICS LABORATORY
+|C|    6|\ MAY BE DISTRIBUTED FREELY AS LONG AS THIS COPYRIGHT NOTICE REMAINS.
+|C|    7|\ VERSION 1.1
+|W|    8|
+|C|    9|\ modified for amforth by Matthias Trute 2007
+|W|   10|
+|C|   11|\ SET THE FOLLOWING FLAG TO TRUE FOR MORE VERBOSE OUTPUT; THIS MAY
+|C|   12|\ ALLOW YOU TO TELL WHICH TEST CAUSED YOUR SYSTEM TO HANG.
+|S|   13|variable VERBOSE
+|S|   14|   0 VERBOSE !
+|W|   15|
+|S|   16|variable ACTUAL-DEPTH  \ STACK RECORD
+|S|   17|variable START-DEPTH
+|W|   18|
+|S|   19|: EMPTY-STACK	\ ( ... -- ) EMPTY STACK: HANDLES UNDERFLOWED STACK TOO.
+|S|   20|    depth START-DEPTH @ < if
+|S|   21|        depth START-DEPTH @ swap do 0 loop
+|S|   22|    then
+|S|   23|    depth START-DEPTH @ > if
+|S|   24|        depth START-DEPTH @ do drop loop
+|S|   25|    then
+|S|   26|;
+|W|   27|
+|S|   28|: ERROR		\ ( C-ADDR U -- ) DISPLAY AN ERROR MESSAGE FOLLOWED BY
+|C|   29|		\ THE LINE THAT HAD THE ERROR.
+|S|   30|   itype source type cr			\ DISPLAY LINE CORRESPONDING TO ERROR
+|S|   31|   EMPTY-STACK				\ THROW AWAY EVERY THING ELSE
+|S|   32|;
+|W|   33|
+|S|   34|variable ACTUAL-DEPTH			\ STACK RECORD
+|S|   35|variable ACTUAL-RESULTS 20 cells allot  \ reserve space in RAM
+|W|   36|
+|S|   37|: t{ \ ( -- ) SYNTACTIC SUGAR.
+|S|   38|    depth START-DEPTH !
+|S|   39|;
+|W|   40|
+|S|   41|: -> \ ( ... -- ) RECORD DEPTH AND CONTENT OF STACK.
+|S|   42|   depth dup ACTUAL-DEPTH !		\ RECORD DEPTH
+|S|   43|   START-DEPTH @ > if		\ IF THERE IS SOMETHING ON STACK
+|S|   44|       depth START-DEPTH @ - 0 do ACTUAL-RESULTS i cells + ! loop \ SAVE THEM
+|S|   45|   then
+|S|   46|;
+|W|   47|
+|S|   48|: }t		\ ( ... -- ) COMPARE STACK (EXPECTED) CONTENTS WITH SAVED
+|S|   49|   depth ACTUAL-DEPTH @ = if		\ IF DEPTHS MATCH
+|S|   50|      depth START-DEPTH @ > if		\ IF THERE IS SOMETHING ON THE STACK
+|S|   51|         depth START-DEPTH @ - 0 do	\ FOR EACH STACK ITEM
+|S|   52|	    ACTUAL-RESULTS i cells + @	\ COMPARE ACTUAL WITH EXPECTED
+|S|   53|	    <> if s" INCORRECT RESULT: " ERROR leave then
+|S|   54|	 loop
+|S|   55|      then
+|S|   56|   else					\ DEPTH MISMATCH
+|S|   57|      s" WRONG NUMBER OF RESULTS: " ERROR
+|S|   58|   then
+|S|   59|;
+|W|   60|
+|S|   61|: TESTING	\ ( -- ) TALKING COMMENT.
+|S|   62|   source VERBOSE @
+|S|   63|   if dup >r type cr r> >in !
+|S|   64|   else >in ! drop
+|S|   65|   then ;
+|W|   66|
+**** /Users/tw/AmForth/common/lib/forth2012/tester
+|F=/Users/tw/AmForth/appl/avr8-prebuilt/tests.forth (resumed)
+|W|    2|
+|C|    3|\ https://forth-standard.org/standard/testsuite
+|W|    4|
+|S|    5|T{ 1 1 + -> 2 }T
+|S|    6|T{ 1 1 + -> 1 }T
+|O|    6|INCORRECT RESULT: t{ 1 1 + -> 1 }t
+|W|    7|
+**** /Users/tw/AmForth/appl/avr8-prebuilt

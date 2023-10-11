@@ -1,0 +1,32 @@
+#! /bin/bash
+
+AMF=
+PTH=~/AmForth
+
+DEV=/dev/tty.usbmodem1411
+DEV=/dev/tty.usbmodem1411
+DEV=/dev/tty.usbmodem14101
+DEV=/dev/tty.usbmodem14601
+DEV=/dev/tty.usbmodem14301
+#DEV=/dev/tty.usbmodem1A1211
+DEV=/dev/tty.usbserial-AH05JDFQ
+#DEV=/dev/tty.usbserial-A906R1JQ
+#DEV=/dev/tty.usbserial-FTFPEF5W
+#DEV=/dev/tty.usbserial-FT1XN8LQ
+DEV=/dev/tty.usbmodem14501
+
+export AMFORTH_LIB=./:$PTH
+
+# for UNO 
+# $PTH/tools/amforth-shell.py --port $DEV --rtscts --speed 38400 $1
+
+# for FTDI based usb-ttl-serial
+ $PTH/tools/amforth-shell.py --port $DEV --speed 38400 $1
+
+
+
+
+
+
+
+
